@@ -30,17 +30,18 @@ import region_estimators
 	'''
 	sensors: list of sensors as pandas.DataFrame (one row per sensor)
 	    Required columns:
-                'sensor_id' (integer): identifier for sensor (must be unique to each sensor)
+                'sensor_id' (INDEX: integer): identifier for sensor (must be unique to each sensor)
                 'latitude' (float): latitude of sensor location
                 'longitude' (float): longitude of sensor location
 
         regions: list of regions as pandas.DataFrame  (one row per region)
             Required columns:
-                'region_id' (string): identifier for region (must be unique to each region)
+                'region_id' (INDEX: string): identifier for region (must be unique to each region)
                 'geom' (shapely.wkt/geom.wkt):  Multi-polygon representing regions location and shape.
 
         actuals: list of sensor values as pandas.DataFrame (one row per timestamp)
             Required columns:
+		'id' (INDEX: integer): identifier for actuals
                 'timestamp' (string): timestamp of actual reading
                 'sensor' (integer): ID of sensor which took actual reading (must match sensors.sensor_id above)
                 'value' (float): scalar value of actual reading

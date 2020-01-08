@@ -35,7 +35,7 @@ class DistanceSimpleEstimator(RegionEstimator):
         ]
 
         df_actuals = pd.merge(left=df_actuals,
-                           right=self.sensors.reset_index().rename(columns={"id": "sensor"}),
+                           right=self.sensors.reset_index().rename(columns={"sensor_id": "sensor"}),
                            on='sensor',
                            how='left')
         gdf_actuals = gpd.GeoDataFrame(data=df_actuals, geometry='geometry')

@@ -6,8 +6,9 @@ Need to stop region_id = 'ZZZZZ' and/or timestamp = 'kjdf;ljdf' producing a json
 >>> from region_estimators import RegionEstimatorFactory
 
 >>> df_regions = pd.read_csv('/home/mcassag/Documents/PROJECTS/Turing_Breathing/Manuele/Mine_the_gap_inputs/temp/df_regions.csv', index_col='region_id')
+>>> df_sensors = pd.read_csv('/home/mcassag/Documents/PROJECTS/Turing_Breathing/Manuele/Mine_the_gap_inputs/temp/df_sensors.csv', index_col='sensor_id')
 >>> df_actuals = pd.read_csv('/home/mcassag/Documents/PROJECTS/Turing_Breathing/Manuele/Mine_the_gap_inputs/temp/df_actuals.csv', index_col=0)
->>> df_sensors = pd.read_csv('/home/mcassag/Documents/PROJECTS/Turing_Breathing/Manuele/Mine_the_gap_inputs/temp/df_sensors.csv', index_col=0)
+
 
 >>> df_regions['geometry'] = df_regions.apply(lambda row: wkt.loads(row.geometry), axis=1)
 
