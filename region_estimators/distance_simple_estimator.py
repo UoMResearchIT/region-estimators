@@ -54,6 +54,7 @@ class DistanceSimpleEstimator(RegionEstimator):
             # Get the value for that sensor on that timestamp
             if actual is not None:
                 # If readings found for the sensors, take the average
-                result = actual['value'], {'closest_sensor_id': str(actual['name'])}
+                result = actual['value'], {
+                    'closest_sensor_id': actual['name'] if 'name' in actual.columns else str(actual.index.tolist()[0])}
 
         return result

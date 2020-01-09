@@ -24,7 +24,7 @@ pip install region_estimators
 
 >>> df_regions = pd.read_csv('/path/to/file/df_regions.csv', index_col='region_id')
 >>> df_sensors = pd.read_csv('/path/to/file/Mine_the_gap_inputs/temp/df_sensors.csv', index_col='sensor_id')
->>> df_actuals = pd.read_csv('/path/to/file/df_actuals.csv', index_col=0)
+>>> df_actuals = pd.read_csv('/path/to/file/df_actuals.csv')
 
 >>> df_regions['geometry'] = df_regions.apply(lambda row: wkt.loads(row.geometry), axis=1)
 >>> estimator = RegionEstimatorFactory.region_estimator('diffusion', df_sensors, df_regions, df_actuals)
@@ -42,20 +42,22 @@ pip install region_estimators
 	'''
 	sensors: list of sensors as pandas.DataFrame (one row per sensor)
 	    Required columns:
-                'sensor_id' (INDEX: integer): identifier for sensor (must be unique to each sensor)
-                'latitude' (float): latitude of sensor location
-                'longitude' (float): longitude of sensor location
+                'sensor_id' (INDEX): identifier for sensor (must be unique to each sensor)
+                'latitude' (numeric): latitude of sensor location
+                'longitude' (numeric): longitude of sensor location
+                'name' (string (Optional): Human readable name of sensor
 
         regions: list of regions as pandas.DataFrame  (one row per region)
             Required columns:
-                'region_id' (INDEX: string): identifier for region (must be unique to each region)
+                'region_id' (INDEX): identifier for region (must be unique to each region)
                 'geom' (shapely.wkt/geom.wkt):  Multi-polygon representing regions location and shape.
 
-        actuals: list of sensor values as pandas.DataFrame (one row per timestamp)
+        actuals: list of actual sensor values as pandas.DataFrame (one row per timestamp)
             Required columns:
                 'timestamp' (string): timestamp of actual reading
-                'sensor' (integer): ID of sensor which took actual reading (must match sensors.sensor_id above)
-                'value' (float): scalar value of actual reading
+                'sensor': ID of sensor which took actual reading (must match with a sensors.sensor_id
+					in sensors (in value and type))
+                'value' (numeric): scalar value of actual reading
 	'''
 
 estimator = RegionEstimatorFactory.region_estimator(method_name, df_sensors, df_regions, df_actuals)
