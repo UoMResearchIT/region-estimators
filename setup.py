@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="region_estimators-annannfryingpan",
-    version="0.0.6",
+    version="0.0.9",
     author="Ann Gledson",
     author_email="ann.gledson@manchester.ac.uk",
     description="Make estimations for geographic regions, based on actual data (e.g. from sensors)",

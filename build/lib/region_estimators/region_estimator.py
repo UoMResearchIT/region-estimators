@@ -1,5 +1,6 @@
 from abc import ABCMeta, abstractmethod
 import geopandas as gpd
+import pandas as pd
 
 
 
@@ -16,29 +17,57 @@ class RegionEstimator(object):
             Args:
                 sensors: list of sensors as pandas.DataFrame
                     Required columns:
-                        'sensor_id' (integer)
+                        'sensor_id' (Unique INDEX)
                         'latitude' (float): latitude of sensor location
                         'longitude' (float): longitude of sensor location
+                        'name' (string (Optional): Name of sensor
 
                 regions: list of regions as pandas.DataFrame
                     Required columns:
-                        'region_id' (string)
+                        'region_id' (Unique INDEX)
                         'geometry' (shapely.wkt/geom.wkt)
                 actuals: list of sensor values as pandas.DataFrame
                     Required columns:
                         'timestamp' (string): timestamp of actual reading
-                        'sensor' (integer): ID of sensor which took actual reading
+                        'sensor': ID of sensor which took actual reading - must match an index value in sensors
                         'value' (float): value of actual reading
 
             Returns:
                 Initialised instance of subclass of RegionEstimator
 
         """
-        gdf_sensors = gpd.GeoDataFrame(data=sensors,
-                                       geometry=gpd.points_from_xy(sensors.longitude, sensors.latitude))
+        # Check sensors:
+        assert 'latitude' in list(sensors.columns), "There is no latitude column in sensors dataframe"
+        assert pd.to_numeric(sensors['latitude'], errors='coerce').notnull().all(), \
+            "latitude column contains non-numeric values."
+        assert 'longitude' in list(sensors.columns), "There is no longitude column in sensors dataframe"
+        assert pd.to_numeric(sensors['longitude'], errors='coerce').notnull().all(), \
+            "longitude column contains non-numeric values."
+
+        # Check regions
+        assert 'geometry' in list(regions.columns), "There is no geometry column in regions dataframe"
+
+        # Check actuals
+        assert 'timestamp' in list(actuals.columns), "There is no timestamp column in actuals dataframe"
+        assert 'sensor' in list(actuals.columns), "There is no sensor column in actuals dataframe - this must " + \
+                                                  "match a sensor_id in sensors and shows which sensor made the reading."
+        assert 'value' in list(actuals.columns), "There is no value column in actuals dataframe"
+        df_temp = actuals.loc[actuals['value'].notnull()]
+        assert pd.to_numeric(df_temp['value'], errors='coerce').notnull().all(), "actuals['value'] column contains non-numeric values."
+
+
+        try:
+            gdf_sensors = gpd.GeoDataFrame(data=sensors,
+                                           geometry=gpd.points_from_xy(sensors.longitude, sensors.latitude))
+        except Exception as err:
+            raise ValueError('Error converting sensors DataFrame to a GeoDataFrame: ' + str(err))
+
         gdf_sensors = gdf_sensors.drop(columns=['longitude', 'latitude'])
 
-        gdf_regions = gpd.GeoDataFrame(data=regions, geometry='geometry')
+        try:
+            gdf_regions = gpd.GeoDataFrame(data=regions, geometry='geometry')
+        except Exception as err:
+            raise ValueError('Error converting regions DataFrame to a GeoDataFrame: ' + str(err))
 
         self.sensors = gdf_sensors
         self.regions = gdf_regions
@@ -64,6 +93,18 @@ class RegionEstimator(object):
                 i) 'region_id' and
                 ii) calculated 'estimates' (list of dicts, each containing 'value', 'extra_data', 'timestamp')
         """
+
+        # Check inputs
+        if region_id is not None:
+            df_reset = pd.DataFrame(self.regions.reset_index())
+            regions_temp = df_reset.loc[df_reset['region_id'] == region_id]
+            assert len(regions_temp.index) > 0, "The region_id does not exist in the regions dataframe"
+        if timestamp is not None:
+            df_reset = pd.DataFrame(self.actuals.reset_index())
+            actuals_temp = df_reset.loc[df_reset['timestamp'] == timestamp]
+            assert len(actuals_temp.index) > 0, "The timestamp does not exist in the actuals dataframe"
+
+        # Calculate estimates
         if region_id:
             #region = self.regions.loc[self.regions.index == region_id]
             result = [self.get_region_estimation(region_id, timestamp)]

@@ -49,11 +49,11 @@ class DistanceSimpleEstimator(RegionEstimator):
             distances = pd.DataFrame(gdf_actuals['geometry'].distance(region.geometry))
             distances = distances.merge(gdf_actuals, left_index=True, right_index=True)
 
-            actual = distances.sort_values(by=[0], ascending=True).iloc[0]
+            actual = distances.sort_values(by=[0], ascending=True).iloc[0]  # returns the whole row as a series
 
             # Get the value for that sensor on that timestamp
             if actual is not None:
                 # If readings found for the sensors, take the average
-                result = actual['value'], {'closest_sensor_id': str(actual['name'])}
+                result = actual['value'], {'closest_sensor': actual['name']}
 
         return result

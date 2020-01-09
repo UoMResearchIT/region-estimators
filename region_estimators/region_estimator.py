@@ -47,6 +47,15 @@ class RegionEstimator(object):
         # Check regions
         assert 'geometry' in list(regions.columns), "There is no geometry column in regions dataframe"
 
+        # Check actuals
+        assert 'timestamp' in list(actuals.columns), "There is no timestamp column in actuals dataframe"
+        assert 'sensor' in list(actuals.columns), "There is no sensor column in actuals dataframe - this must " + \
+                                                  "match a sensor_id in sensors and shows which sensor made the reading."
+        assert 'value' in list(actuals.columns), "There is no value column in actuals dataframe"
+        df_temp = actuals.loc[actuals['value'].notnull()]
+        assert pd.to_numeric(df_temp['value'], errors='coerce').notnull().all(), "actuals['value'] column contains non-numeric values."
+
+
         try:
             gdf_sensors = gpd.GeoDataFrame(data=sensors,
                                            geometry=gpd.points_from_xy(sensors.longitude, sensors.latitude))
@@ -84,6 +93,18 @@ class RegionEstimator(object):
                 i) 'region_id' and
                 ii) calculated 'estimates' (list of dicts, each containing 'value', 'extra_data', 'timestamp')
         """
+
+        # Check inputs
+        if region_id is not None:
+            df_reset = pd.DataFrame(self.regions.reset_index())
+            regions_temp = df_reset.loc[df_reset['region_id'] == region_id]
+            assert len(regions_temp.index) > 0, "The region_id does not exist in the regions dataframe"
+        if timestamp is not None:
+            df_reset = pd.DataFrame(self.actuals.reset_index())
+            actuals_temp = df_reset.loc[df_reset['timestamp'] == timestamp]
+            assert len(actuals_temp.index) > 0, "The timestamp does not exist in the actuals dataframe"
+
+        # Calculate estimates
         if region_id:
             #region = self.regions.loc[self.regions.index == region_id]
             result = [self.get_region_estimation(region_id, timestamp)]
