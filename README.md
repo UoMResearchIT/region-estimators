@@ -18,11 +18,23 @@ pip install region_estimators
 ## Usage
 
 ```python
-import region_estimators
+>>> from shapely import wkt
+>>> import pandas as pd
+>>> from region_estimators import RegionEstimatorFactory
+
+>>> df_regions = pd.read_csv('/path/to/file/df_regions.csv', index_col='region_id')
+>>> df_sensors = pd.read_csv('/path/to/file/Mine_the_gap_inputs/temp/df_sensors.csv', index_col='sensor_id')
+>>> df_actuals = pd.read_csv('/path/to/file/df_actuals.csv', index_col=0)
+
+>>> df_regions['geometry'] = df_regions.apply(lambda row: wkt.loads(row.geometry), axis=1)
+>>> estimator = RegionEstimatorFactory.region_estimator('diffusion', df_sensors, df_regions, df_actuals)
+>>> estimator.get_estimations('AB', '2017-07-01')
+>>> estimator.get_estimations(None, '2018-08-15')
 
 # Call RegionEstimatorFactory.region_estimator
 # Reguired inputs: 
-# 	method_name (string): the estimation method. For example, in the first version the options are 'diffusion' or 'distance-simple'
+# 	method_name (string): 	the estimation method. For example, in the first version 
+# 				the options are 'diffusion' or 'distance-simple'
 
 
 # 	3 pandas.Dataframe objects:
@@ -41,7 +53,6 @@ import region_estimators
 
         actuals: list of sensor values as pandas.DataFrame (one row per timestamp)
             Required columns:
-		'id' (INDEX: integer): identifier for actuals
                 'timestamp' (string): timestamp of actual reading
                 'sensor' (integer): ID of sensor which took actual reading (must match sensors.sensor_id above)
                 'value' (float): scalar value of actual reading
@@ -49,15 +60,20 @@ import region_estimators
 
 estimator = RegionEstimatorFactory.region_estimator(method_name, df_sensors, df_regions, df_actuals)
 
-# region_id:  region identifier (string (or None to get all regions))
-# timestamp:  timestamp identifier (string (or None to get all timestamps))
 
-result = estimator.get_estimations(region_id, timestamp)
+# Call RegionEstimatorFactory.get_estimations
+# Reguired inputs: 
+# 	region_id:  region identifier (string (or None to get all regions))
+# 	timestamp:  timestamp identifier (string (or None to get all timestamps))
+#	
+#	WARNING! - estimator.get_estimates(None, None) will calculate every region at every timestamp.
+
+result = estimator.get_estimations('AB', '2018-08-15')
 
 # result is json list of dicts, each with
 #                i) 'region_id'
 #                ii) calculated 'estimates' (list of dicts, each containing 'value', 'extra_data', 'timestamp')
-
+#			('value' is estimated value and 'extra_data' is extra info about estimation calculation.)
 
 ```
 
