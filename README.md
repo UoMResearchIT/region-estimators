@@ -5,7 +5,7 @@ For example, estimating the NO2 (pollution) level of a postcode/zip region, base
 This first version of the package is initialised with 2 estimation methods: 
 1. Diffusion: look for actual data points in gradually wider rings, starting with sensors within the region, and then working in rings outwards, until sensors are found. If more than one sensor is found at the final stage, it takes the mean.
 2. Simple Distance measure: This is a very basic implementation... Find the nearest sensor to the region and use that value. 
-If sensors exist within the region, take one of those. If multiple sensors exist within the region -take the mean.
+If sensors exist within the region, take the mean.
 
 ## Installation
 
