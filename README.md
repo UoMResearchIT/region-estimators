@@ -45,7 +45,7 @@ pip install region_estimators
                 'sensor_id' (INDEX): identifier for sensor (must be unique to each sensor)
                 'latitude' (numeric): latitude of sensor location
                 'longitude' (numeric): longitude of sensor location
-                'name' (string (Optional): Human readable name of sensor
+                'name' (string Optional): Human readable name of sensor
 
         regions: list of regions as pandas.DataFrame  (one row per region)
             Required columns:

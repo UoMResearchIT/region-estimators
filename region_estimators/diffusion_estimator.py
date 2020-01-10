@@ -25,10 +25,6 @@ class DiffusionEstimator(RegionEstimator):
         # Create an empty list for storing completed regions
         regions_completed = []
 
-        # Check there are actual values for this timestamp
-        if len(self.actuals.loc[self.actuals['timestamp'] == timestamp]) == 0:
-            return None, {'rings': None}
-
         # Recursively find the sensors in each diffusion ring (starting at 0)
         return self.__get_diffusion_estimate_recursive([region_id], timestamp, 0, regions_completed)
 
