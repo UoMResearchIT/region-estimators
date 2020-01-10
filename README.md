@@ -23,7 +23,7 @@ pip install region_estimators
 >>> from region_estimators import RegionEstimatorFactory
 
 
-# Prepare input files
+# Prepare input files  (For sample input files, see the 'sample_input_files' folder) 
 >>> df_regions = pd.read_csv('/path/to/file/df_regions.csv', index_col='region_id')
 >>> df_sensors = pd.read_csv('/path/to/file/df_sensors.csv', index_col='sensor_id')
 >>> df_actuals = pd.read_csv('/path/to/file/df_actuals.csv')
@@ -49,6 +49,7 @@ pip install region_estimators
 
 
 # 	3 pandas.Dataframe objects:
+#   (For sample input files, see the 'sample_input_files' folder) 
 
 	'''
     sensors: list of sensors as pandas.DataFrame (one row per sensor)
