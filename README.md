@@ -30,6 +30,8 @@ pip install region_estimators
 >>> df_regions = pd.read_csv('/path/to/file/df_regions.csv', index_col='region_id')
 >>> df_sensors = pd.read_csv('/path/to/file/df_sensors.csv', index_col='sensor_id')
 >>> df_actuals = pd.read_csv('/path/to/file/df_actuals.csv')
+
+# Convert the regions geometry column from string to wkt format using wkt
 >>> df_regions['geometry'] = df_regions.apply(lambda row: wkt.loads(row.geometry), axis=1)
 
 # Create estimator
@@ -44,22 +46,24 @@ pip install region_estimators
 
 ##### Details of region_estimators classes / methods used above: #####
 
-# Call RegionEstimatorFactory.region_estimator
-# Reguired inputs: 
-# 	method_name (string): 	the estimation method. For example, in the first version 
-# 				the options are 'diffusion' or 'distance-simple'
+'''
+    # Call RegionEstimatorFactory.region_estimator
+
+    # Reguired inputs: 
+
+    # 	method_name (string): 	the estimation method. For example, in the first version 
+    # 				the options are 'diffusion' or 'distance-simple'
 
 
-# 	3 pandas.Dataframe objects:
-#   (For sample input files, see the 'sample_input_files' folder) 
+    # 	3 pandas.Dataframe objects:  (For sample input files, see the 'sample_input_files' folder) 
 
-	'''
+	
     sensors: list of sensors as pandas.DataFrame (one row per sensor)
-	    Required columns:
+	Required columns:
                 'sensor_id' (INDEX): identifier for sensor (must be unique to each sensor)
                 'latitude' (numeric): latitude of sensor location
                 'longitude' (numeric): longitude of sensor location
-            Optional columns:
+        Optional columns:
                 'name' (string): Human readable name of sensor
 
     regions: list of regions as pandas.DataFrame  (one row per region)
