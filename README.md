@@ -1,7 +1,7 @@
 # region_estimators package
 
 region_estimators is a Python library to calculate regional estimations of scalar quantities, based on some known scalar quantities at specific locations.
-For example, estimating the NO2 (pollution) level of a postcode/zip region, based on sensor data nearby.  
+For example, estimating the NO2 (pollution) level of a postcode/zip region, based on sensor data nearby.
 This first version of the package is initialised with 2 estimation methods: 
 1. Diffusion: look for actual data points in gradually wider rings, starting with sensors within the region, and then working in rings outwards, until sensors are found. If more than one sensor is found at the final stage, it takes the mean.
 2. Simple Distance measure: This is a very basic implementation... Find the nearest sensor to the region and use that value. 
@@ -12,6 +12,9 @@ If sensors exist within the region, take the mean.
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install region_estimators.
 
 ```bash
+pip install shapely
+pip install pandas
+pip install geopandas
 pip install region_estimators
 ```
 
@@ -34,10 +37,9 @@ pip install region_estimators
 
 # Make estimations
 >>> estimator.get_estimations('AB', '2017-07-01')
->>> estimator.get_estimations(None, '2018-08-15')
->>> estimator.get_estimations('AB', None)
-#WARNING! - estimator.get_estimates(None, None) will calculate estimates for every region at every timestamp.
->>> estimator.get_estimations(None, None) 
+>>> estimator.get_estimations(None, '2018-08-15') 	# Get estimates for all regions
+>>> estimator.get_estimations('AB', None)	  	# Get estimates for all timestamps
+>>> estimator.get_estimations(None, None) 		# Get estimates for all regions and timestamps
 
 
 ##### Details of region_estimators classes / methods used above: #####
