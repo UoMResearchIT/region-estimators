@@ -12,9 +12,10 @@ class DiffusionEstimator(RegionEstimator):
             return DiffusionEstimator(sensors, regions, actuals)
 
 
-    def get_estimate(self, timestamp, region_id):
+    def get_estimate(self, measurement, timestamp, region_id):
         """  Find estimations for a region and timestamp using the diffusion rings method
 
+            :param measurement: measurement to be estimated (string, required)
             :param region_id: region identifier (string)
             :param timestamp:  timestamp identifier (string)
 
@@ -26,10 +27,10 @@ class DiffusionEstimator(RegionEstimator):
         regions_completed = []
 
         # Recursively find the sensors in each diffusion ring (starting at 0)
-        return self.__get_diffusion_estimate_recursive([region_id], timestamp, 0, regions_completed)
+        return self.__get_diffusion_estimate_recursive(measurement, [region_id], timestamp, 0, regions_completed)
 
 
-    def __get_diffusion_estimate_recursive(self, region_ids, timestamp, diffuse_level, regions_completed):
+    def __get_diffusion_estimate_recursive(self, measurement, region_ids, timestamp, diffuse_level, regions_completed):
         # Create an empty queryset for sensors found in regions
         sensors = []
 
@@ -44,12 +45,12 @@ class DiffusionEstimator(RegionEstimator):
 
 
         # Get values from sensors
-        actuals = self.actuals.loc[(self.actuals['timestamp'] == timestamp) & (self.actuals['sensor'].isin(sensors))]
+        actuals = self.actuals.loc[(self.actuals['timestamp'] == timestamp) & (self.actuals['sensor_id'].isin(sensors))]
 
         result = None
         if len(actuals) > 0:
             # If readings found for the sensors, take the average
-            result = actuals['value'].mean(axis=0)
+            result = actuals[measurement].mean(axis=0)
 
         if result is None or pd.isna(result):
             # If no readings/sensors found, go up a diffusion level (adding completed regions to ignore list)
@@ -61,7 +62,11 @@ class DiffusionEstimator(RegionEstimator):
 
             # If regions are found, continue, if not exit from the process
             if len(next_regions) > 0:
-                return self.__get_diffusion_estimate_recursive(next_regions, timestamp, diffuse_level, regions_completed)
+                return self.__get_diffusion_estimate_recursive(measurement,
+                                                               next_regions,
+                                                               timestamp,
+                                                               diffuse_level,
+                                                               regions_completed)
             else:
                 return None, {'rings': diffuse_level}
         else:

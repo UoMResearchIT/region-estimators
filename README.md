@@ -38,10 +38,10 @@ pip install region_estimators
 >>> estimator = RegionEstimatorFactory.region_estimator('diffusion', df_sensors, df_regions, df_actuals)
 
 # Make estimations
->>> estimator.get_estimations('AB', '2017-07-01')
->>> estimator.get_estimations(None, '2018-08-15') 	# Get estimates for all regions
->>> estimator.get_estimations('AB', None)	  	# Get estimates for all timestamps
->>> estimator.get_estimations(None, None) 		# Get estimates for all regions and timestamps
+>>> estimator.get_estimations('urtica', 'AB', '2017-07-01')
+>>> estimator.get_estimations('urtica', None, '2018-08-15') 	# Get estimates for all regions
+>>> estimator.get_estimations('urtica', 'AB', None)	  	        # Get estimates for all timestamps
+>>> estimator.get_estimations('urtica', None, None) 		    # Get estimates for all regions and timestamps
 
 
 ##### Details of region_estimators classes / methods used above: #####
@@ -74,9 +74,10 @@ pip install region_estimators
     actuals: list of actual sensor values as pandas.DataFrame (one row per timestamp)
         Required columns:
             'timestamp' (string): timestamp of actual reading
-            'sensor': ID of sensor which took actual reading (must match with a sensors.sensor_id
+            'sensor_id': ID of sensor which took actual reading (must match with a sensors.sensor_id
                 in sensors (in value and type))
-            'value' (numeric): scalar value of actual reading
+            [one or more value columns] (float):    value of actual measurement readings.
+                                                    each column name should be the name of the measurement e.g. 'NO2'
 	'''
 
 estimator = RegionEstimatorFactory.region_estimator(method_name, df_sensors, df_regions, df_actuals)
@@ -89,11 +90,12 @@ estimator = RegionEstimatorFactory.region_estimator(method_name, df_sensors, df_
 #	
 #	WARNING! - estimator.get_estimates(None, None) will calculate every region at every timestamp.
 
-result = estimator.get_estimations('AB', '2018-08-15')
+result = estimator.get_estimations('urtica', 'AB', '2018-08-15')
 
 # result is json list of dicts, each with
-#                i) 'region_id'
-#                ii) calculated 'estimates' (list of dicts, each containing 'value', 'extra_data', 'timestamp')
+#                 i) 'measurement'
+#                ii) 'region_id'
+#                iii) calculated 'estimates' (list of dicts, each containing 'value', 'extra_data', 'timestamp')
 #			('value' is estimated value and 'extra_data' is extra info about estimation calculation.)
 
 ```

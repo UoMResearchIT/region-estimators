@@ -15,9 +15,10 @@ class DistanceSimpleEstimator(RegionEstimator):
 
 
 
-    def get_estimate(self, timestamp, region_id):
+    def get_estimate(self, measurement, timestamp, region_id):
         """  Find estimations for a region and timestamp using the simple distance method: value of closest actual sensor
 
+            :param measurement: measurement to be estimated (string, required)
             :param timestamp:  timestamp identifier (string)
             :param region_id: region identifier (string)
 
@@ -31,17 +32,17 @@ class DistanceSimpleEstimator(RegionEstimator):
         # Get the actual values
 
         df_actuals = self.actuals.loc[
-            (self.actuals['sensor'].isin(self.sensors.index.tolist())) &
+            (self.actuals['sensor_id'].isin(self.sensors.index.tolist())) &
             (self.actuals['timestamp'] == timestamp) &
-            (self.actuals['value'].notnull())
+            (self.actuals[measurement].notnull())
         ]
 
 
-        df_sensors = self.sensors.reset_index().rename(columns={"sensor_id": "sensor"})
+        df_sensors = self.sensors.reset_index()
 
         df_actuals = pd.merge(left=df_actuals,
                            right= df_sensors,
-                           on='sensor',
+                           on='sensor_id',
                            how='left')
         gdf_actuals = gpd.GeoDataFrame(data=df_actuals, geometry='geometry')
 
@@ -61,12 +62,14 @@ class DistanceSimpleEstimator(RegionEstimator):
                 closest_distance = top_result[0]
                 # Take the average of all sensors with the closest distance
                 closest_sensors = distances.loc[distances[0] == closest_distance]
-                closest_values_mean = closest_sensors['value'].mean(axis=0)
+                closest_values_mean = closest_sensors[measurement].mean(axis=0)
+
+                #print('closest sensors:', closest_sensors) #FOR DEBUG
 
                 if 'name' in list(closest_sensors.columns):
                     closest_sensors_result = list(closest_sensors['name'])
                 else:
-                    closest_sensors_result = list(closest_sensors.iloc[:,1])
+                    closest_sensors_result = list(closest_sensors['sensor_id'])
 
                 result = closest_values_mean, {'closest_sensors': closest_sensors_result}
 

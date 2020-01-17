@@ -29,8 +29,9 @@ class RegionEstimator(object):
                 actuals: list of sensor values as pandas.DataFrame
                     Required columns:
                         'timestamp' (string): timestamp of actual reading
-                        'sensor': ID of sensor which took actual reading - must match an index value in sensors
-                        'value' (float): value of actual reading
+                        'sensor_id': ID of sensor which took actual reading - must match an index value in sensors
+                        [one or more value columns] (float):    value of actual measurement readings.
+                                                                each column name is the name of the measurement e.g. 'NO2'
 
             Returns:
                 Initialised instance of subclass of RegionEstimator
@@ -49,11 +50,16 @@ class RegionEstimator(object):
 
         # Check actuals
         assert 'timestamp' in list(actuals.columns), "There is no timestamp column in actuals dataframe"
-        assert 'sensor' in list(actuals.columns), "There is no sensor column in actuals dataframe - this must " + \
+        assert 'sensor_id' in list(actuals.columns), "There is no sensor_id column in actuals dataframe - this must " + \
                                                   "match a sensor_id in sensors and shows which sensor made the reading."
-        assert 'value' in list(actuals.columns), "There is no value column in actuals dataframe"
-        df_temp = actuals.loc[actuals['value'].notnull()]
-        assert pd.to_numeric(df_temp['value'], errors='coerce').notnull().all(), "actuals['value'] column contains non-numeric values."
+
+        assert len(list(actuals.columns)) > 2, "There are no measurement value columns in the actuals dataframe."
+
+        for column in list(actuals.columns):
+            if column not in ['timestamp', 'sensor_id']:
+                df_temp = actuals.loc[actuals[column].notnull()]
+                assert pd.to_numeric(df_temp[column], errors='coerce').notnull().all(), \
+                    "actuals['" + column + "'] column contains non-numeric values."
 
 
         try:
@@ -82,10 +88,11 @@ class RegionEstimator(object):
         raise NotImplementedError("Must override get_estimate")
 
 
-    def get_estimations(self, region_id=None, timestamp=None):
+    def get_estimations(self, measurement, region_id=None, timestamp=None):
         """  Find estimations for a region (or all regions if region_id==None) and
                 timestamp (or all timestamps (or all timestamps if timestamp==None)
 
+            :param measurement: measurement to be estimated (string - required)
             :param region_id: region identifier (string or None)
             :param timestamp:  timestamp identifier (string or None)
 
@@ -95,48 +102,53 @@ class RegionEstimator(object):
         """
 
         # Check inputs
+        assert measurement is not None, "measurement parameter cannot be None"
+        assert measurement in list(self.actuals.columns), "The measurement: '" + measurement \
+                                                          + "' does not exist in the actuals dataframe"
+
         if region_id is not None:
             df_reset = pd.DataFrame(self.regions.reset_index())
             regions_temp = df_reset.loc[df_reset['region_id'] == region_id]
             assert len(regions_temp.index) > 0, "The region_id does not exist in the regions dataframe"
         if timestamp is not None:
-            df_reset = pd.DataFrame(self.actuals.reset_index())
-            actuals_temp = df_reset.loc[df_reset['timestamp'] == timestamp]
+            df_actuals_reset = pd.DataFrame(self.actuals.reset_index())
+            actuals_temp = df_actuals_reset.loc[df_actuals_reset['timestamp'] == timestamp]
             assert len(actuals_temp.index) > 0, "The timestamp does not exist in the actuals dataframe"
+
 
         # Calculate estimates
         if region_id:
-            #region = self.regions.loc[self.regions.index == region_id]
-            result = [self.get_region_estimation(region_id, timestamp)]
+            result = [self.get_region_estimation(measurement, region_id, timestamp)]
         else:
             result = []
             for index, region in self.regions.iterrows():
-                result.append(self.get_region_estimation(index, timestamp))
+                result.append(self.get_region_estimation(measurement, index, timestamp))
 
         return result
 
 
-    def get_region_estimation(self, region_id, timestamp=None):
+    def get_region_estimation(self, measurement, region_id, timestamp=None):
         """  Find estimations for a region and timestamp (or all timestamps (or all timestamps if timestamp==None)
 
-            :param region_id: region identifier (string)
+            :param measurement: measurement to be estimated (string, required)
+            :param region_id: region identifier (string, required)
             :param timestamp:  timestamp identifier (string or None)
 
             :return: a dict containing:
                 i) 'region_id' and
                 ii) calculated 'estimates' (list of dicts, each containing 'value', 'extra_data', 'timestamp')
         """
-        region_result = {'region_id': region_id, 'estimates':[]}
+        region_result = {'measurement': measurement, 'region_id': region_id, 'estimates':[]}
 
         if timestamp is not None:
-            region_result_estimate = self.get_estimate(timestamp, region_id)
+            region_result_estimate = self.get_estimate(measurement, timestamp, region_id)
             region_result['estimates'].append({'value':region_result_estimate[0],
                                                'extra_data': region_result_estimate[1],
                                                'timestamp':timestamp})
         else:
             timestamps = sorted(self.actuals['timestamp'].unique())
             for index, timestamp in enumerate(timestamps):
-                region_result_estimate = self.get_estimate(timestamp, region_id)
+                region_result_estimate = self.get_estimate(measurement, timestamp, region_id)
                 region_result['estimates'].append(  {'value':region_result_estimate[0],
                                                      'extra_data': region_result_estimate[1],
                                                      'timestamp': timestamp}
