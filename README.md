@@ -92,11 +92,12 @@ estimator = RegionEstimatorFactory.region_estimator(method_name, df_sensors, df_
 
 result = estimator.get_estimations('urtica', 'AB', '2018-08-15')
 
-# result is json list of dicts, each with
-#                 i) 'measurement'
-#                ii) 'region_id'
-#                iii) calculated 'estimates' (list of dicts, each containing 'value', 'extra_data', 'timestamp')
-#			('value' is estimated value and 'extra_data' is extra info about estimation calculation.)
+# result is a pandas dataframe, with columns:
+#                'measurement'
+#                'region_id'
+#                'timestamp'
+#                'value'  (the estimated value)
+#                'extra_data' (extra info about estimation calculation)
 
 ```
 

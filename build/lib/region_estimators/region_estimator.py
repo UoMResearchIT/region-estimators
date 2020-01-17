@@ -1,8 +1,7 @@
 from abc import ABCMeta, abstractmethod
 import geopandas as gpd
 import pandas as pd
-
-
+import json
 
 class RegionEstimator(object):
     """
@@ -96,9 +95,12 @@ class RegionEstimator(object):
             :param region_id: region identifier (string or None)
             :param timestamp:  timestamp identifier (string or None)
 
-            :return: json list of dicts, each with
-                i) 'region_id' and
-                ii) calculated 'estimates' (list of dicts, each containing 'value', 'extra_data', 'timestamp')
+            :return: pandas dataframe with columns:
+                'measurement'
+                'region_id'
+                'timestamp'
+                'value' (calculated 'estimate)
+                'extra_data' (json string)
         """
 
         # Check inputs
@@ -115,16 +117,27 @@ class RegionEstimator(object):
             actuals_temp = df_actuals_reset.loc[df_actuals_reset['timestamp'] == timestamp]
             assert len(actuals_temp.index) > 0, "The timestamp does not exist in the actuals dataframe"
 
+        df_result = pd.DataFrame(columns=['measurement','region_id','timestamp','value','extra_data'])
 
         # Calculate estimates
         if region_id:
-            result = [self.get_region_estimation(measurement, region_id, timestamp)]
+            results = [self.get_region_estimation(measurement, region_id, timestamp)]
         else:
-            result = []
+            results = []
             for index, region in self.regions.iterrows():
-                result.append(self.get_region_estimation(measurement, index, timestamp))
+                results.append(self.get_region_estimation(measurement, index, timestamp))
 
-        return result
+        for item in results:
+            for estimate in item['estimates']:
+                df_result = df_result.append({  'measurement': measurement,
+                                                'region_id': item['region_id'],
+                                                'timestamp': estimate['timestamp'],
+                                                'value': estimate['value'],
+                                                 'extra_data': json.dumps(estimate['extra_data'])
+                                                }
+                                             , ignore_index=True)
+
+        return df_result
 
 
     def get_region_estimation(self, measurement, region_id, timestamp=None):
@@ -134,11 +147,10 @@ class RegionEstimator(object):
             :param region_id: region identifier (string, required)
             :param timestamp:  timestamp identifier (string or None)
 
-            :return: a dict containing:
-                i) 'region_id' and
-                ii) calculated 'estimates' (list of dicts, each containing 'value', 'extra_data', 'timestamp')
+            :return: a dict with items 'region_id' and 'estimates (list). Estimates contains
+                        'timestamp', (estimated) 'value' and 'extra_data'
         """
-        region_result = {'measurement': measurement, 'region_id': region_id, 'estimates':[]}
+        region_result = {'region_id': region_id, 'estimates':[]}
 
         if timestamp is not None:
             region_result_estimate = self.get_estimate(measurement, timestamp, region_id)
