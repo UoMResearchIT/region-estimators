@@ -43,6 +43,10 @@ pip install region_estimators
 >>> estimator.get_estimations('urtica', 'AB', None)	  	        # Get estimates for all timestamps
 >>> estimator.get_estimations('urtica', None, None) 		    # Get estimates for all regions and timestamps
 
+# Convert dataframe result to (for example) a csv file:
+>>> df_region_estimates = estimator.get_estimations('urtica', None, '2018-08-15')
+>>> df_region_estimates.to_csv('/path/to/file/df_urtica_2018-08-15_estimates.csv')
+
 
 ##### Details of region_estimators classes / methods used above: #####
 
