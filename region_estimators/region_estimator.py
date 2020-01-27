@@ -87,7 +87,7 @@ class RegionEstimator(object):
         raise NotImplementedError("Must override get_estimate")
 
 
-    def get_estimations(self, measurement, region_id=None, timestamp=None):
+    def get_estimations(self, measurement, region_id=None, timestamp=None, print_progress=False):
         """  Find estimations for a region (or all regions if region_id==None) and
                 timestamp (or all timestamps (or all timestamps if timestamp==None)
 
@@ -121,11 +121,15 @@ class RegionEstimator(object):
 
         # Calculate estimates
         if region_id:
-            results = [self.get_region_estimation(measurement, region_id, timestamp)]
+            if print_progress == True:
+                print('Calculating for region:', region_id)
+            results = [self.get_region_estimation(measurement, region_id, timestamp, print_progress)]
         else:
             results = []
             for index, region in self.regions.iterrows():
-                results.append(self.get_region_estimation(measurement, index, timestamp))
+                if print_progress == True:
+                    print('Calculating for region:', index)
+                results.append(self.get_region_estimation(measurement, index, timestamp, print_progress))
 
         for item in results:
             for estimate in item['estimates']:
@@ -140,7 +144,7 @@ class RegionEstimator(object):
         return df_result
 
 
-    def get_region_estimation(self, measurement, region_id, timestamp=None):
+    def get_region_estimation(self, measurement, region_id, timestamp=None, print_progress=False):
         """  Find estimations for a region and timestamp (or all timestamps (or all timestamps if timestamp==None)
 
             :param measurement: measurement to be estimated (string, required)
@@ -153,6 +157,8 @@ class RegionEstimator(object):
         region_result = {'region_id': region_id, 'estimates':[]}
 
         if timestamp is not None:
+            if print_progress == True:
+                print('    Calculating for timestamp:', timestamp)
             region_result_estimate = self.get_estimate(measurement, timestamp, region_id)
             region_result['estimates'].append({'value':region_result_estimate[0],
                                                'extra_data': region_result_estimate[1],
@@ -160,6 +166,8 @@ class RegionEstimator(object):
         else:
             timestamps = sorted(self.actuals['timestamp'].unique())
             for index, timestamp in enumerate(timestamps):
+                if print_progress == True:
+                    print('    Calculating for timestamp:', timestamp)
                 region_result_estimate = self.get_estimate(measurement, timestamp, region_id)
                 region_result['estimates'].append(  {'value':region_result_estimate[0],
                                                      'extra_data': region_result_estimate[1],

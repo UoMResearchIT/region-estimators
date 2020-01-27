@@ -89,8 +89,9 @@ estimator = RegionEstimatorFactory.region_estimator(method_name, df_sensors, df_
 
 # Call RegionEstimatorFactory.get_estimations
 # Required inputs: 
-# 	region_id:  region identifier (string (or None to get all regions))
-# 	timestamp:  timestamp identifier (string (or None to get all timestamps))
+# 	region_id:      region identifier (string (or None to get all regions))
+# 	timestamp:      timestamp identifier (string (or None to get all timestamps))
+#   print_progress  print progress (boolean, default:False)
 #	
 #	WARNING! - estimator.get_estimates(None, None) will calculate every region at every timestamp.
 
