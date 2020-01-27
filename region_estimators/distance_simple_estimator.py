@@ -29,6 +29,10 @@ class DistanceSimpleEstimator(RegionEstimator):
         """
         result = None, {'closest_sensor_data': None}
 
+        # Check sensors exist (in any region) for this measurement/timestamp
+        if not self.sensors_exist(measurement, timestamp):
+            return result
+
         # Get the actual values
 
         df_actuals = self.actuals.loc[

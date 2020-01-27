@@ -25,6 +25,7 @@ class RegionEstimator(object):
                     Required columns:
                         'region_id' (Unique INDEX)
                         'geometry' (shapely.wkt/geom.wkt)
+
                 actuals: list of sensor values as pandas.DataFrame
                     Required columns:
                         'timestamp' (string): timestamp of actual reading
@@ -158,8 +159,13 @@ class RegionEstimator(object):
 
         if timestamp is not None:
             if print_progress == True:
-                print('    Calculating for timestamp:', timestamp)
+                print(region_id, '    Calculating for timestamp:', timestamp)
+
             region_result_estimate = self.get_estimate(measurement, timestamp, region_id)
+
+            if print_progress == True:
+                print(region_id, '    Calculated for timestamp:', region_result_estimate)
+
             region_result['estimates'].append({'value':region_result_estimate[0],
                                                'extra_data': region_result_estimate[1],
                                                'timestamp':timestamp})
@@ -167,8 +173,13 @@ class RegionEstimator(object):
             timestamps = sorted(self.actuals['timestamp'].unique())
             for index, timestamp in enumerate(timestamps):
                 if print_progress == True:
-                    print('    Calculating for timestamp:', timestamp)
+                    print(region_id, '    Calculating for timestamp:', timestamp)
+
                 region_result_estimate = self.get_estimate(measurement, timestamp, region_id)
+
+                if print_progress == True:
+                    print(region_id, '    Calculated for ', timestamp, ':', region_result_estimate)
+
                 region_result['estimates'].append(  {'value':region_result_estimate[0],
                                                      'extra_data': region_result_estimate[1],
                                                      'timestamp': timestamp}
@@ -196,6 +207,12 @@ class RegionEstimator(object):
 
         # Return all adjacent regions as a querySet and remove any that are in the completed/ignore list.
         return [x for x in adjacent_regions if x not in ignore_regions]
+
+
+    def sensors_exist(self, measurement, timestamp):
+        return len(self.actuals.loc[(self.actuals['timestamp'] == timestamp) & (self.actuals[measurement].notna())]) > 0
+
+
 
     def __get_all_region_neighbours(self):
         '''

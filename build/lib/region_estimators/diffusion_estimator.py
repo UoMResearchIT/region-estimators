@@ -23,6 +23,10 @@ class DiffusionEstimator(RegionEstimator):
 
         """
 
+        # Check sensors exist (in any region) for this measurement/timestamp
+        if not self.sensors_exist(measurement, timestamp):
+            return None, {'rings': None}
+
         # Create an empty list for storing completed regions
         regions_completed = []
 
