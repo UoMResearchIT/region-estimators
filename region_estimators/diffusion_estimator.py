@@ -1,8 +1,12 @@
 from region_estimators.region_estimator import RegionEstimator
 import pandas as pd
 
+MAX_RING_COUNT_DEFAULT = 3
+
 
 class DiffusionEstimator(RegionEstimator):
+
+    max_ring_count = MAX_RING_COUNT_DEFAULT
 
     def __init__(self, sensors, regions, actuals):
         super(DiffusionEstimator, self).__init__(sensors, regions, actuals)
@@ -10,6 +14,17 @@ class DiffusionEstimator(RegionEstimator):
     class Factory:
         def create(self, sensors, regions, actuals):
             return DiffusionEstimator(sensors, regions, actuals)
+
+
+    def set_max_ring_count(self, new_count=MAX_RING_COUNT_DEFAULT):
+        """  Set the maximum ring count of the diffusion estimation procedure
+
+                   :param new_count:
+                    the maximum number of rings to be allowed during diffusion (integer, default=MAX_RING_COUNT_DEFAULT)
+        """
+
+        self.max_ring_count = new_count
+
 
 
     def get_estimate(self, measurement, timestamp, region_id):
@@ -20,7 +35,6 @@ class DiffusionEstimator(RegionEstimator):
             :param timestamp:  timestamp identifier (string)
 
             :return: tuple containing result and dict: {'rings': [The number of diffusion rings required]}
-
         """
 
         # Check sensors exist (in any region) for this measurement/timestamp
@@ -58,6 +72,9 @@ class DiffusionEstimator(RegionEstimator):
 
         if result is None or pd.isna(result):
             # If no readings/sensors found, go up a diffusion level (adding completed regions to ignore list)
+            if diffuse_level >= self.max_ring_count:
+                return None, {'rings': diffuse_level}
+
             regions_completed.extend(region_ids)
             diffuse_level += 1
 
@@ -65,7 +82,7 @@ class DiffusionEstimator(RegionEstimator):
             next_regions = self.get_adjacent_regions(region_ids, regions_completed)
 
             # If regions are found, continue, if not exit from the process
-            if len(next_regions) > 0:
+            if (len(next_regions) > 0):
                 return self.__get_diffusion_estimate_recursive(measurement,
                                                                next_regions,
                                                                timestamp,

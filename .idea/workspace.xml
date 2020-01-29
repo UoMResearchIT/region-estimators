@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1aa0657e-4a35-41cc-aa96-a23b43bd2d4e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/lib/region_estimators/diffusion_estimator.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/region_estimators/diffusion_estimator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/region_estimators/distance_simple_estimator.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/region_estimators/distance_simple_estimator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/region_estimators/region_estimator.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/region_estimators/region_estimator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/region_estimators/diffusion_estimator.py" beforeDir="false" afterPath="$PROJECT_DIR$/region_estimators/diffusion_estimator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/region_estimators/distance_simple_estimator.py" beforeDir="false" afterPath="$PROJECT_DIR$/region_estimators/distance_simple_estimator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/region_estimators/region_estimator.py" beforeDir="false" afterPath="$PROJECT_DIR$/region_estimators/region_estimator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,76 +18,65 @@
     <session id="1441575153">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
+          <entry key="project.closed" value="8" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.4" value="3" />
           <entry key="project.open.time.9" value="2" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.opened" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="md" value="3" />
-          <entry key="py" value="8" />
+          <entry key="py" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Markdown" value="3" />
-          <entry key="Python" value="8" />
+          <entry key="Python" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="md" value="1011" />
-          <entry key="py" value="4798" />
+          <entry key="md" value="1151" />
+          <entry key="py" value="5311" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Markdown" value="946" />
-          <entry key="Python" value="4863" />
+          <entry key="Markdown" value="1074" />
+          <entry key="Python" value="5388" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/region_estimators/region_estimator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="203" column="75" lean-forward="true" selection-start-line="203" selection-start-column="75" selection-end-line="203" selection-end-column="75" />
+            <state relative-caret-position="481">
+              <caret line="90" column="97" selection-start-line="90" selection-start-column="97" selection-end-line="90" selection-end-column="97" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
                 <marker date="1580124944076" expanded="true" signature="10119:10120" ph="..." />
-                <marker date="1580124944076" expanded="true" signature="10120:10248" ph="..." />
-                <marker date="1580124944076" expanded="true" signature="10286:10295" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/region_estimators/diffusion_estimator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="27" column="40" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
+            <state relative-caret-position="323">
+              <caret line="44" column="30" lean-forward="true" selection-start-line="44" selection-start-column="30" selection-end-line="44" selection-end-column="30" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/region_estimators/distance_simple_estimator.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="33" column="25" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
+                <marker date="1580314058954" expanded="true" signature="786:834" ph="..." />
               </folding>
             </state>
           </provider>
@@ -98,8 +85,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+            <state relative-caret-position="330">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
             </state>
           </provider>
         </entry>
@@ -109,7 +96,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="1395">
-                <caret line="93" column="35" selection-start-line="93" selection-start-column="35" selection-end-line="93" selection-end-column="35" />
+                <caret line="93" column="59" lean-forward="true" selection-start-line="93" selection-start-column="59" selection-end-line="93" selection-end-column="59" />
               </first_editor>
               <second_editor />
             </state>
@@ -125,6 +112,7 @@
       <find>'sensor'</find>
       <find>self.region</find>
       <find>.loc</find>
+      <find>max_ring_count</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -134,11 +122,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/region_estimators/region_estimator_factory.py" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/region_estimators/diffusion_estimator.py" />
         <option value="$PROJECT_DIR$/region_estimators/distance_simple_estimator.py" />
-        <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/region_estimators/region_estimator.py" />
+        <option value="$PROJECT_DIR$/setup.py" />
+        <option value="$PROJECT_DIR$/region_estimators/diffusion_estimator.py" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -148,7 +136,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="28" />
     <option name="width" value="1910" />
     <option name="height" value="1018" />
@@ -158,7 +146,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -175,6 +162,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -210,10 +198,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="28" width="1920" height="1018" extended-state="7" />
+    <frame x="0" y="28" width="1920" height="1018" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17147435" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17574786" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -243,19 +231,20 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/region_estimators/region_estimator_factory.py">
+    <entry file="file://$PROJECT_DIR$/region_estimators/region_estimator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+        <state relative-caret-position="481">
+          <caret line="90" column="97" selection-start-line="90" selection-start-column="97" selection-end-line="90" selection-end-column="97" />
           <folding>
-            <element signature="e#31#64#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="true" />
+            <marker date="1580124944076" expanded="true" signature="10119:10120" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/region_estimators/distance_simple_estimator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
+        <state relative-caret-position="345">
           <caret line="33" column="25" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
@@ -263,20 +252,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/region_estimators/diffusion_estimator.py">
+    <entry file="file://$PROJECT_DIR$/region_estimators/region_estimator_factory.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="27" column="40" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#62#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="345">
+          <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+        <state relative-caret-position="330">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
@@ -284,21 +270,19 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="1395">
-            <caret line="93" column="35" selection-start-line="93" selection-start-column="35" selection-end-line="93" selection-end-column="35" />
+            <caret line="93" column="59" lean-forward="true" selection-start-line="93" selection-start-column="59" selection-end-line="93" selection-end-column="59" />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/region_estimators/region_estimator.py">
+    <entry file="file://$PROJECT_DIR$/region_estimators/diffusion_estimator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="203" column="75" lean-forward="true" selection-start-line="203" selection-start-column="75" selection-end-line="203" selection-end-column="75" />
+        <state relative-caret-position="323">
+          <caret line="44" column="30" lean-forward="true" selection-start-line="44" selection-start-column="30" selection-end-line="44" selection-end-column="30" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <marker date="1580124944076" expanded="true" signature="10119:10120" ph="..." />
-            <marker date="1580124944076" expanded="true" signature="10120:10248" ph="..." />
-            <marker date="1580124944076" expanded="true" signature="10286:10295" ph="..." />
+            <element signature="e#0#62#0" expanded="true" />
+            <marker date="1580314058954" expanded="true" signature="786:834" ph="..." />
           </folding>
         </state>
       </provider>

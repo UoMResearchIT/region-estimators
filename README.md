@@ -87,13 +87,14 @@ pip install region_estimators
 estimator = RegionEstimatorFactory.region_estimator(method_name, df_sensors, df_regions, df_actuals)
 
 
-# Call RegionEstimatorFactory.get_estimations
+# Call RegionEstimator.get_estimations
 # Required inputs: 
 # 	region_id:      region identifier (string (or None to get all regions))
 # 	timestamp:      timestamp identifier (string (or None to get all timestamps))
 #   print_progress  print progress (boolean, default:False)
 #	
 #	WARNING! - estimator.get_estimates(None, None) will calculate every region at every timestamp.
+
 
 result = estimator.get_estimations('urtica', 'AB', '2018-08-15')
 
