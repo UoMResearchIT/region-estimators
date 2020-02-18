@@ -64,7 +64,7 @@ pip install region_estimators
 	
     sensors: list of sensors as pandas.DataFrame (one row per sensor)
 	Required columns:
-                'sensor_id' (INDEX): identifier for sensor (must be unique to each sensor)
+                'sensor_name' (INDEX): identifier for sensor (must be unique to each sensor)
                 'latitude' (numeric): latitude of sensor location
                 'longitude' (numeric): longitude of sensor location
         Optional columns:
@@ -73,7 +73,7 @@ pip install region_estimators
     regions: list of regions as pandas.DataFrame  (one row per region)
         Required columns:
             'region_id' (INDEX): identifier for region (must be unique to each region)
-            'geom' (shapely.wkt/geom.wkt):  Multi-polygon representing regions location and shape.
+            'geometry' (shapely.wkt/geom.wkt):  Multi-polygon representing regions location and shape.
 
     actuals: list of actual sensor values as pandas.DataFrame (one row per timestamp)
         Required columns:
