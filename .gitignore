@@ -10,4 +10,4 @@ workspace.xml
 usage.statistics.xml
 tasks.xml 
 /shelf 
-/csf_script
+csf_scripts/
