@@ -1,7 +1,7 @@
 from region_estimators.region_estimator import RegionEstimator
 import pandas as pd
 
-MAX_RING_COUNT_DEFAULT = 3
+MAX_RING_COUNT_DEFAULT = float("inf")
 
 
 class DiffusionEstimator(RegionEstimator):

@@ -1,0 +1,43 @@
+#!/bin/bash --login
+#$ -cwd
+#$ -t 1-21170          # A job-array with 21170 "tasks", numbered 1...21170
+
+# DOUG: Look at limiting to 20 at a time
+#$ -tc 100
+
+# Task id 1 will read line 1 from my_file_list.txt
+# Task id 2 will read line 2 from my_file_list.txt
+# and so on...
+# Each line contains the name of an input file to used by 'my_chemistry_prog'
+
+# Use some Linux commands to save the filename read from 'my_file_list.txt' to
+# a script variable named INFILE that we can use in other commands.
+INLINE=`awk "NR==$SGE_TASK_ID" ../region_estimator_inputs/measurement_timestamp_list.csv`
+    #
+    # Can also use another linux tool named 'sed' to get the n-th line of a file:
+    # INFILE=`sed -n "${SGE_TASK_ID}p" my_file_list.txt`
+
+
+IFS=',' read -ra in_array <<< "$INLINE"
+
+# Print the split string
+MEASUREMENT=${in_array[0]}
+TIMESTAMP=${in_array[1]}
+
+
+   
+# We now use the value of our variable by using $INFILE.
+# In task 1, $INFILE will be replaced with C2H4O.dat
+# In task 2, $INFILE will be replaced with NH3.dat
+# ... and so on ...
+
+# Run the app with the .dat filename specific to this task
+
+source ~/Code/region_estimator/estimate_regions_env/bin/activate
+
+#./estimate_regions.py -in $INFILE -out result.$INFILE
+python3 ./estimate_regions.py $MEASUREMENT $TIMESTAMP -out result.$MEASUREMENT.$TIMESTAMP
+
+#echo "running script python ./estimate_regions.py $MEASUREMENT $TIMESTAMP -out result.$MEASUREMENT.$TIMESTAMP"
+
+deactivate 

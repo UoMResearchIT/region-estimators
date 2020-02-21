@@ -28,7 +28,7 @@ pip install region_estimators
 
 # Prepare input files  (For sample input files, see the 'sample_input_files' folder) 
 >>> df_regions = pd.read_csv('/path/to/file/df_regions.csv', index_col='region_id')
->>> df_sensors = pd.read_csv('/path/to/file/df_sensors.csv', index_col='sensor_id')
+>>> df_sensors = pd.read_csv('/path/to/file/df_sensors.csv', index_col='sensor_name')
 >>> df_actuals = pd.read_csv('/path/to/file/df_actuals.csv')
 
 # Convert the regions geometry column from string to wkt format using wkt
