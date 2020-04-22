@@ -38,6 +38,8 @@ class RegionEstimator(object):
 
         """
         # Check sensors:
+
+        # (Not checking sensor_id as that forms the index)
         assert 'latitude' in list(sensors.columns), "There is no latitude column in sensors dataframe"
         assert pd.to_numeric(sensors['latitude'], errors='coerce').notnull().all(), \
             "latitude column contains non-numeric values."
@@ -46,6 +48,7 @@ class RegionEstimator(object):
             "longitude column contains non-numeric values."
 
         # Check regions
+        # (Not checking region_id as that forms the index)
         assert 'geometry' in list(regions.columns), "There is no geometry column in regions dataframe"
 
         # Check actuals
