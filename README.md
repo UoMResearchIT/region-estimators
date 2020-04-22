@@ -80,7 +80,7 @@ pip install region_estimators
     actuals: list of actual sensor values as pandas.DataFrame (one row per timestamp)
         Required columns:
             'timestamp' (string): timestamp of actual reading
-            'sensor_id': ID of sensor which took actual reading (must match with a sensors.sensor_id
+            'sensor_id': ID of sensor which took actual reading (must match with a sensors.sensor_name
                 in sensors (in value and type))
             [one or more value columns] (float):    value of actual measurement readings.
                                                     each column name should be the name of the measurement e.g. 'NO2'
