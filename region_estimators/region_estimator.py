@@ -58,11 +58,11 @@ class RegionEstimator(object):
 
         assert len(list(actuals.columns)) > 2, "There are no measurement value columns in the actuals dataframe."
 
-        for column in list(actuals.columns):
+        '''for column in list(actuals.columns):
             if column not in ['timestamp', 'sensor_id']:
                 df_temp = actuals.loc[actuals[column].notnull()]
                 assert pd.to_numeric(df_temp[column], errors='coerce').notnull().all(), \
-                    "actuals['" + column + "'] column contains non-numeric values."
+                    "actuals['" + column + "'] column contains non-numeric values."'''
 
 
         try:
@@ -80,10 +80,18 @@ class RegionEstimator(object):
 
         self.sensors = gdf_sensors
         self.regions = gdf_regions
+
+        # Make all non integer values Null in measurement fields
+        #   Make sure value columns at the end of column list
+        cols = actuals.columns.tolist()
+        cols.insert(0, cols.pop(cols.index('sensor_id')))
+        cols.insert(0, cols.pop(cols.index('timestamp')))
+        actuals[cols[2:]] = actuals[cols[2:]].apply(pd.to_numeric, errors='coerce')
         self.actuals = actuals
 
         self.__get_all_region_neighbours()
         self.__get_all_region_sensors()
+
 
 
     @abstractmethod

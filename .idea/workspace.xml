@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1aa0657e-4a35-41cc-aa96-a23b43bd2d4e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/lib/region_estimators/region_estimator.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/region_estimators/region_estimator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/region_estimators/region_estimator.py" beforeDir="false" afterPath="$PROJECT_DIR$/region_estimators/region_estimator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample_input_files/actuals_anns.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample_input_files/df_sensors.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sample_input_files/df_sensors.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +38,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1578564650961</updated>
-      <workItem from="1587552432484" duration="3167000" />
+      <workItem from="1587552432484" duration="3763000" />
+      <workItem from="1587662327242" duration="210000" />
+      <workItem from="1587665162874" duration="7027000" />
     </task>
     <servers />
   </component>
