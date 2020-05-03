@@ -2,12 +2,13 @@
 *.log
 *.pot
 *.pyc
+.vscode/
 __pycache__/
 /build
 /dist
 /*.egg-info
 workspace.xml
 usage.statistics.xml
-tasks.xml 
-/shelf 
+tasks.xml
+/shelf
 csf_scripts/
