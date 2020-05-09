@@ -9,12 +9,13 @@ from region_estimators.distance_simple_estimator import DistanceSimpleEstimator
 class RegionEstimatorFactory:
     factories = {}
 
-
+    @staticmethod
     def add_factory(id, region_estimator_factory):
         RegionEstimatorFactory.factories.put[id] = region_estimator_factory
     add_factory = staticmethod(add_factory)
 
     # A Template Method:
+    @staticmethod
     def create(method_name, sensors, regions, actuals):
         class_name = get_classname(method_name)
         if class_name not in RegionEstimatorFactory.factories:
