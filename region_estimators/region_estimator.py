@@ -226,7 +226,7 @@ class RegionEstimator(object):
 
     def __get_all_region_neighbours(self):
         '''
-        Find all of the neighbours of each region and add to a 'neigbours' column in self.regions -
+        Find all of the neighbours of each region and add to a 'neighbours' column in self.regions -
         as comma-delimited string of region_ids
 
         :return: No return value
