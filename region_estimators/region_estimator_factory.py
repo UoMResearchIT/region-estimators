@@ -24,7 +24,6 @@ class RegionEstimatorFactory:
     region_estimator = staticmethod(create)
 
 
-
 def get_classname(method_name):
     if method_name == 'diffusion':
         return 'DiffusionEstimator'
@@ -32,6 +31,3 @@ def get_classname(method_name):
         return 'DistanceSimpleEstimator'
     else:
         raise ValueError('Method name does not exist')
-	
-
-

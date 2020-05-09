@@ -223,7 +223,6 @@ class RegionEstimator(object):
         return len(self.actuals.loc[(self.actuals['timestamp'] == timestamp) & (self.actuals[measurement].notna())]) > 0
 
 
-
     def __get_all_region_neighbours(self):
         '''
         Find all of the neighbours of each region and add to a 'neighbours' column in self.regions -
