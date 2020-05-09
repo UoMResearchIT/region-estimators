@@ -137,7 +137,7 @@ class RegionEstimator(object):
             results = [self.get_region_estimation(measurement, region_id, timestamp, print_progress)]
         else:
             results = []
-            for index, region in self.regions.iterrows():
+            for index, _ in self.regions.iterrows():
                 if print_progress == True:
                     print('Calculating for region:', index)
                 results.append(self.get_region_estimation(measurement, index, timestamp, print_progress))
@@ -181,7 +181,7 @@ class RegionEstimator(object):
                                                'timestamp':timestamp})
         else:
             timestamps = sorted(self.actuals['timestamp'].unique())
-            for index, timestamp in enumerate(timestamps):
+            for _, timestamp in enumerate(timestamps):
                 if print_progress == True:
                     print(region_id, '    Calculating for timestamp:', timestamp)
 
