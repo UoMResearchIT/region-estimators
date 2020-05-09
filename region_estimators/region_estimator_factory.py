@@ -12,7 +12,6 @@ class RegionEstimatorFactory:
     @staticmethod
     def add_factory(id, region_estimator_factory):
         RegionEstimatorFactory.factories[id] = region_estimator_factory
-    add_factory = staticmethod(add_factory)
 
     # A Template Method:
     @staticmethod
