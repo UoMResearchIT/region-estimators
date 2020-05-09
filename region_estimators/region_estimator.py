@@ -93,9 +93,8 @@ class RegionEstimator(object):
         self.__get_all_region_sensors()
 
 
-
     @abstractmethod
-    def get_estimate(self, timestamp, region_id):
+    def get_estimate(self, measurement, timestamp, region_id):
         raise NotImplementedError("Must override get_estimate")
 
 
