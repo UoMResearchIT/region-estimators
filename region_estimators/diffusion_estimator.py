@@ -26,7 +26,6 @@ class DiffusionEstimator(RegionEstimator):
         self.max_ring_count = new_count
 
 
-
     def get_estimate(self, measurement, timestamp, region_id):
         """  Find estimations for a region and timestamp using the diffusion rings method
 
@@ -60,7 +59,6 @@ class DiffusionEstimator(RegionEstimator):
                 region_sensors = regions_temp['sensors'].iloc[0]
                 if len(region_sensors.strip()) > 0:
                     sensors.extend(region_sensors.split(','))
-
 
         # Get values from sensors
         actuals = self.actuals.loc[(self.actuals['timestamp'] == timestamp) & (self.actuals['sensor_id'].isin(sensors))]

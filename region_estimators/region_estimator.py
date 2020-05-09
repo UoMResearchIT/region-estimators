@@ -93,9 +93,8 @@ class RegionEstimator(object):
         self.__get_all_region_sensors()
 
 
-
     @abstractmethod
-    def get_estimate(self, timestamp, region_id):
+    def get_estimate(self, measurement, timestamp, region_id):
         raise NotImplementedError("Must override get_estimate")
 
 
@@ -138,7 +137,7 @@ class RegionEstimator(object):
             results = [self.get_region_estimation(measurement, region_id, timestamp, print_progress)]
         else:
             results = []
-            for index, region in self.regions.iterrows():
+            for index, _ in self.regions.iterrows():
                 if print_progress == True:
                     print('Calculating for region:', index)
                 results.append(self.get_region_estimation(measurement, index, timestamp, print_progress))
@@ -182,7 +181,7 @@ class RegionEstimator(object):
                                                'timestamp':timestamp})
         else:
             timestamps = sorted(self.actuals['timestamp'].unique())
-            for index, timestamp in enumerate(timestamps):
+            for _, timestamp in enumerate(timestamps):
                 if print_progress == True:
                     print(region_id, '    Calculating for timestamp:', timestamp)
 
@@ -224,10 +223,9 @@ class RegionEstimator(object):
         return len(self.actuals.loc[(self.actuals['timestamp'] == timestamp) & (self.actuals[measurement].notna())]) > 0
 
 
-
     def __get_all_region_neighbours(self):
         '''
-        Find all of the neighbours of each region and add to a 'neigbours' column in self.regions -
+        Find all of the neighbours of each region and add to a 'neighbours' column in self.regions -
         as comma-delimited string of region_ids
 
         :return: No return value

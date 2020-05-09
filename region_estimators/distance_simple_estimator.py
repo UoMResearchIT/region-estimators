@@ -14,7 +14,6 @@ class DistanceSimpleEstimator(RegionEstimator):
             return DistanceSimpleEstimator(sensors, regions, actuals)
 
 
-
     def get_estimate(self, measurement, timestamp, region_id):
         """  Find estimations for a region and timestamp using the simple distance method: value of closest actual sensor
 
@@ -40,7 +39,6 @@ class DistanceSimpleEstimator(RegionEstimator):
             (self.actuals['timestamp'] == timestamp) &
             (self.actuals[measurement].notnull())
         ]
-
 
         df_sensors = self.sensors.reset_index()
 
