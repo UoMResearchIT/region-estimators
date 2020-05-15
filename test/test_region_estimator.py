@@ -47,3 +47,34 @@ class TestRegionEstimator(unittest.TestCase):
 
     with self.assertRaises(NotImplementedError):
       estimator.get_estimate('urtica', None, None)
+
+  def test_load_actuals_with_no_id(self):
+    """
+    Check that loading actuals data without a sensor_id column will fail.
+    """
+    bad_actuals = pd.read_csv(path.join(self.load_data, 'actuals_no_id.csv'))
+
+    with self.assertRaises(AssertionError):
+      RegionEstimator(self.sensors, self.regions, bad_actuals)
+
+  def test_load_actuals_with_no_timestamp(self):
+    """
+    Check that loading actuals data without a timestamp column will fail.
+    """
+    bad_actuals = pd.read_csv(
+      path.join(self.load_data, 'actuals_no_timestamp.csv')
+    )
+
+    with self.assertRaises(AssertionError):
+      RegionEstimator(self.sensors, self.regions, bad_actuals)
+
+  def test_load_actuals_with_no_measurements(self):
+    """
+    Check that loading actuals data without any measurements will fail.
+    """
+    bad_actuals = pd.read_csv(
+      path.join(self.load_data, 'actuals_no_measurements.csv')
+    )
+
+    with self.assertRaises(AssertionError):
+      RegionEstimator(self.sensors, self.regions, bad_actuals)
