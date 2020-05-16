@@ -48,36 +48,21 @@ class TestRegionEstimator(unittest.TestCase):
     with self.assertRaises(NotImplementedError):
       estimator.get_estimate('urtica', None, None)
 
-  def test_load_actuals_with_no_id(self):
+  def test_load_actuals_with_bad_data(self):
     """
-    Check that loading actuals data without a sensor_id column will fail.
+    Check that loading bad actuals data will fail.
     """
-    bad_actuals = pd.read_csv(path.join(self.load_data, 'actuals_no_id.csv'))
+    bad_files = [
+      'actuals_no_id.csv',
+      'actuals_no_timestamp.csv',
+      'actuals_no_measurements.csv'
+    ]
 
-    with self.assertRaises(AssertionError):
-      RegionEstimator(self.sensors, self.regions, bad_actuals)
-
-  def test_load_actuals_with_no_timestamp(self):
-    """
-    Check that loading actuals data without a timestamp column will fail.
-    """
-    bad_actuals = pd.read_csv(
-      path.join(self.load_data, 'actuals_no_timestamp.csv')
-    )
-
-    with self.assertRaises(AssertionError):
-      RegionEstimator(self.sensors, self.regions, bad_actuals)
-
-  def test_load_actuals_with_no_measurements(self):
-    """
-    Check that loading actuals data without any measurements will fail.
-    """
-    bad_actuals = pd.read_csv(
-      path.join(self.load_data, 'actuals_no_measurements.csv')
-    )
-
-    with self.assertRaises(AssertionError):
-      RegionEstimator(self.sensors, self.regions, bad_actuals)
+    for file in bad_files:
+      with self.subTest(file=file):
+        with self.assertRaises(AssertionError):
+          bad_actuals = pd.read_csv(path.join(self.load_data, file))
+          RegionEstimator(self.sensors, self.regions, bad_actuals)
 
   def test_load_regions_with_no_geometry(self):
     """
