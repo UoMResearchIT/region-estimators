@@ -89,3 +89,20 @@ class TestRegionEstimator(unittest.TestCase):
 
     with self.assertRaises(AssertionError):
       RegionEstimator(self.sensors, bad_regions, self.actuals)
+
+  def test_load_sensors_with_bad_data(self):
+    """
+    Check that loading bad sensor data will fail.
+    """
+    bad_files = [
+      'sensors_no_latitude.csv',
+      'sensors_no_longitude.csv',
+      'sensors_bad_latitude.csv',
+      'sensors_bad_longitude.csv'
+    ]
+
+    for file in bad_files:
+      with self.subTest(file=file):
+        with self.assertRaises(AssertionError):
+          bad_sensors = pd.read_csv(path.join(self.load_data, file))
+          RegionEstimator(bad_sensors, self.regions, self.actuals)
