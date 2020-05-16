@@ -78,3 +78,14 @@ class TestRegionEstimator(unittest.TestCase):
 
     with self.assertRaises(AssertionError):
       RegionEstimator(self.sensors, self.regions, bad_actuals)
+
+  def test_load_regions_with_no_geometry(self):
+    """
+    Check that loading regions without any geometry will fail.
+    """
+    bad_regions = pd.read_csv(
+      path.join(self.load_data, 'regions_no_geometry.csv')
+    )
+
+    with self.assertRaises(AssertionError):
+      RegionEstimator(self.sensors, bad_regions, self.actuals)
