@@ -64,16 +64,19 @@ class TestRegionEstimator(unittest.TestCase):
           bad_actuals = pd.read_csv(path.join(self.load_data, file))
           RegionEstimator(self.sensors, self.regions, bad_actuals)
 
-  def test_load_regions_with_no_geometry(self):
+  def test_load_regions_with_bad_data(self):
     """
-    Check that loading regions without any geometry will fail.
+    Check that loading bad regions data will fail.
     """
-    bad_regions = pd.read_csv(
-      path.join(self.load_data, 'regions_no_geometry.csv')
-    )
+    bad_files = [
+      'regions_no_geometry.csv'
+    ]
 
-    with self.assertRaises(AssertionError):
-      RegionEstimator(self.sensors, bad_regions, self.actuals)
+    for file in bad_files:
+      with self.subTest(file=file):
+        with self.assertRaises(AssertionError):
+          bad_regions = pd.read_csv(path.join(self.load_data, file))
+          RegionEstimator(self.sensors, bad_regions, self.actuals)
 
   def test_load_sensors_with_bad_data(self):
     """
