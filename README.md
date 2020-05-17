@@ -2,9 +2,9 @@
 
 region_estimators is a Python library to calculate regional estimations of scalar quantities, based on some known scalar quantities at specific locations.
 For example, estimating the NO2 (pollution) level of a postcode/zip region, based on sensor data nearby.
-This first version of the package is initialised with 2 estimation methods: 
+This first version of the package is initialised with 2 estimation methods:
 1. Diffusion: look for actual data points in gradually wider rings, starting with sensors within the region, and then working in rings outwards, until sensors are found. If more than one sensor is found at the final stage, it takes the mean.
-2. Simple Distance measure: This is a very basic implementation... Find the nearest sensor to the region and use that value. 
+2. Simple Distance measure: This is a very basic implementation... Find the nearest sensor to the region and use that value.
 If sensors exist within the region, take the mean.
 
 ## Installation
@@ -26,7 +26,7 @@ pip install region_estimators
 >>> from region_estimators import RegionEstimatorFactory
 
 
-# Prepare input files  (For sample input files, see the 'sample_input_files' folder) 
+# Prepare input files  (For sample input files, see the 'sample_input_files' folder)
 >>> df_regions = pd.read_csv('/path/to/file/df_regions.csv', index_col='region_id')
 >>> df_sensors = pd.read_csv('/path/to/file/df_sensors.csv', index_col='sensor_id')
 >>> df_actuals = pd.read_csv('/path/to/file/df_actuals.csv')
@@ -55,15 +55,15 @@ pip install region_estimators
 '''
     # Call RegionEstimatorFactory.region_estimator
 
-    # Reguired inputs: 
+    # Reguired inputs:
 
-    # 	method_name (string): 	the estimation method. For example, in the first version 
+    # 	method_name (string): 	the estimation method. For example, in the first version
     # 				the options are 'diffusion' or 'distance-simple'
 
 
-    # 	3 pandas.Dataframe objects:  (For sample input files, see the 'sample_input_files' folder) 
+    # 	3 pandas.Dataframe objects:  (For sample input files, see the 'sample_input_files' folder)
 
-	
+
     sensors: list of sensors as pandas.DataFrame (one row per sensor)
 	    Required columns:
                 'sensor_id' (INDEX): identifier for sensor (must be unique to each sensor)
@@ -90,11 +90,11 @@ estimator = RegionEstimatorFactory.region_estimator(method_name, df_sensors, df_
 
 
 # Call RegionEstimator.get_estimations
-# Required inputs: 
+# Required inputs:
 # 	region_id:      region identifier (string (or None to get all regions))
 # 	timestamp:      timestamp identifier (string (or None to get all timestamps))
 #   print_progress  print progress (boolean, default:False)
-#	
+#
 #	WARNING! - estimator.get_estimates(None, None) will calculate every region at every timestamp.
 
 
