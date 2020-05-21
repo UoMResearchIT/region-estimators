@@ -3,6 +3,7 @@
 *.pot
 *.pyc
 .vscode/
+.idea/
 __pycache__/
 /build
 /dist
