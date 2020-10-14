@@ -37,7 +37,7 @@ class RegionEstimator(object):
                 Initialised instance of subclass of RegionEstimator
 
         """
-        # Check sensors:
+        ### Check sensors:
 
         # (Not checking sensor_id as that forms the index)
         assert 'latitude' in list(sensors.columns), "There is no latitude column in sensors dataframe"
@@ -47,24 +47,33 @@ class RegionEstimator(object):
         assert pd.to_numeric(sensors['longitude'], errors='coerce').notnull().all(), \
             "longitude column contains non-numeric values."
 
-        # Check regions
+        ### Check regions
         # (Not checking region_id as that forms the index)
         assert 'geometry' in list(regions.columns), "There is no geometry column in regions dataframe"
 
-        # Check actuals
+        ### Check actuals
         assert 'timestamp' in list(actuals.columns), "There is no timestamp column in actuals dataframe"
-        assert 'sensor_id' in list(actuals.columns), "There is no sensor_id column in actuals dataframe - this must " + \
-                                                  "match a sensor_id in sensors and shows which sensor made the reading."
-
+        assert 'sensor_id' in list(actuals.columns), "There is no sensor_id column in actuals dataframe"
         assert len(list(actuals.columns)) > 2, "There are no measurement value columns in the actuals dataframe."
 
-        '''for column in list(actuals.columns):
+        # Check measurement columns have either numeric or null data
+        for column in list(actuals.columns):
             if column not in ['timestamp', 'sensor_id']:
+                # Check measurement does not contain numeric (nulls are OK)
                 df_temp = actuals.loc[actuals[column].notnull()]
                 assert pd.to_numeric(df_temp[column], errors='coerce').notnull().all(), \
-                    "actuals['" + column + "'] column contains non-numeric values."'''
+                    "actuals['" + column + "'] column contains non-numeric values (null values are accepted)."
 
 
+
+        # Check that each sensor_id value is present in the sensors dataframe index.
+        # ... So sensor_id values must be a subset of allowed sensors
+        error_sensors = set(actuals['sensor_id'].unique()) - set(sensors.index.values)
+        assert len(error_sensors) == 0, \
+            "Each sensor ID must match a sensor_id in sensors. Error sensor IDs: " + str(error_sensors)
+
+
+        ### Convert to geo dataframe
         try:
             gdf_sensors = gpd.GeoDataFrame(data=sensors,
                                            geometry=gpd.points_from_xy(sensors.longitude, sensors.latitude))
@@ -78,15 +87,19 @@ class RegionEstimator(object):
         except Exception as err:
             raise ValueError('Error converting regions DataFrame to a GeoDataFrame: ' + str(err))
 
-        self.sensors = gdf_sensors
-        self.regions = gdf_regions
 
-        # Make all non integer values Null in measurement fields
+
         #   Make sure value columns at the end of column list
         cols = actuals.columns.tolist()
         cols.insert(0, cols.pop(cols.index('sensor_id')))
         cols.insert(0, cols.pop(cols.index('timestamp')))
-        actuals[cols[2:]] = actuals[cols[2:]].apply(pd.to_numeric, errors='coerce')
+
+        # Make all non integer values Null in measurement fields
+        # No longer required, as covered in 'check actuals' assertations above
+        #actuals[cols[2:]] = actuals[cols[2:]].apply(pd.to_numeric, errors='coerce')
+
+        self.sensors = gdf_sensors
+        self.regions = gdf_regions
         self.actuals = actuals
 
         self.__get_all_region_neighbours()
