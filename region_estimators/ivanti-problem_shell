@@ -1,0 +1,15 @@
+#!/bin/bash --login
+#$ -cwd
+#$ -pe smp.pe 2
+#$ -t 1-26         # A job-array with 1000 "tasks", numbered 1...1000
+                      # NOTE: No #$ -pe line so each task will use 1-core by default.
+
+export HDF5_USE_FILE_LOCKING='FALSE'
+module load apps/binapps/tensorflow/2.2.0-37-cpu
+module load apps/binapps/anaconda3/2019.07
+
+# My OpenMP program will read this variable to get how many cores to use.
+# $NSLOTS is automatically set to the number specified on the -pe line above.
+export OMP_NUM_THREADS=$NSLOTS
+
+python ./two_samples_test_NB.py counts_8$SGE_TASK_ID.csv -out results.$SGE_TASK_ID.dat

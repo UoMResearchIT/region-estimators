@@ -16,18 +16,6 @@ class TestFactory(unittest.TestCase):
     with self.assertRaises(ValueError):
       get_classname('___')
 
-  def test_add_factory(self):
-    """
-    Test that add_factory works as expected.
-    """
-    self.assertEqual(RegionEstimatorFactory.factories, {}, 'factories should be initialized empty')
-
-    RegionEstimatorFactory.add_factory('id', 'something')
-    self.assertEqual(RegionEstimatorFactory.factories['id'], 'something')
-    self.assertEqual(RegionEstimatorFactory.factories, {'id': 'something'})
-
-    RegionEstimatorFactory.add_factory('id', 'else')
-    self.assertEqual(RegionEstimatorFactory.factories['id'], 'else')
 
 if __name__ == '__main__':
   unittest.main()
