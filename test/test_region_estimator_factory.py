@@ -1,6 +1,6 @@
 import unittest
 
-from region_estimators.region_estimator_factory import RegionEstimatorFactory, get_classname
+from region_estimators.region_estimator_factory import RegionEstimatorFactory
 
 class TestFactory(unittest.TestCase):
   """
@@ -11,10 +11,10 @@ class TestFactory(unittest.TestCase):
     """
     Test that the get_classname method works as expected.
     """
-    self.assertEqual(get_classname('diffusion'), 'DiffusionEstimator')
-    self.assertEqual(get_classname('distance-simple'), 'DistanceSimpleEstimator')
+    self.assertEqual(RegionEstimatorFactory.get_classname('diffusion'), 'DiffusionEstimator')
+    self.assertEqual(RegionEstimatorFactory.get_classname('distance-simple'), 'DistanceSimpleEstimator')
     with self.assertRaises(ValueError):
-      get_classname('___')
+      RegionEstimatorFactory.get_classname('___')
 
 
 if __name__ == '__main__':

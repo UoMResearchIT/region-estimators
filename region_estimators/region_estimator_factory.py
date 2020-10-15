@@ -10,19 +10,23 @@ class RegionEstimatorFactory:
     factories = {}
 
     # A Template Method:
+    @staticmethod
     def create(method_name, sensors, regions, actuals):
-        class_name = get_classname(method_name)
+        class_name = RegionEstimatorFactory.get_classname(method_name)
         if class_name not in RegionEstimatorFactory.factories:
             RegionEstimatorFactory.factories[class_name] = eval(class_name + '.Factory()')
         return RegionEstimatorFactory.factories[class_name].create(sensors, regions, actuals)
 
-    region_estimator = staticmethod(create)
+    region_estimator = create
+
+    @staticmethod
+    def get_classname(method_name):
+        if method_name == 'diffusion':
+            return 'DiffusionEstimator'
+        elif method_name == 'distance-simple':
+            return 'DistanceSimpleEstimator'
+        else:
+            raise ValueError('Method name does not exist')
 
 
-def get_classname(method_name):
-    if method_name == 'diffusion':
-        return 'DiffusionEstimator'
-    elif method_name == 'distance-simple':
-        return 'DistanceSimpleEstimator'
-    else:
-        raise ValueError('Method name does not exist')
+
