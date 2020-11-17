@@ -1,0 +1,2191 @@
+timestamp,sensor_id,val_NO2_mean
+2017-01-01,Aberdeen [AQ],4
+2017-01-01,Aberdeen Union Street Roadside [AQ],22
+2017-01-02,Aberdeen [AQ],8
+2017-01-02,Aberdeen Union Street Roadside [AQ],41
+2017-01-03,Aberdeen [AQ],7
+2017-01-03,Aberdeen Union Street Roadside [AQ],34
+2017-01-04,Aberdeen [AQ],9
+2017-01-04,Aberdeen Union Street Roadside [AQ],47
+2017-01-05,Aberdeen [AQ],32
+2017-01-05,Aberdeen Union Street Roadside [AQ],45
+2017-01-06,Aberdeen [AQ],41
+2017-01-06,Aberdeen Union Street Roadside [AQ],54
+2017-01-07,Aberdeen [AQ],50
+2017-01-07,Aberdeen Union Street Roadside [AQ],57
+2017-01-08,Aberdeen [AQ],43
+2017-01-08,Aberdeen Union Street Roadside [AQ],46
+2017-01-09,Aberdeen [AQ],15
+2017-01-09,Aberdeen Union Street Roadside [AQ],32
+2017-01-10,Aberdeen [AQ],26
+2017-01-10,Aberdeen Union Street Roadside [AQ],59
+2017-01-11,Aberdeen [AQ],10
+2017-01-11,Aberdeen Union Street Roadside [AQ],43
+2017-01-12,Aberdeen [AQ],18
+2017-01-12,Aberdeen Union Street Roadside [AQ],60
+2017-01-13,Aberdeen [AQ],11
+2017-01-13,Aberdeen Union Street Roadside [AQ],52
+2017-01-14,Aberdeen [AQ],19
+2017-01-14,Aberdeen Union Street Roadside [AQ],57
+2017-01-15,Aberdeen [AQ],26
+2017-01-15,Aberdeen Union Street Roadside [AQ],50
+2017-01-16,Aberdeen [AQ],48
+2017-01-16,Aberdeen Union Street Roadside [AQ],59
+2017-01-17,Aberdeen [AQ],55
+2017-01-17,Aberdeen Union Street Roadside [AQ],62
+2017-01-18,Aberdeen [AQ],58
+2017-01-18,Aberdeen Union Street Roadside [AQ],67
+2017-01-19,Aberdeen [AQ],78
+2017-01-19,Aberdeen Union Street Roadside [AQ],63
+2017-01-20,Aberdeen [AQ],46
+2017-01-20,Aberdeen Union Street Roadside [AQ],42
+2017-01-21,Aberdeen [AQ],28
+2017-01-21,Aberdeen Union Street Roadside [AQ],37
+2017-01-22,Aberdeen [AQ],29
+2017-01-22,Aberdeen Union Street Roadside [AQ],50
+2017-01-23,Aberdeen [AQ],44
+2017-01-23,Aberdeen Union Street Roadside [AQ],55
+2017-01-24,Aberdeen [AQ],25
+2017-01-24,Aberdeen Union Street Roadside [AQ],29
+2017-01-25,Aberdeen [AQ],21
+2017-01-25,Aberdeen Union Street Roadside [AQ],26
+2017-01-26,Aberdeen [AQ],36
+2017-01-26,Aberdeen Union Street Roadside [AQ],28
+2017-01-27,Aberdeen [AQ],
+2017-01-27,Aberdeen Union Street Roadside [AQ],40
+2017-01-28,Aberdeen [AQ],
+2017-01-28,Aberdeen Union Street Roadside [AQ],60
+2017-01-29,Aberdeen [AQ],
+2017-01-29,Aberdeen Union Street Roadside [AQ],61
+2017-01-30,Aberdeen [AQ],
+2017-01-30,Aberdeen Union Street Roadside [AQ],38
+2017-01-31,Aberdeen [AQ],25
+2017-01-31,Aberdeen Union Street Roadside [AQ],18
+2017-02-01,Aberdeen [AQ],51
+2017-02-01,Aberdeen Union Street Roadside [AQ],48
+2017-02-02,Aberdeen [AQ],30
+2017-02-02,Aberdeen Union Street Roadside [AQ],22
+2017-02-03,Aberdeen [AQ],28
+2017-02-03,Aberdeen Union Street Roadside [AQ],23
+2017-02-04,Aberdeen [AQ],15
+2017-02-04,Aberdeen Union Street Roadside [AQ],24
+2017-02-05,Aberdeen [AQ],34
+2017-02-05,Aberdeen Union Street Roadside [AQ],34
+2017-02-06,Aberdeen [AQ],42
+2017-02-06,Aberdeen Union Street Roadside [AQ],36
+2017-02-07,Aberdeen [AQ],20
+2017-02-07,Aberdeen Union Street Roadside [AQ],
+2017-02-08,Aberdeen [AQ],21
+2017-02-08,Aberdeen Union Street Roadside [AQ],
+2017-02-09,Aberdeen [AQ],18
+2017-02-09,Aberdeen Union Street Roadside [AQ],
+2017-02-10,Aberdeen [AQ],22
+2017-02-10,Aberdeen Union Street Roadside [AQ],
+2017-02-11,Aberdeen [AQ],4
+2017-02-11,Aberdeen Union Street Roadside [AQ],
+2017-02-12,Aberdeen [AQ],3
+2017-02-12,Aberdeen Union Street Roadside [AQ],
+2017-02-13,Aberdeen [AQ],7
+2017-02-13,Aberdeen Union Street Roadside [AQ],
+2017-02-14,Aberdeen [AQ],25
+2017-02-14,Aberdeen Union Street Roadside [AQ],33
+2017-02-15,Aberdeen [AQ],33
+2017-02-15,Aberdeen Union Street Roadside [AQ],41
+2017-02-16,Aberdeen [AQ],19
+2017-02-16,Aberdeen Union Street Roadside [AQ],50
+2017-02-17,Aberdeen [AQ],39
+2017-02-17,Aberdeen Union Street Roadside [AQ],49
+2017-02-18,Aberdeen [AQ],
+2017-02-18,Aberdeen Union Street Roadside [AQ],35
+2017-02-19,Aberdeen [AQ],
+2017-02-19,Aberdeen Union Street Roadside [AQ],49
+2017-02-20,Aberdeen [AQ],
+2017-02-20,Aberdeen Union Street Roadside [AQ],49
+2017-02-21,Aberdeen [AQ],
+2017-02-21,Aberdeen Union Street Roadside [AQ],43
+2017-02-22,Aberdeen [AQ],13
+2017-02-22,Aberdeen Union Street Roadside [AQ],51
+2017-02-23,Aberdeen [AQ],19
+2017-02-23,Aberdeen Union Street Roadside [AQ],70
+2017-02-24,Aberdeen [AQ],32
+2017-02-24,Aberdeen Union Street Roadside [AQ],53
+2017-02-25,Aberdeen [AQ],23
+2017-02-25,Aberdeen Union Street Roadside [AQ],49
+2017-02-26,Aberdeen [AQ],14
+2017-02-26,Aberdeen Union Street Roadside [AQ],25
+2017-02-27,Aberdeen [AQ],29
+2017-02-27,Aberdeen Union Street Roadside [AQ],48
+2017-02-28,Aberdeen [AQ],18
+2017-02-28,Aberdeen Union Street Roadside [AQ],57
+2017-03-01,Aberdeen [AQ],27
+2017-03-01,Aberdeen Union Street Roadside [AQ],76
+2017-03-02,Aberdeen [AQ],25
+2017-03-02,Aberdeen Union Street Roadside [AQ],67
+2017-03-03,Aberdeen [AQ],21
+2017-03-03,Aberdeen Union Street Roadside [AQ],71
+2017-03-04,Aberdeen [AQ],12
+2017-03-04,Aberdeen Union Street Roadside [AQ],48
+2017-03-05,Aberdeen [AQ],29
+2017-03-05,Aberdeen Union Street Roadside [AQ],33
+2017-03-06,Aberdeen [AQ],29
+2017-03-06,Aberdeen Union Street Roadside [AQ],51
+2017-03-07,Aberdeen [AQ],
+2017-03-07,Aberdeen Union Street Roadside [AQ],36
+2017-03-08,Aberdeen [AQ],
+2017-03-08,Aberdeen Union Street Roadside [AQ],52
+2017-03-09,Aberdeen [AQ],33
+2017-03-09,Aberdeen Union Street Roadside [AQ],66
+2017-03-10,Aberdeen [AQ],42
+2017-03-10,Aberdeen Union Street Roadside [AQ],51
+2017-03-11,Aberdeen [AQ],31
+2017-03-11,Aberdeen Union Street Roadside [AQ],41
+2017-03-12,Aberdeen [AQ],25
+2017-03-12,Aberdeen Union Street Roadside [AQ],40
+2017-03-13,Aberdeen [AQ],28
+2017-03-13,Aberdeen Union Street Roadside [AQ],48
+2017-03-14,Aberdeen [AQ],14
+2017-03-14,Aberdeen Union Street Roadside [AQ],50
+2017-03-15,Aberdeen [AQ],29
+2017-03-15,Aberdeen Union Street Roadside [AQ],41
+2017-03-16,Aberdeen [AQ],18
+2017-03-16,Aberdeen Union Street Roadside [AQ],42
+2017-03-17,Aberdeen [AQ],21
+2017-03-17,Aberdeen Union Street Roadside [AQ],61
+2017-03-18,Aberdeen [AQ],22
+2017-03-18,Aberdeen Union Street Roadside [AQ],44
+2017-03-19,Aberdeen [AQ],23
+2017-03-19,Aberdeen Union Street Roadside [AQ],40
+2017-03-20,Aberdeen [AQ],15
+2017-03-20,Aberdeen Union Street Roadside [AQ],43
+2017-03-21,Aberdeen [AQ],20
+2017-03-21,Aberdeen Union Street Roadside [AQ],51
+2017-03-22,Aberdeen [AQ],16
+2017-03-22,Aberdeen Union Street Roadside [AQ],55
+2017-03-23,Aberdeen [AQ],18
+2017-03-23,Aberdeen Union Street Roadside [AQ],57
+2017-03-24,Aberdeen [AQ],46
+2017-03-24,Aberdeen Union Street Roadside [AQ],59
+2017-03-25,Aberdeen [AQ],41
+2017-03-25,Aberdeen Union Street Roadside [AQ],49
+2017-03-26,Aberdeen [AQ],30
+2017-03-26,Aberdeen Union Street Roadside [AQ],40
+2017-03-27,Aberdeen [AQ],37
+2017-03-27,Aberdeen Union Street Roadside [AQ],37
+2017-03-28,Aberdeen [AQ],36
+2017-03-28,Aberdeen Union Street Roadside [AQ],40
+2017-03-29,Aberdeen [AQ],24
+2017-03-29,Aberdeen Union Street Roadside [AQ],47
+2017-03-30,Aberdeen [AQ],21
+2017-03-30,Aberdeen Union Street Roadside [AQ],29
+2017-03-31,Aberdeen [AQ],23
+2017-03-31,Aberdeen Union Street Roadside [AQ],30
+2017-04-01,Aberdeen [AQ],24
+2017-04-01,Aberdeen Union Street Roadside [AQ],56
+2017-04-02,Aberdeen [AQ],18
+2017-04-02,Aberdeen Union Street Roadside [AQ],31
+2017-04-03,Aberdeen [AQ],18
+2017-04-03,Aberdeen Union Street Roadside [AQ],17
+2017-04-04,Aberdeen [AQ],15
+2017-04-04,Aberdeen Union Street Roadside [AQ],54
+2017-04-05,Aberdeen [AQ],14
+2017-04-05,Aberdeen Union Street Roadside [AQ],46
+2017-04-06,Aberdeen [AQ],23
+2017-04-06,Aberdeen Union Street Roadside [AQ],53
+2017-04-07,Aberdeen [AQ],25
+2017-04-07,Aberdeen Union Street Roadside [AQ],49
+2017-04-08,Aberdeen [AQ],26
+2017-04-08,Aberdeen Union Street Roadside [AQ],36
+2017-04-09,Aberdeen [AQ],19
+2017-04-09,Aberdeen Union Street Roadside [AQ],36
+2017-04-10,Aberdeen [AQ],12
+2017-04-10,Aberdeen Union Street Roadside [AQ],41
+2017-04-11,Aberdeen [AQ],16
+2017-04-11,Aberdeen Union Street Roadside [AQ],49
+2017-04-12,Aberdeen [AQ],9
+2017-04-12,Aberdeen Union Street Roadside [AQ],47
+2017-04-13,Aberdeen [AQ],19
+2017-04-13,Aberdeen Union Street Roadside [AQ],59
+2017-04-14,Aberdeen [AQ],21
+2017-04-14,Aberdeen Union Street Roadside [AQ],61
+2017-04-15,Aberdeen [AQ],8
+2017-04-15,Aberdeen Union Street Roadside [AQ],47
+2017-04-16,Aberdeen [AQ],8
+2017-04-16,Aberdeen Union Street Roadside [AQ],40
+2017-04-17,Aberdeen [AQ],18
+2017-04-17,Aberdeen Union Street Roadside [AQ],47
+2017-04-18,Aberdeen [AQ],26
+2017-04-18,Aberdeen Union Street Roadside [AQ],33
+2017-04-19,Aberdeen [AQ],34
+2017-04-19,Aberdeen Union Street Roadside [AQ],52
+2017-04-20,Aberdeen [AQ],20
+2017-04-20,Aberdeen Union Street Roadside [AQ],53
+2017-04-21,Aberdeen [AQ],12
+2017-04-21,Aberdeen Union Street Roadside [AQ],51
+2017-04-22,Aberdeen [AQ],10
+2017-04-22,Aberdeen Union Street Roadside [AQ],54
+2017-04-23,Aberdeen [AQ],11
+2017-04-23,Aberdeen Union Street Roadside [AQ],41
+2017-04-24,Aberdeen [AQ],14
+2017-04-24,Aberdeen Union Street Roadside [AQ],49
+2017-04-25,Aberdeen [AQ],8
+2017-04-25,Aberdeen Union Street Roadside [AQ],41
+2017-04-26,Aberdeen [AQ],13
+2017-04-26,Aberdeen Union Street Roadside [AQ],54
+2017-04-27,Aberdeen [AQ],9
+2017-04-27,Aberdeen Union Street Roadside [AQ],42
+2017-04-28,Aberdeen [AQ],
+2017-04-28,Aberdeen Union Street Roadside [AQ],51
+2017-04-29,Aberdeen [AQ],
+2017-04-29,Aberdeen Union Street Roadside [AQ],19
+2017-04-30,Aberdeen [AQ],
+2017-04-30,Aberdeen Union Street Roadside [AQ],18
+2017-05-01,Aberdeen [AQ],7
+2017-05-01,Aberdeen Union Street Roadside [AQ],66
+2017-05-02,Aberdeen [AQ],7
+2017-05-02,Aberdeen Union Street Roadside [AQ],68
+2017-05-03,Aberdeen [AQ],11
+2017-05-03,Aberdeen Union Street Roadside [AQ],53
+2017-05-04,Aberdeen [AQ],11
+2017-05-04,Aberdeen Union Street Roadside [AQ],52
+2017-05-05,Aberdeen [AQ],14
+2017-05-05,Aberdeen Union Street Roadside [AQ],53
+2017-05-06,Aberdeen [AQ],8
+2017-05-06,Aberdeen Union Street Roadside [AQ],41
+2017-05-07,Aberdeen [AQ],3
+2017-05-07,Aberdeen Union Street Roadside [AQ],19
+2017-05-08,Aberdeen [AQ],6
+2017-05-08,Aberdeen Union Street Roadside [AQ],33
+2017-05-09,Aberdeen [AQ],14
+2017-05-09,Aberdeen Union Street Roadside [AQ],39
+2017-05-10,Aberdeen [AQ],21
+2017-05-10,Aberdeen Union Street Roadside [AQ],37
+2017-05-11,Aberdeen [AQ],19
+2017-05-11,Aberdeen Union Street Roadside [AQ],29
+2017-05-12,Aberdeen [AQ],17
+2017-05-12,Aberdeen Union Street Roadside [AQ],56
+2017-05-13,Aberdeen [AQ],18
+2017-05-13,Aberdeen Union Street Roadside [AQ],40
+2017-05-14,Aberdeen [AQ],15
+2017-05-14,Aberdeen Union Street Roadside [AQ],30
+2017-05-15,Aberdeen [AQ],26
+2017-05-15,Aberdeen Union Street Roadside [AQ],23
+2017-05-16,Aberdeen [AQ],20
+2017-05-16,Aberdeen Union Street Roadside [AQ],32
+2017-05-17,Aberdeen [AQ],26
+2017-05-17,Aberdeen Union Street Roadside [AQ],33
+2017-05-18,Aberdeen [AQ],22
+2017-05-18,Aberdeen Union Street Roadside [AQ],31
+2017-05-19,Aberdeen [AQ],21
+2017-05-19,Aberdeen Union Street Roadside [AQ],56
+2017-05-20,Aberdeen [AQ],16
+2017-05-20,Aberdeen Union Street Roadside [AQ],36
+2017-05-21,Aberdeen [AQ],17
+2017-05-21,Aberdeen Union Street Roadside [AQ],17
+2017-05-22,Aberdeen [AQ],29
+2017-05-22,Aberdeen Union Street Roadside [AQ],26
+2017-05-23,Aberdeen [AQ],16
+2017-05-23,Aberdeen Union Street Roadside [AQ],48
+2017-05-24,Aberdeen [AQ],29
+2017-05-24,Aberdeen Union Street Roadside [AQ],49
+2017-05-25,Aberdeen [AQ],17
+2017-05-25,Aberdeen Union Street Roadside [AQ],23
+2017-05-26,Aberdeen [AQ],26
+2017-05-26,Aberdeen Union Street Roadside [AQ],26
+2017-05-27,Aberdeen [AQ],17
+2017-05-27,Aberdeen Union Street Roadside [AQ],30
+2017-05-28,Aberdeen [AQ],7
+2017-05-28,Aberdeen Union Street Roadside [AQ],22
+2017-05-29,Aberdeen [AQ],11
+2017-05-29,Aberdeen Union Street Roadside [AQ],27
+2017-05-30,Aberdeen [AQ],19
+2017-05-30,Aberdeen Union Street Roadside [AQ],39
+2017-05-31,Aberdeen [AQ],18
+2017-05-31,Aberdeen Union Street Roadside [AQ],29
+2017-06-01,Aberdeen [AQ],27
+2017-06-01,Aberdeen Union Street Roadside [AQ],25
+2017-06-02,Aberdeen [AQ],25
+2017-06-02,Aberdeen Union Street Roadside [AQ],43
+2017-06-03,Aberdeen [AQ],15
+2017-06-03,Aberdeen Union Street Roadside [AQ],41
+2017-06-04,Aberdeen [AQ],18
+2017-06-04,Aberdeen Union Street Roadside [AQ],30
+2017-06-05,Aberdeen [AQ],20
+2017-06-05,Aberdeen Union Street Roadside [AQ],32
+2017-06-06,Aberdeen [AQ],11
+2017-06-06,Aberdeen Union Street Roadside [AQ],53
+2017-06-07,Aberdeen [AQ],9
+2017-06-07,Aberdeen Union Street Roadside [AQ],30
+2017-06-08,Aberdeen [AQ],15
+2017-06-08,Aberdeen Union Street Roadside [AQ],48
+2017-06-09,Aberdeen [AQ],14
+2017-06-09,Aberdeen Union Street Roadside [AQ],49
+2017-06-10,Aberdeen [AQ],16
+2017-06-10,Aberdeen Union Street Roadside [AQ],22
+2017-06-11,Aberdeen [AQ],9
+2017-06-11,Aberdeen Union Street Roadside [AQ],12
+2017-06-12,Aberdeen [AQ],12
+2017-06-12,Aberdeen Union Street Roadside [AQ],34
+2017-06-13,Aberdeen [AQ],23
+2017-06-13,Aberdeen Union Street Roadside [AQ],33
+2017-06-14,Aberdeen [AQ],20
+2017-06-14,Aberdeen Union Street Roadside [AQ],24
+2017-06-15,Aberdeen [AQ],17
+2017-06-15,Aberdeen Union Street Roadside [AQ],37
+2017-06-16,Aberdeen [AQ],14
+2017-06-16,Aberdeen Union Street Roadside [AQ],46
+2017-06-17,Aberdeen [AQ],7
+2017-06-17,Aberdeen Union Street Roadside [AQ],23
+2017-06-18,Aberdeen [AQ],14
+2017-06-18,Aberdeen Union Street Roadside [AQ],29
+2017-06-19,Aberdeen [AQ],17
+2017-06-19,Aberdeen Union Street Roadside [AQ],35
+2017-06-20,Aberdeen [AQ],17
+2017-06-20,Aberdeen Union Street Roadside [AQ],29
+2017-06-21,Aberdeen [AQ],26
+2017-06-21,Aberdeen Union Street Roadside [AQ],20
+2017-06-22,Aberdeen [AQ],12
+2017-06-22,Aberdeen Union Street Roadside [AQ],42
+2017-06-23,Aberdeen [AQ],10
+2017-06-23,Aberdeen Union Street Roadside [AQ],34
+2017-06-24,Aberdeen [AQ],8
+2017-06-24,Aberdeen Union Street Roadside [AQ],28
+2017-06-25,Aberdeen [AQ],6
+2017-06-25,Aberdeen Union Street Roadside [AQ],27
+2017-06-26,Aberdeen [AQ],8
+2017-06-26,Aberdeen Union Street Roadside [AQ],40
+2017-06-27,Aberdeen [AQ],7
+2017-06-27,Aberdeen Union Street Roadside [AQ],43
+2017-06-28,Aberdeen [AQ],4
+2017-06-28,Aberdeen Union Street Roadside [AQ],42
+2017-06-29,Aberdeen [AQ],9
+2017-06-29,Aberdeen Union Street Roadside [AQ],24
+2017-06-30,Aberdeen [AQ],13
+2017-06-30,Aberdeen Union Street Roadside [AQ],42
+2017-07-01,Aberdeen [AQ],13
+2017-07-01,Aberdeen Union Street Roadside [AQ],28
+2017-07-02,Aberdeen [AQ],7
+2017-07-02,Aberdeen Union Street Roadside [AQ],31
+2017-07-03,Aberdeen [AQ],8
+2017-07-03,Aberdeen Union Street Roadside [AQ],33
+2017-07-04,Aberdeen [AQ],12
+2017-07-04,Aberdeen Union Street Roadside [AQ],35
+2017-07-05,Aberdeen [AQ],16
+2017-07-05,Aberdeen Union Street Roadside [AQ],22
+2017-07-06,Aberdeen [AQ],18
+2017-07-06,Aberdeen Union Street Roadside [AQ],21
+2017-07-07,Aberdeen [AQ],13
+2017-07-07,Aberdeen Union Street Roadside [AQ],39
+2017-07-08,Aberdeen [AQ],12
+2017-07-08,Aberdeen Union Street Roadside [AQ],21
+2017-07-09,Aberdeen [AQ],8
+2017-07-09,Aberdeen Union Street Roadside [AQ],27
+2017-07-10,Aberdeen [AQ],8
+2017-07-10,Aberdeen Union Street Roadside [AQ],38
+2017-07-11,Aberdeen [AQ],9
+2017-07-11,Aberdeen Union Street Roadside [AQ],43
+2017-07-12,Aberdeen [AQ],11
+2017-07-12,Aberdeen Union Street Roadside [AQ],31
+2017-07-13,Aberdeen [AQ],19
+2017-07-13,Aberdeen Union Street Roadside [AQ],30
+2017-07-14,Aberdeen [AQ],10
+2017-07-14,Aberdeen Union Street Roadside [AQ],30
+2017-07-15,Aberdeen [AQ],10
+2017-07-15,Aberdeen Union Street Roadside [AQ],22
+2017-07-16,Aberdeen [AQ],5
+2017-07-16,Aberdeen Union Street Roadside [AQ],28
+2017-07-17,Aberdeen [AQ],12
+2017-07-17,Aberdeen Union Street Roadside [AQ],36
+2017-07-18,Aberdeen [AQ],26
+2017-07-18,Aberdeen Union Street Roadside [AQ],18
+2017-07-19,Aberdeen [AQ],9
+2017-07-19,Aberdeen Union Street Roadside [AQ],37
+2017-07-20,Aberdeen [AQ],18
+2017-07-20,Aberdeen Union Street Roadside [AQ],44
+2017-07-21,Aberdeen [AQ],10
+2017-07-21,Aberdeen Union Street Roadside [AQ],26
+2017-07-22,Aberdeen [AQ],6
+2017-07-22,Aberdeen Union Street Roadside [AQ],46
+2017-07-23,Aberdeen [AQ],8
+2017-07-23,Aberdeen Union Street Roadside [AQ],22
+2017-07-24,Aberdeen [AQ],5
+2017-07-24,Aberdeen Union Street Roadside [AQ],31
+2017-07-25,Aberdeen [AQ],14
+2017-07-25,Aberdeen Union Street Roadside [AQ],35
+2017-07-26,Aberdeen [AQ],22
+2017-07-26,Aberdeen Union Street Roadside [AQ],24
+2017-07-27,Aberdeen [AQ],14
+2017-07-27,Aberdeen Union Street Roadside [AQ],20
+2017-07-28,Aberdeen [AQ],15
+2017-07-28,Aberdeen Union Street Roadside [AQ],25
+2017-07-29,Aberdeen [AQ],9
+2017-07-29,Aberdeen Union Street Roadside [AQ],20
+2017-07-30,Aberdeen [AQ],12
+2017-07-30,Aberdeen Union Street Roadside [AQ],10
+2017-07-31,Aberdeen [AQ],13
+2017-07-31,Aberdeen Union Street Roadside [AQ],19
+2017-08-01,Aberdeen [AQ],18
+2017-08-01,Aberdeen Union Street Roadside [AQ],21
+2017-08-02,Aberdeen [AQ],20
+2017-08-02,Aberdeen Union Street Roadside [AQ],25
+2017-08-03,Aberdeen [AQ],16
+2017-08-03,Aberdeen Union Street Roadside [AQ],32
+2017-08-04,Aberdeen [AQ],8
+2017-08-04,Aberdeen Union Street Roadside [AQ],36
+2017-08-05,Aberdeen [AQ],8
+2017-08-05,Aberdeen Union Street Roadside [AQ],37
+2017-08-06,Aberdeen [AQ],12
+2017-08-06,Aberdeen Union Street Roadside [AQ],15
+2017-08-07,Aberdeen [AQ],15
+2017-08-07,Aberdeen Union Street Roadside [AQ],33
+2017-08-08,Aberdeen [AQ],10
+2017-08-08,Aberdeen Union Street Roadside [AQ],35
+2017-08-09,Aberdeen [AQ],10
+2017-08-09,Aberdeen Union Street Roadside [AQ],
+2017-08-10,Aberdeen [AQ],16
+2017-08-10,Aberdeen Union Street Roadside [AQ],52
+2017-08-11,Aberdeen [AQ],13
+2017-08-11,Aberdeen Union Street Roadside [AQ],29
+2017-08-12,Aberdeen [AQ],9
+2017-08-12,Aberdeen Union Street Roadside [AQ],39
+2017-08-13,Aberdeen [AQ],11
+2017-08-13,Aberdeen Union Street Roadside [AQ],26
+2017-08-14,Aberdeen [AQ],25
+2017-08-14,Aberdeen Union Street Roadside [AQ],19
+2017-08-15,Aberdeen [AQ],18
+2017-08-15,Aberdeen Union Street Roadside [AQ],39
+2017-08-16,Aberdeen [AQ],15
+2017-08-16,Aberdeen Union Street Roadside [AQ],16
+2017-08-17,Aberdeen [AQ],17
+2017-08-17,Aberdeen Union Street Roadside [AQ],22
+2017-08-18,Aberdeen [AQ],19
+2017-08-18,Aberdeen Union Street Roadside [AQ],39
+2017-08-19,Aberdeen [AQ],10
+2017-08-19,Aberdeen Union Street Roadside [AQ],46
+2017-08-20,Aberdeen [AQ],5
+2017-08-20,Aberdeen Union Street Roadside [AQ],30
+2017-08-21,Aberdeen [AQ],9
+2017-08-21,Aberdeen Union Street Roadside [AQ],38
+2017-08-22,Aberdeen [AQ],5
+2017-08-22,Aberdeen Union Street Roadside [AQ],30
+2017-08-23,Aberdeen [AQ],29
+2017-08-23,Aberdeen Union Street Roadside [AQ],28
+2017-08-24,Aberdeen [AQ],22
+2017-08-24,Aberdeen Union Street Roadside [AQ],37
+2017-08-25,Aberdeen [AQ],20
+2017-08-25,Aberdeen Union Street Roadside [AQ],27
+2017-08-26,Aberdeen [AQ],16
+2017-08-26,Aberdeen Union Street Roadside [AQ],39
+2017-08-27,Aberdeen [AQ],12
+2017-08-27,Aberdeen Union Street Roadside [AQ],15
+2017-08-28,Aberdeen [AQ],13
+2017-08-28,Aberdeen Union Street Roadside [AQ],24
+2017-08-29,Aberdeen [AQ],
+2017-08-29,Aberdeen Union Street Roadside [AQ],35
+2017-08-30,Aberdeen [AQ],16
+2017-08-30,Aberdeen Union Street Roadside [AQ],42
+2017-08-31,Aberdeen [AQ],22
+2017-08-31,Aberdeen Union Street Roadside [AQ],41
+2017-09-01,Aberdeen [AQ],18
+2017-09-01,Aberdeen Union Street Roadside [AQ],37
+2017-09-02,Aberdeen [AQ],17
+2017-09-02,Aberdeen Union Street Roadside [AQ],23
+2017-09-03,Aberdeen [AQ],19
+2017-09-03,Aberdeen Union Street Roadside [AQ],10
+2017-09-04,Aberdeen [AQ],25
+2017-09-04,Aberdeen Union Street Roadside [AQ],19
+2017-09-05,Aberdeen [AQ],25
+2017-09-05,Aberdeen Union Street Roadside [AQ],41
+2017-09-06,Aberdeen [AQ],17
+2017-09-06,Aberdeen Union Street Roadside [AQ],47
+2017-09-07,Aberdeen [AQ],27
+2017-09-07,Aberdeen Union Street Roadside [AQ],33
+2017-09-08,Aberdeen [AQ],23
+2017-09-08,Aberdeen Union Street Roadside [AQ],47
+2017-09-09,Aberdeen [AQ],11
+2017-09-09,Aberdeen Union Street Roadside [AQ],47
+2017-09-10,Aberdeen [AQ],13
+2017-09-10,Aberdeen Union Street Roadside [AQ],21
+2017-09-11,Aberdeen [AQ],13
+2017-09-11,Aberdeen Union Street Roadside [AQ],31
+2017-09-12,Aberdeen [AQ],
+2017-09-12,Aberdeen Union Street Roadside [AQ],41
+2017-09-13,Aberdeen [AQ],
+2017-09-13,Aberdeen Union Street Roadside [AQ],45
+2017-09-14,Aberdeen [AQ],
+2017-09-14,Aberdeen Union Street Roadside [AQ],33
+2017-09-15,Aberdeen [AQ],8
+2017-09-15,Aberdeen Union Street Roadside [AQ],39
+2017-09-16,Aberdeen [AQ],11
+2017-09-16,Aberdeen Union Street Roadside [AQ],42
+2017-09-17,Aberdeen [AQ],6
+2017-09-17,Aberdeen Union Street Roadside [AQ],28
+2017-09-18,Aberdeen [AQ],20
+2017-09-18,Aberdeen Union Street Roadside [AQ],48
+2017-09-19,Aberdeen [AQ],28
+2017-09-19,Aberdeen Union Street Roadside [AQ],40
+2017-09-20,Aberdeen [AQ],27
+2017-09-20,Aberdeen Union Street Roadside [AQ],35
+2017-09-21,Aberdeen [AQ],21
+2017-09-21,Aberdeen Union Street Roadside [AQ],51
+2017-09-22,Aberdeen [AQ],27
+2017-09-22,Aberdeen Union Street Roadside [AQ],24
+2017-09-23,Aberdeen [AQ],21
+2017-09-23,Aberdeen Union Street Roadside [AQ],16
+2017-09-24,Aberdeen [AQ],22
+2017-09-24,Aberdeen Union Street Roadside [AQ],14
+2017-09-25,Aberdeen [AQ],26
+2017-09-25,Aberdeen Union Street Roadside [AQ],19
+2017-09-26,Aberdeen [AQ],38
+2017-09-26,Aberdeen Union Street Roadside [AQ],25
+2017-09-27,Aberdeen [AQ],17
+2017-09-27,Aberdeen Union Street Roadside [AQ],19
+2017-09-28,Aberdeen [AQ],28
+2017-09-28,Aberdeen Union Street Roadside [AQ],22
+2017-09-29,Aberdeen [AQ],25
+2017-09-29,Aberdeen Union Street Roadside [AQ],25
+2017-09-30,Aberdeen [AQ],20
+2017-09-30,Aberdeen Union Street Roadside [AQ],31
+2017-10-01,Aberdeen [AQ],15
+2017-10-01,Aberdeen Union Street Roadside [AQ],19
+2017-10-02,Aberdeen [AQ],11
+2017-10-02,Aberdeen Union Street Roadside [AQ],44
+2017-10-03,Aberdeen [AQ],14
+2017-10-03,Aberdeen Union Street Roadside [AQ],44
+2017-10-04,Aberdeen [AQ],20
+2017-10-04,Aberdeen Union Street Roadside [AQ],51
+2017-10-05,Aberdeen [AQ],10
+2017-10-05,Aberdeen Union Street Roadside [AQ],36
+2017-10-06,Aberdeen [AQ],16
+2017-10-06,Aberdeen Union Street Roadside [AQ],42
+2017-10-07,Aberdeen [AQ],15
+2017-10-07,Aberdeen Union Street Roadside [AQ],44
+2017-10-08,Aberdeen [AQ],22
+2017-10-08,Aberdeen Union Street Roadside [AQ],44
+2017-10-09,Aberdeen [AQ],26
+2017-10-09,Aberdeen Union Street Roadside [AQ],38
+2017-10-10,Aberdeen [AQ],20
+2017-10-10,Aberdeen Union Street Roadside [AQ],38
+2017-10-11,Aberdeen [AQ],24
+2017-10-11,Aberdeen Union Street Roadside [AQ],47
+2017-10-12,Aberdeen [AQ],23
+2017-10-12,Aberdeen Union Street Roadside [AQ],35
+2017-10-13,Aberdeen [AQ],13
+2017-10-13,Aberdeen Union Street Roadside [AQ],27
+2017-10-14,Aberdeen [AQ],16
+2017-10-14,Aberdeen Union Street Roadside [AQ],33
+2017-10-15,Aberdeen [AQ],8
+2017-10-15,Aberdeen Union Street Roadside [AQ],18
+2017-10-16,Aberdeen [AQ],13
+2017-10-16,Aberdeen Union Street Roadside [AQ],44
+2017-10-17,Aberdeen [AQ],10
+2017-10-17,Aberdeen Union Street Roadside [AQ],39
+2017-10-18,Aberdeen [AQ],25
+2017-10-18,Aberdeen Union Street Roadside [AQ],51
+2017-10-19,Aberdeen [AQ],30
+2017-10-19,Aberdeen Union Street Roadside [AQ],27
+2017-10-20,Aberdeen [AQ],25
+2017-10-20,Aberdeen Union Street Roadside [AQ],36
+2017-10-21,Aberdeen [AQ],17
+2017-10-21,Aberdeen Union Street Roadside [AQ],22
+2017-10-22,Aberdeen [AQ],8
+2017-10-22,Aberdeen Union Street Roadside [AQ],28
+2017-10-23,Aberdeen [AQ],26
+2017-10-23,Aberdeen Union Street Roadside [AQ],27
+2017-10-24,Aberdeen [AQ],26
+2017-10-24,Aberdeen Union Street Roadside [AQ],32
+2017-10-25,Aberdeen [AQ],35
+2017-10-25,Aberdeen Union Street Roadside [AQ],48
+2017-10-26,Aberdeen [AQ],25
+2017-10-26,Aberdeen Union Street Roadside [AQ],49
+2017-10-27,Aberdeen [AQ],28
+2017-10-27,Aberdeen Union Street Roadside [AQ],60
+2017-10-28,Aberdeen [AQ],10
+2017-10-28,Aberdeen Union Street Roadside [AQ],37
+2017-10-29,Aberdeen [AQ],13
+2017-10-29,Aberdeen Union Street Roadside [AQ],31
+2017-10-30,Aberdeen [AQ],61
+2017-10-30,Aberdeen Union Street Roadside [AQ],53
+2017-10-31,Aberdeen [AQ],46
+2017-10-31,Aberdeen Union Street Roadside [AQ],38
+2017-11-01,Aberdeen [AQ],26
+2017-11-01,Aberdeen Union Street Roadside [AQ],43
+2017-11-02,Aberdeen [AQ],45
+2017-11-02,Aberdeen Union Street Roadside [AQ],64
+2017-11-03,Aberdeen [AQ],54
+2017-11-03,Aberdeen Union Street Roadside [AQ],49
+2017-11-04,Aberdeen [AQ],53
+2017-11-04,Aberdeen Union Street Roadside [AQ],67
+2017-11-05,Aberdeen [AQ],13
+2017-11-05,Aberdeen Union Street Roadside [AQ],37
+2017-11-06,Aberdeen [AQ],25
+2017-11-06,Aberdeen Union Street Roadside [AQ],26
+2017-11-07,Aberdeen [AQ],54
+2017-11-07,Aberdeen Union Street Roadside [AQ],55
+2017-11-08,Aberdeen [AQ],42
+2017-11-08,Aberdeen Union Street Roadside [AQ],34
+2017-11-09,Aberdeen [AQ],33
+2017-11-09,Aberdeen Union Street Roadside [AQ],56
+2017-11-10,Aberdeen [AQ],18
+2017-11-10,Aberdeen Union Street Roadside [AQ],53
+2017-11-11,Aberdeen [AQ],16
+2017-11-11,Aberdeen Union Street Roadside [AQ],60
+2017-11-12,Aberdeen [AQ],10
+2017-11-12,Aberdeen Union Street Roadside [AQ],28
+2017-11-13,Aberdeen [AQ],33
+2017-11-13,Aberdeen Union Street Roadside [AQ],39
+2017-11-14,Aberdeen [AQ],69
+2017-11-14,Aberdeen Union Street Roadside [AQ],
+2017-11-15,Aberdeen [AQ],65
+2017-11-15,Aberdeen Union Street Roadside [AQ],
+2017-11-16,Aberdeen [AQ],26
+2017-11-16,Aberdeen Union Street Roadside [AQ],
+2017-11-17,Aberdeen [AQ],41
+2017-11-17,Aberdeen Union Street Roadside [AQ],
+2017-11-18,Aberdeen [AQ],10
+2017-11-18,Aberdeen Union Street Roadside [AQ],
+2017-11-19,Aberdeen [AQ],29
+2017-11-19,Aberdeen Union Street Roadside [AQ],
+2017-11-20,Aberdeen [AQ],12
+2017-11-20,Aberdeen Union Street Roadside [AQ],
+2017-11-21,Aberdeen [AQ],26
+2017-11-21,Aberdeen Union Street Roadside [AQ],
+2017-11-22,Aberdeen [AQ],56
+2017-11-22,Aberdeen Union Street Roadside [AQ],
+2017-11-23,Aberdeen [AQ],39
+2017-11-23,Aberdeen Union Street Roadside [AQ],
+2017-11-24,Aberdeen [AQ],45
+2017-11-24,Aberdeen Union Street Roadside [AQ],66
+2017-11-25,Aberdeen [AQ],14
+2017-11-25,Aberdeen Union Street Roadside [AQ],50
+2017-11-26,Aberdeen [AQ],14
+2017-11-26,Aberdeen Union Street Roadside [AQ],35
+2017-11-27,Aberdeen [AQ],22
+2017-11-27,Aberdeen Union Street Roadside [AQ],45
+2017-11-28,Aberdeen [AQ],18
+2017-11-28,Aberdeen Union Street Roadside [AQ],45
+2017-11-29,Aberdeen [AQ],17
+2017-11-29,Aberdeen Union Street Roadside [AQ],48
+2017-11-30,Aberdeen [AQ],14
+2017-11-30,Aberdeen Union Street Roadside [AQ],49
+2017-12-01,Aberdeen [AQ],36
+2017-12-01,Aberdeen Union Street Roadside [AQ],68
+2017-12-02,Aberdeen [AQ],37
+2017-12-02,Aberdeen Union Street Roadside [AQ],76
+2017-12-03,Aberdeen [AQ],15
+2017-12-03,Aberdeen Union Street Roadside [AQ],56
+2017-12-04,Aberdeen [AQ],42
+2017-12-04,Aberdeen Union Street Roadside [AQ],74
+2017-12-05,Aberdeen [AQ],54
+2017-12-05,Aberdeen Union Street Roadside [AQ],57
+2017-12-06,Aberdeen [AQ],24
+2017-12-06,Aberdeen Union Street Roadside [AQ],28
+2017-12-07,Aberdeen [AQ],12
+2017-12-07,Aberdeen Union Street Roadside [AQ],32
+2017-12-08,Aberdeen [AQ],12
+2017-12-08,Aberdeen Union Street Roadside [AQ],35
+2017-12-09,Aberdeen [AQ],24
+2017-12-09,Aberdeen Union Street Roadside [AQ],62
+2017-12-10,Aberdeen [AQ],45
+2017-12-10,Aberdeen Union Street Roadside [AQ],58
+2017-12-11,Aberdeen [AQ],49
+2017-12-11,Aberdeen Union Street Roadside [AQ],65
+2017-12-12,Aberdeen [AQ],60
+2017-12-12,Aberdeen Union Street Roadside [AQ],59
+2017-12-13,Aberdeen [AQ],51
+2017-12-13,Aberdeen Union Street Roadside [AQ],70
+2017-12-14,Aberdeen [AQ],89
+2017-12-14,Aberdeen Union Street Roadside [AQ],79
+2017-12-15,Aberdeen [AQ],21
+2017-12-15,Aberdeen Union Street Roadside [AQ],51
+2017-12-16,Aberdeen [AQ],29
+2017-12-16,Aberdeen Union Street Roadside [AQ],59
+2017-12-17,Aberdeen [AQ],21
+2017-12-17,Aberdeen Union Street Roadside [AQ],39
+2017-12-18,Aberdeen [AQ],86
+2017-12-18,Aberdeen Union Street Roadside [AQ],74
+2017-12-19,Aberdeen [AQ],57
+2017-12-19,Aberdeen Union Street Roadside [AQ],42
+2017-12-20,Aberdeen [AQ],57
+2017-12-20,Aberdeen Union Street Roadside [AQ],71
+2017-12-21,Aberdeen [AQ],114
+2017-12-21,Aberdeen Union Street Roadside [AQ],97
+2017-12-22,Aberdeen [AQ],71
+2017-12-22,Aberdeen Union Street Roadside [AQ],60
+2017-12-23,Aberdeen [AQ],24
+2017-12-23,Aberdeen Union Street Roadside [AQ],53
+2017-12-24,Aberdeen [AQ],24
+2017-12-24,Aberdeen Union Street Roadside [AQ],36
+2017-12-25,Aberdeen [AQ],11
+2017-12-25,Aberdeen Union Street Roadside [AQ],19
+2017-12-26,Aberdeen [AQ],10
+2017-12-26,Aberdeen Union Street Roadside [AQ],28
+2017-12-27,Aberdeen [AQ],10
+2017-12-27,Aberdeen Union Street Roadside [AQ],30
+2017-12-28,Aberdeen [AQ],15
+2017-12-28,Aberdeen Union Street Roadside [AQ],38
+2017-12-29,Aberdeen [AQ],48
+2017-12-29,Aberdeen Union Street Roadside [AQ],57
+2017-12-30,Aberdeen [AQ],40
+2017-12-30,Aberdeen Union Street Roadside [AQ],50
+2017-12-31,Aberdeen [AQ],17
+2017-12-31,Aberdeen Union Street Roadside [AQ],37
+2018-01-01,Aberdeen [AQ],29
+2018-01-01,Aberdeen Union Street Roadside [AQ],50
+2018-01-02,Aberdeen [AQ],34
+2018-01-02,Aberdeen Union Street Roadside [AQ],43
+2018-01-03,Aberdeen [AQ],86
+2018-01-03,Aberdeen Union Street Roadside [AQ],74
+2018-01-04,Aberdeen [AQ],41
+2018-01-04,Aberdeen Union Street Roadside [AQ],57
+2018-01-05,Aberdeen [AQ],26
+2018-01-05,Aberdeen Union Street Roadside [AQ],58
+2018-01-06,Aberdeen [AQ],13
+2018-01-06,Aberdeen Union Street Roadside [AQ],50
+2018-01-07,Aberdeen [AQ],64
+2018-01-07,Aberdeen Union Street Roadside [AQ],63
+2018-01-08,Aberdeen [AQ],36
+2018-01-08,Aberdeen Union Street Roadside [AQ],32
+2018-01-09,Aberdeen [AQ],28
+2018-01-09,Aberdeen Union Street Roadside [AQ],19
+2018-01-10,Aberdeen [AQ],44
+2018-01-10,Aberdeen Union Street Roadside [AQ],52
+2018-01-11,Aberdeen [AQ],49
+2018-01-11,Aberdeen Union Street Roadside [AQ],70
+2018-01-12,Aberdeen [AQ],44
+2018-01-12,Aberdeen Union Street Roadside [AQ],31
+2018-01-13,Aberdeen [AQ],27
+2018-01-13,Aberdeen Union Street Roadside [AQ],16
+2018-01-14,Aberdeen [AQ],16
+2018-01-14,Aberdeen Union Street Roadside [AQ],12
+2018-01-15,Aberdeen [AQ],41
+2018-01-15,Aberdeen Union Street Roadside [AQ],64
+2018-01-16,Aberdeen [AQ],31
+2018-01-16,Aberdeen Union Street Roadside [AQ],57
+2018-01-17,Aberdeen [AQ],30
+2018-01-17,Aberdeen Union Street Roadside [AQ],62
+2018-01-18,Aberdeen [AQ],59
+2018-01-18,Aberdeen Union Street Roadside [AQ],77
+2018-01-19,Aberdeen [AQ],63
+2018-01-19,Aberdeen Union Street Roadside [AQ],77
+2018-01-20,Aberdeen [AQ],37
+2018-01-20,Aberdeen Union Street Roadside [AQ],66
+2018-01-21,Aberdeen [AQ],39
+2018-01-21,Aberdeen Union Street Roadside [AQ],34
+2018-01-22,Aberdeen [AQ],39
+2018-01-22,Aberdeen Union Street Roadside [AQ],48
+2018-01-23,Aberdeen [AQ],27
+2018-01-23,Aberdeen Union Street Roadside [AQ],30
+2018-01-24,Aberdeen [AQ],19
+2018-01-24,Aberdeen Union Street Roadside [AQ],28
+2018-01-25,Aberdeen [AQ],47
+2018-01-25,Aberdeen Union Street Roadside [AQ],41
+2018-01-26,Aberdeen [AQ],46
+2018-01-26,Aberdeen Union Street Roadside [AQ],48
+2018-01-27,Aberdeen [AQ],16
+2018-01-27,Aberdeen Union Street Roadside [AQ],29
+2018-01-28,Aberdeen [AQ],25
+2018-01-28,Aberdeen Union Street Roadside [AQ],28
+2018-01-29,Aberdeen [AQ],24
+2018-01-29,Aberdeen Union Street Roadside [AQ],48
+2018-01-30,Aberdeen [AQ],19
+2018-01-30,Aberdeen Union Street Roadside [AQ],19
+2018-01-31,Aberdeen [AQ],31
+2018-01-31,Aberdeen Union Street Roadside [AQ],49
+2018-02-01,Aberdeen [AQ],8
+2018-02-01,Aberdeen Union Street Roadside [AQ],69
+2018-02-02,Aberdeen [AQ],33
+2018-02-02,Aberdeen Union Street Roadside [AQ],
+2018-02-03,Aberdeen [AQ],60
+2018-02-03,Aberdeen Union Street Roadside [AQ],68
+2018-02-04,Aberdeen [AQ],60
+2018-02-04,Aberdeen Union Street Roadside [AQ],61
+2018-02-05,Aberdeen [AQ],35
+2018-02-05,Aberdeen Union Street Roadside [AQ],35
+2018-02-06,Aberdeen [AQ],25
+2018-02-06,Aberdeen Union Street Roadside [AQ],45
+2018-02-07,Aberdeen [AQ],43
+2018-02-07,Aberdeen Union Street Roadside [AQ],54
+2018-02-08,Aberdeen [AQ],56
+2018-02-08,Aberdeen Union Street Roadside [AQ],53
+2018-02-09,Aberdeen [AQ],43
+2018-02-09,Aberdeen Union Street Roadside [AQ],69
+2018-02-10,Aberdeen [AQ],27
+2018-02-10,Aberdeen Union Street Roadside [AQ],40
+2018-02-11,Aberdeen [AQ],11
+2018-02-11,Aberdeen Union Street Roadside [AQ],32
+2018-02-12,Aberdeen [AQ],45
+2018-02-12,Aberdeen Union Street Roadside [AQ],52
+2018-02-13,Aberdeen [AQ],47
+2018-02-13,Aberdeen Union Street Roadside [AQ],46
+2018-02-14,Aberdeen [AQ],33
+2018-02-14,Aberdeen Union Street Roadside [AQ],20
+2018-02-15,Aberdeen [AQ],20
+2018-02-15,Aberdeen Union Street Roadside [AQ],36
+2018-02-16,Aberdeen [AQ],35
+2018-02-16,Aberdeen Union Street Roadside [AQ],46
+2018-02-17,Aberdeen [AQ],27
+2018-02-17,Aberdeen Union Street Roadside [AQ],43
+2018-02-18,Aberdeen [AQ],34
+2018-02-18,Aberdeen Union Street Roadside [AQ],44
+2018-02-19,Aberdeen [AQ],46
+2018-02-19,Aberdeen Union Street Roadside [AQ],52
+2018-02-20,Aberdeen [AQ],17
+2018-02-20,Aberdeen Union Street Roadside [AQ],49
+2018-02-21,Aberdeen [AQ],49
+2018-02-21,Aberdeen Union Street Roadside [AQ],55
+2018-02-22,Aberdeen [AQ],34
+2018-02-22,Aberdeen Union Street Roadside [AQ],35
+2018-02-23,Aberdeen [AQ],26
+2018-02-23,Aberdeen Union Street Roadside [AQ],26
+2018-02-24,Aberdeen [AQ],24
+2018-02-24,Aberdeen Union Street Roadside [AQ],16
+2018-02-25,Aberdeen [AQ],21
+2018-02-25,Aberdeen Union Street Roadside [AQ],16
+2018-02-26,Aberdeen [AQ],15
+2018-02-26,Aberdeen Union Street Roadside [AQ],54
+2018-02-27,Aberdeen [AQ],4
+2018-02-27,Aberdeen Union Street Roadside [AQ],51
+2018-02-28,Aberdeen [AQ],3
+2018-02-28,Aberdeen Union Street Roadside [AQ],47
+2018-03-01,Aberdeen [AQ],3
+2018-03-01,Aberdeen Union Street Roadside [AQ],49
+2018-03-02,Aberdeen [AQ],4
+2018-03-02,Aberdeen Union Street Roadside [AQ],56
+2018-03-03,Aberdeen [AQ],5
+2018-03-03,Aberdeen Union Street Roadside [AQ],49
+2018-03-04,Aberdeen [AQ],6
+2018-03-04,Aberdeen Union Street Roadside [AQ],48
+2018-03-05,Aberdeen [AQ],6
+2018-03-05,Aberdeen Union Street Roadside [AQ],60
+2018-03-06,Aberdeen [AQ],9
+2018-03-06,Aberdeen Union Street Roadside [AQ],54
+2018-03-07,Aberdeen [AQ],36
+2018-03-07,Aberdeen Union Street Roadside [AQ],39
+2018-03-08,Aberdeen [AQ],32
+2018-03-08,Aberdeen Union Street Roadside [AQ],41
+2018-03-09,Aberdeen [AQ],42
+2018-03-09,Aberdeen Union Street Roadside [AQ],67
+2018-03-10,Aberdeen [AQ],27
+2018-03-10,Aberdeen Union Street Roadside [AQ],67
+2018-03-11,Aberdeen [AQ],12
+2018-03-11,Aberdeen Union Street Roadside [AQ],45
+2018-03-12,Aberdeen [AQ],
+2018-03-12,Aberdeen Union Street Roadside [AQ],63
+2018-03-13,Aberdeen [AQ],
+2018-03-13,Aberdeen Union Street Roadside [AQ],57
+2018-03-14,Aberdeen [AQ],31
+2018-03-14,Aberdeen Union Street Roadside [AQ],24
+2018-03-15,Aberdeen [AQ],4
+2018-03-15,Aberdeen Union Street Roadside [AQ],25
+2018-03-16,Aberdeen [AQ],3
+2018-03-16,Aberdeen Union Street Roadside [AQ],29
+2018-03-17,Aberdeen [AQ],3
+2018-03-17,Aberdeen Union Street Roadside [AQ],47
+2018-03-18,Aberdeen [AQ],2
+2018-03-18,Aberdeen Union Street Roadside [AQ],46
+2018-03-19,Aberdeen [AQ],14
+2018-03-19,Aberdeen Union Street Roadside [AQ],45
+2018-03-20,Aberdeen [AQ],25
+2018-03-20,Aberdeen Union Street Roadside [AQ],60
+2018-03-21,Aberdeen [AQ],26
+2018-03-21,Aberdeen Union Street Roadside [AQ],55
+2018-03-22,Aberdeen [AQ],29
+2018-03-22,Aberdeen Union Street Roadside [AQ],37
+2018-03-23,Aberdeen [AQ],21
+2018-03-23,Aberdeen Union Street Roadside [AQ],35
+2018-03-24,Aberdeen [AQ],31
+2018-03-24,Aberdeen Union Street Roadside [AQ],66
+2018-03-25,Aberdeen [AQ],17
+2018-03-25,Aberdeen Union Street Roadside [AQ],47
+2018-03-26,Aberdeen [AQ],34
+2018-03-26,Aberdeen Union Street Roadside [AQ],49
+2018-03-27,Aberdeen [AQ],39
+2018-03-27,Aberdeen Union Street Roadside [AQ],33
+2018-03-28,Aberdeen [AQ],29
+2018-03-28,Aberdeen Union Street Roadside [AQ],65
+2018-03-29,Aberdeen [AQ],20
+2018-03-29,Aberdeen Union Street Roadside [AQ],58
+2018-03-30,Aberdeen [AQ],7
+2018-03-30,Aberdeen Union Street Roadside [AQ],53
+2018-03-31,Aberdeen [AQ],6
+2018-03-31,Aberdeen Union Street Roadside [AQ],45
+2018-04-01,Aberdeen [AQ],17
+2018-04-01,Aberdeen Union Street Roadside [AQ],49
+2018-04-02,Aberdeen [AQ],12
+2018-04-02,Aberdeen Union Street Roadside [AQ],58
+2018-04-03,Aberdeen [AQ],6
+2018-04-03,Aberdeen Union Street Roadside [AQ],45
+2018-04-04,Aberdeen [AQ],11
+2018-04-04,Aberdeen Union Street Roadside [AQ],46
+2018-04-05,Aberdeen [AQ],22
+2018-04-05,Aberdeen Union Street Roadside [AQ],59
+2018-04-06,Aberdeen [AQ],20
+2018-04-06,Aberdeen Union Street Roadside [AQ],38
+2018-04-07,Aberdeen [AQ],27
+2018-04-07,Aberdeen Union Street Roadside [AQ],39
+2018-04-08,Aberdeen [AQ],23
+2018-04-08,Aberdeen Union Street Roadside [AQ],42
+2018-04-09,Aberdeen [AQ],25
+2018-04-09,Aberdeen Union Street Roadside [AQ],51
+2018-04-10,Aberdeen [AQ],6
+2018-04-10,Aberdeen Union Street Roadside [AQ],56
+2018-04-11,Aberdeen [AQ],6
+2018-04-11,Aberdeen Union Street Roadside [AQ],68
+2018-04-12,Aberdeen [AQ],7
+2018-04-12,Aberdeen Union Street Roadside [AQ],68
+2018-04-13,Aberdeen [AQ],13
+2018-04-13,Aberdeen Union Street Roadside [AQ],56
+2018-04-14,Aberdeen [AQ],24
+2018-04-14,Aberdeen Union Street Roadside [AQ],30
+2018-04-15,Aberdeen [AQ],31
+2018-04-15,Aberdeen Union Street Roadside [AQ],27
+2018-04-16,Aberdeen [AQ],23
+2018-04-16,Aberdeen Union Street Roadside [AQ],21
+2018-04-17,Aberdeen [AQ],21
+2018-04-17,Aberdeen Union Street Roadside [AQ],
+2018-04-18,Aberdeen [AQ],19
+2018-04-18,Aberdeen Union Street Roadside [AQ],
+2018-04-19,Aberdeen [AQ],28
+2018-04-19,Aberdeen Union Street Roadside [AQ],37
+2018-04-20,Aberdeen [AQ],22
+2018-04-20,Aberdeen Union Street Roadside [AQ],55
+2018-04-21,Aberdeen [AQ],22
+2018-04-21,Aberdeen Union Street Roadside [AQ],32
+2018-04-22,Aberdeen [AQ],21
+2018-04-22,Aberdeen Union Street Roadside [AQ],21
+2018-04-23,Aberdeen [AQ],18
+2018-04-23,Aberdeen Union Street Roadside [AQ],38
+2018-04-24,Aberdeen [AQ],19
+2018-04-24,Aberdeen Union Street Roadside [AQ],54
+2018-04-25,Aberdeen [AQ],27
+2018-04-25,Aberdeen Union Street Roadside [AQ],48
+2018-04-26,Aberdeen [AQ],15
+2018-04-26,Aberdeen Union Street Roadside [AQ],48
+2018-04-27,Aberdeen [AQ],22
+2018-04-27,Aberdeen Union Street Roadside [AQ],59
+2018-04-28,Aberdeen [AQ],13
+2018-04-28,Aberdeen Union Street Roadside [AQ],53
+2018-04-29,Aberdeen [AQ],9
+2018-04-29,Aberdeen Union Street Roadside [AQ],37
+2018-04-30,Aberdeen [AQ],12
+2018-04-30,Aberdeen Union Street Roadside [AQ],48
+2018-05-01,Aberdeen [AQ],24
+2018-05-01,Aberdeen Union Street Roadside [AQ],22
+2018-05-02,Aberdeen [AQ],15
+2018-05-02,Aberdeen Union Street Roadside [AQ],45
+2018-05-03,Aberdeen [AQ],22
+2018-05-03,Aberdeen Union Street Roadside [AQ],37
+2018-05-04,Aberdeen [AQ],18
+2018-05-04,Aberdeen Union Street Roadside [AQ],33
+2018-05-05,Aberdeen [AQ],10
+2018-05-05,Aberdeen Union Street Roadside [AQ],19
+2018-05-06,Aberdeen [AQ],16
+2018-05-06,Aberdeen Union Street Roadside [AQ],24
+2018-05-07,Aberdeen [AQ],22
+2018-05-07,Aberdeen Union Street Roadside [AQ],47
+2018-05-08,Aberdeen [AQ],30
+2018-05-08,Aberdeen Union Street Roadside [AQ],41
+2018-05-09,Aberdeen [AQ],16
+2018-05-09,Aberdeen Union Street Roadside [AQ],19
+2018-05-10,Aberdeen [AQ],20
+2018-05-10,Aberdeen Union Street Roadside [AQ],57
+2018-05-11,Aberdeen [AQ],25
+2018-05-11,Aberdeen Union Street Roadside [AQ],22
+2018-05-12,Aberdeen [AQ],19
+2018-05-12,Aberdeen Union Street Roadside [AQ],38
+2018-05-13,Aberdeen [AQ],24
+2018-05-13,Aberdeen Union Street Roadside [AQ],45
+2018-05-14,Aberdeen [AQ],24
+2018-05-14,Aberdeen Union Street Roadside [AQ],36
+2018-05-15,Aberdeen [AQ],23
+2018-05-15,Aberdeen Union Street Roadside [AQ],34
+2018-05-16,Aberdeen [AQ],10
+2018-05-16,Aberdeen Union Street Roadside [AQ],41
+2018-05-17,Aberdeen [AQ],14
+2018-05-17,Aberdeen Union Street Roadside [AQ],39
+2018-05-18,Aberdeen [AQ],24
+2018-05-18,Aberdeen Union Street Roadside [AQ],28
+2018-05-19,Aberdeen [AQ],22
+2018-05-19,Aberdeen Union Street Roadside [AQ],23
+2018-05-20,Aberdeen [AQ],12
+2018-05-20,Aberdeen Union Street Roadside [AQ],14
+2018-05-21,Aberdeen [AQ],18
+2018-05-21,Aberdeen Union Street Roadside [AQ],26
+2018-05-22,Aberdeen [AQ],7
+2018-05-22,Aberdeen Union Street Roadside [AQ],37
+2018-05-23,Aberdeen [AQ],9
+2018-05-23,Aberdeen Union Street Roadside [AQ],
+2018-05-24,Aberdeen [AQ],22
+2018-05-24,Aberdeen Union Street Roadside [AQ],
+2018-05-25,Aberdeen [AQ],18
+2018-05-25,Aberdeen Union Street Roadside [AQ],49
+2018-05-26,Aberdeen [AQ],8
+2018-05-26,Aberdeen Union Street Roadside [AQ],41
+2018-05-27,Aberdeen [AQ],11
+2018-05-27,Aberdeen Union Street Roadside [AQ],41
+2018-05-28,Aberdeen [AQ],27
+2018-05-28,Aberdeen Union Street Roadside [AQ],61
+2018-05-29,Aberdeen [AQ],10
+2018-05-29,Aberdeen Union Street Roadside [AQ],53
+2018-05-30,Aberdeen [AQ],8
+2018-05-30,Aberdeen Union Street Roadside [AQ],42
+2018-05-31,Aberdeen [AQ],21
+2018-05-31,Aberdeen Union Street Roadside [AQ],43
+2018-06-01,Aberdeen [AQ],43
+2018-06-01,Aberdeen Union Street Roadside [AQ],48
+2018-06-02,Aberdeen [AQ],19
+2018-06-02,Aberdeen Union Street Roadside [AQ],68
+2018-06-03,Aberdeen [AQ],14
+2018-06-03,Aberdeen Union Street Roadside [AQ],46
+2018-06-04,Aberdeen [AQ],6
+2018-06-04,Aberdeen Union Street Roadside [AQ],33
+2018-06-05,Aberdeen [AQ],3
+2018-06-05,Aberdeen Union Street Roadside [AQ],27
+2018-06-06,Aberdeen [AQ],6
+2018-06-06,Aberdeen Union Street Roadside [AQ],39
+2018-06-07,Aberdeen [AQ],6
+2018-06-07,Aberdeen Union Street Roadside [AQ],35
+2018-06-08,Aberdeen [AQ],5
+2018-06-08,Aberdeen Union Street Roadside [AQ],38
+2018-06-09,Aberdeen [AQ],4
+2018-06-09,Aberdeen Union Street Roadside [AQ],33
+2018-06-10,Aberdeen [AQ],7
+2018-06-10,Aberdeen Union Street Roadside [AQ],25
+2018-06-11,Aberdeen [AQ],10
+2018-06-11,Aberdeen Union Street Roadside [AQ],52
+2018-06-12,Aberdeen [AQ],17
+2018-06-12,Aberdeen Union Street Roadside [AQ],44
+2018-06-13,Aberdeen [AQ],17
+2018-06-13,Aberdeen Union Street Roadside [AQ],20
+2018-06-14,Aberdeen [AQ],7
+2018-06-14,Aberdeen Union Street Roadside [AQ],24
+2018-06-15,Aberdeen [AQ],8
+2018-06-15,Aberdeen Union Street Roadside [AQ],29
+2018-06-16,Aberdeen [AQ],12
+2018-06-16,Aberdeen Union Street Roadside [AQ],28
+2018-06-17,Aberdeen [AQ],8
+2018-06-17,Aberdeen Union Street Roadside [AQ],18
+2018-06-18,Aberdeen [AQ],9
+2018-06-18,Aberdeen Union Street Roadside [AQ],32
+2018-06-19,Aberdeen [AQ],13
+2018-06-19,Aberdeen Union Street Roadside [AQ],39
+2018-06-20,Aberdeen [AQ],13
+2018-06-20,Aberdeen Union Street Roadside [AQ],37
+2018-06-21,Aberdeen [AQ],4
+2018-06-21,Aberdeen Union Street Roadside [AQ],24
+2018-06-22,Aberdeen [AQ],8
+2018-06-22,Aberdeen Union Street Roadside [AQ],40
+2018-06-23,Aberdeen [AQ],13
+2018-06-23,Aberdeen Union Street Roadside [AQ],36
+2018-06-24,Aberdeen [AQ],10
+2018-06-24,Aberdeen Union Street Roadside [AQ],25
+2018-06-25,Aberdeen [AQ],17
+2018-06-25,Aberdeen Union Street Roadside [AQ],39
+2018-06-26,Aberdeen [AQ],18
+2018-06-26,Aberdeen Union Street Roadside [AQ],23
+2018-06-27,Aberdeen [AQ],17
+2018-06-27,Aberdeen Union Street Roadside [AQ],19
+2018-06-28,Aberdeen [AQ],18
+2018-06-28,Aberdeen Union Street Roadside [AQ],52
+2018-06-29,Aberdeen [AQ],4
+2018-06-29,Aberdeen Union Street Roadside [AQ],47
+2018-06-30,Aberdeen [AQ],10
+2018-06-30,Aberdeen Union Street Roadside [AQ],18
+2018-07-01,Aberdeen [AQ],12
+2018-07-01,Aberdeen Union Street Roadside [AQ],13
+2018-07-02,Aberdeen [AQ],3
+2018-07-02,Aberdeen Union Street Roadside [AQ],29
+2018-07-03,Aberdeen [AQ],21
+2018-07-03,Aberdeen Union Street Roadside [AQ],28
+2018-07-04,Aberdeen [AQ],16
+2018-07-04,Aberdeen Union Street Roadside [AQ],17
+2018-07-05,Aberdeen [AQ],6
+2018-07-05,Aberdeen Union Street Roadside [AQ],35
+2018-07-06,Aberdeen [AQ],10
+2018-07-06,Aberdeen Union Street Roadside [AQ],30
+2018-07-07,Aberdeen [AQ],7
+2018-07-07,Aberdeen Union Street Roadside [AQ],29
+2018-07-08,Aberdeen [AQ],11
+2018-07-08,Aberdeen Union Street Roadside [AQ],21
+2018-07-09,Aberdeen [AQ],4
+2018-07-09,Aberdeen Union Street Roadside [AQ],28
+2018-07-10,Aberdeen [AQ],7
+2018-07-10,Aberdeen Union Street Roadside [AQ],39
+2018-07-11,Aberdeen [AQ],13
+2018-07-11,Aberdeen Union Street Roadside [AQ],34
+2018-07-12,Aberdeen [AQ],10
+2018-07-12,Aberdeen Union Street Roadside [AQ],42
+2018-07-13,Aberdeen [AQ],20
+2018-07-13,Aberdeen Union Street Roadside [AQ],23
+2018-07-14,Aberdeen [AQ],16
+2018-07-14,Aberdeen Union Street Roadside [AQ],28
+2018-07-15,Aberdeen [AQ],10
+2018-07-15,Aberdeen Union Street Roadside [AQ],13
+2018-07-16,Aberdeen [AQ],15
+2018-07-16,Aberdeen Union Street Roadside [AQ],27
+2018-07-17,Aberdeen [AQ],15
+2018-07-17,Aberdeen Union Street Roadside [AQ],40
+2018-07-18,Aberdeen [AQ],16
+2018-07-18,Aberdeen Union Street Roadside [AQ],42
+2018-07-19,Aberdeen [AQ],25
+2018-07-19,Aberdeen Union Street Roadside [AQ],42
+2018-07-20,Aberdeen [AQ],22
+2018-07-20,Aberdeen Union Street Roadside [AQ],38
+2018-07-21,Aberdeen [AQ],8
+2018-07-21,Aberdeen Union Street Roadside [AQ],48
+2018-07-22,Aberdeen [AQ],17
+2018-07-22,Aberdeen Union Street Roadside [AQ],35
+2018-07-23,Aberdeen [AQ],18
+2018-07-23,Aberdeen Union Street Roadside [AQ],28
+2018-07-24,Aberdeen [AQ],13
+2018-07-24,Aberdeen Union Street Roadside [AQ],32
+2018-07-25,Aberdeen [AQ],15
+2018-07-25,Aberdeen Union Street Roadside [AQ],22
+2018-07-26,Aberdeen [AQ],28
+2018-07-26,Aberdeen Union Street Roadside [AQ],22
+2018-07-27,Aberdeen [AQ],25
+2018-07-27,Aberdeen Union Street Roadside [AQ],50
+2018-07-28,Aberdeen [AQ],21
+2018-07-28,Aberdeen Union Street Roadside [AQ],19
+2018-07-29,Aberdeen [AQ],11
+2018-07-29,Aberdeen Union Street Roadside [AQ],14
+2018-07-30,Aberdeen [AQ],18
+2018-07-30,Aberdeen Union Street Roadside [AQ],23
+2018-07-31,Aberdeen [AQ],11
+2018-07-31,Aberdeen Union Street Roadside [AQ],14
+2018-08-01,Aberdeen [AQ],14
+2018-08-01,Aberdeen Union Street Roadside [AQ],15
+2018-08-02,Aberdeen [AQ],14
+2018-08-02,Aberdeen Union Street Roadside [AQ],20
+2018-08-03,Aberdeen [AQ],12
+2018-08-03,Aberdeen Union Street Roadside [AQ],30
+2018-08-04,Aberdeen [AQ],10
+2018-08-04,Aberdeen Union Street Roadside [AQ],36
+2018-08-05,Aberdeen [AQ],11
+2018-08-05,Aberdeen Union Street Roadside [AQ],16
+2018-08-06,Aberdeen [AQ],12
+2018-08-06,Aberdeen Union Street Roadside [AQ],28
+2018-08-07,Aberdeen [AQ],20
+2018-08-07,Aberdeen Union Street Roadside [AQ],24
+2018-08-08,Aberdeen [AQ],14
+2018-08-08,Aberdeen Union Street Roadside [AQ],33
+2018-08-09,Aberdeen [AQ],13
+2018-08-09,Aberdeen Union Street Roadside [AQ],27
+2018-08-10,Aberdeen [AQ],20
+2018-08-10,Aberdeen Union Street Roadside [AQ],37
+2018-08-11,Aberdeen [AQ],14
+2018-08-11,Aberdeen Union Street Roadside [AQ],27
+2018-08-12,Aberdeen [AQ],6
+2018-08-12,Aberdeen Union Street Roadside [AQ],39
+2018-08-13,Aberdeen [AQ],13
+2018-08-13,Aberdeen Union Street Roadside [AQ],43
+2018-08-14,Aberdeen [AQ],12
+2018-08-14,Aberdeen Union Street Roadside [AQ],27
+2018-08-15,Aberdeen [AQ],16
+2018-08-15,Aberdeen Union Street Roadside [AQ],23
+2018-08-16,Aberdeen [AQ],12
+2018-08-16,Aberdeen Union Street Roadside [AQ],29
+2018-08-17,Aberdeen [AQ],13
+2018-08-17,Aberdeen Union Street Roadside [AQ],19
+2018-08-18,Aberdeen [AQ],9
+2018-08-18,Aberdeen Union Street Roadside [AQ],36
+2018-08-19,Aberdeen [AQ],10
+2018-08-19,Aberdeen Union Street Roadside [AQ],34
+2018-08-20,Aberdeen [AQ],15
+2018-08-20,Aberdeen Union Street Roadside [AQ],40
+2018-08-21,Aberdeen [AQ],26
+2018-08-21,Aberdeen Union Street Roadside [AQ],21
+2018-08-22,Aberdeen [AQ],16
+2018-08-22,Aberdeen Union Street Roadside [AQ],36
+2018-08-23,Aberdeen [AQ],17
+2018-08-23,Aberdeen Union Street Roadside [AQ],33
+2018-08-24,Aberdeen [AQ],15
+2018-08-24,Aberdeen Union Street Roadside [AQ],46
+2018-08-25,Aberdeen [AQ],10
+2018-08-25,Aberdeen Union Street Roadside [AQ],35
+2018-08-26,Aberdeen [AQ],16
+2018-08-26,Aberdeen Union Street Roadside [AQ],11
+2018-08-27,Aberdeen [AQ],15
+2018-08-27,Aberdeen Union Street Roadside [AQ],37
+2018-08-28,Aberdeen [AQ],15
+2018-08-28,Aberdeen Union Street Roadside [AQ],20
+2018-08-29,Aberdeen [AQ],12
+2018-08-29,Aberdeen Union Street Roadside [AQ],40
+2018-08-30,Aberdeen [AQ],23
+2018-08-30,Aberdeen Union Street Roadside [AQ],40
+2018-08-31,Aberdeen [AQ],22
+2018-08-31,Aberdeen Union Street Roadside [AQ],21
+2018-09-01,Aberdeen [AQ],16
+2018-09-01,Aberdeen Union Street Roadside [AQ],23
+2018-09-02,Aberdeen [AQ],12
+2018-09-02,Aberdeen Union Street Roadside [AQ],15
+2018-09-03,Aberdeen [AQ],9
+2018-09-03,Aberdeen Union Street Roadside [AQ],39
+2018-09-04,Aberdeen [AQ],14
+2018-09-04,Aberdeen Union Street Roadside [AQ],52
+2018-09-05,Aberdeen [AQ],22
+2018-09-05,Aberdeen Union Street Roadside [AQ],25
+2018-09-06,Aberdeen [AQ],10
+2018-09-06,Aberdeen Union Street Roadside [AQ],42
+2018-09-07,Aberdeen [AQ],7
+2018-09-07,Aberdeen Union Street Roadside [AQ],41
+2018-09-08,Aberdeen [AQ],20
+2018-09-08,Aberdeen Union Street Roadside [AQ],44
+2018-09-09,Aberdeen [AQ],9
+2018-09-09,Aberdeen Union Street Roadside [AQ],19
+2018-09-10,Aberdeen [AQ],11
+2018-09-10,Aberdeen Union Street Roadside [AQ],21
+2018-09-11,Aberdeen [AQ],8
+2018-09-11,Aberdeen Union Street Roadside [AQ],30
+2018-09-12,Aberdeen [AQ],16
+2018-09-12,Aberdeen Union Street Roadside [AQ],44
+2018-09-13,Aberdeen [AQ],11
+2018-09-13,Aberdeen Union Street Roadside [AQ],33
+2018-09-14,Aberdeen [AQ],13
+2018-09-14,Aberdeen Union Street Roadside [AQ],45
+2018-09-15,Aberdeen [AQ],17
+2018-09-15,Aberdeen Union Street Roadside [AQ],27
+2018-09-16,Aberdeen [AQ],7
+2018-09-16,Aberdeen Union Street Roadside [AQ],18
+2018-09-17,Aberdeen [AQ],21
+2018-09-17,Aberdeen Union Street Roadside [AQ],21
+2018-09-18,Aberdeen [AQ],16
+2018-09-18,Aberdeen Union Street Roadside [AQ],23
+2018-09-19,Aberdeen [AQ],10
+2018-09-19,Aberdeen Union Street Roadside [AQ],14
+2018-09-20,Aberdeen [AQ],14
+2018-09-20,Aberdeen Union Street Roadside [AQ],34
+2018-09-21,Aberdeen [AQ],10
+2018-09-21,Aberdeen Union Street Roadside [AQ],40
+2018-09-22,Aberdeen [AQ],8
+2018-09-22,Aberdeen Union Street Roadside [AQ],44
+2018-09-23,Aberdeen [AQ],8
+2018-09-23,Aberdeen Union Street Roadside [AQ],37
+2018-09-24,Aberdeen [AQ],
+2018-09-24,Aberdeen Union Street Roadside [AQ],48
+2018-09-25,Aberdeen [AQ],
+2018-09-25,Aberdeen Union Street Roadside [AQ],
+2018-09-26,Aberdeen [AQ],11
+2018-09-26,Aberdeen Union Street Roadside [AQ],34
+2018-09-27,Aberdeen [AQ],8
+2018-09-27,Aberdeen Union Street Roadside [AQ],34
+2018-09-28,Aberdeen [AQ],18
+2018-09-28,Aberdeen Union Street Roadside [AQ],53
+2018-09-29,Aberdeen [AQ],16
+2018-09-29,Aberdeen Union Street Roadside [AQ],39
+2018-09-30,Aberdeen [AQ],9
+2018-09-30,Aberdeen Union Street Roadside [AQ],32
+2018-10-01,Aberdeen [AQ],20
+2018-10-01,Aberdeen Union Street Roadside [AQ],43
+2018-10-02,Aberdeen [AQ],8
+2018-10-02,Aberdeen Union Street Roadside [AQ],38
+2018-10-03,Aberdeen [AQ],27
+2018-10-03,Aberdeen Union Street Roadside [AQ],40
+2018-10-04,Aberdeen [AQ],15
+2018-10-04,Aberdeen Union Street Roadside [AQ],33
+2018-10-05,Aberdeen [AQ],24
+2018-10-05,Aberdeen Union Street Roadside [AQ],59
+2018-10-06,Aberdeen [AQ],28
+2018-10-06,Aberdeen Union Street Roadside [AQ],54
+2018-10-07,Aberdeen [AQ],10
+2018-10-07,Aberdeen Union Street Roadside [AQ],15
+2018-10-08,Aberdeen [AQ],17
+2018-10-08,Aberdeen Union Street Roadside [AQ],32
+2018-10-09,Aberdeen [AQ],11
+2018-10-09,Aberdeen Union Street Roadside [AQ],19
+2018-10-10,Aberdeen [AQ],26
+2018-10-10,Aberdeen Union Street Roadside [AQ],25
+2018-10-11,Aberdeen [AQ],29
+2018-10-11,Aberdeen Union Street Roadside [AQ],25
+2018-10-12,Aberdeen [AQ],20
+2018-10-12,Aberdeen Union Street Roadside [AQ],15
+2018-10-13,Aberdeen [AQ],19
+2018-10-13,Aberdeen Union Street Roadside [AQ],36
+2018-10-14,Aberdeen [AQ],20
+2018-10-14,Aberdeen Union Street Roadside [AQ],41
+2018-10-15,Aberdeen [AQ],25
+2018-10-15,Aberdeen Union Street Roadside [AQ],36
+2018-10-16,Aberdeen [AQ],19
+2018-10-16,Aberdeen Union Street Roadside [AQ],19
+2018-10-17,Aberdeen [AQ],25
+2018-10-17,Aberdeen Union Street Roadside [AQ],58
+2018-10-18,Aberdeen [AQ],30
+2018-10-18,Aberdeen Union Street Roadside [AQ],41
+2018-10-19,Aberdeen [AQ],20
+2018-10-19,Aberdeen Union Street Roadside [AQ],39
+2018-10-20,Aberdeen [AQ],15
+2018-10-20,Aberdeen Union Street Roadside [AQ],26
+2018-10-21,Aberdeen [AQ],10
+2018-10-21,Aberdeen Union Street Roadside [AQ],33
+2018-10-22,Aberdeen [AQ],16
+2018-10-22,Aberdeen Union Street Roadside [AQ],38
+2018-10-23,Aberdeen [AQ],6
+2018-10-23,Aberdeen Union Street Roadside [AQ],33
+2018-10-24,Aberdeen [AQ],13
+2018-10-24,Aberdeen Union Street Roadside [AQ],46
+2018-10-25,Aberdeen [AQ],21
+2018-10-25,Aberdeen Union Street Roadside [AQ],46
+2018-10-26,Aberdeen [AQ],8
+2018-10-26,Aberdeen Union Street Roadside [AQ],40
+2018-10-27,Aberdeen [AQ],7
+2018-10-27,Aberdeen Union Street Roadside [AQ],40
+2018-10-28,Aberdeen [AQ],18
+2018-10-28,Aberdeen Union Street Roadside [AQ],40
+2018-10-29,Aberdeen [AQ],13
+2018-10-29,Aberdeen Union Street Roadside [AQ],29
+2018-10-30,Aberdeen [AQ],12
+2018-10-30,Aberdeen Union Street Roadside [AQ],56
+2018-10-31,Aberdeen [AQ],28
+2018-10-31,Aberdeen Union Street Roadside [AQ],31
+2018-11-01,Aberdeen [AQ],39
+2018-11-01,Aberdeen Union Street Roadside [AQ],65
+2018-11-02,Aberdeen [AQ],31
+2018-11-02,Aberdeen Union Street Roadside [AQ],49
+2018-11-03,Aberdeen [AQ],13
+2018-11-03,Aberdeen Union Street Roadside [AQ],11
+2018-11-04,Aberdeen [AQ],19
+2018-11-04,Aberdeen Union Street Roadside [AQ],18
+2018-11-05,Aberdeen [AQ],34
+2018-11-05,Aberdeen Union Street Roadside [AQ],27
+2018-11-06,Aberdeen [AQ],31
+2018-11-06,Aberdeen Union Street Roadside [AQ],28
+2018-11-07,Aberdeen [AQ],23
+2018-11-07,Aberdeen Union Street Roadside [AQ],20
+2018-11-08,Aberdeen [AQ],28
+2018-11-08,Aberdeen Union Street Roadside [AQ],32
+2018-11-09,Aberdeen [AQ],16
+2018-11-09,Aberdeen Union Street Roadside [AQ],16
+2018-11-10,Aberdeen [AQ],22
+2018-11-10,Aberdeen Union Street Roadside [AQ],18
+2018-11-11,Aberdeen [AQ],27
+2018-11-11,Aberdeen Union Street Roadside [AQ],31
+2018-11-12,Aberdeen [AQ],19
+2018-11-12,Aberdeen Union Street Roadside [AQ],18
+2018-11-13,Aberdeen [AQ],24
+2018-11-13,Aberdeen Union Street Roadside [AQ],47
+2018-11-14,Aberdeen [AQ],18
+2018-11-14,Aberdeen Union Street Roadside [AQ],17
+2018-11-15,Aberdeen [AQ],20
+2018-11-15,Aberdeen Union Street Roadside [AQ],23
+2018-11-16,Aberdeen [AQ],43
+2018-11-16,Aberdeen Union Street Roadside [AQ],41
+2018-11-17,Aberdeen [AQ],29
+2018-11-17,Aberdeen Union Street Roadside [AQ],25
+2018-11-18,Aberdeen [AQ],27
+2018-11-18,Aberdeen Union Street Roadside [AQ],28
+2018-11-19,Aberdeen [AQ],11
+2018-11-19,Aberdeen Union Street Roadside [AQ],43
+2018-11-20,Aberdeen [AQ],2
+2018-11-20,Aberdeen Union Street Roadside [AQ],39
+2018-11-21,Aberdeen [AQ],11
+2018-11-21,Aberdeen Union Street Roadside [AQ],30
+2018-11-22,Aberdeen [AQ],12
+2018-11-22,Aberdeen Union Street Roadside [AQ],42
+2018-11-23,Aberdeen [AQ],15
+2018-11-23,Aberdeen Union Street Roadside [AQ],57
+2018-11-24,Aberdeen [AQ],18
+2018-11-24,Aberdeen Union Street Roadside [AQ],57
+2018-11-25,Aberdeen [AQ],4
+2018-11-25,Aberdeen Union Street Roadside [AQ],44
+2018-11-26,Aberdeen [AQ],26
+2018-11-26,Aberdeen Union Street Roadside [AQ],63
+2018-11-27,Aberdeen [AQ],18
+2018-11-27,Aberdeen Union Street Roadside [AQ],21
+2018-11-28,Aberdeen [AQ],22
+2018-11-28,Aberdeen Union Street Roadside [AQ],14
+2018-11-29,Aberdeen [AQ],17
+2018-11-29,Aberdeen Union Street Roadside [AQ],23
+2018-11-30,Aberdeen [AQ],12
+2018-11-30,Aberdeen Union Street Roadside [AQ],26
+2018-12-01,Aberdeen [AQ],36
+2018-12-01,Aberdeen Union Street Roadside [AQ],52
+2018-12-02,Aberdeen [AQ],41
+2018-12-02,Aberdeen Union Street Roadside [AQ],50
+2018-12-03,Aberdeen [AQ],15
+2018-12-03,Aberdeen Union Street Roadside [AQ],44
+2018-12-04,Aberdeen [AQ],51
+2018-12-04,Aberdeen Union Street Roadside [AQ],62
+2018-12-05,Aberdeen [AQ],47
+2018-12-05,Aberdeen Union Street Roadside [AQ],54
+2018-12-06,Aberdeen [AQ],38
+2018-12-06,Aberdeen Union Street Roadside [AQ],49
+2018-12-07,Aberdeen [AQ],16
+2018-12-07,Aberdeen Union Street Roadside [AQ],31
+2018-12-08,Aberdeen [AQ],9
+2018-12-08,Aberdeen Union Street Roadside [AQ],44
+2018-12-09,Aberdeen [AQ],12
+2018-12-09,Aberdeen Union Street Roadside [AQ],44
+2018-12-10,Aberdeen [AQ],47
+2018-12-10,Aberdeen Union Street Roadside [AQ],75
+2018-12-11,Aberdeen [AQ],37
+2018-12-11,Aberdeen Union Street Roadside [AQ],37
+2018-12-12,Aberdeen [AQ],22
+2018-12-12,Aberdeen Union Street Roadside [AQ],17
+2018-12-13,Aberdeen [AQ],22
+2018-12-13,Aberdeen Union Street Roadside [AQ],13
+2018-12-14,Aberdeen [AQ],22
+2018-12-14,Aberdeen Union Street Roadside [AQ],20
+2018-12-15,Aberdeen [AQ],14
+2018-12-15,Aberdeen Union Street Roadside [AQ],13
+2018-12-16,Aberdeen [AQ],20
+2018-12-16,Aberdeen Union Street Roadside [AQ],24
+2018-12-17,Aberdeen [AQ],27
+2018-12-17,Aberdeen Union Street Roadside [AQ],33
+2018-12-18,Aberdeen [AQ],24
+2018-12-18,Aberdeen Union Street Roadside [AQ],15
+2018-12-19,Aberdeen [AQ],35
+2018-12-19,Aberdeen Union Street Roadside [AQ],35
+2018-12-20,Aberdeen [AQ],38
+2018-12-20,Aberdeen Union Street Roadside [AQ],37
+2018-12-21,Aberdeen [AQ],44
+2018-12-21,Aberdeen Union Street Roadside [AQ],52
+2018-12-22,Aberdeen [AQ],49
+2018-12-22,Aberdeen Union Street Roadside [AQ],57
+2018-12-23,Aberdeen [AQ],25
+2018-12-23,Aberdeen Union Street Roadside [AQ],51
+2018-12-24,Aberdeen [AQ],35
+2018-12-24,Aberdeen Union Street Roadside [AQ],54
+2018-12-25,Aberdeen [AQ],30
+2018-12-25,Aberdeen Union Street Roadside [AQ],34
+2018-12-26,Aberdeen [AQ],27
+2018-12-26,Aberdeen Union Street Roadside [AQ],39
+2018-12-27,Aberdeen [AQ],43
+2018-12-27,Aberdeen Union Street Roadside [AQ],53
+2018-12-28,Aberdeen [AQ],29
+2018-12-28,Aberdeen Union Street Roadside [AQ],49
+2018-12-29,Aberdeen [AQ],20
+2018-12-29,Aberdeen Union Street Roadside [AQ],43
+2018-12-30,Aberdeen [AQ],33
+2018-12-30,Aberdeen Union Street Roadside [AQ],47
+2018-12-31,Aberdeen [AQ],23
+2018-12-31,Aberdeen Union Street Roadside [AQ],48
+2019-01-01,Aberdeen [AQ],2
+2019-01-01,Aberdeen Union Street Roadside [AQ],18
+2019-01-02,Aberdeen [AQ],24
+2019-01-02,Aberdeen Union Street Roadside [AQ],48
+2019-01-03,Aberdeen [AQ],42
+2019-01-03,Aberdeen Union Street Roadside [AQ],46
+2019-01-04,Aberdeen [AQ],36
+2019-01-04,Aberdeen Union Street Roadside [AQ],47
+2019-01-05,Aberdeen [AQ],30
+2019-01-05,Aberdeen Union Street Roadside [AQ],55
+2019-01-06,Aberdeen [AQ],27
+2019-01-06,Aberdeen Union Street Roadside [AQ],50
+2019-01-07,Aberdeen [AQ],10
+2019-01-07,Aberdeen Union Street Roadside [AQ],28
+2019-01-08,Aberdeen [AQ],7
+2019-01-08,Aberdeen Union Street Roadside [AQ],39
+2019-01-09,Aberdeen [AQ],29
+2019-01-09,Aberdeen Union Street Roadside [AQ],59
+2019-01-10,Aberdeen [AQ],17
+2019-01-10,Aberdeen Union Street Roadside [AQ],53
+2019-01-11,Aberdeen [AQ],31
+2019-01-11,Aberdeen Union Street Roadside [AQ],68
+2019-01-12,Aberdeen [AQ],8
+2019-01-12,Aberdeen Union Street Roadside [AQ],53
+2019-01-13,Aberdeen [AQ],3
+2019-01-13,Aberdeen Union Street Roadside [AQ],20
+2019-01-14,Aberdeen [AQ],28
+2019-01-14,Aberdeen Union Street Roadside [AQ],52
+2019-01-15,Aberdeen [AQ],41
+2019-01-15,Aberdeen Union Street Roadside [AQ],51
+2019-01-16,Aberdeen [AQ],23
+2019-01-16,Aberdeen Union Street Roadside [AQ],53
+2019-01-17,Aberdeen [AQ],16
+2019-01-17,Aberdeen Union Street Roadside [AQ],49
+2019-01-18,Aberdeen [AQ],41
+2019-01-18,Aberdeen Union Street Roadside [AQ],35
+2019-01-19,Aberdeen [AQ],39
+2019-01-19,Aberdeen Union Street Roadside [AQ],54
+2019-01-20,Aberdeen [AQ],16
+2019-01-20,Aberdeen Union Street Roadside [AQ],48
+2019-01-21,Aberdeen [AQ],23
+2019-01-21,Aberdeen Union Street Roadside [AQ],33
+2019-01-22,Aberdeen [AQ],31
+2019-01-22,Aberdeen Union Street Roadside [AQ],73
+2019-01-23,Aberdeen [AQ],50
+2019-01-23,Aberdeen Union Street Roadside [AQ],74
+2019-01-24,Aberdeen [AQ],51
+2019-01-24,Aberdeen Union Street Roadside [AQ],69
+2019-01-25,Aberdeen [AQ],29
+2019-01-25,Aberdeen Union Street Roadside [AQ],69
+2019-01-26,Aberdeen [AQ],17
+2019-01-26,Aberdeen Union Street Roadside [AQ],51
+2019-01-27,Aberdeen [AQ],4
+2019-01-27,Aberdeen Union Street Roadside [AQ],26
+2019-01-28,Aberdeen [AQ],29
+2019-01-28,Aberdeen Union Street Roadside [AQ],61
+2019-01-29,Aberdeen [AQ],52
+2019-01-29,Aberdeen Union Street Roadside [AQ],79
+2019-01-30,Aberdeen [AQ],41
+2019-01-30,Aberdeen Union Street Roadside [AQ],64
+2019-01-31,Aberdeen [AQ],57
+2019-01-31,Aberdeen Union Street Roadside [AQ],67
+2019-02-01,Aberdeen [AQ],49
+2019-02-01,Aberdeen Union Street Roadside [AQ],70
+2019-02-02,Aberdeen [AQ],26
+2019-02-02,Aberdeen Union Street Roadside [AQ],54
+2019-02-03,Aberdeen [AQ],19
+2019-02-03,Aberdeen Union Street Roadside [AQ],47
+2019-02-04,Aberdeen [AQ],28
+2019-02-04,Aberdeen Union Street Roadside [AQ],58
+2019-02-05,Aberdeen [AQ],44
+2019-02-05,Aberdeen Union Street Roadside [AQ],48
+2019-02-06,Aberdeen [AQ],36
+2019-02-06,Aberdeen Union Street Roadside [AQ],44
+2019-02-07,Aberdeen [AQ],39
+2019-02-07,Aberdeen Union Street Roadside [AQ],70
+2019-02-08,Aberdeen [AQ],17
+2019-02-08,Aberdeen Union Street Roadside [AQ],16
+2019-02-09,Aberdeen [AQ],10
+2019-02-09,Aberdeen Union Street Roadside [AQ],37
+2019-02-10,Aberdeen [AQ],19
+2019-02-10,Aberdeen Union Street Roadside [AQ],46
+2019-02-11,Aberdeen [AQ],24
+2019-02-11,Aberdeen Union Street Roadside [AQ],54
+2019-02-12,Aberdeen [AQ],29
+2019-02-12,Aberdeen Union Street Roadside [AQ],47
+2019-02-13,Aberdeen [AQ],22
+2019-02-13,Aberdeen Union Street Roadside [AQ],32
+2019-02-14,Aberdeen [AQ],26
+2019-02-14,Aberdeen Union Street Roadside [AQ],29
+2019-02-15,Aberdeen [AQ],20
+2019-02-15,Aberdeen Union Street Roadside [AQ],24
+2019-02-16,Aberdeen [AQ],12
+2019-02-16,Aberdeen Union Street Roadside [AQ],28
+2019-02-17,Aberdeen [AQ],14
+2019-02-17,Aberdeen Union Street Roadside [AQ],12
+2019-02-18,Aberdeen [AQ],14
+2019-02-18,Aberdeen Union Street Roadside [AQ],26
+2019-02-19,Aberdeen [AQ],22
+2019-02-19,Aberdeen Union Street Roadside [AQ],49
+2019-02-20,Aberdeen [AQ],19
+2019-02-20,Aberdeen Union Street Roadside [AQ],30
+2019-02-21,Aberdeen [AQ],29
+2019-02-21,Aberdeen Union Street Roadside [AQ],44
+2019-02-22,Aberdeen [AQ],23
+2019-02-22,Aberdeen Union Street Roadside [AQ],30
+2019-02-23,Aberdeen [AQ],25
+2019-02-23,Aberdeen Union Street Roadside [AQ],34
+2019-02-24,Aberdeen [AQ],27
+2019-02-24,Aberdeen Union Street Roadside [AQ],30
+2019-02-25,Aberdeen [AQ],32
+2019-02-25,Aberdeen Union Street Roadside [AQ],41
+2019-02-26,Aberdeen [AQ],43
+2019-02-26,Aberdeen Union Street Roadside [AQ],69
+2019-02-27,Aberdeen [AQ],
+2019-02-27,Aberdeen Union Street Roadside [AQ],70
+2019-02-28,Aberdeen [AQ],30
+2019-02-28,Aberdeen Union Street Roadside [AQ],58
+2019-03-01,Aberdeen [AQ],22
+2019-03-01,Aberdeen Union Street Roadside [AQ],38
+2019-03-02,Aberdeen [AQ],14
+2019-03-02,Aberdeen Union Street Roadside [AQ],22
+2019-03-03,Aberdeen [AQ],10
+2019-03-03,Aberdeen Union Street Roadside [AQ],20
+2019-03-04,Aberdeen [AQ],14
+2019-03-04,Aberdeen Union Street Roadside [AQ],44
+2019-03-05,Aberdeen [AQ],42
+2019-03-05,Aberdeen Union Street Roadside [AQ],47
+2019-03-06,Aberdeen [AQ],12
+2019-03-06,Aberdeen Union Street Roadside [AQ],54
+2019-03-07,Aberdeen [AQ],6
+2019-03-07,Aberdeen Union Street Roadside [AQ],35
+2019-03-08,Aberdeen [AQ],19
+2019-03-08,Aberdeen Union Street Roadside [AQ],40
+2019-03-09,Aberdeen [AQ],10
+2019-03-09,Aberdeen Union Street Roadside [AQ],46
+2019-03-10,Aberdeen [AQ],14
+2019-03-10,Aberdeen Union Street Roadside [AQ],31
+2019-03-11,Aberdeen [AQ],13
+2019-03-11,Aberdeen Union Street Roadside [AQ],39
+2019-03-12,Aberdeen [AQ],13
+2019-03-12,Aberdeen Union Street Roadside [AQ],26
+2019-03-13,Aberdeen [AQ],8
+2019-03-13,Aberdeen Union Street Roadside [AQ],30
+2019-03-14,Aberdeen [AQ],11
+2019-03-14,Aberdeen Union Street Roadside [AQ],42
+2019-03-15,Aberdeen [AQ],8
+2019-03-15,Aberdeen Union Street Roadside [AQ],43
+2019-03-16,Aberdeen [AQ],11
+2019-03-16,Aberdeen Union Street Roadside [AQ],41
+2019-03-17,Aberdeen [AQ],4
+2019-03-17,Aberdeen Union Street Roadside [AQ],22
+2019-03-18,Aberdeen [AQ],25
+2019-03-18,Aberdeen Union Street Roadside [AQ],41
+2019-03-19,Aberdeen [AQ],23
+2019-03-19,Aberdeen Union Street Roadside [AQ],36
+2019-03-20,Aberdeen [AQ],19
+2019-03-20,Aberdeen Union Street Roadside [AQ],35
+2019-03-21,Aberdeen [AQ],13
+2019-03-21,Aberdeen Union Street Roadside [AQ],40
+2019-03-22,Aberdeen [AQ],8
+2019-03-22,Aberdeen Union Street Roadside [AQ],28
+2019-03-23,Aberdeen [AQ],13
+2019-03-23,Aberdeen Union Street Roadside [AQ],45
+2019-03-24,Aberdeen [AQ],4
+2019-03-24,Aberdeen Union Street Roadside [AQ],21
+2019-03-25,Aberdeen [AQ],12
+2019-03-25,Aberdeen Union Street Roadside [AQ],45
+2019-03-26,Aberdeen [AQ],17
+2019-03-26,Aberdeen Union Street Roadside [AQ],55
+2019-03-27,Aberdeen [AQ],25
+2019-03-27,Aberdeen Union Street Roadside [AQ],61
+2019-03-28,Aberdeen [AQ],20
+2019-03-28,Aberdeen Union Street Roadside [AQ],40
+2019-03-29,Aberdeen [AQ],17
+2019-03-29,Aberdeen Union Street Roadside [AQ],48
+2019-03-30,Aberdeen [AQ],7
+2019-03-30,Aberdeen Union Street Roadside [AQ],45
+2019-03-31,Aberdeen [AQ],10
+2019-03-31,Aberdeen Union Street Roadside [AQ],26
+2019-04-01,Aberdeen [AQ],14
+2019-04-01,Aberdeen Union Street Roadside [AQ],18
+2019-04-02,Aberdeen [AQ],8
+2019-04-02,Aberdeen Union Street Roadside [AQ],45
+2019-04-03,Aberdeen [AQ],4
+2019-04-03,Aberdeen Union Street Roadside [AQ],49
+2019-04-04,Aberdeen [AQ],7
+2019-04-04,Aberdeen Union Street Roadside [AQ],
+2019-04-05,Aberdeen [AQ],8
+2019-04-05,Aberdeen Union Street Roadside [AQ],
+2019-04-06,Aberdeen [AQ],5
+2019-04-06,Aberdeen Union Street Roadside [AQ],44
+2019-04-07,Aberdeen [AQ],3
+2019-04-07,Aberdeen Union Street Roadside [AQ],23
+2019-04-08,Aberdeen [AQ],5
+2019-04-08,Aberdeen Union Street Roadside [AQ],48
+2019-04-09,Aberdeen [AQ],15
+2019-04-09,Aberdeen Union Street Roadside [AQ],51
+2019-04-10,Aberdeen [AQ],23
+2019-04-10,Aberdeen Union Street Roadside [AQ],33
+2019-04-11,Aberdeen [AQ],25
+2019-04-11,Aberdeen Union Street Roadside [AQ],43
+2019-04-12,Aberdeen [AQ],23
+2019-04-12,Aberdeen Union Street Roadside [AQ],22
+2019-04-13,Aberdeen [AQ],12
+2019-04-13,Aberdeen Union Street Roadside [AQ],19
+2019-04-14,Aberdeen [AQ],7
+2019-04-14,Aberdeen Union Street Roadside [AQ],15
+2019-04-15,Aberdeen [AQ],11
+2019-04-15,Aberdeen Union Street Roadside [AQ],17
+2019-04-16,Aberdeen [AQ],8
+2019-04-16,Aberdeen Union Street Roadside [AQ],26
+2019-04-17,Aberdeen [AQ],9
+2019-04-17,Aberdeen Union Street Roadside [AQ],33
+2019-04-18,Aberdeen [AQ],19
+2019-04-18,Aberdeen Union Street Roadside [AQ],45
+2019-04-19,Aberdeen [AQ],24
+2019-04-19,Aberdeen Union Street Roadside [AQ],32
+2019-04-20,Aberdeen [AQ],34
+2019-04-20,Aberdeen Union Street Roadside [AQ],55
+2019-04-21,Aberdeen [AQ],21
+2019-04-21,Aberdeen Union Street Roadside [AQ],34
+2019-04-22,Aberdeen [AQ],24
+2019-04-22,Aberdeen Union Street Roadside [AQ],27
+2019-04-23,Aberdeen [AQ],9
+2019-04-23,Aberdeen Union Street Roadside [AQ],46
+2019-04-24,Aberdeen [AQ],11
+2019-04-24,Aberdeen Union Street Roadside [AQ],72
+2019-04-25,Aberdeen [AQ],21
+2019-04-25,Aberdeen Union Street Roadside [AQ],32
+2019-04-26,Aberdeen [AQ],24
+2019-04-26,Aberdeen Union Street Roadside [AQ],19
+2019-04-27,Aberdeen [AQ],10
+2019-04-27,Aberdeen Union Street Roadside [AQ],57
+2019-04-28,Aberdeen [AQ],14
+2019-04-28,Aberdeen Union Street Roadside [AQ],32
+2019-04-29,Aberdeen [AQ],14
+2019-04-29,Aberdeen Union Street Roadside [AQ],17
+2019-04-30,Aberdeen [AQ],22
+2019-04-30,Aberdeen Union Street Roadside [AQ],31
+2019-05-01,Aberdeen [AQ],12
+2019-05-01,Aberdeen Union Street Roadside [AQ],61
+2019-05-02,Aberdeen [AQ],6
+2019-05-02,Aberdeen Union Street Roadside [AQ],41
+2019-05-03,Aberdeen [AQ],7
+2019-05-03,Aberdeen Union Street Roadside [AQ],34
+2019-05-04,Aberdeen [AQ],6
+2019-05-04,Aberdeen Union Street Roadside [AQ],35
+2019-05-05,Aberdeen [AQ],7
+2019-05-05,Aberdeen Union Street Roadside [AQ],30
+2019-05-06,Aberdeen [AQ],8
+2019-05-06,Aberdeen Union Street Roadside [AQ],33
+2019-05-07,Aberdeen [AQ],14
+2019-05-07,Aberdeen Union Street Roadside [AQ],37
+2019-05-08,Aberdeen [AQ],7
+2019-05-08,Aberdeen Union Street Roadside [AQ],46
+2019-05-09,Aberdeen [AQ],7
+2019-05-09,Aberdeen Union Street Roadside [AQ],37
+2019-05-10,Aberdeen [AQ],16
+2019-05-10,Aberdeen Union Street Roadside [AQ],38
+2019-05-11,Aberdeen [AQ],13
+2019-05-11,Aberdeen Union Street Roadside [AQ],39
+2019-05-12,Aberdeen [AQ],13
+2019-05-12,Aberdeen Union Street Roadside [AQ],19
+2019-05-13,Aberdeen [AQ],25
+2019-05-13,Aberdeen Union Street Roadside [AQ],32
+2019-05-14,Aberdeen [AQ],29
+2019-05-14,Aberdeen Union Street Roadside [AQ],55
+2019-05-15,Aberdeen [AQ],20
+2019-05-15,Aberdeen Union Street Roadside [AQ],40
+2019-05-16,Aberdeen [AQ],15
+2019-05-16,Aberdeen Union Street Roadside [AQ],18
+2019-05-17,Aberdeen [AQ],7
+2019-05-17,Aberdeen Union Street Roadside [AQ],44
+2019-05-18,Aberdeen [AQ],4
+2019-05-18,Aberdeen Union Street Roadside [AQ],45
+2019-05-19,Aberdeen [AQ],12
+2019-05-19,Aberdeen Union Street Roadside [AQ],20
+2019-05-20,Aberdeen [AQ],13
+2019-05-20,Aberdeen Union Street Roadside [AQ],50
+2019-05-21,Aberdeen [AQ],11
+2019-05-21,Aberdeen Union Street Roadside [AQ],43
+2019-05-22,Aberdeen [AQ],10
+2019-05-22,Aberdeen Union Street Roadside [AQ],43
+2019-05-23,Aberdeen [AQ],8
+2019-05-23,Aberdeen Union Street Roadside [AQ],42
+2019-05-24,Aberdeen [AQ],7
+2019-05-24,Aberdeen Union Street Roadside [AQ],35
+2019-05-25,Aberdeen [AQ],7
+2019-05-25,Aberdeen Union Street Roadside [AQ],34
+2019-05-26,Aberdeen [AQ],11
+2019-05-26,Aberdeen Union Street Roadside [AQ],41
+2019-05-27,Aberdeen [AQ],9
+2019-05-27,Aberdeen Union Street Roadside [AQ],36
+2019-05-28,Aberdeen [AQ],9
+2019-05-28,Aberdeen Union Street Roadside [AQ],35
+2019-05-29,Aberdeen [AQ],16
+2019-05-29,Aberdeen Union Street Roadside [AQ],23
+2019-05-30,Aberdeen [AQ],8
+2019-05-30,Aberdeen Union Street Roadside [AQ],43
+2019-05-31,Aberdeen [AQ],16
+2019-05-31,Aberdeen Union Street Roadside [AQ],31
+2019-06-01,Aberdeen [AQ],11
+2019-06-01,Aberdeen Union Street Roadside [AQ],30
+2019-06-02,Aberdeen [AQ],12
+2019-06-02,Aberdeen Union Street Roadside [AQ],11
+2019-06-03,Aberdeen [AQ],5
+2019-06-03,Aberdeen Union Street Roadside [AQ],14
+2019-06-04,Aberdeen [AQ],13
+2019-06-04,Aberdeen Union Street Roadside [AQ],22
+2019-06-05,Aberdeen [AQ],5
+2019-06-05,Aberdeen Union Street Roadside [AQ],40
+2019-06-06,Aberdeen [AQ],10
+2019-06-06,Aberdeen Union Street Roadside [AQ],33
+2019-06-07,Aberdeen [AQ],11
+2019-06-07,Aberdeen Union Street Roadside [AQ],36
+2019-06-08,Aberdeen [AQ],6
+2019-06-08,Aberdeen Union Street Roadside [AQ],38
+2019-06-09,Aberdeen [AQ],13
+2019-06-09,Aberdeen Union Street Roadside [AQ],25
+2019-06-10,Aberdeen [AQ],8
+2019-06-10,Aberdeen Union Street Roadside [AQ],44
+2019-06-11,Aberdeen [AQ],3
+2019-06-11,Aberdeen Union Street Roadside [AQ],25
+2019-06-12,Aberdeen [AQ],3
+2019-06-12,Aberdeen Union Street Roadside [AQ],19
+2019-06-13,Aberdeen [AQ],7
+2019-06-13,Aberdeen Union Street Roadside [AQ],35
+2019-06-14,Aberdeen [AQ],15
+2019-06-14,Aberdeen Union Street Roadside [AQ],17
+2019-06-15,Aberdeen [AQ],18
+2019-06-15,Aberdeen Union Street Roadside [AQ],33
+2019-06-16,Aberdeen [AQ],9
+2019-06-16,Aberdeen Union Street Roadside [AQ],11
+2019-06-17,Aberdeen [AQ],11
+2019-06-17,Aberdeen Union Street Roadside [AQ],15
+2019-06-18,Aberdeen [AQ],8
+2019-06-18,Aberdeen Union Street Roadside [AQ],20
+2019-06-19,Aberdeen [AQ],12
+2019-06-19,Aberdeen Union Street Roadside [AQ],17
+2019-06-20,Aberdeen [AQ],11
+2019-06-20,Aberdeen Union Street Roadside [AQ],34
+2019-06-21,Aberdeen [AQ],15
+2019-06-21,Aberdeen Union Street Roadside [AQ],39
+2019-06-22,Aberdeen [AQ],13
+2019-06-22,Aberdeen Union Street Roadside [AQ],18
+2019-06-23,Aberdeen [AQ],11
+2019-06-23,Aberdeen Union Street Roadside [AQ],25
+2019-06-24,Aberdeen [AQ],7
+2019-06-24,Aberdeen Union Street Roadside [AQ],37
+2019-06-25,Aberdeen [AQ],4
+2019-06-25,Aberdeen Union Street Roadside [AQ],29
+2019-06-26,Aberdeen [AQ],8
+2019-06-26,Aberdeen Union Street Roadside [AQ],30
+2019-06-27,Aberdeen [AQ],11
+2019-06-27,Aberdeen Union Street Roadside [AQ],23
+2019-06-28,Aberdeen [AQ],8
+2019-06-28,Aberdeen Union Street Roadside [AQ],9
+2019-06-29,Aberdeen [AQ],15
+2019-06-29,Aberdeen Union Street Roadside [AQ],26
+2019-06-30,Aberdeen [AQ],5
+2019-06-30,Aberdeen Union Street Roadside [AQ],17
+2019-07-01,Aberdeen [AQ],6
+2019-07-01,Aberdeen Union Street Roadside [AQ],26
+2019-07-02,Aberdeen [AQ],6
+2019-07-02,Aberdeen Union Street Roadside [AQ],26
+2019-07-03,Aberdeen [AQ],10
+2019-07-03,Aberdeen Union Street Roadside [AQ],36
+2019-07-04,Aberdeen [AQ],13
+2019-07-04,Aberdeen Union Street Roadside [AQ],39
+2019-07-05,Aberdeen [AQ],12
+2019-07-05,Aberdeen Union Street Roadside [AQ],30
+2019-07-06,Aberdeen [AQ],3
+2019-07-06,Aberdeen Union Street Roadside [AQ],32
+2019-07-07,Aberdeen [AQ],2
+2019-07-07,Aberdeen Union Street Roadside [AQ],21
+2019-07-08,Aberdeen [AQ],9
+2019-07-08,Aberdeen Union Street Roadside [AQ],19
+2019-07-09,Aberdeen [AQ],23
+2019-07-09,Aberdeen Union Street Roadside [AQ],21
+2019-07-10,Aberdeen [AQ],15
+2019-07-10,Aberdeen Union Street Roadside [AQ],42
+2019-07-11,Aberdeen [AQ],22
+2019-07-11,Aberdeen Union Street Roadside [AQ],34
+2019-07-12,Aberdeen [AQ],4
+2019-07-12,Aberdeen Union Street Roadside [AQ],28
+2019-07-13,Aberdeen [AQ],6
+2019-07-13,Aberdeen Union Street Roadside [AQ],29
+2019-07-14,Aberdeen [AQ],6
+2019-07-14,Aberdeen Union Street Roadside [AQ],17
+2019-07-15,Aberdeen [AQ],8
+2019-07-15,Aberdeen Union Street Roadside [AQ],20
+2019-07-16,Aberdeen [AQ],20
+2019-07-16,Aberdeen Union Street Roadside [AQ],41
+2019-07-17,Aberdeen [AQ],16
+2019-07-17,Aberdeen Union Street Roadside [AQ],18
+2019-07-18,Aberdeen [AQ],13
+2019-07-18,Aberdeen Union Street Roadside [AQ],24
+2019-07-19,Aberdeen [AQ],11
+2019-07-19,Aberdeen Union Street Roadside [AQ],16
+2019-07-20,Aberdeen [AQ],15
+2019-07-20,Aberdeen Union Street Roadside [AQ],34
+2019-07-21,Aberdeen [AQ],7
+2019-07-21,Aberdeen Union Street Roadside [AQ],10
+2019-07-22,Aberdeen [AQ],8
+2019-07-22,Aberdeen Union Street Roadside [AQ],14
+2019-07-23,Aberdeen [AQ],16
+2019-07-23,Aberdeen Union Street Roadside [AQ],13
+2019-07-24,Aberdeen [AQ],22
+2019-07-24,Aberdeen Union Street Roadside [AQ],22
+2019-07-25,Aberdeen [AQ],20
+2019-07-25,Aberdeen Union Street Roadside [AQ],27
+2019-07-26,Aberdeen [AQ],27
+2019-07-26,Aberdeen Union Street Roadside [AQ],50
+2019-07-27,Aberdeen [AQ],10
+2019-07-27,Aberdeen Union Street Roadside [AQ],44
+2019-07-28,Aberdeen [AQ],4
+2019-07-28,Aberdeen Union Street Roadside [AQ],29
+2019-07-29,Aberdeen [AQ],11
+2019-07-29,Aberdeen Union Street Roadside [AQ],61
+2019-07-30,Aberdeen [AQ],21
+2019-07-30,Aberdeen Union Street Roadside [AQ],22
+2019-07-31,Aberdeen [AQ],9
+2019-07-31,Aberdeen Union Street Roadside [AQ],36
+2019-08-01,Aberdeen [AQ],5
+2019-08-01,Aberdeen Union Street Roadside [AQ],33
+2019-08-02,Aberdeen [AQ],5
+2019-08-02,Aberdeen Union Street Roadside [AQ],41
+2019-08-03,Aberdeen [AQ],9
+2019-08-03,Aberdeen Union Street Roadside [AQ],38
+2019-08-04,Aberdeen [AQ],8
+2019-08-04,Aberdeen Union Street Roadside [AQ],31
+2019-08-05,Aberdeen [AQ],17
+2019-08-05,Aberdeen Union Street Roadside [AQ],22
+2019-08-06,Aberdeen [AQ],16
+2019-08-06,Aberdeen Union Street Roadside [AQ],18
+2019-08-07,Aberdeen [AQ],13
+2019-08-07,Aberdeen Union Street Roadside [AQ],33
+2019-08-08,Aberdeen [AQ],7
+2019-08-08,Aberdeen Union Street Roadside [AQ],33
+2019-08-09,Aberdeen [AQ],9
+2019-08-09,Aberdeen Union Street Roadside [AQ],47
+2019-08-10,Aberdeen [AQ],10
+2019-08-10,Aberdeen Union Street Roadside [AQ],40
+2019-08-11,Aberdeen [AQ],3
+2019-08-11,Aberdeen Union Street Roadside [AQ],20
+2019-08-12,Aberdeen [AQ],16
+2019-08-12,Aberdeen Union Street Roadside [AQ],30
+2019-08-13,Aberdeen [AQ],17
+2019-08-13,Aberdeen Union Street Roadside [AQ],35
+2019-08-14,Aberdeen [AQ],25
+2019-08-14,Aberdeen Union Street Roadside [AQ],19
+2019-08-15,Aberdeen [AQ],15
+2019-08-15,Aberdeen Union Street Roadside [AQ],32
+2019-08-16,Aberdeen [AQ],15
+2019-08-16,Aberdeen Union Street Roadside [AQ],12
+2019-08-17,Aberdeen [AQ],10
+2019-08-17,Aberdeen Union Street Roadside [AQ],16
+2019-08-18,Aberdeen [AQ],9
+2019-08-18,Aberdeen Union Street Roadside [AQ],12
+2019-08-19,Aberdeen [AQ],13
+2019-08-19,Aberdeen Union Street Roadside [AQ],35
+2019-08-20,Aberdeen [AQ],16
+2019-08-20,Aberdeen Union Street Roadside [AQ],28
+2019-08-21,Aberdeen [AQ],14
+2019-08-21,Aberdeen Union Street Roadside [AQ],11
+2019-08-22,Aberdeen [AQ],11
+2019-08-22,Aberdeen Union Street Roadside [AQ],16
+2019-08-23,Aberdeen [AQ],14
+2019-08-23,Aberdeen Union Street Roadside [AQ],19
+2019-08-24,Aberdeen [AQ],21
+2019-08-24,Aberdeen Union Street Roadside [AQ],19
+2019-08-25,Aberdeen [AQ],26
+2019-08-25,Aberdeen Union Street Roadside [AQ],20
+2019-08-26,Aberdeen [AQ],27
+2019-08-26,Aberdeen Union Street Roadside [AQ],29
+2019-08-27,Aberdeen [AQ],23
+2019-08-27,Aberdeen Union Street Roadside [AQ],24
+2019-08-28,Aberdeen [AQ],12
+2019-08-28,Aberdeen Union Street Roadside [AQ],20
+2019-08-29,Aberdeen [AQ],10
+2019-08-29,Aberdeen Union Street Roadside [AQ],14
+2019-08-30,Aberdeen [AQ],10
+2019-08-30,Aberdeen Union Street Roadside [AQ],13
+2019-08-31,Aberdeen [AQ],10
+2019-08-31,Aberdeen Union Street Roadside [AQ],18
+2019-09-01,Aberdeen [AQ],10
+2019-09-01,Aberdeen Union Street Roadside [AQ],27
+2019-09-02,Aberdeen [AQ],15
+2019-09-02,Aberdeen Union Street Roadside [AQ],22
+2019-09-03,Aberdeen [AQ],21
+2019-09-03,Aberdeen Union Street Roadside [AQ],27
+2019-09-04,Aberdeen [AQ],8
+2019-09-04,Aberdeen Union Street Roadside [AQ],28
+2019-09-05,Aberdeen [AQ],12
+2019-09-05,Aberdeen Union Street Roadside [AQ],41
+2019-09-06,Aberdeen [AQ],8
+2019-09-06,Aberdeen Union Street Roadside [AQ],35
+2019-09-07,Aberdeen [AQ],12
+2019-09-07,Aberdeen Union Street Roadside [AQ],36
+2019-09-08,Aberdeen [AQ],14
+2019-09-08,Aberdeen Union Street Roadside [AQ],12
+2019-09-09,Aberdeen [AQ],19
+2019-09-09,Aberdeen Union Street Roadside [AQ],20
+2019-09-10,Aberdeen [AQ],
+2019-09-10,Aberdeen Union Street Roadside [AQ],18
+2019-09-11,Aberdeen [AQ],
+2019-09-11,Aberdeen Union Street Roadside [AQ],31
+2019-09-12,Aberdeen [AQ],
+2019-09-12,Aberdeen Union Street Roadside [AQ],31
+2019-09-13,Aberdeen [AQ],
+2019-09-13,Aberdeen Union Street Roadside [AQ],41
+2019-09-14,Aberdeen [AQ],8
+2019-09-14,Aberdeen Union Street Roadside [AQ],20
+2019-09-15,Aberdeen [AQ],7
+2019-09-15,Aberdeen Union Street Roadside [AQ],29
+2019-09-16,Aberdeen [AQ],12
+2019-09-16,Aberdeen Union Street Roadside [AQ],36
+2019-09-17,Aberdeen [AQ],10
+2019-09-17,Aberdeen Union Street Roadside [AQ],
+2019-09-18,Aberdeen [AQ],17
+2019-09-18,Aberdeen Union Street Roadside [AQ],
+2019-09-19,Aberdeen [AQ],18
+2019-09-19,Aberdeen Union Street Roadside [AQ],29
+2019-09-20,Aberdeen [AQ],21
+2019-09-20,Aberdeen Union Street Roadside [AQ],24
+2019-09-21,Aberdeen [AQ],19
+2019-09-21,Aberdeen Union Street Roadside [AQ],17
+2019-09-22,Aberdeen [AQ],16
+2019-09-22,Aberdeen Union Street Roadside [AQ],35
+2019-09-23,Aberdeen [AQ],22
+2019-09-23,Aberdeen Union Street Roadside [AQ],26
+2019-09-24,Aberdeen [AQ],15
+2019-09-24,Aberdeen Union Street Roadside [AQ],31
+2019-09-25,Aberdeen [AQ],16
+2019-09-25,Aberdeen Union Street Roadside [AQ],25
+2019-09-26,Aberdeen [AQ],19
+2019-09-26,Aberdeen Union Street Roadside [AQ],20
+2019-09-27,Aberdeen [AQ],16
+2019-09-27,Aberdeen Union Street Roadside [AQ],27
+2019-09-28,Aberdeen [AQ],7
+2019-09-28,Aberdeen Union Street Roadside [AQ],35
+2019-09-29,Aberdeen [AQ],8
+2019-09-29,Aberdeen Union Street Roadside [AQ],24
+2019-09-30,Aberdeen [AQ],9
+2019-09-30,Aberdeen Union Street Roadside [AQ],37
+2019-10-01,Aberdeen [AQ],11
+2019-10-01,Aberdeen Union Street Roadside [AQ],39
+2019-10-02,Aberdeen [AQ],7
+2019-10-02,Aberdeen Union Street Roadside [AQ],30
+2019-10-03,Aberdeen [AQ],19
+2019-10-03,Aberdeen Union Street Roadside [AQ],27
+2019-10-04,Aberdeen [AQ],11
+2019-10-04,Aberdeen Union Street Roadside [AQ],49
+2019-10-05,Aberdeen [AQ],16
+2019-10-05,Aberdeen Union Street Roadside [AQ],22
+2019-10-06,Aberdeen [AQ],9
+2019-10-06,Aberdeen Union Street Roadside [AQ],15
+2019-10-07,Aberdeen [AQ],17
+2019-10-07,Aberdeen Union Street Roadside [AQ],15
+2019-10-08,Aberdeen [AQ],9
+2019-10-08,Aberdeen Union Street Roadside [AQ],18
+2019-10-09,Aberdeen [AQ],11
+2019-10-09,Aberdeen Union Street Roadside [AQ],25
+2019-10-10,Aberdeen [AQ],14
+2019-10-10,Aberdeen Union Street Roadside [AQ],33
+2019-10-11,Aberdeen [AQ],10
+2019-10-11,Aberdeen Union Street Roadside [AQ],27
+2019-10-12,Aberdeen [AQ],15
+2019-10-12,Aberdeen Union Street Roadside [AQ],39
+2019-10-13,Aberdeen [AQ],24
+2019-10-13,Aberdeen Union Street Roadside [AQ],36
+2019-10-14,Aberdeen [AQ],29
+2019-10-14,Aberdeen Union Street Roadside [AQ],31
+2019-10-15,Aberdeen [AQ],29
+2019-10-15,Aberdeen Union Street Roadside [AQ],46
+2019-10-16,Aberdeen [AQ],
+2019-10-16,Aberdeen Union Street Roadside [AQ],32
+2019-10-17,Aberdeen [AQ],
+2019-10-17,Aberdeen Union Street Roadside [AQ],28
+2019-10-18,Aberdeen [AQ],
+2019-10-18,Aberdeen Union Street Roadside [AQ],59
+2019-10-19,Aberdeen [AQ],
+2019-10-19,Aberdeen Union Street Roadside [AQ],21
+2019-10-20,Aberdeen [AQ],
+2019-10-20,Aberdeen Union Street Roadside [AQ],23
+2019-10-21,Aberdeen [AQ],
+2019-10-21,Aberdeen Union Street Roadside [AQ],40
+2019-10-22,Aberdeen [AQ],17
+2019-10-22,Aberdeen Union Street Roadside [AQ],27
+2019-10-23,Aberdeen [AQ],15
+2019-10-23,Aberdeen Union Street Roadside [AQ],16
+2019-10-24,Aberdeen [AQ],16
+2019-10-24,Aberdeen Union Street Roadside [AQ],30
+2019-10-25,Aberdeen [AQ],18
+2019-10-25,Aberdeen Union Street Roadside [AQ],30
+2019-10-26,Aberdeen [AQ],18
+2019-10-26,Aberdeen Union Street Roadside [AQ],41
+2019-10-27,Aberdeen [AQ],5
+2019-10-27,Aberdeen Union Street Roadside [AQ],23
+2019-10-28,Aberdeen [AQ],15
+2019-10-28,Aberdeen Union Street Roadside [AQ],49
+2019-10-29,Aberdeen [AQ],21
+2019-10-29,Aberdeen Union Street Roadside [AQ],64
+2019-10-30,Aberdeen [AQ],40
+2019-10-30,Aberdeen Union Street Roadside [AQ],60
+2019-10-31,Aberdeen [AQ],34
+2019-10-31,Aberdeen Union Street Roadside [AQ],29
+2019-11-01,Aberdeen [AQ],23
+2019-11-01,Aberdeen Union Street Roadside [AQ],26
+2019-11-02,Aberdeen [AQ],12
+2019-11-02,Aberdeen Union Street Roadside [AQ],45
+2019-11-03,Aberdeen [AQ],7
+2019-11-03,Aberdeen Union Street Roadside [AQ],31
+2019-11-04,Aberdeen [AQ],3
+2019-11-04,Aberdeen Union Street Roadside [AQ],31
+2019-11-05,Aberdeen [AQ],14
+2019-11-05,Aberdeen Union Street Roadside [AQ],48
+2019-11-06,Aberdeen [AQ],20
+2019-11-06,Aberdeen Union Street Roadside [AQ],60
+2019-11-07,Aberdeen [AQ],7
+2019-11-07,Aberdeen Union Street Roadside [AQ],44
+2019-11-08,Aberdeen [AQ],26
+2019-11-08,Aberdeen Union Street Roadside [AQ],58
+2019-11-09,Aberdeen [AQ],26
+2019-11-09,Aberdeen Union Street Roadside [AQ],56
+2019-11-10,Aberdeen [AQ],22
+2019-11-10,Aberdeen Union Street Roadside [AQ],44
+2019-11-11,Aberdeen [AQ],25
+2019-11-11,Aberdeen Union Street Roadside [AQ],38
+2019-11-12,Aberdeen [AQ],8
+2019-11-12,Aberdeen Union Street Roadside [AQ],32
+2019-11-13,Aberdeen [AQ],
+2019-11-13,Aberdeen Union Street Roadside [AQ],53
+2019-11-14,Aberdeen [AQ],
+2019-11-14,Aberdeen Union Street Roadside [AQ],41
+2019-11-15,Aberdeen [AQ],21
+2019-11-15,Aberdeen Union Street Roadside [AQ],55
+2019-11-16,Aberdeen [AQ],22
+2019-11-16,Aberdeen Union Street Roadside [AQ],52
+2019-11-17,Aberdeen [AQ],23
+2019-11-17,Aberdeen Union Street Roadside [AQ],36
+2019-11-18,Aberdeen [AQ],29
+2019-11-18,Aberdeen Union Street Roadside [AQ],55
+2019-11-19,Aberdeen [AQ],47
+2019-11-19,Aberdeen Union Street Roadside [AQ],39
+2019-11-20,Aberdeen [AQ],33
+2019-11-20,Aberdeen Union Street Roadside [AQ],19
+2019-11-21,Aberdeen [AQ],28
+2019-11-21,Aberdeen Union Street Roadside [AQ],29
+2019-11-22,Aberdeen [AQ],15
+2019-11-22,Aberdeen Union Street Roadside [AQ],47
+2019-11-23,Aberdeen [AQ],10
+2019-11-23,Aberdeen Union Street Roadside [AQ],48
+2019-11-24,Aberdeen [AQ],12
+2019-11-24,Aberdeen Union Street Roadside [AQ],19
+2019-11-25,Aberdeen [AQ],19
+2019-11-25,Aberdeen Union Street Roadside [AQ],35
+2019-11-26,Aberdeen [AQ],13
+2019-11-26,Aberdeen Union Street Roadside [AQ],44
+2019-11-27,Aberdeen [AQ],15
+2019-11-27,Aberdeen Union Street Roadside [AQ],45
+2019-11-28,Aberdeen [AQ],10
+2019-11-28,Aberdeen Union Street Roadside [AQ],40
+2019-11-29,Aberdeen [AQ],20
+2019-11-29,Aberdeen Union Street Roadside [AQ],52
+2019-11-30,Aberdeen [AQ],31
+2019-11-30,Aberdeen Union Street Roadside [AQ],53
+2019-12-01,Aberdeen [AQ],15
+2019-12-01,Aberdeen Union Street Roadside [AQ],39
+2019-12-02,Aberdeen [AQ],23
+2019-12-02,Aberdeen Union Street Roadside [AQ],50
+2019-12-03,Aberdeen [AQ],30
+2019-12-03,Aberdeen Union Street Roadside [AQ],46
+2019-12-04,Aberdeen [AQ],20
+2019-12-04,Aberdeen Union Street Roadside [AQ],26
+2019-12-05,Aberdeen [AQ],17
+2019-12-05,Aberdeen Union Street Roadside [AQ],25
+2019-12-06,Aberdeen [AQ],22
+2019-12-06,Aberdeen Union Street Roadside [AQ],57
+2019-12-07,Aberdeen [AQ],22
+2019-12-07,Aberdeen Union Street Roadside [AQ],41
+2019-12-08,Aberdeen [AQ],10
+2019-12-08,Aberdeen Union Street Roadside [AQ],25
+2019-12-09,Aberdeen [AQ],16
+2019-12-09,Aberdeen Union Street Roadside [AQ],43
+2019-12-10,Aberdeen [AQ],14
+2019-12-10,Aberdeen Union Street Roadside [AQ],19
+2019-12-11,Aberdeen [AQ],11
+2019-12-11,Aberdeen Union Street Roadside [AQ],27
+2019-12-12,Aberdeen [AQ],25
+2019-12-12,Aberdeen Union Street Roadside [AQ],41
+2019-12-13,Aberdeen [AQ],13
+2019-12-13,Aberdeen Union Street Roadside [AQ],47
+2019-12-14,Aberdeen [AQ],22
+2019-12-14,Aberdeen Union Street Roadside [AQ],44
+2019-12-15,Aberdeen [AQ],21
+2019-12-15,Aberdeen Union Street Roadside [AQ],45
+2019-12-16,Aberdeen [AQ],27
+2019-12-16,Aberdeen Union Street Roadside [AQ],49
+2019-12-17,Aberdeen [AQ],30
+2019-12-17,Aberdeen Union Street Roadside [AQ],54
+2019-12-18,Aberdeen [AQ],32
+2019-12-18,Aberdeen Union Street Roadside [AQ],42
+2019-12-19,Aberdeen [AQ],23
+2019-12-19,Aberdeen Union Street Roadside [AQ],29
+2019-12-20,Aberdeen [AQ],31
+2019-12-20,Aberdeen Union Street Roadside [AQ],44
+2019-12-21,Aberdeen [AQ],29
+2019-12-21,Aberdeen Union Street Roadside [AQ],46
+2019-12-22,Aberdeen [AQ],32
+2019-12-22,Aberdeen Union Street Roadside [AQ],46
+2019-12-23,Aberdeen [AQ],37
+2019-12-23,Aberdeen Union Street Roadside [AQ],49
+2019-12-24,Aberdeen [AQ],29
+2019-12-24,Aberdeen Union Street Roadside [AQ],54
+2019-12-25,Aberdeen [AQ],24
+2019-12-25,Aberdeen Union Street Roadside [AQ],37
+2019-12-26,Aberdeen [AQ],24
+2019-12-26,Aberdeen Union Street Roadside [AQ],18
+2019-12-27,Aberdeen [AQ],24
+2019-12-27,Aberdeen Union Street Roadside [AQ],12
+2019-12-28,Aberdeen [AQ],12
+2019-12-28,Aberdeen Union Street Roadside [AQ],15
+2019-12-29,Aberdeen [AQ],7
+2019-12-29,Aberdeen Union Street Roadside [AQ],11
+2019-12-30,Aberdeen [AQ],12
+2019-12-30,Aberdeen Union Street Roadside [AQ],46
+2019-12-31,Aberdeen [AQ],22
+2019-12-31,Aberdeen Union Street Roadside [AQ],40

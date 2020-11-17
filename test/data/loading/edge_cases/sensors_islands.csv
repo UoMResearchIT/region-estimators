@@ -1,0 +1,4 @@
+longitude,latitude,sensor_id,Postcode,Address,Environment Type,Zone,Latitude,Longitude,Altitude (m)
+-2.945307,54.894834,Carlisle Roadside [AQ],,"Sainsbury's, Carlisle CA2 5TR, UK",Traffic Urban,North West & Merseyside,54.894834,-2.945307,11
+-3.614233,55.070033,Dumfries [AQ],,"Municipal Chambers, Buccleuch St, Dumfries DG1 2AD, UK",Traffic Urban,Scottish Borders,55.070033,-3.614233,10
+-2.844333,53.34633,Liverpool Speke [AQ],,"50 Tarbock Rd, Speke, Liverpool L24 0SW, UK",Industrial Urban,Liverpool Urban Area,53.34633,-2.844333,26
