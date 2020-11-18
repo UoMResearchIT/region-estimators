@@ -3,7 +3,7 @@ from os import path
 from shapely import wkt
 import pandas as pd
 
-from region_estimators.region_estimator import RegionEstimator
+from region_estimators.diffusion_estimator import DiffusionEstimator
 
 class TestRegionEdgeCases(unittest.TestCase):
   """
@@ -91,33 +91,38 @@ class TestRegionEdgeCases(unittest.TestCase):
     Test that a RegionEstimator object can be initialized with region data containing islands
     and that the results are as expected for islands
     """
-    estimator = RegionEstimator(self.sensors_islands, self.regions_islands, self.actuals_islands)
+    estimator_islands = DiffusionEstimator(self.sensors_islands, self.regions_islands, self.actuals_islands)
+    print('Islands: \n {}'.format(estimator_islands.get_estimations('NO2_mean', None, '2019-10-15')))
 
-    self.assertIsNotNone(estimator)
+    self.assertIsNotNone(estimator_islands)
 
   def test_touching(self):
     """
     Test that a RegionEstimator object can be initialized with region data containing regions that are all touching
     and that the results are as expected
     """
-    estimator = RegionEstimator(self.sensors_touching, self.regions_touching, self.actuals_touching)
+    estimator_touching = DiffusionEstimator(self.sensors_touching, self.regions_touching, self.actuals_touching)
+    print('Touching (normal): \n {}'.format(estimator_touching.get_estimations('NO2_mean', None, '2019-10-15')))
 
-    self.assertIsNotNone(estimator)
+    self.assertIsNotNone(estimator_touching)
 
   def test_non_touching(self):
     """
     Test that a RegionEstimator object can be initialized with region data containing regions that are not
     touching and that the results are as expected
     """
-    estimator = RegionEstimator(self.sensors_non_touching, self.regions_non_touching, self.actuals_non_touching)
+    estimator_non_touching = DiffusionEstimator(self.sensors_non_touching, self.regions_non_touching,
+                                                self.actuals_non_touching)
+    print('Non Touching: \n {}'.format(estimator_non_touching.get_estimations('NO2_mean', None, '2019-10-15')))
 
-    self.assertIsNotNone(estimator)
+    self.assertIsNotNone(estimator_non_touching)
 
   def test_overlapping(self):
     """
     Test that a RegionEstimator object can be initialized with region data containing regions that are overlapping
     and that the results are as expected
     """
-    estimator = RegionEstimator(self.sensors_overlap, self.regions_overlap, self.actuals_overlap)
+    estimator_overlap = DiffusionEstimator(self.sensors_overlap, self.regions_overlap, self.actuals_overlap)
+    print('Overlap: \n {}'.format(estimator_overlap.get_estimations('NO2_mean', None, '2019-10-15')))
 
-    self.assertIsNotNone(estimator)
+    self.assertIsNotNone(estimator_overlap)
