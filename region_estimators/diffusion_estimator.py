@@ -38,7 +38,11 @@ class DiffusionEstimator(RegionEstimator):
 
         # Check sensors exist (in any region) for this measurement/timestamp
         if not self.sensors_exist(measurement, timestamp):
-            return None, {'rings': None}
+            return None, {'rings': float('NaN')}
+
+        # Check region is not an island (has no touching adjacent regions)
+        if len(self.get_adjacent_regions([region_id])) == 0:
+            return None, {'rings': float('NaN')}
 
         # Create an empty list for storing completed regions
         regions_completed = []

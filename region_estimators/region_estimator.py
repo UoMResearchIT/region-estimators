@@ -210,17 +210,17 @@ class RegionEstimator(object):
         return region_result
 
 
-    def get_adjacent_regions(self, region_ids, ignore_regions):
+    def get_adjacent_regions(self, region_ids, ignore_regions=[]):
         """  Find all adjacent regions for list a of region ids
 
             :param region_ids: list of region identifier (list of strings)
             :param ignore_regions:  list of region identifier (list of strings): list to be ignored
 
-            :return: a list of regions_ids
+            :return: a list of regions_ids (empty list if no adjacent regions)
         """
 
         # Create an empty list for adjacent regions
-        adjacent_regions =  []
+        adjacent_regions = []
         # Get all adjacent regions for each region
         df_reset = self.regions.reset_index()
         for region_id in region_ids:
@@ -229,7 +229,7 @@ class RegionEstimator(object):
                 adjacent_regions.extend(regions_temp['neighbours'].iloc[0].split(','))
 
         # Return all adjacent regions as a querySet and remove any that are in the completed/ignore list.
-        return [x for x in adjacent_regions if x not in ignore_regions]
+        return [x for x in adjacent_regions if x not in ignore_regions and x.strip() != '']
 
 
     def sensors_exist(self, measurement, timestamp):

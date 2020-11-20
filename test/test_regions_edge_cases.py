@@ -86,15 +86,26 @@ class TestRegionEdgeCases(unittest.TestCase):
       axis=1
     )
 
+    self.results_islands = pd.read_csv(
+      path.join(self.load_data_path, 'results_islands.csv')
+    )
+
+
+
   def test_islands(self):
     """
     Test that a RegionEstimator object can be initialized with region data containing islands
     and that the results are as expected for islands
     """
     estimator_islands = DiffusionEstimator(self.sensors_islands, self.regions_islands, self.actuals_islands)
-    print('Islands: \n {}'.format(estimator_islands.get_estimations('NO2_mean', None, '2019-10-15')))
+    result = estimator_islands.get_estimations('NO2_mean', None, '2019-10-15')
+    #print('Islands results: \n {}'.format(result))
+    #print('Islands target: \n {}'.format(self.results_islands))
 
     self.assertIsNotNone(estimator_islands)
+    self.assertIsNotNone(result)
+    self.assertIsInstance(result, pd.DataFrame)
+    self.assertTrue(result.equals(self.results_islands))
 
   def test_touching(self):
     """
@@ -102,7 +113,8 @@ class TestRegionEdgeCases(unittest.TestCase):
     and that the results are as expected
     """
     estimator_touching = DiffusionEstimator(self.sensors_touching, self.regions_touching, self.actuals_touching)
-    print('Touching (normal): \n {}'.format(estimator_touching.get_estimations('NO2_mean', None, '2019-10-15')))
+    result = estimator_touching.get_estimations('NO2_mean', None, '2019-10-15')
+    #print('Touching (normal): \n {}'.format(result))
 
     self.assertIsNotNone(estimator_touching)
 
@@ -113,7 +125,7 @@ class TestRegionEdgeCases(unittest.TestCase):
     """
     estimator_non_touching = DiffusionEstimator(self.sensors_non_touching, self.regions_non_touching,
                                                 self.actuals_non_touching)
-    print('Non Touching: \n {}'.format(estimator_non_touching.get_estimations('NO2_mean', None, '2019-10-15')))
+    #print('Non Touching: \n {}'.format(estimator_non_touching.get_estimations('NO2_mean', None, '2019-10-15')))
 
     self.assertIsNotNone(estimator_non_touching)
 
@@ -123,6 +135,6 @@ class TestRegionEdgeCases(unittest.TestCase):
     and that the results are as expected
     """
     estimator_overlap = DiffusionEstimator(self.sensors_overlap, self.regions_overlap, self.actuals_overlap)
-    print('Overlap: \n {}'.format(estimator_overlap.get_estimations('NO2_mean', None, '2019-10-15')))
+    #print('Overlap: \n {}'.format(estimator_overlap.get_estimations('NO2_mean', None, '2019-10-15')))
 
     self.assertIsNotNone(estimator_overlap)

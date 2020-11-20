@@ -1,0 +1,11 @@
+measurement,region_id,timestamp,value,extra_data
+NO2_mean,BT,2019-10-15,NaN,{"rings": NaN}
+NO2_mean,CA,2019-10-15,37.0,{"rings": 0}
+NO2_mean,CH,2019-10-15,28.0,{"rings": 1}
+NO2_mean,DG,2019-10-15,34.0,{"rings": 0}
+NO2_mean,FY,2019-10-15,32.5,{"rings": 2}
+NO2_mean,IM,2019-10-15,NaN,{"rings": NaN}
+NO2_mean,L,2019-10-15,28.0,{"rings": 0}
+NO2_mean,LA,2019-10-15,37.0,{"rings": 1}
+NO2_mean,LL,2019-10-15,28.0,{"rings": 2}
+NO2_mean,PR,2019-10-15,28.0,{"rings": 1}
