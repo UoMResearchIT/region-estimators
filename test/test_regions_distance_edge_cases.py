@@ -165,12 +165,12 @@ class TestRegionEdgeCases(unittest.TestCase):
     and that the results are as expected
     """
     estimator_overlap = DistanceSimpleEstimator(self.sensors_overlap, self.regions_overlap, self.actuals_overlap,
-                                           verbose=2)
+                                           verbose=0)
     result = estimator_overlap.get_estimations('NO2_mean', None, '2019-10-15').fillna(value=np.NaN)
 
-    print('Overlap: \n {}'.format(result))
-    print('Overlap target: \n {}'.format(self.results_overlap))
-    print('Difference:\n{}'.format(result.compare(self.results_overlap)))
+    #print('Overlap: \n {}'.format(result))
+    #print('Overlap target: \n {}'.format(self.results_overlap))
+    #print('Difference:\n{}'.format(result.compare(self.results_overlap)))
 
     self.assertIsNotNone(estimator_overlap)
     self.assertIsNotNone(result)
