@@ -86,6 +86,12 @@ pip install region_estimators
                 in sensors (in value and type))
             [one or more value columns] (float):    value of actual measurement readings.
                                                     each column name should be the name of the measurement e.g. 'NO2'
+            verbose: (int) Verbosity of output level. zero or less => No debug output
+    
+    Returns:
+                Initialised instance of subclass of RegionEstimator
+
+
 	'''
 
 estimator = RegionEstimatorFactory.region_estimator(method_name, df_sensors, df_regions, df_actuals)
