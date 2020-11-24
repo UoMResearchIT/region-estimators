@@ -6,12 +6,12 @@ from region_estimators.region_estimator import RegionEstimator
 
 class DistanceSimpleEstimator(RegionEstimator):
 
-    def __init__(self, sensors, regions, actuals):
-        super(DistanceSimpleEstimator, self).__init__(sensors, regions, actuals)
+    def __init__(self, sensors, regions, actuals, verbose=RegionEstimator.VERBOSE_DEFAULT):
+        super(DistanceSimpleEstimator, self).__init__(sensors, regions, actuals, verbose)
 
     class Factory:
-        def create(self, sensors, regions, actuals):
-            return DistanceSimpleEstimator(sensors, regions, actuals)
+        def create(self, sensors, regions, actuals, verbose=RegionEstimator.VERBOSE_DEFAULT):
+            return DistanceSimpleEstimator(sensors, regions, actuals, verbose)
 
 
     def get_estimate(self, measurement, timestamp, region_id):

@@ -1,0 +1,7 @@
+measurement,region_id,timestamp,value,extra_data
+NO2_mean,CO,2019-10-15,29.0,{"closest_sensors": ["Aberdeen [AQ]"]}
+NO2_mean,KW,2019-10-15,21.0,{"closest_sensors": ["Inverness [AQ]"]}
+NO2_mean,PE,2019-10-15,29.0,{"closest_sensors": ["Aberdeen [AQ]"]}
+NO2_mean,PH,2019-10-15,12.0,{"closest_sensors": ["Fort William [AQ]"]}
+NO2_mean,SY,2019-10-15,29.0,{"closest_sensors": ["Aberdeen [AQ]"]}
+NO2_mean,TD,2019-10-15,29.0,{"closest_sensors": ["Aberdeen [AQ]"]}

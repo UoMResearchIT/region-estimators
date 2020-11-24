@@ -2,13 +2,19 @@ import unittest
 from os import path
 from shapely import wkt
 import pandas as pd
+import numpy as np
 
-from region_estimators.diffusion_estimator import DiffusionEstimator
+from region_estimators.distance_simple_estimator import DistanceSimpleEstimator
 
 class TestRegionEdgeCases(unittest.TestCase):
   """
   Tests for the Regions file edge cases
   """
+
+  def CustomJSONParser(self, data):
+    import json
+    j1 = json.dumps(json.loads(data))
+    return j1
 
   def setUp(self):
     dir, _ = path.split(__file__)
@@ -87,7 +93,18 @@ class TestRegionEdgeCases(unittest.TestCase):
     )
 
     self.results_islands = pd.read_csv(
-      path.join(self.load_data_path, 'results_islands.csv')
+      path.join(self.load_data_path, 'results_islands_distance.csv')
+    )
+    self.results_touching = pd.read_csv(
+      path.join(self.load_data_path, 'results_touching_distance.csv')
+    )
+    self.results_non_touching = pd.read_csv(
+      path.join(self.load_data_path, 'results_non_touching_distance.csv')
+    )
+    self.results_overlap = pd.read_csv(
+      path.join(self.load_data_path, 'results_overlap_distance.csv'),
+      doublequote=True,
+      converters={'extra_data': self.CustomJSONParser}
     )
 
 
@@ -97,8 +114,9 @@ class TestRegionEdgeCases(unittest.TestCase):
     Test that a RegionEstimator object can be initialized with region data containing islands
     and that the results are as expected for islands
     """
-    estimator_islands = DiffusionEstimator(self.sensors_islands, self.regions_islands, self.actuals_islands)
-    result = estimator_islands.get_estimations('NO2_mean', None, '2019-10-15')
+    estimator_islands = DistanceSimpleEstimator(self.sensors_islands, self.regions_islands, self.actuals_islands,
+                                           verbose=0)
+    result = estimator_islands.get_estimations('NO2_mean', None, '2019-10-15').fillna(value=np.NaN)
     #print('Islands results: \n {}'.format(result))
     #print('Islands target: \n {}'.format(self.results_islands))
 
@@ -112,29 +130,49 @@ class TestRegionEdgeCases(unittest.TestCase):
     Test that a RegionEstimator object can be initialized with region data containing regions that are all touching
     and that the results are as expected
     """
-    estimator_touching = DiffusionEstimator(self.sensors_touching, self.regions_touching, self.actuals_touching)
-    result = estimator_touching.get_estimations('NO2_mean', None, '2019-10-15')
+    estimator_touching = DistanceSimpleEstimator(self.sensors_touching, self.regions_touching, self.actuals_touching,
+                                            verbose=0)
+    result = estimator_touching.get_estimations('NO2_mean', None, '2019-10-15').fillna(value=np.NaN)
+
     #print('Touching (normal): \n {}'.format(result))
+    #print('Touching target: \n {}'.format(self.results_touching))
 
     self.assertIsNotNone(estimator_touching)
+    self.assertIsNotNone(result)
+    self.assertIsInstance(result, pd.DataFrame)
+    self.assertTrue(result.equals(self.results_touching))
 
   def test_non_touching(self):
     """
-    Test that a RegionEstimator object can be initialized with region data containing regions that are not
-    touching and that the results are as expected
+    Test that a RegionEstimator object can be initialized with region data containing regions that are
+    not  touching and that the results are as expected
     """
-    estimator_non_touching = DiffusionEstimator(self.sensors_non_touching, self.regions_non_touching,
-                                                self.actuals_non_touching)
-    #print('Non Touching: \n {}'.format(estimator_non_touching.get_estimations('NO2_mean', None, '2019-10-15')))
+    estimator_non_touching = DistanceSimpleEstimator(self.sensors_non_touching, self.regions_non_touching,
+                                                self.actuals_non_touching, verbose=0)
+    result = estimator_non_touching.get_estimations('NO2_mean', None, '2019-10-15').fillna(value=np.NaN)
+
+    #print('Non Touching: \n {}'.format(result))
+    #print('Non Touching target: \n {}'.format(self.results_non_touching))
 
     self.assertIsNotNone(estimator_non_touching)
+    self.assertIsNotNone(result)
+    self.assertIsInstance(result, pd.DataFrame)
+    self.assertTrue(result.equals(self.results_non_touching))
 
   def test_overlapping(self):
     """
     Test that a RegionEstimator object can be initialized with region data containing regions that are overlapping
     and that the results are as expected
     """
-    estimator_overlap = DiffusionEstimator(self.sensors_overlap, self.regions_overlap, self.actuals_overlap)
-    #print('Overlap: \n {}'.format(estimator_overlap.get_estimations('NO2_mean', None, '2019-10-15')))
+    estimator_overlap = DistanceSimpleEstimator(self.sensors_overlap, self.regions_overlap, self.actuals_overlap,
+                                           verbose=2)
+    result = estimator_overlap.get_estimations('NO2_mean', None, '2019-10-15').fillna(value=np.NaN)
+
+    print('Overlap: \n {}'.format(result))
+    print('Overlap target: \n {}'.format(self.results_overlap))
+    print('Difference:\n{}'.format(result.compare(self.results_overlap)))
 
     self.assertIsNotNone(estimator_overlap)
+    self.assertIsNotNone(result)
+    self.assertIsInstance(result, pd.DataFrame)
+    self.assertTrue(result.equals(self.results_overlap))

@@ -4,6 +4,8 @@ from shapely import wkt
 import pandas as pd
 
 from region_estimators.region_estimator import RegionEstimator
+from region_estimators.diffusion_estimator import DiffusionEstimator
+from region_estimators.distance_simple_estimator import DistanceSimpleEstimator
 
 class TestRegionEstimator(unittest.TestCase):
   """
@@ -48,6 +50,18 @@ class TestRegionEstimator(unittest.TestCase):
     with self.assertRaises(NotImplementedError):
       estimator.get_estimate('urtica', None, None)
 
+  def test_load_bad_verbose(self):
+    """
+    Test that a DiffusionEstimator and DistanceSimpleEstimator objects can
+    be initialized with bad verbose.
+    """
+    with self.assertRaises(AssertionError):
+      DiffusionEstimator(self.sensors, self.regions, self.actuals, 'bad')
+
+    with self.assertRaises(AssertionError):
+      DistanceSimpleEstimator(self.sensors, self.regions, self.actuals, 2.14)
+
+
   def test_load_actuals_with_bad_data(self):
     """
     Check that loading bad actuals data will fail.
@@ -62,7 +76,7 @@ class TestRegionEstimator(unittest.TestCase):
       with self.subTest(file=file):
         with self.assertRaises(AssertionError):
           bad_actuals = pd.read_csv(path.join(self.load_data, file))
-          RegionEstimator(self.sensors, self.regions, bad_actuals)
+          DiffusionEstimator(self.sensors, self.regions, bad_actuals)
 
   def test_load_regions_with_bad_data(self):
     """
@@ -76,7 +90,7 @@ class TestRegionEstimator(unittest.TestCase):
       with self.subTest(file=file):
         with self.assertRaises(AssertionError):
           bad_regions = pd.read_csv(path.join(self.load_data, file))
-          RegionEstimator(self.sensors, bad_regions, self.actuals)
+          DiffusionEstimator(self.sensors, bad_regions, self.actuals)
 
   def test_load_sensors_with_bad_data(self):
     """
@@ -93,4 +107,4 @@ class TestRegionEstimator(unittest.TestCase):
       with self.subTest(file=file):
         with self.assertRaises(AssertionError):
           bad_sensors = pd.read_csv(path.join(self.load_data, file))
-          RegionEstimator(bad_sensors, self.regions, self.actuals)
+          DistanceSimpleEstimator(bad_sensors, self.regions, self.actuals)

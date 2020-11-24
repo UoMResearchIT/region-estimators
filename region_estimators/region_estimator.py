@@ -10,7 +10,10 @@ class RegionEstimator(object):
     """
     __metaclass__ = ABCMeta
 
-    def __init__(self, sensors, regions, actuals):
+    VERBOSE_DEFAULT = 0
+    VERBOSE_MAX = 2
+
+    def __init__(self, sensors, regions, actuals, verbose=VERBOSE_DEFAULT):
         """ Initialise instance of the RegionEstimator class.
 
             Args:
@@ -31,7 +34,10 @@ class RegionEstimator(object):
                         'timestamp' (string): timestamp of actual reading
                         'sensor_id': ID of sensor which took actual reading - must match an index value in sensors
                         [one or more value columns] (float):    value of actual measurement readings.
-                                                                each column name is the name of the measurement e.g. 'NO2'
+                                                                each column name is the name of the measurement
+                                                                e.g. 'NO2'
+
+                verbose: (int) Verbosity of output level. zero or less => No debug output
 
             Returns:
                 Initialised instance of subclass of RegionEstimator
@@ -64,7 +70,7 @@ class RegionEstimator(object):
                 assert pd.to_numeric(df_temp[column], errors='coerce').notnull().all(), \
                     "actuals['" + column + "'] column contains non-numeric values (null values are accepted)."
 
-
+        self.verbose = verbose
 
         # Check that each sensor_id value is present in the sensors dataframe index.
         # ... So sensor_id values must be a subset of allowed sensors
@@ -87,8 +93,6 @@ class RegionEstimator(object):
         except Exception as err:
             raise ValueError('Error converting regions DataFrame to a GeoDataFrame: ' + str(err))
 
-
-
         #   Make sure value columns at the end of column list
         cols = actuals.columns.tolist()
         cols.insert(0, cols.pop(cols.index('sensor_id')))
@@ -110,8 +114,24 @@ class RegionEstimator(object):
     def get_estimate(self, measurement, timestamp, region_id):
         raise NotImplementedError("Must override get_estimate")
 
+    @property
+    def verbose(self):
+        return self._verbose
 
-    def get_estimations(self, measurement, region_id=None, timestamp=None, print_progress=False):
+    @verbose.setter
+    def verbose(self, verbose=VERBOSE_DEFAULT):
+        assert isinstance(verbose, int), "Verbose level must be an integer. (zero or less produces no debug output)"
+        if verbose < 0:
+            print('Warning: verbose input is less than zero so setting to zero')
+            verbose = 0
+        if verbose > RegionEstimator.VERBOSE_MAX:
+            print('Warning: verbose input is greater than {}} so setting to {}'.format(
+                RegionEstimator.VERBOSE_MAX, RegionEstimator.VERBOSE_MAX))
+            verbose = RegionEstimator.VERBOSE_MAX
+        self._verbose = verbose
+
+
+    def get_estimations(self, measurement, region_id=None, timestamp=None):
         """  Find estimations for a region (or all regions if region_id==None) and
                 timestamp (or all timestamps (or all timestamps if timestamp==None)
 
@@ -141,19 +161,21 @@ class RegionEstimator(object):
             actuals_temp = df_actuals_reset.loc[df_actuals_reset['timestamp'] == timestamp]
             assert len(actuals_temp.index) > 0, "The timestamp does not exist in the actuals dataframe"
 
-        df_result = pd.DataFrame(columns=['measurement','region_id','timestamp','value','extra_data'])
+        df_result = pd.DataFrame(columns=['measurement', 'region_id', 'timestamp', 'value', 'extra_data'])
 
         # Calculate estimates
         if region_id:
-            if print_progress == True:
-                print('Calculating for region:', region_id)
-            results = [self.get_region_estimation(measurement, region_id, timestamp, print_progress)]
+            if self.verbose > 0:
+                print('\n##### Calculating for region:', region_id, '#####')
+            results = [self.get_region_estimation(measurement, region_id, timestamp)]
         else:
+            if self.verbose > 1:
+                print('No region_id submitted so calculating for all region ids...')
             results = []
             for index, _ in self.regions.iterrows():
-                if print_progress == True:
+                if self.verbose > 0:
                     print('Calculating for region:', index)
-                results.append(self.get_region_estimation(measurement, index, timestamp, print_progress))
+                results.append(self.get_region_estimation(measurement, index, timestamp))
 
         for item in results:
             for estimate in item['estimates']:
@@ -161,14 +183,14 @@ class RegionEstimator(object):
                                                 'region_id': item['region_id'],
                                                 'timestamp': estimate['timestamp'],
                                                 'value': estimate['value'],
-                                                 'extra_data': json.dumps(estimate['extra_data'])
+                                                'extra_data': json.dumps(estimate['extra_data'])
                                                 }
                                              , ignore_index=True)
 
         return df_result
 
 
-    def get_region_estimation(self, measurement, region_id, timestamp=None, print_progress=False):
+    def get_region_estimation(self, measurement, region_id, timestamp=None):
         """  Find estimations for a region and timestamp (or all timestamps (or all timestamps if timestamp==None)
 
             :param measurement: measurement to be estimated (string, required)
@@ -178,15 +200,15 @@ class RegionEstimator(object):
             :return: a dict with items 'region_id' and 'estimates (list). Estimates contains
                         'timestamp', (estimated) 'value' and 'extra_data'
         """
-        region_result = {'region_id': region_id, 'estimates':[]}
+        region_result = {'region_id': region_id, 'estimates': []}
 
         if timestamp is not None:
-            if print_progress == True:
-                print(region_id, '    Calculating for timestamp:', timestamp)
+            if self.verbose > 0:
+                print('\n##### Calculating for region_id: {} and timestamp: {} #####'.format(region_id, timestamp))
 
             region_result_estimate = self.get_estimate(measurement, timestamp, region_id)
 
-            if print_progress == True:
+            if self.verbose > 0:
                 print(region_id, '    Calculated for timestamp:', region_result_estimate)
 
             region_result['estimates'].append({'value':region_result_estimate[0],
@@ -195,23 +217,24 @@ class RegionEstimator(object):
         else:
             timestamps = sorted(self.actuals['timestamp'].unique())
             for _, timestamp in enumerate(timestamps):
-                if print_progress == True:
+                if self.verbose > 0:
                     print(region_id, '    Calculating for timestamp:', timestamp)
 
                 region_result_estimate = self.get_estimate(measurement, timestamp, region_id)
 
-                if print_progress == True:
+                if self.verbose > 0:
                     print(region_id, '    Calculated for ', timestamp, ':', region_result_estimate)
 
-                region_result['estimates'].append(  {'value':region_result_estimate[0],
-                                                     'extra_data': region_result_estimate[1],
-                                                     'timestamp': timestamp}
-                                                    )
+                region_result['estimates'].append({'value':region_result_estimate[0],
+                                                   'extra_data': region_result_estimate[1],
+                                                   'timestamp': timestamp}
+                                                  )
         return region_result
 
 
     def get_adjacent_regions(self, region_ids, ignore_regions=[]):
         """  Find all adjacent regions for list a of region ids
+             Uses the neighbouring regions found in set-up, using __get_all_region_neighbours
 
             :param region_ids: list of region identifier (list of strings)
             :param ignore_regions:  list of region identifier (list of strings): list to be ignored
@@ -219,11 +242,16 @@ class RegionEstimator(object):
             :return: a list of regions_ids (empty list if no adjacent regions)
         """
 
+        if self.verbose > 0:
+            print('\ngetting adjacent regions...')
+
         # Create an empty list for adjacent regions
         adjacent_regions = []
         # Get all adjacent regions for each region
         df_reset = self.regions.reset_index()
         for region_id in region_ids:
+            if self.verbose > 1:
+                print('getting adjacent regions for {}'.format(region_id))
             regions_temp = df_reset.loc[df_reset['region_id'] == region_id]
             if len(regions_temp.index) > 0:
                 adjacent_regions.extend(regions_temp['neighbours'].iloc[0].split(','))
@@ -243,10 +271,18 @@ class RegionEstimator(object):
 
         :return: No return value
         '''
+
+        if self.verbose > 0:
+            print('\ngetting all region neighbours')
+
         for index, region in self.regions.iterrows():
             neighbors = self.regions[self.regions.geometry.touches(region.geometry)].index.tolist()
             neighbors = filter(lambda item: item != index, neighbors)
-            self.regions.at[index, "neighbours"] = ",".join(neighbors)
+            neighbors_str = ",".join(neighbors)
+            self.regions.at[index, "neighbours"] = neighbors_str
+
+            if self.verbose > 1:
+                print('neighbours for {}: {}'.format(index, neighbors_str))
 
 
     def __get_all_region_sensors(self):
@@ -256,6 +292,13 @@ class RegionEstimator(object):
 
             :return: No return value
         '''
+        if self.verbose > 0:
+            print('\ngetting all region sensors...')
+
         for index, region in self.regions.iterrows():
             sensors = self.sensors[self.sensors.geometry.within(region['geometry'])].index.tolist()
-            self.regions.at[index, "sensors"] = ",".join(str(x) for x in sensors)
+            sensors_str = ",".join(str(x) for x in sensors)
+            self.regions.at[index, "sensors"] = sensors_str
+
+            if self.verbose > 1:
+                print('region {}: {}'.format(index, sensors_str))

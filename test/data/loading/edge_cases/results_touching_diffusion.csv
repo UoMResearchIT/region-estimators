@@ -1,0 +1,21 @@
+measurement,region_id,timestamp,value,extra_data
+NO2_mean,BR,2019-10-15,25.0,{"rings": 2}
+NO2_mean,CR,2019-10-15,25.0,{"rings": 2}
+NO2_mean,DA,2019-10-15,25.0,{"rings": 2}
+NO2_mean,E,2019-10-15,25.0,{"rings": 0}
+NO2_mean,EN,2019-10-15,31.0,{"rings": 1}
+NO2_mean,HA,2019-10-15,34.0,{"rings": 1}
+NO2_mean,IG,2019-10-15,25.0,{"rings": 1}
+NO2_mean,KT,2019-10-15,31.0,{"rings": 2}
+NO2_mean,ME,2019-10-15,25.0,{"rings": 3}
+NO2_mean,N,2019-10-15,31.0,{"rings": 1}
+NO2_mean,NW,2019-10-15,37.0,{"rings": 0}
+NO2_mean,RM,2019-10-15,25.0,{"rings": 2}
+NO2_mean,SE,2019-10-15,25.0,{"rings": 1}
+NO2_mean,SM,2019-10-15,31.0,{"rings": 3}
+NO2_mean,SW,2019-10-15,31.0,{"rings": 2}
+NO2_mean,TW,2019-10-15,31.0,{"rings": 1}
+NO2_mean,UB,2019-10-15,31.0,{"rings": 0}
+NO2_mean,W,2019-10-15,34.0,{"rings": 1}
+NO2_mean,WC,2019-10-15,37.0,{"rings": 1}
+NO2_mean,WD,2019-10-15,34.0,{"rings": 1}

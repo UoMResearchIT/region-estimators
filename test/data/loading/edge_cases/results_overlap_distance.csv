@@ -1,0 +1,7 @@
+measurement,region_id,timestamp,value,extra_data
+NO2_mean,AB,2019-10-15,37.5,"{""closest_sensors"": [""Aberdeen [AQ]"", ""Aberdeen Union Street Roadside [AQ]""]}"
+NO2_mean,AB2,2019-10-15,37.5,"{""closest_sensors"": [""Aberdeen [AQ]"", ""Aberdeen Union Street Roadside [AQ]""]}"
+NO2_mean,AB3,2019-10-15,37.5,"{""closest_sensors"": [""Aberdeen [AQ]"", ""Aberdeen Union Street Roadside [AQ]""]}"
+NO2_mean,DD,2019-10-15,46.0,"{""closest_sensors"": [""Aberdeen Union Street Roadside [AQ]""]}"
+NO2_mean,IV,2019-10-15,46.0,"{""closest_sensors"": [""Aberdeen Union Street Roadside [AQ]""]}"
+NO2_mean,PH,2019-10-15,46.0,"{""closest_sensors"": [""Aberdeen Union Street Roadside [AQ]""]}"
