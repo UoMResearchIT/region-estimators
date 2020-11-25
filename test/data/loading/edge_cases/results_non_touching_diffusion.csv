@@ -2,6 +2,6 @@ measurement,region_id,timestamp,value,extra_data
 NO2_mean,CO,2019-10-15,NaN,{"rings": null}
 NO2_mean,KW,2019-10-15,NaN,{"rings": null}
 NO2_mean,PE,2019-10-15,NaN,{"rings": null}
-NO2_mean,PH,2019-10-15,NaN,{"rings": null}
+NO2_mean,PH,2019-10-15,12.0,{"rings": 0}
 NO2_mean,SY,2019-10-15,NaN,{"rings": null}
 NO2_mean,TD,2019-10-15,NaN,{"rings": null}

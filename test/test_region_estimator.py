@@ -43,7 +43,7 @@ class TestRegionEstimator(unittest.TestCase):
     self.assertIsNotNone(estimator.regions['neighbours'])
     self.assertIsNotNone(estimator.regions['sensors'])
 
-    self.assertTrue(estimator.sensors_exist('urtica', '2018-03-15'))
+    self.assertTrue(estimator.sensor_datapoint_count('urtica', '2018-03-15') > 0)
 
     self.assertEqual(estimator.get_adjacent_regions(['BL'], []), ['BB'])
 

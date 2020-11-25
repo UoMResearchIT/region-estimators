@@ -130,8 +130,8 @@ class TestRegionEdgeCases(unittest.TestCase):
     self.assertEqual(estimator_islands.get_adjacent_regions(['BT']), [])
     result = estimator_islands.get_estimations('NO2_mean', None, '2019-10-15').fillna(value=np.NaN)
 
-    print('Islands results: \n {}'.format(result))
-    print('Islands target: \n {}'.format(self.results_islands))
+    #print('Islands results: \n {}'.format(result))
+    #print('Islands target: \n {}'.format(self.results_islands))
 
     self.assertIsNotNone(estimator_islands)
     self.assertIsNotNone(result)
@@ -144,13 +144,13 @@ class TestRegionEdgeCases(unittest.TestCase):
     not  touching and that the results are as expected
     """
     estimator_non_touching = DiffusionEstimator(self.sensors_non_touching, self.regions_non_touching,
-                                                self.actuals_non_touching, verbose=2)
+                                                self.actuals_non_touching, verbose=0)
     self.assertEqual(estimator_non_touching.get_adjacent_regions(['PE']), [])
     self.assertEqual(estimator_non_touching.get_adjacent_regions(['TD']), [])
     result = estimator_non_touching.get_estimations('NO2_mean', None, '2019-10-15').fillna(value=np.NaN)
 
-    print('Non Touching: \n {}'.format(result))
-    print('Non Touching target: \n {}'.format(self.results_non_touching))
+    #print('Non Touching: \n {}'.format(result))
+    #print('Non Touching target: \n {}'.format(self.results_non_touching))
 
     self.assertIsNotNone(estimator_non_touching)
     self.assertIsNotNone(result)

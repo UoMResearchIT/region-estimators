@@ -259,10 +259,27 @@ class RegionEstimator(object):
         # Return all adjacent regions as a querySet and remove any that are in the completed/ignore list.
         return [x for x in adjacent_regions if x not in ignore_regions and x.strip() != '']
 
+    def sensor_datapoint_count(self, measurement, timestamp, region_ids=[]):
+        '''
+        Find the number of sensor datapoints for this measurement, timestamp and (optional) regions combination
 
-    def sensors_exist(self, measurement, timestamp):
-        return len(self.actuals.loc[(self.actuals['timestamp'] == timestamp) & (self.actuals[measurement].notna())]) > 0
+        :param measurement: (str) the measurement being recorded in the sensor data-point
+        :param timestamp: (timestamp) the timestamp of the sensor datapoints being searched for
+        :param regions: list of region objects (row of regions dataframe)
 
+        :return: Number of sensors
+        '''
+        sensors = self.actuals.loc[(self.actuals['timestamp'] == timestamp) & (self.actuals[measurement].notna())]
+        sensors = sensors['sensor_id'].tolist()
+
+        region_sensors = []
+        for region_id in region_ids:
+            region_sensors.extend(self.regions.loc[region_id]['sensors'])
+
+        if len(region_ids) > 0:
+            return len(set(sensors) & set(region_sensors))
+        else:
+            return len(set(sensors))
 
     def __get_all_region_neighbours(self):
         '''
@@ -284,6 +301,8 @@ class RegionEstimator(object):
             if self.verbose > 1:
                 print('neighbours for {}: {}'.format(index, neighbors_str))
 
+    def __get_region_sensors(self, region):
+        return self.sensors[self.sensors.geometry.within(region['geometry'])].index.tolist()
 
     def __get_all_region_sensors(self):
         '''
@@ -296,7 +315,7 @@ class RegionEstimator(object):
             print('\ngetting all region sensors...')
 
         for index, region in self.regions.iterrows():
-            sensors = self.sensors[self.sensors.geometry.within(region['geometry'])].index.tolist()
+            sensors = self.__get_region_sensors(region)
             sensors_str = ",".join(str(x) for x in sensors)
             self.regions.at[index, "sensors"] = sensors_str
 
