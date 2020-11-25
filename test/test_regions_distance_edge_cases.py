@@ -111,12 +111,12 @@ class TestRegionEdgeCases(unittest.TestCase):
 
   def test_islands(self):
     """
-    Test that a RegionEstimator object can be initialized with region data containing islands
+    Test that a DistanceEstimator object can be initialized with region data containing islands
     and that the results are as expected for islands
     """
     estimator_islands = DistanceSimpleEstimator(self.sensors_islands, self.regions_islands, self.actuals_islands,
                                            verbose=0)
-    result = estimator_islands.get_estimations('NO2_mean', None, '2019-10-15').fillna(value=np.NaN)
+    result = estimator_islands.get_estimations('NO2_mean', None, '2019-10-15')
     #print('Islands results: \n {}'.format(result))
     #print('Islands target: \n {}'.format(self.results_islands))
 
@@ -127,12 +127,12 @@ class TestRegionEdgeCases(unittest.TestCase):
 
   def test_touching(self):
     """
-    Test that a RegionEstimator object can be initialized with region data containing regions that are all touching
+    Test that a DistanceEstimator object can be initialized with region data containing regions that are all touching
     and that the results are as expected
     """
     estimator_touching = DistanceSimpleEstimator(self.sensors_touching, self.regions_touching, self.actuals_touching,
                                             verbose=0)
-    result = estimator_touching.get_estimations('NO2_mean', None, '2019-10-15').fillna(value=np.NaN)
+    result = estimator_touching.get_estimations('NO2_mean', None, '2019-10-15')
 
     #print('Touching (normal): \n {}'.format(result))
     #print('Touching target: \n {}'.format(self.results_touching))
@@ -144,12 +144,12 @@ class TestRegionEdgeCases(unittest.TestCase):
 
   def test_non_touching(self):
     """
-    Test that a RegionEstimator object can be initialized with region data containing regions that are
+    Test that a DistanceEstimator object can be initialized with region data containing regions that are
     not  touching and that the results are as expected
     """
     estimator_non_touching = DistanceSimpleEstimator(self.sensors_non_touching, self.regions_non_touching,
                                                 self.actuals_non_touching, verbose=0)
-    result = estimator_non_touching.get_estimations('NO2_mean', None, '2019-10-15').fillna(value=np.NaN)
+    result = estimator_non_touching.get_estimations('NO2_mean', None, '2019-10-15')
 
     #print('Non Touching: \n {}'.format(result))
     #print('Non Touching target: \n {}'.format(self.results_non_touching))
@@ -161,12 +161,12 @@ class TestRegionEdgeCases(unittest.TestCase):
 
   def test_overlapping(self):
     """
-    Test that a RegionEstimator object can be initialized with region data containing regions that are overlapping
+    Test that a DistanceEstimator object can be initialized with region data containing regions that are overlapping
     and that the results are as expected
     """
     estimator_overlap = DistanceSimpleEstimator(self.sensors_overlap, self.regions_overlap, self.actuals_overlap,
                                            verbose=0)
-    result = estimator_overlap.get_estimations('NO2_mean', None, '2019-10-15').fillna(value=np.NaN)
+    result = estimator_overlap.get_estimations('NO2_mean', None, '2019-10-15')
 
     #print('Overlap: \n {}'.format(result))
     #print('Overlap target: \n {}'.format(self.results_overlap))

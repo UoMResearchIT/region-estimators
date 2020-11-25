@@ -42,13 +42,13 @@ class DiffusionEstimator(RegionEstimator):
             if self.verbose > 0:
                 print('No sensors exist for region {}, measurement {} at date {}'.format(
                     region_id, measurement, timestamp))
-            return None, {'rings': float('NaN')}
+            return None, {'rings': None}
 
         # Check region is not an island (has no touching adjacent regions)
         if len(self.get_adjacent_regions([region_id])) == 0:
             if self.verbose > 0:
                 print('Region {} is an island so can\'t do diffusion'.format(region_id))
-            return None, {'rings': float('NaN')}
+            return None, {'rings': None}
 
         # Create an empty list for storing completed regions
         regions_completed = []
