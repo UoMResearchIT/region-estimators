@@ -11,11 +11,11 @@ class RegionEstimatorFactory:
 
     # A Template Method:
     @staticmethod
-    def create(method_name, sensors, regions, actuals):
+    def create(method_name, sensors, regions, actuals, verbose=DiffusionEstimator.VERBOSE_DEFAULT):
         class_name = RegionEstimatorFactory.get_classname(method_name)
         if class_name not in RegionEstimatorFactory.factories:
             RegionEstimatorFactory.factories[class_name] = eval(class_name + '.Factory()')
-        return RegionEstimatorFactory.factories[class_name].create(sensors, regions, actuals)
+        return RegionEstimatorFactory.factories[class_name].create(sensors, regions, actuals, verbose)
 
     region_estimator = create
 
