@@ -14,12 +14,13 @@ class DistanceSimpleEstimator(RegionEstimator):
             return DistanceSimpleEstimator(sensors, regions, actuals, verbose)
 
 
-    def get_estimate(self, measurement, timestamp, region_id):
+    def get_estimate(self, measurement, timestamp, region_id, ignore_sensor_ids=[]):
         """  Find estimations for a region and timestamp using the simple distance method: value of closest actual sensor
 
             :param measurement: measurement to be estimated (string, required)
             :param timestamp:  timestamp identifier (string)
             :param region_id: region identifier (string)
+            :param ignore_sensor_ids: sensor id(s) to be ignored during the estimations
 
             :return: tuple containing
                 i) estimate
@@ -29,13 +30,14 @@ class DistanceSimpleEstimator(RegionEstimator):
         result = None, {'closest_sensor_data': None}
 
         # Check sensors exist (in any region) for this measurement/timestamp
-        if self.sensor_datapoint_count(measurement, timestamp) == 0:
+        if self.sensor_datapoint_count(measurement, timestamp, ignore_sensor_ids=ignore_sensor_ids) == 0:
             return result
 
         # Get the actual values
 
         df_actuals = self.actuals.loc[
             (self.actuals['sensor_id'].isin(self.sensors.index.tolist())) &
+            (~self.actuals['sensor_id'].isin(ignore_sensor_ids)) &
             (self.actuals['timestamp'] == timestamp) &
             (self.actuals[measurement].notnull())
         ]

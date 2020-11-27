@@ -27,18 +27,19 @@ class DiffusionEstimator(RegionEstimator):
 
         self._max_ring_count = new_count
 
-    def get_estimate(self, measurement, timestamp, region_id):
+    def get_estimate(self, measurement, timestamp, region_id, ignore_sensor_ids=[]):
         """  Find estimations for a region and timestamp using the diffusion rings method
 
             :param measurement: measurement to be estimated (string, required)
             :param region_id: region identifier (string)
             :param timestamp:  timestamp identifier (string)
+            :param ignore_sensor_ids: sensor id(s) to be ignored during the estimations
 
             :return: tuple containing result and dict: {'rings': [The number of diffusion rings required]}
         """
 
         # Check sensors exist (in any region) for this measurement/timestamp
-        if self.sensor_datapoint_count(measurement, timestamp) == 0:
+        if self.sensor_datapoint_count(measurement, timestamp, ignore_sensor_ids=ignore_sensor_ids) == 0:
             if self.verbose > 0:
                 print('No sensors exist for region {}, measurement {} at date {}'.format(
                     region_id, measurement, timestamp))
@@ -46,7 +47,8 @@ class DiffusionEstimator(RegionEstimator):
 
         # Check region is not an island (has no touching adjacent regions) which has no sensors within it
         # If it is, return null
-        if len(self.regions.loc[region_id]['sensors']) == 0 and len(self.get_adjacent_regions([region_id])) == 0:
+        region_sensors = set(self.regions.loc[region_id]['sensors']) - set(ignore_sensor_ids)
+        if len(region_sensors) == 0 and len(self.get_adjacent_regions([region_id])) == 0:
             if self.verbose > 0:
                 print('Region {} is an island and does not have sensors, so can\'t do diffusion'.format(region_id))
             return None, {'rings': None}
@@ -57,9 +59,11 @@ class DiffusionEstimator(RegionEstimator):
         # Recursively find the sensors in each diffusion ring (starting at 0)
         if self.verbose > 0:
             print('Beginning recursive region estimation for region {}'.format(region_id))
-        return self.__get_diffusion_estimate_recursive(measurement, [region_id], timestamp, 0, regions_completed)
+        return self.__get_diffusion_estimate_recursive(measurement, [region_id], timestamp, 0, regions_completed,
+                                                       ignore_sensor_ids)
 
-    def __get_diffusion_estimate_recursive(self, measurement, region_ids, timestamp, diffuse_level, regions_completed):
+    def __get_diffusion_estimate_recursive(self, measurement, region_ids, timestamp, diffuse_level, regions_completed,
+                                           ignore_sensor_ids=[]):
         # Create an empty queryset for sensors found in regions
         sensors = []
 
@@ -73,11 +77,12 @@ class DiffusionEstimator(RegionEstimator):
                 print('Finding sensors in region {}'.format(region_id))
             regions_temp = df_reset.loc[df_reset['region_id'] == region_id]
             if len(regions_temp.index) > 0:
-                region_sensors = regions_temp['sensors'].iloc[0]
-                if len(region_sensors.strip()) > 0:
-                    sensors.extend(region_sensors.split(','))
+                region_sensors = regions_temp['sensors'].iloc[0].split(',')
+                if len(region_sensors) > 0:
+                    sensors.extend(region_sensors)
                     if self.verbose > 1:
                         print('Found sensors for region {}: {}'.format(region_id, sensors))
+        sensors = list(set(sensors) - set(ignore_sensor_ids))
 
         # Get values from sensors
         if self.verbose > 0:
@@ -118,7 +123,8 @@ class DiffusionEstimator(RegionEstimator):
                                                                next_regions,
                                                                timestamp,
                                                                diffuse_level,
-                                                               regions_completed)
+                                                               regions_completed,
+                                                               ignore_sensor_ids)
             else:
                 if self.verbose > 0:
                     print('No next set of regions found so returning null')

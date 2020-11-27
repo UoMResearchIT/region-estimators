@@ -18,15 +18,10 @@ class TestRegionEdgeCases(unittest.TestCase):
 
   def setUp(self):
     dir, _ = path.split(__file__)
-    self.load_data_path = path.join(dir, 'data', 'loading', 'edge_cases')
+    self.load_data_path = path.join(dir, 'data', 'edge_cases')
 
     self.sensors_islands = pd.read_csv(
       path.join(self.load_data_path, 'sensors_islands.csv'),
-      index_col='sensor_id'
-    )
-
-    self.sensors_touching = pd.read_csv(
-      path.join(self.load_data_path, 'sensors_touching.csv'),
       index_col='sensor_id'
     )
 
@@ -44,10 +39,6 @@ class TestRegionEdgeCases(unittest.TestCase):
       path.join(self.load_data_path, 'actuals_islands.csv')
     )
 
-    self.actuals_touching = pd.read_csv(
-      path.join(self.load_data_path, 'actuals_touching.csv')
-    )
-
     self.actuals_non_touching = pd.read_csv(
       path.join(self.load_data_path, 'actuals_non_touching.csv')
     )
@@ -61,15 +52,6 @@ class TestRegionEdgeCases(unittest.TestCase):
       index_col='region_id'
     )
     self.regions_islands['geometry'] = self.regions_islands.apply(
-      lambda row: wkt.loads(row.geometry),
-      axis=1
-    )
-
-    self.regions_touching = pd.read_csv(
-      path.join(self.load_data_path, 'regions_touching.csv'),
-      index_col='region_id'
-    )
-    self.regions_touching['geometry'] = self.regions_touching.apply(
       lambda row: wkt.loads(row.geometry),
       axis=1
     )
@@ -94,9 +76,6 @@ class TestRegionEdgeCases(unittest.TestCase):
 
     self.results_islands = pd.read_csv(
       path.join(self.load_data_path, 'results_islands_distance.csv')
-    )
-    self.results_touching = pd.read_csv(
-      path.join(self.load_data_path, 'results_touching_distance.csv')
     )
     self.results_non_touching = pd.read_csv(
       path.join(self.load_data_path, 'results_non_touching_distance.csv')
@@ -124,23 +103,6 @@ class TestRegionEdgeCases(unittest.TestCase):
     self.assertIsNotNone(result)
     self.assertIsInstance(result, pd.DataFrame)
     self.assertTrue(result.equals(self.results_islands))
-
-  def test_touching(self):
-    """
-    Test that a DistanceEstimator object can be initialized with region data containing regions that are all touching
-    and that the results are as expected
-    """
-    estimator_touching = DistanceSimpleEstimator(self.sensors_touching, self.regions_touching, self.actuals_touching,
-                                            verbose=0)
-    result = estimator_touching.get_estimations('NO2_mean', None, '2019-10-15')
-
-    #print('Touching (normal): \n {}'.format(result))
-    #print('Touching target: \n {}'.format(self.results_touching))
-
-    self.assertIsNotNone(estimator_touching)
-    self.assertIsNotNone(result)
-    self.assertIsInstance(result, pd.DataFrame)
-    self.assertTrue(result.equals(self.results_touching))
 
   def test_non_touching(self):
     """

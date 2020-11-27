@@ -111,7 +111,7 @@ class RegionEstimator(object):
 
 
     @abstractmethod
-    def get_estimate(self, measurement, timestamp, region_id):
+    def get_estimate(self, measurement, timestamp, region_id, ignore_sensor_ids=[]):
         raise NotImplementedError("Must override get_estimate")
 
     @property
@@ -131,13 +131,14 @@ class RegionEstimator(object):
         self._verbose = verbose
 
 
-    def get_estimations(self, measurement, region_id=None, timestamp=None):
+    def get_estimations(self, measurement, region_id=None, timestamp=None, ignore_sensor_ids=[]):
         """  Find estimations for a region (or all regions if region_id==None) and
                 timestamp (or all timestamps (or all timestamps if timestamp==None)
 
             :param measurement: measurement to be estimated (string - required)
             :param region_id: region identifier (string or None)
             :param timestamp:  timestamp identifier (string or None)
+            :param ignore_sensor_ids: sensor id(s) to be ignored during the estimations
 
             :return: pandas dataframe with columns:
                 'measurement'
@@ -167,7 +168,7 @@ class RegionEstimator(object):
         if region_id:
             if self.verbose > 0:
                 print('\n##### Calculating for region:', region_id, '#####')
-            results = [self.get_region_estimation(measurement, region_id, timestamp)]
+            results = [self.get_region_estimation(measurement, region_id, timestamp, ignore_sensor_ids)]
         else:
             if self.verbose > 1:
                 print('No region_id submitted so calculating for all region ids...')
@@ -175,7 +176,7 @@ class RegionEstimator(object):
             for index, _ in self.regions.iterrows():
                 if self.verbose > 0:
                     print('Calculating for region:', index)
-                results.append(self.get_region_estimation(measurement, index, timestamp))
+                results.append(self.get_region_estimation(measurement, index, timestamp, ignore_sensor_ids))
 
         for item in results:
             for estimate in item['estimates']:
@@ -190,12 +191,13 @@ class RegionEstimator(object):
         return df_result
 
 
-    def get_region_estimation(self, measurement, region_id, timestamp=None):
+    def get_region_estimation(self, measurement, region_id, timestamp=None, ignore_sensor_ids=[]):
         """  Find estimations for a region and timestamp (or all timestamps (or all timestamps if timestamp==None)
 
             :param measurement: measurement to be estimated (string, required)
             :param region_id: region identifier (string, required)
             :param timestamp:  timestamp identifier (string or None)
+            :param ignore_sensor_ids: sensor id(s) to be ignored during the estimations
 
             :return: a dict with items 'region_id' and 'estimates (list). Estimates contains
                         'timestamp', (estimated) 'value' and 'extra_data'
@@ -206,21 +208,21 @@ class RegionEstimator(object):
             if self.verbose > 0:
                 print('\n##### Calculating for region_id: {} and timestamp: {} #####'.format(region_id, timestamp))
 
-            region_result_estimate = self.get_estimate(measurement, timestamp, region_id)
+            region_result_estimate = self.get_estimate(measurement, timestamp, region_id, ignore_sensor_ids)
 
             if self.verbose > 0:
                 print(region_id, '    Calculated for timestamp:', region_result_estimate)
 
-            region_result['estimates'].append({'value':region_result_estimate[0],
+            region_result['estimates'].append({'value': region_result_estimate[0],
                                                'extra_data': region_result_estimate[1],
-                                               'timestamp':timestamp})
+                                               'timestamp': timestamp})
         else:
             timestamps = sorted(self.actuals['timestamp'].unique())
             for _, timestamp in enumerate(timestamps):
                 if self.verbose > 0:
                     print(region_id, '    Calculating for timestamp:', timestamp)
 
-                region_result_estimate = self.get_estimate(measurement, timestamp, region_id)
+                region_result_estimate = self.get_estimate(measurement, timestamp, region_id, ignore_sensor_ids)
 
                 if self.verbose > 0:
                     print(region_id, '    Calculated for ', timestamp, ':', region_result_estimate)
@@ -259,17 +261,19 @@ class RegionEstimator(object):
         # Return all adjacent regions as a querySet and remove any that are in the completed/ignore list.
         return [x for x in adjacent_regions if x not in ignore_regions and x.strip() != '']
 
-    def sensor_datapoint_count(self, measurement, timestamp, region_ids=[]):
+    def sensor_datapoint_count(self, measurement, timestamp, region_ids=[], ignore_sensor_ids=[]):
         '''
         Find the number of sensor datapoints for this measurement, timestamp and (optional) regions combination
 
         :param measurement: (str) the measurement being recorded in the sensor data-point
         :param timestamp: (timestamp) the timestamp of the sensor datapoints being searched for
         :param regions: list of region objects (row of regions dataframe)
+        :param ignore_sensor_ids list of sensor_ids to be ignored
 
         :return: Number of sensors
         '''
-        sensors = self.actuals.loc[(self.actuals['timestamp'] == timestamp) & (self.actuals[measurement].notna())]
+        sensors = self.actuals.loc[(self.actuals['timestamp'] == timestamp) & (self.actuals[measurement].notna())
+                                   & (~self.actuals['sensor_id'].isin(ignore_sensor_ids))]
         sensors = sensors['sensor_id'].tolist()
 
         region_sensors = []
