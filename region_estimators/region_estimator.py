@@ -305,7 +305,7 @@ class RegionEstimator(object):
             if self.verbose > 1:
                 print('neighbours for {}: {}'.format(index, neighbors_str))
 
-    def __get_region_sensors(self, region):
+    def get_region_sensors(self, region):
         return self.sensors[self.sensors.geometry.within(region['geometry'])].index.tolist()
 
     def __get_all_region_sensors(self):
@@ -319,7 +319,7 @@ class RegionEstimator(object):
             print('\ngetting all region sensors...')
 
         for index, region in self.regions.iterrows():
-            sensors = self.__get_region_sensors(region)
+            sensors = self.get_region_sensors(region)
             sensors_str = ",".join(str(x) for x in sensors)
             self.regions.at[index, "sensors"] = sensors_str
 
