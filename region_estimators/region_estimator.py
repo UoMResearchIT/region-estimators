@@ -114,6 +114,17 @@ class RegionEstimator(object):
     def get_estimate(self, measurement, timestamp, region_id, ignore_sensor_ids=[]):
         raise NotImplementedError("Must override get_estimate")
 
+    @staticmethod
+    def is_valid_sensor_id(sensor_id):
+        '''
+            Check if sensor ID is valid (non empty string)
+
+            :param sensor_id:  (str) a sensor id
+
+            :return: True if valid, False otherwise
+        '''
+        return sensor_id is not None and isinstance(sensor_id, str) and len(sensor_id) > 0
+
     @property
     def verbose(self):
         return self._verbose
@@ -305,8 +316,21 @@ class RegionEstimator(object):
             if self.verbose > 1:
                 print('neighbours for {}: {}'.format(index, neighbors_str))
 
-    def get_region_sensors(self, region):
+    def __get_region_sensors(self, region):
         return self.sensors[self.sensors.geometry.within(region['geometry'])].index.tolist()
+
+    def get_region_sensors(self, region_id):
+        '''
+            Find all sensors within the region identified by region_id
+            as comma-delimited string of sensor ids.
+
+            :param region_id:  (str) a region id (must be (an index) in self.regions)
+
+            :return: A list of sensor IDs (list of str)
+        '''
+        assert region_id in self.regions.index.tolist(), 'region_id is not in list of regions'
+        result = self.regions.loc[[region_id]]['sensors'][0].strip().split(',')
+        return list(filter(self.is_valid_sensor_id, result))
 
     def __get_all_region_sensors(self):
         '''
@@ -319,7 +343,7 @@ class RegionEstimator(object):
             print('\ngetting all region sensors...')
 
         for index, region in self.regions.iterrows():
-            sensors = self.get_region_sensors(region)
+            sensors = self.__get_region_sensors(region)
             sensors_str = ",".join(str(x) for x in sensors)
             self.regions.at[index, "sensors"] = sensors_str
 

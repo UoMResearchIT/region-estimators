@@ -108,3 +108,18 @@ class TestRegionEstimator(unittest.TestCase):
         with self.assertRaises(AssertionError):
           bad_sensors = pd.read_csv(path.join(self.load_data, file))
           DistanceSimpleEstimator(bad_sensors, self.regions, self.actuals)
+
+  def test_get_region_sensors(self):
+    estimator = RegionEstimator(self.sensors, self.regions, self.actuals)
+
+    with self.assertRaises(AssertionError):
+        # Test that region_id not in regions raises assertion error
+        estimator.get_region_sensors('WC')
+
+    # Test a region_id known to be present in regions and has sensors
+    region_sensors = estimator.get_region_sensors('DG')
+    self.assertEqual(region_sensors, ['1023 [POLLEN]', '1023 [WEATHER]'])
+
+    # Test a region_id known to be present in regions and does not contain sensors
+    region_no_sensors = estimator.get_region_sensors('AB')
+    self.assertEqual(region_no_sensors, [])
