@@ -94,7 +94,7 @@ class DiffusionEstimator(RegionEstimator):
             # If readings found for the sensors, take the average
             result = actuals[measurement].mean(axis=0)
             if self.verbose > 0:
-                print('Found result (for regions: {}) from sensors: {}, average: {}'.format(region_ids, actuals, result))
+                print('Found result (for regions: {}) from sensors:\n {}, average: {}'.format(region_ids, actuals, result))
 
         if result is None or pd.isna(result):
             if self.verbose > 0:
@@ -128,7 +128,7 @@ class DiffusionEstimator(RegionEstimator):
             else:
                 if self.verbose > 0:
                     print('No next set of regions found so returning null')
-                return None, {'rings': diffuse_level}
+                return None, {'rings': diffuse_level-1}
         else:
             if self.verbose > 0:
                 print('Returning the result')
