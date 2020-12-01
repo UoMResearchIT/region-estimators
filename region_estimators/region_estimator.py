@@ -278,7 +278,7 @@ class RegionEstimator(object):
 
         :param measurement: (str) the measurement being recorded in the sensor data-point
         :param timestamp: (timestamp) the timestamp of the sensor datapoints being searched for
-        :param regions: list of region objects (row of regions dataframe)
+        :param region_ids: (list of str) list of region IDs
         :param ignore_sensor_ids list of sensor_ids to be ignored
 
         :return: Number of sensors
@@ -331,6 +331,28 @@ class RegionEstimator(object):
         assert region_id in self.regions.index.tolist(), 'region_id is not in list of regions'
         result = self.regions.loc[[region_id]]['sensors'][0].strip().split(',')
         return list(filter(self.is_valid_sensor_id, result))
+
+    def get_regions_sensors(self, region_ids, ignore_sensor_ids=[]):
+        '''
+        Retrieve the number of sensors (in self.sensors) for the list of region_ids
+
+        :param region_ids: (list of str) list of region IDs
+        :param ignore_sensor_ids: (list of str) list of sensor_ids to be ignored
+
+        :return: list of sensor IDs
+        '''
+        # Create an empty queryset for sensors found in regions
+        sensors = []
+
+        if self.verbose > 0:
+            print('Finding sensors in region_ids: {}'.format(region_ids))
+
+        # Find sensors in region_ids
+        for region_id in region_ids:
+            if self.verbose > 1:
+                print('Finding sensors in region {}'.format(region_id))
+            sensors.extend(self.get_region_sensors(region_id))
+        return list(set(sensors) - set(ignore_sensor_ids))
 
     def __get_all_region_sensors(self):
         '''

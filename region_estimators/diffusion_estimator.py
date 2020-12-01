@@ -37,6 +37,9 @@ class DiffusionEstimator(RegionEstimator):
 
             :return: tuple containing result and dict: {'rings': [The number of diffusion rings required]}
         """
+        if self.verbose > 0:
+            print('\n### Getting estimates for region {}, measurement {} at date {} ###\n'.format(
+                region_id, measurement, timestamp))
 
         # Check sensors exist (in any region) for this measurement/timestamp
         if self.sensor_datapoint_count(measurement, timestamp, ignore_sensor_ids=ignore_sensor_ids) == 0:
@@ -58,31 +61,15 @@ class DiffusionEstimator(RegionEstimator):
 
         # Recursively find the sensors in each diffusion ring (starting at 0)
         if self.verbose > 0:
-            print('Beginning recursive region estimation for region {}'.format(region_id))
+            print('Beginning recursive region estimation for region {}, timestamp: {}'.format(region_id, timestamp))
         return self.__get_diffusion_estimate_recursive(measurement, [region_id], timestamp, 0, regions_completed,
                                                        ignore_sensor_ids)
 
     def __get_diffusion_estimate_recursive(self, measurement, region_ids, timestamp, diffuse_level, regions_completed,
                                            ignore_sensor_ids=[]):
-        # Create an empty queryset for sensors found in regions
-        sensors = []
 
-        if self.verbose > 0:
-            print('Finding sensors in region_ids')
-
-        # Find sensors in region_ids
-        df_reset = pd.DataFrame(self.regions.reset_index())
-        for region_id in region_ids:
-            if self.verbose > 1:
-                print('Finding sensors in region {}'.format(region_id))
-            regions_temp = df_reset.loc[df_reset['region_id'] == region_id]
-            if len(regions_temp.index) > 0:
-                region_sensors = regions_temp['sensors'].iloc[0].split(',')
-                if len(region_sensors) > 0:
-                    sensors.extend(region_sensors)
-                    if self.verbose > 1:
-                        print('Found sensors for region {}: {}'.format(region_id, sensors))
-        sensors = list(set(sensors) - set(ignore_sensor_ids))
+        # Find all sensors in regions
+        sensors = self.get_regions_sensors(region_ids, ignore_sensor_ids)
 
         # Get values from sensors
         if self.verbose > 0:
