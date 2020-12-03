@@ -81,9 +81,10 @@ class RegionEstimator(object):
 
 
         ### Convert sensors to geo dataframe
-        sensors.reset_index(inplace=True)
-        sensors['sensor_id'] = sensors['sensor_id'].astype(str)
-        sensors.set_index('sensor_id', inplace=True)
+        #sensors.reset_index(inplace=True)
+        #sensors['sensor_id'] = sensors['sensor_id'].astype(str)
+        #sensors.set_index('sensor_id', inplace=True)
+        sensors.index = sensors.index.map(str)
         try:
             gdf_sensors = gpd.GeoDataFrame(data=sensors,
                                            geometry=gpd.points_from_xy(sensors.longitude, sensors.latitude))
