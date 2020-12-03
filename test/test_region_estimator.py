@@ -37,7 +37,7 @@ class TestRegionEstimator(unittest.TestCase):
     Test that a RegionEstimator object can be initialized with good data.
     Also check that various other initializations happen within the object.
     """
-    estimator = RegionEstimator(self.sensors, self.regions, self.actuals)
+    estimator = RegionEstimator(self.sensors, self.regions, self.actuals, verbose=0)
 
     self.assertIsNotNone(estimator)
     self.assertIsNotNone(estimator.regions['neighbours'])
@@ -110,6 +110,9 @@ class TestRegionEstimator(unittest.TestCase):
           DistanceSimpleEstimator(bad_sensors, self.regions, self.actuals)
 
   def test_get_region_sensors(self):
+    """
+    Check that get_region_sensors works with good and bad inputs
+    """
     estimator = RegionEstimator(self.sensors, self.regions, self.actuals)
 
     with self.assertRaises(AssertionError):
@@ -123,3 +126,20 @@ class TestRegionEstimator(unittest.TestCase):
     # Test a region_id known to be present in regions and does not contain sensors
     region_no_sensors = estimator.get_region_sensors('AB')
     self.assertEqual(region_no_sensors, [])
+
+  def test_sensor_region(self):
+    """
+    Check that get_region_id_from_sensor_id works with good and bad inputs
+    """
+    estimator = RegionEstimator(self.sensors, self.regions, self.actuals)
+
+    with self.assertRaises(AssertionError):
+        # Test that an invalid sensor_id raises assertion error
+        estimator.get_region_id(750)
+        # Test that sensor_id not in sensors raises assertion error
+        estimator.get_region_id('1023333 [POLLLLLLEN]')
+
+    # Test a sensor_id known to be present in sensors
+    region_id = estimator.get_region_id('1023 [POLLEN]')
+    self.assertEqual(region_id, 'DG')
+

@@ -2,6 +2,7 @@ from abc import ABCMeta, abstractmethod
 import geopandas as gpd
 import pandas as pd
 import json
+import numpy as np
 
 class RegionEstimator(object):
     """
@@ -106,8 +107,9 @@ class RegionEstimator(object):
         self.regions = gdf_regions
         self.actuals = actuals
 
-        self.__get_all_region_neighbours()
-        self.__get_all_region_sensors()
+        self.__set_region_neighbours()
+        self.__set_region_sensors()
+        self.__set_sensor_region()
 
 
     @abstractmethod
@@ -296,29 +298,6 @@ class RegionEstimator(object):
         else:
             return len(set(sensors))
 
-    def __get_all_region_neighbours(self):
-        '''
-        Find all of the neighbours of each region and add to a 'neighbours' column in self.regions -
-        as comma-delimited string of region_ids
-
-        :return: No return value
-        '''
-
-        if self.verbose > 0:
-            print('\ngetting all region neighbours')
-
-        for index, region in self.regions.iterrows():
-            neighbors = self.regions[self.regions.geometry.touches(region.geometry)].index.tolist()
-            neighbors = filter(lambda item: item != index, neighbors)
-            neighbors_str = ",".join(neighbors)
-            self.regions.at[index, "neighbours"] = neighbors_str
-
-            if self.verbose > 1:
-                print('neighbours for {}: {}'.format(index, neighbors_str))
-
-    def __get_region_sensors(self, region):
-        return self.sensors[self.sensors.geometry.within(region['geometry'])].index.tolist()
-
     def get_region_sensors(self, region_id):
         '''
             Find all sensors within the region identified by region_id
@@ -354,7 +333,30 @@ class RegionEstimator(object):
             sensors.extend(self.get_region_sensors(region_id))
         return list(set(sensors) - set(ignore_sensor_ids))
 
-    def __get_all_region_sensors(self):
+    def __set_region_neighbours(self):
+        '''
+        Find all of the neighbours of each region and add to a 'neighbours' column in self.regions -
+        as comma-delimited string of region_ids
+
+        :return: No return value
+        '''
+
+        if self.verbose > 0:
+            print('\ngetting all region neighbours')
+
+        for index, region in self.regions.iterrows():
+            neighbors = self.regions[self.regions.geometry.touches(region.geometry)].index.tolist()
+            neighbors = filter(lambda item: item != index, neighbors)
+            neighbors_str = ",".join(neighbors)
+            self.regions.at[index, "neighbours"] = neighbors_str
+
+            if self.verbose > 1:
+                print('neighbours for {}: {}'.format(index, neighbors_str))
+
+    def __get_region_sensors(self, region):
+        return self.sensors[self.sensors.geometry.within(region['geometry'])].index.tolist()
+
+    def __set_region_sensors(self):
         '''
             Find all of the sensors within each region and add to a 'sensors' column in self.regions -
             as comma-delimited string of sensor ids.
@@ -371,3 +373,35 @@ class RegionEstimator(object):
 
             if self.verbose > 1:
                 print('region {}: {}'.format(index, sensors_str))
+
+    def get_region_id(self, sensor_id):
+        '''
+            Retrieve the region_id that the sensor with sensor_id is in
+
+            :param sensor_id: (str) sensor ID
+
+            :return: (str) the region ID held in the 'region_id' column for the sensor object
+        '''
+        assert self.is_valid_sensor_id(sensor_id), 'Invalid sensor ID'
+        assert sensor_id in self.sensors.index.tolist(), 'sensor_id not in list of available sensors'
+
+        return self.sensors.loc[[sensor_id]]['region_id'][0]
+
+
+    def __set_sensor_region(self):
+        '''
+            Find all of the region ids for each sensor and add to a 'region_id' column in self.sensors
+            Adds None if not found.
+
+            :return: No return value
+        '''
+        if self.verbose > 0:
+            print('\ngetting region for each sensor...')
+
+        # Create new column with empty string as values
+        self.sensors["region_id"] = ""
+
+        for index, region in self.regions.iterrows():
+            self.sensors = self.sensors.assign(
+                **{'region_id': np.where(self.sensors.within(region.geometry), index, '')}
+            )
