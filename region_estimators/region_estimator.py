@@ -20,7 +20,7 @@ class RegionEstimator(object):
             Args:
                 sensors: list of sensors as pandas.DataFrame
                     Required columns:
-                        'sensor_id' (Unique INDEX)
+                        'sensor_id' (str or int) Unique identifier (will be converted to string)
                         'latitude' (float): latitude of sensor location
                         'longitude' (float): longitude of sensor location
                         'name' (string (Optional): Name of sensor
@@ -80,7 +80,10 @@ class RegionEstimator(object):
             "Each sensor ID must match a sensor_id in sensors. Error sensor IDs: " + str(error_sensors)
 
 
-        ### Convert to geo dataframe
+        ### Convert sensors to geo dataframe
+        sensors.reset_index(inplace=True)
+        sensors['sensor_id'] = sensors['sensor_id'].astype(str)
+        sensors.set_index('sensor_id', inplace=True)
         try:
             gdf_sensors = gpd.GeoDataFrame(data=sensors,
                                            geometry=gpd.points_from_xy(sensors.longitude, sensors.latitude))
@@ -94,14 +97,10 @@ class RegionEstimator(object):
         except Exception as err:
             raise ValueError('Error converting regions DataFrame to a GeoDataFrame: ' + str(err))
 
-        #   Make sure value columns at the end of column list
+        #   actuals: Make sure value columns at the end of column list
         cols = actuals.columns.tolist()
         cols.insert(0, cols.pop(cols.index('sensor_id')))
         cols.insert(0, cols.pop(cols.index('timestamp')))
-
-        # Make all non integer values Null in measurement fields
-        # No longer required, as covered in 'check actuals' assertations above
-        #actuals[cols[2:]] = actuals[cols[2:]].apply(pd.to_numeric, errors='coerce')
 
         self.sensors = gdf_sensors
         self.regions = gdf_regions
@@ -403,5 +402,5 @@ class RegionEstimator(object):
 
         for index, region in self.regions.iterrows():
             self.sensors = self.sensors.assign(
-                **{'region_id': np.where(self.sensors.within(region.geometry), index, '')}
+                **{'region_id': np.where(self.sensors.within(region.geometry), index, self.sensors['region_id'])}
             )

@@ -142,4 +142,3 @@ class TestRegionEstimator(unittest.TestCase):
     # Test a sensor_id known to be present in sensors
     region_id = estimator.get_region_id('1023 [POLLEN]')
     self.assertEqual(region_id, 'DG')
-
