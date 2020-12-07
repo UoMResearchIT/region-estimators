@@ -15,38 +15,41 @@ class RegionEstimator(object):
     VERBOSE_MAX = 2
 
     def __init__(self, sensors, regions, actuals, verbose=VERBOSE_DEFAULT):
-        """ Initialise instance of the RegionEstimator class.
+        """
+        Initialise instance of the RegionEstimator class.
 
-            Args:
-                sensors: list of sensors as pandas.DataFrame
-                    Required columns:
-                        'sensor_id' (str or int) Unique identifier (will be converted to string)
-                        'latitude' (float): latitude of sensor location
-                        'longitude' (float): longitude of sensor location
-                        'name' (string (Optional): Name of sensor
+        Args:
+            sensors: list of sensors as pandas.DataFrame
+                Required columns:
+                    'sensor_id' (str or int) Unique identifier (will be converted to str)
+                    'latitude' (float): latitude of sensor location
+                    'longitude' (float): longitude of sensor location
+                    'name' (string (Optional): Name of sensor
 
-                regions: list of regions as pandas.DataFrame
-                    Required columns:
-                        'region_id' (Unique INDEX)
-                        'geometry' (shapely.wkt/geom.wkt)
+            regions: list of regions as pandas.DataFrame
+                Required columns:
+                    'region_id' (Unique INDEX)
+                    'geometry' (shapely.wkt/geom.wkt)
 
-                actuals: list of sensor values as pandas.DataFrame
-                    Required columns:
-                        'timestamp' (string): timestamp of actual reading
-                        'sensor_id': ID of sensor which took actual reading - must match an index value in sensors
-                        [one or more value columns] (float):    value of actual measurement readings.
-                                                                each column name is the name of the measurement
-                                                                e.g. 'NO2'
+            actuals: list of sensor values as pandas.DataFrame
+                Required columns:
+                    'timestamp' (str): timestamp of actual reading
+                    'sensor_id': (str or int) ID of sensor which took actual reading - must match an index
+                        value in sensors. (will be converted to str)
+                    [one or more value columns] (float):    value of actual measurement readings.
+                                                            each column name is the name of the measurement
+                                                            e.g. 'NO2'
 
-                verbose: (int) Verbosity of output level. zero or less => No debug output
+            verbose: (int) Verbosity of output level. zero or less => No debug output
 
-            Returns:
-                Initialised instance of subclass of RegionEstimator
+        Returns:
+            Initialised instance of subclass of RegionEstimator
 
         """
         ### Check sensors:
 
-        # (Not checking sensor_id as that forms the index)
+        assert sensors.index.name == 'sensor_id', "sensors dataframe index name must be 'sensor_id'"
+        # (Not checking sensor_id data as that forms the index)
         assert 'latitude' in list(sensors.columns), "There is no latitude column in sensors dataframe"
         assert pd.to_numeric(sensors['latitude'], errors='coerce').notnull().all(), \
             "latitude column contains non-numeric values."
@@ -55,7 +58,8 @@ class RegionEstimator(object):
             "longitude column contains non-numeric values."
 
         ### Check regions
-        # (Not checking region_id as that forms the index)
+        # (Not checking region_id data as that forms the index)
+        assert regions.index.name == 'region_id', "regions dataframe index name must be 'region_id'"
         assert 'geometry' in list(regions.columns), "There is no geometry column in regions dataframe"
 
         ### Check actuals
@@ -80,10 +84,6 @@ class RegionEstimator(object):
             "Each sensor ID must match a sensor_id in sensors. Error sensor IDs: " + str(error_sensors)
 
 
-        ### Convert sensors to geo dataframe
-        #sensors.reset_index(inplace=True)
-        #sensors['sensor_id'] = sensors['sensor_id'].astype(str)
-        #sensors.set_index('sensor_id', inplace=True)
         sensors.index = sensors.index.map(str)
         try:
             gdf_sensors = gpd.GeoDataFrame(data=sensors,
@@ -102,6 +102,8 @@ class RegionEstimator(object):
         cols = actuals.columns.tolist()
         cols.insert(0, cols.pop(cols.index('sensor_id')))
         cols.insert(0, cols.pop(cols.index('timestamp')))
+
+        actuals['sensor_id'] = actuals['sensor_id'].astype(str)
 
         self.sensors = gdf_sensors
         self.regions = gdf_regions

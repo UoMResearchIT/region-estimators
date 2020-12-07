@@ -129,7 +129,7 @@ class TestRegionEstimator(unittest.TestCase):
 
   def test_sensor_region(self):
     """
-    Check that get_region_id_from_sensor_id works with good and bad inputs
+    Check that get_region_id works with good and bad inputs
     """
     estimator = RegionEstimator(self.sensors, self.regions, self.actuals)
 
@@ -142,3 +142,18 @@ class TestRegionEstimator(unittest.TestCase):
     # Test a sensor_id known to be present in sensors
     region_id = estimator.get_region_id('1023 [POLLEN]')
     self.assertEqual(region_id, 'DG')
+
+  def test_sensor_and_region_indexe_names(self):
+    """
+    Check that creating new RegionEstimator with incorrectly named indexes for sensors and regions
+    will return error  (should be sensor_id and region_id)
+    """
+    with self.assertRaises(AssertionError):
+        # Test that loading incorrect sensors index name raises assertion
+        sensors = pd.DataFrame(self.sensors)
+        sensors.index = sensors.index.rename('site_id')
+        estimator = DiffusionEstimator(sensors, self.regions, self.actuals)
+        # Test that loading incorrect regions index name raises assertion
+        regions = pd.DataFrame(self.regions)
+        regions.index = regions.index.rename('postcode')
+        estimator = DiffusionEstimator(self.sensors, regions, self.actuals)
