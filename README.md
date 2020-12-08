@@ -30,7 +30,7 @@ pip install region_estimators
 
 # Prepare input files  (For sample input files, see the 'sample_input_files' folder)
 >>> df_regions = pd.read_csv('/path/to/file/df_regions.csv', index_col='region_id')
->>> df_sensors = pd.read_csv('/path/to/file/df_sensors.csv', index_col='sensor_id')
+>>> df_sensors = pd.read_csv('/path/to/file/df_sensors.csv', index_col='site_id')
 >>> df_actuals = pd.read_csv('/path/to/file/df_actuals.csv')
 
 # Convert the regions geometry column from string to wkt format using wkt
@@ -68,7 +68,7 @@ pip install region_estimators
 
     sensors: list of sensors as pandas.DataFrame (one row per sensor)
 	    Required columns:
-                'sensor_id' (INDEX): identifier for sensor (must be unique to each sensor)
+                'site_id' (INDEX): identifier for sensor (must be unique to each sensor)
                 'latitude' (numeric): latitude of sensor location
                 'longitude' (numeric): longitude of sensor location
         Optional columns:
@@ -82,7 +82,7 @@ pip install region_estimators
     actuals: list of actual sensor values as pandas.DataFrame (one row per timestamp)
         Required columns:
             'timestamp' (string): timestamp of actual reading
-            'sensor_id': ID of sensor which took actual reading (must match with a sensors.sensor_id
+            'site_id': ID of sensor which took actual reading (must match with a sensors.site_id
                 in sensors (in value and type))
             [one or more value columns] (float):    value of actual measurement readings.
                                                     each column name should be the name of the measurement e.g. 'NO2'
