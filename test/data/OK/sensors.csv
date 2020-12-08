@@ -1,4 +1,4 @@
-longitude,latitude,sensor_id,Postcode,Address,Environment Type,Zone,Latitude,Longitude,Altitude (m)
+longitude,latitude,site_id,Postcode,Address,Environment Type,Zone,Latitude,Longitude,Altitude (m)
 -0.175269,51.54421,Camden Kerbside [AQ],,"21 Finchley Rd, London NW6, UK",Traffic Urban,Greater London Urban Area,51.54421,-0.175269,50
 -0.441614,51.48879,London Harlington [AQ],,"17 Sipson Ln, Harlington, Hayes UB3 5EH, UK",Industrial Urban,Greater London Urban Area,51.48879,-0.441614,35
 -0.042155,51.52253,Tower Hamlets Roadside [AQ],,"Engineering Building, 285 Bancroft Rd, Bethnal Green, London E1, UK",Traffic Urban,Greater London Urban Area,51.52253,-0.042155,20

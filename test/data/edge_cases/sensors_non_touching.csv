@@ -1,4 +1,4 @@
-longitude,latitude,sensor_id,Postcode,Address,Environment Type,Zone,Latitude,Longitude,Altitude (m)
+longitude,latitude,site_id,Postcode,Address,Environment Type,Zone,Latitude,Longitude,Altitude (m)
 -2.094278,57.15736,Aberdeen [AQ],,"7 Erroll Pl, Aberdeen AB24 5PQ, UK",Background Urban,North East Scotland,57.15736,-2.094278,20
 -5.101102,56.82266,Fort William [AQ],,"5 Camanachd Cres, Fort William PH33 6XZ, UK",Background Suburban,Highland,56.82266,-5.101102,5
 -4.241451,57.481308,Inverness [AQ],,"46 Telford St, Inverness IV3 5LD, UK",Traffic Urban,Highland,57.481308,-4.241451,1

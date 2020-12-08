@@ -1,3 +1,3 @@
-timestamp,sensor_id,NO2_mean
+timestamp,site_id,NO2_mean
 2019-10-15,Aberdeen [AQ],29
 2019-10-15,Aberdeen Union Street Roadside [AQ],46

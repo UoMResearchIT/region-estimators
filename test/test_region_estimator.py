@@ -18,7 +18,7 @@ class TestRegionEstimator(unittest.TestCase):
 
     self.sensors = pd.read_csv(
       path.join(self.load_data, 'sensors.csv'),
-      index_col='sensor_id'
+      index_col='site_id'
     )
 
     self.regions = pd.read_csv(
@@ -134,19 +134,19 @@ class TestRegionEstimator(unittest.TestCase):
     estimator = RegionEstimator(self.sensors, self.regions, self.actuals)
 
     with self.assertRaises(AssertionError):
-        # Test that an invalid sensor_id raises assertion error
+        # Test that an invalid site_id raises assertion error
         estimator.get_region_id(750)
-        # Test that sensor_id not in sensors raises assertion error
+        # Test that site_id not in sensors raises assertion error
         estimator.get_region_id('1023333 [POLLLLLLEN]')
 
-    # Test a sensor_id known to be present in sensors
+    # Test a site_id known to be present in sensors
     region_id = estimator.get_region_id('1023 [POLLEN]')
     self.assertEqual(region_id, 'DG')
 
   def test_sensor_and_region_indexe_names(self):
     """
     Check that creating new RegionEstimator with incorrectly named indexes for sensors and regions
-    will return error  (should be sensor_id and region_id)
+    will return error  (should be site_id and region_id)
     """
     with self.assertRaises(AssertionError):
         # Test that loading incorrect sensors index name raises assertion

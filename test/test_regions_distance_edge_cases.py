@@ -22,17 +22,17 @@ class TestRegionEdgeCases(unittest.TestCase):
 
     self.sensors_islands = pd.read_csv(
       path.join(self.load_data_path, 'sensors_islands.csv'),
-      index_col='sensor_id'
+      index_col='site_id'
     )
 
     self.sensors_non_touching = pd.read_csv(
       path.join(self.load_data_path, 'sensors_non_touching.csv'),
-      index_col='sensor_id'
+      index_col='site_id'
     )
 
     self.sensors_overlap = pd.read_csv(
       path.join(self.load_data_path, 'sensors_overlap.csv'),
-      index_col='sensor_id'
+      index_col='site_id'
     )
 
     self.actuals_islands = pd.read_csv(

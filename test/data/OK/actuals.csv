@@ -1,4 +1,4 @@
-timestamp,sensor_id,NO2_mean
+timestamp,site_id,NO2_mean
 2019-09-01,Camden Kerbside [AQ],23
 2019-09-01,London Harlington [AQ],17
 2019-09-01,Tower Hamlets Roadside [AQ],24

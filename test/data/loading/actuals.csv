@@ -1,4 +1,4 @@
-timestamp,sensor_id,urtica
+timestamp,site_id,urtica
 2017-06-10,181 [POLLEN],42.0
 2017-06-11,181 [POLLEN],14.0
 2017-06-12,181 [POLLEN],12.0

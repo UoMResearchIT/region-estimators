@@ -22,7 +22,7 @@ class TestRegionEdgeCases(unittest.TestCase):
 
     self.sensors = pd.read_csv(
       path.join(self.load_data_path, 'sensors.csv'),
-      index_col='sensor_id'
+      index_col='site_id'
     )
 
     self.actuals = pd.read_csv(
@@ -67,7 +67,7 @@ class TestRegionEdgeCases(unittest.TestCase):
     and that the results are as expected when ignoring sensors
     """
     estimator = DistanceSimpleEstimator(self.sensors, self.regions, self.actuals, verbose=0)
-    result = estimator.get_estimations('NO2_mean', None, '2019-10-15', ignore_sensor_ids=['Camden Kerbside [AQ]'])
+    result = estimator.get_estimations('NO2_mean', None, '2019-10-15', ignore_site_ids=['Camden Kerbside [AQ]'])
 
     #print('Result: \n {}'.format(result))
     #print('Target: \n {}'.format(self.results_ignore_sensors))

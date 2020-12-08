@@ -1,4 +1,4 @@
-timestamp,sensor_id,NO2_mean
+timestamp,site_id,NO2_mean
 2019-10-15,Carlisle Roadside [AQ],37
 2019-10-15,Dumfries [AQ],34
 2019-10-15,Liverpool Speke [AQ],28

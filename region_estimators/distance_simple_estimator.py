@@ -14,30 +14,30 @@ class DistanceSimpleEstimator(RegionEstimator):
             return DistanceSimpleEstimator(sensors, regions, actuals, verbose)
 
 
-    def get_estimate(self, measurement, timestamp, region_id, ignore_sensor_ids=[]):
+    def get_estimate(self, measurement, timestamp, region_id, ignore_site_ids=[]):
         """  Find estimations for a region and timestamp using the simple distance method: value of closest actual sensor
 
             :param measurement: measurement to be estimated (string, required)
             :param timestamp:  timestamp identifier (string)
             :param region_id: region identifier (string)
-            :param ignore_sensor_ids: sensor id(s) to be ignored during the estimations
+            :param ignore_site_ids: sensor id(s) to be ignored during the estimations
 
             :return: tuple containing
                 i) estimate
-                ii) dict: {'closest_sensor_ids': [IDs of closest sensor(s)]}
+                ii) dict: {'closest_site_ids': [IDs of closest sensor(s)]}
 
         """
         result = None, {'closest_sensor_data': None}
 
         # Check sensors exist (in any region) for this measurement/timestamp
-        if self.sensor_datapoint_count(measurement, timestamp, ignore_sensor_ids=ignore_sensor_ids) == 0:
+        if self.sensor_datapoint_count(measurement, timestamp, ignore_site_ids=ignore_site_ids) == 0:
             return result
 
         # Get the actual values
 
         df_actuals = self.actuals.loc[
-            (self.actuals['sensor_id'].isin(self.sensors.index.tolist())) &
-            (~self.actuals['sensor_id'].isin(ignore_sensor_ids)) &
+            (self.actuals['site_id'].isin(self.sensors.index.tolist())) &
+            (~self.actuals['site_id'].isin(ignore_site_ids)) &
             (self.actuals['timestamp'] == timestamp) &
             (self.actuals[measurement].notnull())
         ]
@@ -46,7 +46,7 @@ class DistanceSimpleEstimator(RegionEstimator):
 
         df_actuals = pd.merge(left=df_actuals,
                            right= df_sensors,
-                           on='sensor_id',
+                           on='site_id',
                            how='left')
         gdf_actuals = gpd.GeoDataFrame(data=df_actuals, geometry='geometry')
 
@@ -73,7 +73,7 @@ class DistanceSimpleEstimator(RegionEstimator):
                 if 'name' in list(closest_sensors.columns):
                     closest_sensors_result = list(closest_sensors['name'])
                 else:
-                    closest_sensors_result = list(closest_sensors['sensor_id'])
+                    closest_sensors_result = list(closest_sensors['site_id'])
 
                 result = closest_values_mean, {'closest_sensors': closest_sensors_result}
 
