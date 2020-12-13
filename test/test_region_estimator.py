@@ -16,8 +16,8 @@ class TestRegionEstimator(unittest.TestCase):
     dir, _ = path.split(__file__)
     self.load_data = path.join(dir, 'data', 'loading')
 
-    self.sensors = pd.read_csv(
-      path.join(self.load_data, 'sensors.csv'),
+    self.sites = pd.read_csv(
+      path.join(self.load_data, 'sites.csv'),
       index_col='site_id'
     )
 
@@ -37,12 +37,12 @@ class TestRegionEstimator(unittest.TestCase):
     Test that a RegionEstimator object can be initialized with good data.
     Also check that various other initializations happen within the object.
     """
-    estimator = RegionEstimator(self.sensors, self.regions, self.actuals, verbose=0)
+    estimator = RegionEstimator(self.sites, self.regions, self.actuals, verbose=0)
 
     self.assertIsNotNone(estimator)
-    self.assertIsNotNone(estimator.regions['sensors'])
+    self.assertIsNotNone(estimator.regions['sites'])
 
-    self.assertTrue(estimator.sensor_datapoint_count('urtica', '2018-03-15') > 0)
+    self.assertTrue(estimator.site_datapoint_count('urtica', '2018-03-15') > 0)
 
     with self.assertRaises(NotImplementedError):
       estimator.get_estimate('urtica', None, None)
@@ -53,10 +53,10 @@ class TestRegionEstimator(unittest.TestCase):
     be initialized with bad verbose.
     """
     with self.assertRaises(AssertionError):
-      DiffusionEstimator(self.sensors, self.regions, self.actuals, 'bad')
+      DiffusionEstimator(self.sites, self.regions, self.actuals, 'bad')
 
     with self.assertRaises(AssertionError):
-      DistanceSimpleEstimator(self.sensors, self.regions, self.actuals, 2.14)
+      DistanceSimpleEstimator(self.sites, self.regions, self.actuals, 2.14)
 
 
   def test_load_actuals_with_bad_data(self):
@@ -73,7 +73,7 @@ class TestRegionEstimator(unittest.TestCase):
       with self.subTest(file=file):
         with self.assertRaises(AssertionError):
           bad_actuals = pd.read_csv(path.join(self.load_data, file))
-          DiffusionEstimator(self.sensors, self.regions, bad_actuals)
+          DiffusionEstimator(self.sites, self.regions, bad_actuals)
 
   def test_load_regions_with_bad_data(self):
     """
@@ -87,70 +87,70 @@ class TestRegionEstimator(unittest.TestCase):
       with self.subTest(file=file):
         with self.assertRaises(AssertionError):
           bad_regions = pd.read_csv(path.join(self.load_data, file))
-          DiffusionEstimator(self.sensors, bad_regions, self.actuals)
+          DiffusionEstimator(self.sites, bad_regions, self.actuals)
 
-  def test_load_sensors_with_bad_data(self):
+  def test_load_sites_with_bad_data(self):
     """
-    Check that loading bad sensor data will fail.
+    Check that loading bad site data will fail.
     """
     bad_files = [
-      'sensors_no_latitude.csv',
-      'sensors_no_longitude.csv',
-      'sensors_bad_latitude.csv',
-      'sensors_bad_longitude.csv'
+      'sites_no_latitude.csv',
+      'sites_no_longitude.csv',
+      'sites_bad_latitude.csv',
+      'sites_bad_longitude.csv'
     ]
 
     for file in bad_files:
       with self.subTest(file=file):
         with self.assertRaises(AssertionError):
-          bad_sensors = pd.read_csv(path.join(self.load_data, file))
-          DistanceSimpleEstimator(bad_sensors, self.regions, self.actuals)
+          bad_sites = pd.read_csv(path.join(self.load_data, file))
+          DistanceSimpleEstimator(bad_sites, self.regions, self.actuals)
 
-  def test_get_region_sensors(self):
+  def test_get_region_sites(self):
     """
-    Check that get_region_sensors works with good and bad inputs
+    Check that get_region_sites works with good and bad inputs
     """
-    estimator = RegionEstimator(self.sensors, self.regions, self.actuals)
+    estimator = RegionEstimator(self.sites, self.regions, self.actuals)
 
     with self.assertRaises(AssertionError):
         # Test that region_id not in regions raises assertion error
-        estimator.get_region_sensors('WC')
+        estimator.get_region_sites('WC')
 
-    # Test a region_id known to be present in regions and has sensors
-    region_sensors = estimator.get_region_sensors('DG')
-    self.assertEqual(region_sensors, ['1023 [POLLEN]', '1023 [WEATHER]'])
+    # Test a region_id known to be present in regions and has sites
+    region_sites = estimator.get_region_sites('DG')
+    self.assertEqual(region_sites, ['1023 [POLLEN]', '1023 [WEATHER]'])
 
-    # Test a region_id known to be present in regions and does not contain sensors
-    region_no_sensors = estimator.get_region_sensors('AB')
-    self.assertEqual(region_no_sensors, [])
+    # Test a region_id known to be present in regions and does not contain sites
+    region_no_sites = estimator.get_region_sites('AB')
+    self.assertEqual(region_no_sites, [])
 
-  def test_sensor_region(self):
+  def test_site_region(self):
     """
     Check that get_region_id works with good and bad inputs
     """
-    estimator = RegionEstimator(self.sensors, self.regions, self.actuals)
+    estimator = RegionEstimator(self.sites, self.regions, self.actuals)
 
     with self.assertRaises(AssertionError):
         # Test that an invalid site_id raises assertion error
         estimator.get_region_id(750)
-        # Test that site_id not in sensors raises assertion error
+        # Test that site_id not in sites raises assertion error
         estimator.get_region_id('1023333 [POLLLLLLEN]')
 
-    # Test a site_id known to be present in sensors
+    # Test a site_id known to be present in sites
     region_id = estimator.get_region_id('1023 [POLLEN]')
     self.assertEqual(region_id, 'DG')
 
-  def test_sensor_and_region_indexe_names(self):
+  def test_site_and_region_indexe_names(self):
     """
-    Check that creating new RegionEstimator with incorrectly named indexes for sensors and regions
+    Check that creating new RegionEstimator with incorrectly named indexes for sites and regions
     will return error  (should be site_id and region_id)
     """
     with self.assertRaises(AssertionError):
-        # Test that loading incorrect sensors index name raises assertion
-        sensors = pd.DataFrame(self.sensors)
-        sensors.index = sensors.index.rename('site_id')
-        estimator = DiffusionEstimator(sensors, self.regions, self.actuals)
+        # Test that loading incorrect sites index name raises assertion
+        sites = pd.DataFrame(self.sites)
+        sites.index = sites.index.rename('site_id')
+        estimator = DiffusionEstimator(sites, self.regions, self.actuals)
         # Test that loading incorrect regions index name raises assertion
         regions = pd.DataFrame(self.regions)
         regions.index = regions.index.rename('postcode')
-        estimator = DiffusionEstimator(self.sensors, regions, self.actuals)
+        estimator = DiffusionEstimator(self.sites, regions, self.actuals)

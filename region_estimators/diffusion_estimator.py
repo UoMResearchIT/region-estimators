@@ -6,14 +6,14 @@ import numpy as np
 class DiffusionEstimator(RegionEstimator):
     MAX_RING_COUNT_DEFAULT = float("inf")
 
-    def __init__(self, sensors, regions, actuals, verbose=RegionEstimator.VERBOSE_DEFAULT):
-        super(DiffusionEstimator, self).__init__(sensors, regions, actuals, verbose)
+    def __init__(self, sites, regions, actuals, verbose=RegionEstimator.VERBOSE_DEFAULT):
+        super(DiffusionEstimator, self).__init__(sites, regions, actuals, verbose)
         self.__set_region_neighbours()
         self._max_ring_count = DiffusionEstimator.MAX_RING_COUNT_DEFAULT
 
     class Factory:
-        def create(self, sensors, regions, actuals, verbose=RegionEstimator.VERBOSE_DEFAULT):
-            return DiffusionEstimator(sensors, regions, actuals, verbose)
+        def create(self, sites, regions, actuals, verbose=RegionEstimator.VERBOSE_DEFAULT):
+            return DiffusionEstimator(sites, regions, actuals, verbose)
 
     @property
     def max_ring_count(self):
@@ -35,7 +35,7 @@ class DiffusionEstimator(RegionEstimator):
             :param measurement: measurement to be estimated (string, required)
             :param region_id: region identifier (string)
             :param timestamp:  timestamp identifier (string)
-            :param ignore_site_ids: sensor id(s) to be ignored during the estimations
+            :param ignore_site_ids: site id(s) to be ignored during the estimations
 
             :return: tuple containing result and dict: {'rings': [The number of diffusion rings required]}
         """
@@ -43,25 +43,25 @@ class DiffusionEstimator(RegionEstimator):
             print('\n### Getting estimates for region {}, measurement {} at date {} ###\n'.format(
                 region_id, measurement, timestamp))
 
-        # Check sensors exist (in any region) for this measurement/timestamp
-        if self.sensor_datapoint_count(measurement, timestamp, ignore_site_ids=ignore_site_ids) == 0:
+        # Check sites exist (in any region) for this measurement/timestamp
+        if self.site_datapoint_count(measurement, timestamp, ignore_site_ids=ignore_site_ids) == 0:
             if self.verbose > 0:
-                print('No sensors exist for region {}, measurement {} at date {}'.format(
+                print('No sites exist for region {}, measurement {} at date {}'.format(
                     region_id, measurement, timestamp))
             return None, {'rings': None}
 
-        # Check region is not an island (has no touching adjacent regions) which has no sensors within it
+        # Check region is not an island (has no touching adjacent regions) which has no sites within it
         # If it is, return null
-        region_sensors = set(self.regions.loc[region_id]['sensors']) - set(ignore_site_ids)
-        if len(region_sensors) == 0 and len(self.get_adjacent_regions([region_id])) == 0:
+        region_sites = set(self.regions.loc[region_id]['sites']) - set(ignore_site_ids)
+        if len(region_sites) == 0 and len(self.get_adjacent_regions([region_id])) == 0:
             if self.verbose > 0:
-                print('Region {} is an island and does not have sensors, so can\'t do diffusion'.format(region_id))
+                print('Region {} is an island and does not have sites, so can\'t do diffusion'.format(region_id))
             return None, {'rings': None}
 
         # Create an empty list for storing completed regions
         regions_completed = []
 
-        # Recursively find the sensors in each diffusion ring (starting at 0)
+        # Recursively find the sites in each diffusion ring (starting at 0)
         if self.verbose > 0:
             print('Beginning recursive region estimation for region {}, timestamp: {}'.format(region_id, timestamp))
         return self.__get_diffusion_estimate_recursive(measurement, [region_id], timestamp, 0, regions_completed,
@@ -70,26 +70,26 @@ class DiffusionEstimator(RegionEstimator):
     def __get_diffusion_estimate_recursive(self, measurement, region_ids, timestamp, diffuse_level, regions_completed,
                                            ignore_site_ids=[]):
 
-        # Find all sensors in regions
-        sensors = self.get_regions_sensors(region_ids, ignore_site_ids)
+        # Find all sites in regions
+        sites = self.get_regions_sites(region_ids, ignore_site_ids)
 
-        # Get values from sensors
+        # Get values from sites
         if self.verbose > 0:
-            print('obtaining values from sensors')
-        actuals = self.actuals.loc[(self.actuals['timestamp'] == timestamp) & (self.actuals['site_id'].isin(sensors))]
+            print('obtaining values from sites')
+        actuals = self.actuals.loc[(self.actuals['timestamp'] == timestamp) & (self.actuals['site_id'].isin(sites))]
 
         result = None
         if len(actuals) > 0:
-            # If readings found for the sensors, take the average
+            # If readings found for the sites, take the average
             result = actuals[measurement].mean(axis=0)
             if self.verbose > 0:
-                print('Found result (for regions: {}) from sensors:\n {}, average: {}'.format(region_ids, actuals, result))
+                print('Found result (for regions: {}) from sites:\n {}, average: {}'.format(region_ids, actuals, result))
 
         if result is None or pd.isna(result):
             if self.verbose > 0:
-                print('No sensors found. Current ring count: {}. Max diffusion level: {}'.format(
+                print('No sites found. Current ring count: {}. Max diffusion level: {}'.format(
                     diffuse_level, self._max_ring_count))
-            # If no readings/sensors found, go up a diffusion level (adding completed regions to ignore list)
+            # If no readings/sites found, go up a diffusion level (adding completed regions to ignore list)
             if diffuse_level >= self.max_ring_count:
                 if self.verbose > 0:
                     print('Max diffusion level reached so returning null.')

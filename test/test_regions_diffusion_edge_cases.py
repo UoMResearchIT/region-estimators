@@ -15,18 +15,18 @@ class TestRegionEdgeCases(unittest.TestCase):
     dir, _ = path.split(__file__)
     self.load_data_path = path.join(dir, 'data', 'edge_cases')
 
-    self.sensors_islands = pd.read_csv(
-      path.join(self.load_data_path, 'sensors_islands.csv'),
+    self.sites_islands = pd.read_csv(
+      path.join(self.load_data_path, 'sites_islands.csv'),
       index_col='site_id'
     )
 
-    self.sensors_non_touching = pd.read_csv(
-      path.join(self.load_data_path, 'sensors_non_touching.csv'),
+    self.sites_non_touching = pd.read_csv(
+      path.join(self.load_data_path, 'sites_non_touching.csv'),
       index_col='site_id'
     )
 
-    self.sensors_overlap = pd.read_csv(
-      path.join(self.load_data_path, 'sensors_overlap.csv'),
+    self.sites_overlap = pd.read_csv(
+      path.join(self.load_data_path, 'sites_overlap.csv'),
       index_col='site_id'
     )
 
@@ -85,7 +85,7 @@ class TestRegionEdgeCases(unittest.TestCase):
     Test that a DiffusionEstimator object can be initialized with region data containing islands
     and that the results are as expected for islands
     """
-    estimator_islands = DiffusionEstimator(self.sensors_islands, self.regions_islands, self.actuals_islands,
+    estimator_islands = DiffusionEstimator(self.sites_islands, self.regions_islands, self.actuals_islands,
                                            verbose=0)
     self.assertEqual(estimator_islands.get_adjacent_regions(['IM']), [])
     self.assertEqual(estimator_islands.get_adjacent_regions(['BT']), [])
@@ -104,7 +104,7 @@ class TestRegionEdgeCases(unittest.TestCase):
     Test that a DiffusionEstimator object can be initialized with region data containing regions that are
     not  touching and that the results are as expected
     """
-    estimator_non_touching = DiffusionEstimator(self.sensors_non_touching, self.regions_non_touching,
+    estimator_non_touching = DiffusionEstimator(self.sites_non_touching, self.regions_non_touching,
                                                 self.actuals_non_touching, verbose=0)
     self.assertEqual(estimator_non_touching.get_adjacent_regions(['PE']), [])
     self.assertEqual(estimator_non_touching.get_adjacent_regions(['TD']), [])
@@ -124,7 +124,7 @@ class TestRegionEdgeCases(unittest.TestCase):
     Test that a DiffusionEstimator object can be initialized with region data containing regions that are overlapping
     and that the results are as expected
     """
-    estimator_overlap = DiffusionEstimator(self.sensors_overlap, self.regions_overlap, self.actuals_overlap,
+    estimator_overlap = DiffusionEstimator(self.sites_overlap, self.regions_overlap, self.actuals_overlap,
                                            verbose=0)
     self.assertEqual(estimator_overlap.get_adjacent_regions(['AB']), ['DD', 'IV', 'PH'])
     self.assertEqual(estimator_overlap.get_adjacent_regions(['AB2']), ['DD', 'IV', 'PH'])

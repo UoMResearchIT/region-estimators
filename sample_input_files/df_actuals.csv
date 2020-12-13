@@ -1,4 +1,4 @@
-timestamp,sensor_id,urtica
+timestamp,site_id,urtica
 2017-03-01,181 [POLLEN],
 2017-03-02,181 [POLLEN],
 2017-03-03,181 [POLLEN],

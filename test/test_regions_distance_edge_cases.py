@@ -20,18 +20,18 @@ class TestRegionEdgeCases(unittest.TestCase):
     dir, _ = path.split(__file__)
     self.load_data_path = path.join(dir, 'data', 'edge_cases')
 
-    self.sensors_islands = pd.read_csv(
-      path.join(self.load_data_path, 'sensors_islands.csv'),
+    self.sites_islands = pd.read_csv(
+      path.join(self.load_data_path, 'sites_islands.csv'),
       index_col='site_id'
     )
 
-    self.sensors_non_touching = pd.read_csv(
-      path.join(self.load_data_path, 'sensors_non_touching.csv'),
+    self.sites_non_touching = pd.read_csv(
+      path.join(self.load_data_path, 'sites_non_touching.csv'),
       index_col='site_id'
     )
 
-    self.sensors_overlap = pd.read_csv(
-      path.join(self.load_data_path, 'sensors_overlap.csv'),
+    self.sites_overlap = pd.read_csv(
+      path.join(self.load_data_path, 'sites_overlap.csv'),
       index_col='site_id'
     )
 
@@ -93,7 +93,7 @@ class TestRegionEdgeCases(unittest.TestCase):
     Test that a DistanceEstimator object can be initialized with region data containing islands
     and that the results are as expected for islands
     """
-    estimator_islands = DistanceSimpleEstimator(self.sensors_islands, self.regions_islands, self.actuals_islands,
+    estimator_islands = DistanceSimpleEstimator(self.sites_islands, self.regions_islands, self.actuals_islands,
                                            verbose=0)
     result = estimator_islands.get_estimations('NO2_mean', None, '2019-10-15')
     #print('Islands results: \n {}'.format(result))
@@ -109,7 +109,7 @@ class TestRegionEdgeCases(unittest.TestCase):
     Test that a DistanceEstimator object can be initialized with region data containing regions that are
     not  touching and that the results are as expected
     """
-    estimator_non_touching = DistanceSimpleEstimator(self.sensors_non_touching, self.regions_non_touching,
+    estimator_non_touching = DistanceSimpleEstimator(self.sites_non_touching, self.regions_non_touching,
                                                 self.actuals_non_touching, verbose=0)
     result = estimator_non_touching.get_estimations('NO2_mean', None, '2019-10-15')
 
@@ -126,7 +126,7 @@ class TestRegionEdgeCases(unittest.TestCase):
     Test that a DistanceEstimator object can be initialized with region data containing regions that are overlapping
     and that the results are as expected
     """
-    estimator_overlap = DistanceSimpleEstimator(self.sensors_overlap, self.regions_overlap, self.actuals_overlap,
+    estimator_overlap = DistanceSimpleEstimator(self.sites_overlap, self.regions_overlap, self.actuals_overlap,
                                            verbose=0)
     result = estimator_overlap.get_estimations('NO2_mean', None, '2019-10-15')
 

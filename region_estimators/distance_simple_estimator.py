@@ -6,28 +6,28 @@ from region_estimators.region_estimator import RegionEstimator
 
 class DistanceSimpleEstimator(RegionEstimator):
 
-    def __init__(self, sensors, regions, actuals, verbose=RegionEstimator.VERBOSE_DEFAULT):
-        super(DistanceSimpleEstimator, self).__init__(sensors, regions, actuals, verbose)
+    def __init__(self, sites, regions, actuals, verbose=RegionEstimator.VERBOSE_DEFAULT):
+        super(DistanceSimpleEstimator, self).__init__(sites, regions, actuals, verbose)
 
     class Factory:
-        def create(self, sensors, regions, actuals, verbose=RegionEstimator.VERBOSE_DEFAULT):
-            return DistanceSimpleEstimator(sensors, regions, actuals, verbose)
+        def create(self, sites, regions, actuals, verbose=RegionEstimator.VERBOSE_DEFAULT):
+            return DistanceSimpleEstimator(sites, regions, actuals, verbose)
 
 
     def get_estimate(self, measurement, timestamp, region_id, ignore_site_ids=[]):
-        """  Find estimations for a region and timestamp using the simple distance method: value of closest actual sensor
+        """  Find estimations for a region and timestamp using the simple distance method: value of closest actual site
 
             :param measurement: measurement to be estimated (string, required)
             :param timestamp:  timestamp identifier (string)
             :param region_id: region identifier (string)
-            :param ignore_site_ids: sensor id(s) to be ignored during the estimations
+            :param ignore_site_ids: site id(s) to be ignored during the estimations
 
             :return: tuple containing
                 i) estimate
-                ii) dict: {'closest_site_ids': [IDs of closest sensor(s)]}
+                ii) dict: {'closest_site_ids': [IDs of closest site(s)]}
 
         """
-        result = None, {'closest_sensor_data': None}
+        result = None, {'closest_site_data': None}
 
         # Get the actual values
         df_actuals = self.actuals.loc[
@@ -36,15 +36,15 @@ class DistanceSimpleEstimator(RegionEstimator):
             (self.actuals[measurement].notnull())
         ]
 
-        df_sensors = self.sensors.reset_index()
+        df_sites = self.sites.reset_index()
 
         df_actuals = pd.merge(left=df_actuals,
-                           right= df_sensors,
+                           right= df_sites,
                            on='site_id',
                            how='left')
         gdf_actuals = gpd.GeoDataFrame(data=df_actuals, geometry='geometry')
 
-        # Get the closest sensor to the region
+        # Get the closest site to the region
         if len(gdf_actuals) > 0:
             # Get region geometry
             df_reset = pd.DataFrame(self.regions.reset_index())
@@ -55,20 +55,20 @@ class DistanceSimpleEstimator(RegionEstimator):
             # Calculate distances
             gdf_actuals['distance'] = pd.DataFrame(gdf_actuals['geometry'].distance(region.geometry))
 
-            # Get sensor(s) with shortest distance
+            # Get site(s) with shortest distance
             top_result = gdf_actuals.sort_values(by=['distance'], ascending=True).iloc[0] #returns the whole row as a series
 
             if top_result is not None:
-                # Take the average of all sensors with the closest distance
-                closest_sensors = gdf_actuals.loc[gdf_actuals['distance'] == top_result['distance']]
-                closest_values_mean = closest_sensors[measurement].mean(axis=0)
+                # Take the average of all sites with the closest distance
+                closest_sites = gdf_actuals.loc[gdf_actuals['distance'] == top_result['distance']]
+                closest_values_mean = closest_sites[measurement].mean(axis=0)
 
-                # In extra data, return closest sensor name if it exists, otherwise closest sensor id
-                if 'name' in list(closest_sensors.columns):
-                    closest_sensors_result = list(closest_sensors['name'])
+                # In extra data, return closest site name if it exists, otherwise closest site id
+                if 'name' in list(closest_sites.columns):
+                    closest_sites_result = list(closest_sites['name'])
                 else:
-                    closest_sensors_result = list(closest_sensors['site_id'])
+                    closest_sites_result = list(closest_sites['site_id'])
 
-                result = closest_values_mean, {'closest_sensors': closest_sensors_result}
+                result = closest_values_mean, {'closest_sites': closest_sites_result}
 
         return result

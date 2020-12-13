@@ -14,28 +14,28 @@ class RegionEstimator(object):
     VERBOSE_DEFAULT = 0
     VERBOSE_MAX = 2
 
-    def __init__(self, sensors, regions, actuals, verbose=VERBOSE_DEFAULT):
+    def __init__(self, sites, regions, actuals, verbose=VERBOSE_DEFAULT):
         """
         Initialise instance of the RegionEstimator class.
 
         Args:
-            sensors: list of sensors as pandas.DataFrame
+            sites: list of sites as pandas.DataFrame
                 Required columns:
-                    'site_id' (str or int) Unique identifier of site (of sensor) (will be converted to str)
-                    'latitude' (float): latitude of sensor location
-                    'longitude' (float): longitude of sensor location
-                    'name' (string (Optional): Name of sensor
+                    'site_id' (str or int) Unique identifier of site (of site) (will be converted to str)
+                    'latitude' (float): latitude of site location
+                    'longitude' (float): longitude of site location
+                    'name' (string (Optional): Name of site
 
             regions: list of regions as pandas.DataFrame
                 Required columns:
                     'region_id' (Unique INDEX)
                     'geometry' (shapely.wkt/geom.wkt)
 
-            actuals: list of sensor values as pandas.DataFrame
+            actuals: list of site values as pandas.DataFrame
                 Required columns:
                     'timestamp' (str): timestamp of actual reading
-                    'site_id': (str or int) ID of sensor which took actual reading - must match an index
-                        value in sensors. (will be converted to str)
+                    'site_id': (str or int) ID of site which took actual reading - must match an index
+                        value in sites. (will be converted to str)
                     [one or more value columns] (float):    value of actual measurement readings.
                                                             each column name is the name of the measurement
                                                             e.g. 'NO2'
@@ -46,15 +46,15 @@ class RegionEstimator(object):
             Initialised instance of subclass of RegionEstimator
 
         """
-        ### Check sensors:
+        ### Check sites:
 
-        assert sensors.index.name == 'site_id', "sensors dataframe index name must be 'site_id'"
+        assert sites.index.name == 'site_id', "sites dataframe index name must be 'site_id'"
         # (Not checking site_id data as that forms the index)
-        assert 'latitude' in list(sensors.columns), "There is no latitude column in sensors dataframe"
-        assert pd.to_numeric(sensors['latitude'], errors='coerce').notnull().all(), \
+        assert 'latitude' in list(sites.columns), "There is no latitude column in sites dataframe"
+        assert pd.to_numeric(sites['latitude'], errors='coerce').notnull().all(), \
             "latitude column contains non-numeric values."
-        assert 'longitude' in list(sensors.columns), "There is no longitude column in sensors dataframe"
-        assert pd.to_numeric(sensors['longitude'], errors='coerce').notnull().all(), \
+        assert 'longitude' in list(sites.columns), "There is no longitude column in sites dataframe"
+        assert pd.to_numeric(sites['longitude'], errors='coerce').notnull().all(), \
             "longitude column contains non-numeric values."
 
         ### Check regions
@@ -77,21 +77,21 @@ class RegionEstimator(object):
 
         self.verbose = verbose
 
-        # Check that each site_id value is present in the sensors dataframe index.
-        # ... So site_id values must be a subset of allowed sensors
-        error_sensors = set(actuals['site_id'].unique()) - set(sensors.index.values)
-        assert len(error_sensors) == 0, \
-            "Each sensor ID must match a site_id in sensors. Error sensor IDs: " + str(error_sensors)
+        # Check that each site_id value is present in the sites dataframe index.
+        # ... So site_id values must be a subset of allowed sites
+        error_sites = set(actuals['site_id'].unique()) - set(sites.index.values)
+        assert len(error_sites) == 0, \
+            "Each site ID must match a site_id in sites. Error site IDs: " + str(error_sites)
 
 
-        sensors.index = sensors.index.map(str)
+        sites.index = sites.index.map(str)
         try:
-            gdf_sensors = gpd.GeoDataFrame(data=sensors,
-                                           geometry=gpd.points_from_xy(sensors.longitude, sensors.latitude))
+            gdf_sites = gpd.GeoDataFrame(data=sites,
+                                           geometry=gpd.points_from_xy(sites.longitude, sites.latitude))
         except Exception as err:
-            raise ValueError('Error converting sensors DataFrame to a GeoDataFrame: ' + str(err))
+            raise ValueError('Error converting sites DataFrame to a GeoDataFrame: ' + str(err))
 
-        gdf_sensors = gdf_sensors.drop(columns=['longitude', 'latitude'])
+        gdf_sites = gdf_sites.drop(columns=['longitude', 'latitude'])
 
         try:
             gdf_regions = gpd.GeoDataFrame(data=regions, geometry='geometry')
@@ -105,12 +105,12 @@ class RegionEstimator(object):
 
         actuals['site_id'] = actuals['site_id'].astype(str)
 
-        self.sensors = gdf_sensors
+        self.sites = gdf_sites
         self.regions = gdf_regions
         self.actuals = actuals
 
-        self.__set_sensor_region()
-        self.__set_region_sensors()
+        self.__set_site_region()
+        self.__set_region_sites()
 
 
 
@@ -121,9 +121,9 @@ class RegionEstimator(object):
     @staticmethod
     def is_valid_site_id(site_id):
         '''
-            Check if sensor ID is valid (non empty string)
+            Check if site ID is valid (non empty string)
 
-            :param site_id:  (str) a sensor id
+            :param site_id:  (str) a site id
 
             :return: True if valid, False otherwise
         '''
@@ -153,7 +153,7 @@ class RegionEstimator(object):
             :param measurement: measurement to be estimated (string - required)
             :param region_id: region identifier (string or None)
             :param timestamp:  timestamp identifier (string or None)
-            :param ignore_site_ids: sensor id(s) to be ignored during the estimations
+            :param ignore_site_ids: site id(s) to be ignored during the estimations
 
             :return: pandas dataframe with columns:
                 'measurement'
@@ -212,7 +212,7 @@ class RegionEstimator(object):
             :param measurement: measurement to be estimated (string, required)
             :param region_id: region identifier (string, required)
             :param timestamp:  timestamp identifier (string or None)
-            :param ignore_site_ids: sensor id(s) to be ignored during the estimations
+            :param ignore_site_ids: site id(s) to be ignored during the estimations
 
             :return: a dict with items 'region_id' and 'estimates (list). Estimates contains
                         'timestamp', (estimated) 'value' and 'extra_data'
@@ -276,114 +276,114 @@ class RegionEstimator(object):
         # Return all adjacent regions as a querySet and remove any that are in the completed/ignore list.
         return [x for x in adjacent_regions if x not in ignore_regions and x.strip() != '']
 
-    def sensor_datapoint_count(self, measurement, timestamp, region_ids=[], ignore_site_ids=[]):
+    def site_datapoint_count(self, measurement, timestamp, region_ids=[], ignore_site_ids=[]):
         '''
-        Find the number of sensor datapoints for this measurement, timestamp and (optional) regions combination
+        Find the number of site datapoints for this measurement, timestamp and (optional) regions combination
 
-        :param measurement: (str) the measurement being recorded in the sensor data-point
-        :param timestamp: (timestamp) the timestamp of the sensor datapoints being searched for
+        :param measurement: (str) the measurement being recorded in the site data-point
+        :param timestamp: (timestamp) the timestamp of the site datapoints being searched for
         :param region_ids: (list of str) list of region IDs
         :param ignore_site_ids list of site_ids to be ignored
 
-        :return: Number of sensors
+        :return: Number of sites
         '''
-        sensors = self.actuals.loc[(self.actuals['timestamp'] == timestamp) & (self.actuals[measurement].notna())
+        sites = self.actuals.loc[(self.actuals['timestamp'] == timestamp) & (self.actuals[measurement].notna())
                                    & (~self.actuals['site_id'].isin(ignore_site_ids))]
-        sensors = sensors['site_id'].tolist()
+        sites = sites['site_id'].tolist()
 
-        region_sensors = []
+        region_sites = []
         for region_id in region_ids:
-            region_sensors.extend(self.regions.loc[region_id]['sensors'])
+            region_sites.extend(self.regions.loc[region_id]['sites'])
 
         if len(region_ids) > 0:
-            return len(set(sensors) & set(region_sensors))
+            return len(set(sites) & set(region_sites))
         else:
-            return len(set(sensors))
+            return len(set(sites))
 
-    def get_region_sensors(self, region_id):
+    def get_region_sites(self, region_id):
         '''
-            Find all sensors within the region identified by region_id
-            as comma-delimited string of sensor ids.
+            Find all sites within the region identified by region_id
+            as comma-delimited string of site ids.
 
             :param region_id:  (str) a region id (must be (an index) in self.regions)
 
-            :return: A list of sensor IDs (list of str)
+            :return: A list of site IDs (list of str)
         '''
         assert region_id in self.regions.index.tolist(), 'region_id is not in list of regions'
-        result = self.regions.loc[[region_id]]['sensors'][0].strip().split(',')
+        result = self.regions.loc[[region_id]]['sites'][0].strip().split(',')
         return list(filter(self.is_valid_site_id, result))
 
-    def get_regions_sensors(self, region_ids, ignore_site_ids=[]):
+    def get_regions_sites(self, region_ids, ignore_site_ids=[]):
         '''
-        Retrieve the number of sensors (in self.sensors) for the list of region_ids
+        Retrieve the number of sites (in self.sites) for the list of region_ids
 
         :param region_ids: (list of str) list of region IDs
         :param ignore_site_ids: (list of str) list of site_ids to be ignored
 
-        :return: list of sensor IDs
+        :return: list of site IDs
         '''
-        # Create an empty queryset for sensors found in regions
-        sensors = []
+        # Create an empty queryset for sites found in regions
+        sites = []
 
         if self.verbose > 0:
-            print('Finding sensors in region_ids: {}'.format(region_ids))
+            print('Finding sites in region_ids: {}'.format(region_ids))
 
-        # Find sensors in region_ids
+        # Find sites in region_ids
         for region_id in region_ids:
             if self.verbose > 1:
-                print('Finding sensors in region {}'.format(region_id))
-            sensors.extend(self.get_region_sensors(region_id))
-        return list(set(sensors) - set(ignore_site_ids))
+                print('Finding sites in region {}'.format(region_id))
+            sites.extend(self.get_region_sites(region_id))
+        return list(set(sites) - set(ignore_site_ids))
 
     def get_region_id(self, site_id):
         '''
-            Retrieve the region_id that the sensor with site_id is in
+            Retrieve the region_id that the site with site_id is in
 
-            :param site_id: (str) sensor ID
+            :param site_id: (str) site ID
 
-            :return: (str) the region ID held in the 'region_id' column for the sensor object
+            :return: (str) the region ID held in the 'region_id' column for the site object
         '''
-        assert self.is_valid_site_id(site_id), 'Invalid sensor ID'
-        assert site_id in self.sensors.index.tolist(), 'site_id not in list of available sensors'
+        assert self.is_valid_site_id(site_id), 'Invalid site ID'
+        assert site_id in self.sites.index.tolist(), 'site_id not in list of available sites'
 
-        return self.sensors.loc[[site_id]]['region_id'][0]
+        return self.sites.loc[[site_id]]['region_id'][0]
 
 
-    def __get_region_sensors(self, region):
-        return self.sensors[self.sensors.geometry.within(region['geometry'])].index.tolist()
+    def __get_region_sites(self, region):
+        return self.sites[self.sites.geometry.within(region['geometry'])].index.tolist()
 
-    def __set_region_sensors(self):
+    def __set_region_sites(self):
         '''
-            Find all of the sensors within each region and add to a 'sensors' column in self.regions -
-            as comma-delimited string of sensor ids.
+            Find all of the sites within each region and add to a 'sites' column in self.regions -
+            as comma-delimited string of site ids.
 
             :return: No return value
         '''
         if self.verbose > 0:
-            print('\ngetting all region sensors...')
+            print('\ngetting all region sites...')
 
         for index, region in self.regions.iterrows():
-            sensors = self.__get_region_sensors(region)
-            sensors_str = ",".join(str(x) for x in sensors)
-            self.regions.at[index, "sensors"] = sensors_str
+            sites = self.__get_region_sites(region)
+            sites_str = ",".join(str(x) for x in sites)
+            self.regions.at[index, "sites"] = sites_str
 
             if self.verbose > 1:
-                print('region {}: {}'.format(index, sensors_str))
+                print('region {}: {}'.format(index, sites_str))
 
-    def __set_sensor_region(self):
+    def __set_site_region(self):
         '''
-            Find all of the region ids for each sensor and add to a 'region_id' column in self.sensors
+            Find all of the region ids for each site and add to a 'region_id' column in self.sites
             Adds None if not found.
 
             :return: No return value
         '''
         if self.verbose > 0:
-            print('\ngetting region for each sensor...')
+            print('\ngetting region for each site...')
 
         # Create new column with empty string as values
-        self.sensors["region_id"] = ""
+        self.sites["region_id"] = ""
 
         for index, region in self.regions.iterrows():
-            self.sensors = self.sensors.assign(
-                **{'region_id': np.where(self.sensors.within(region.geometry), index, self.sensors['region_id'])}
+            self.sites = self.sites.assign(
+                **{'region_id': np.where(self.sites.within(region.geometry), index, self.sites['region_id'])}
             )
