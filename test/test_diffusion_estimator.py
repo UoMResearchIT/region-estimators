@@ -49,6 +49,7 @@ class TestRegionEdgeCases(unittest.TestCase):
     estimator = DiffusionEstimator(self.sensors, self.regions, self.actuals,
                                             verbose=0)
 
+    self.assertIsNotNone(estimator.regions['neighbours'])
     self.assertEqual(estimator.get_adjacent_regions(['SW']), ['CR', 'KT', 'SE', 'SM', 'TW', 'W', 'WC'])
     result = estimator.get_estimations('NO2_mean', None, '2019-10-15')
 

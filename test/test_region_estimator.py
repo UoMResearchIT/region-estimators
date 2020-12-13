@@ -40,12 +40,9 @@ class TestRegionEstimator(unittest.TestCase):
     estimator = RegionEstimator(self.sensors, self.regions, self.actuals, verbose=0)
 
     self.assertIsNotNone(estimator)
-    self.assertIsNotNone(estimator.regions['neighbours'])
     self.assertIsNotNone(estimator.regions['sensors'])
 
     self.assertTrue(estimator.sensor_datapoint_count('urtica', '2018-03-15') > 0)
-
-    self.assertEqual(estimator.get_adjacent_regions(['BL'], []), ['BB'])
 
     with self.assertRaises(NotImplementedError):
       estimator.get_estimate('urtica', None, None)

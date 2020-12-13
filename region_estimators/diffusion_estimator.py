@@ -1,5 +1,6 @@
 from region_estimators.region_estimator import RegionEstimator
 import pandas as pd
+import numpy as np
 
 
 class DiffusionEstimator(RegionEstimator):
@@ -7,6 +8,7 @@ class DiffusionEstimator(RegionEstimator):
 
     def __init__(self, sensors, regions, actuals, verbose=RegionEstimator.VERBOSE_DEFAULT):
         super(DiffusionEstimator, self).__init__(sensors, regions, actuals, verbose)
+        self.__set_region_neighbours()
         self._max_ring_count = DiffusionEstimator.MAX_RING_COUNT_DEFAULT
 
     class Factory:
@@ -120,3 +122,23 @@ class DiffusionEstimator(RegionEstimator):
             if self.verbose > 0:
                 print('Returning the result')
             return result, {'rings': diffuse_level}
+
+    def __set_region_neighbours(self):
+        '''
+        Find all of the neighbours of each region and add to a 'neighbours' column in self.regions -
+        as comma-delimited string of region_ids
+
+        :return: No return value
+        '''
+
+        if self.verbose > 0:
+            print('\ngetting all region neighbours')
+
+        for index, region in self.regions.iterrows():
+            neighbors = self.regions[self.regions.geometry.touches(region.geometry)].index.tolist()
+            neighbors = filter(lambda item: item != index, neighbors)
+            neighbors_str = ",".join(neighbors)
+            self.regions.at[index, "neighbours"] = neighbors_str
+
+            if self.verbose > 1:
+                print('neighbours for {}: {}'.format(index, neighbors_str))
