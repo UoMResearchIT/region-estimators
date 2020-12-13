@@ -29,14 +29,8 @@ class DistanceSimpleEstimator(RegionEstimator):
         """
         result = None, {'closest_sensor_data': None}
 
-        # Check sensors exist (in any region) for this measurement/timestamp
-        if self.sensor_datapoint_count(measurement, timestamp, ignore_site_ids=ignore_site_ids) == 0:
-            return result
-
         # Get the actual values
-
         df_actuals = self.actuals.loc[
-            (self.actuals['site_id'].isin(self.sensors.index.tolist())) &
             (~self.actuals['site_id'].isin(ignore_site_ids)) &
             (self.actuals['timestamp'] == timestamp) &
             (self.actuals[measurement].notnull())
@@ -52,24 +46,24 @@ class DistanceSimpleEstimator(RegionEstimator):
 
         # Get the closest sensor to the region
         if len(gdf_actuals) > 0:
+            # Get region geometry
             df_reset = pd.DataFrame(self.regions.reset_index())
             regions_temp = df_reset.loc[df_reset['region_id'] == region_id]
             if len(regions_temp.index) > 0:
                 region = regions_temp.iloc[0]
-            distances = pd.DataFrame(gdf_actuals['geometry'].distance(region.geometry))
-            distances = distances.merge(gdf_actuals, left_index=True, right_index=True)
+
+            # Calculate distances
+            gdf_actuals['distance'] = pd.DataFrame(gdf_actuals['geometry'].distance(region.geometry))
 
             # Get sensor(s) with shortest distance
-            top_result = distances.sort_values(by=[0], ascending=True).iloc[0] #returns the whole row as a series
+            top_result = gdf_actuals.sort_values(by=['distance'], ascending=True).iloc[0] #returns the whole row as a series
 
             if top_result is not None:
-                closest_distance = top_result[0]
                 # Take the average of all sensors with the closest distance
-                closest_sensors = distances.loc[distances[0] == closest_distance]
+                closest_sensors = gdf_actuals.loc[gdf_actuals['distance'] == top_result['distance']]
                 closest_values_mean = closest_sensors[measurement].mean(axis=0)
 
-                #print('closest sensors:', closest_sensors) #FOR DEBUG
-
+                # In extra data, return closest sensor name if it exists, otherwise closest sensor id
                 if 'name' in list(closest_sensors.columns):
                     closest_sensors_result = list(closest_sensors['name'])
                 else:
