@@ -66,7 +66,8 @@ class TestRegionEstimator(unittest.TestCase):
     bad_files = [
       'actuals_no_id.csv',
       'actuals_no_timestamp.csv',
-      'actuals_no_measurements.csv'
+      'actuals_no_measurements.csv',
+      'actuals_bad_values.csv'
     ]
 
     for file in bad_files:

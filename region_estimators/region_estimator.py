@@ -71,9 +71,12 @@ class RegionEstimator(object):
         for column in list(actuals.columns):
             if column not in ['timestamp', 'site_id']:
                 # Check measurement does not contain numeric (nulls are OK)
-                df_temp = actuals.loc[actuals[column].notnull()]
-                assert pd.to_numeric(df_temp[column], errors='coerce').notnull().all(), \
-                    "actuals['" + column + "'] column contains non-numeric values (null values are accepted)."
+                #df_temp = actuals.loc[actuals[column].notnull()]
+                try:
+                    pd.to_numeric(actuals[column], errors='raise').notnull()#.all()
+                except:
+                    raise AssertionError(
+                        "actuals['" + column + "'] column contains non-numeric values (null values are accepted).")
 
         self.verbose = verbose
 
