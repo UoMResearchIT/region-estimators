@@ -30,6 +30,11 @@ class TestRegionEdgeCases(unittest.TestCase):
       index_col='site_id'
     )
 
+    self.sites_empty_measurements = pd.read_csv(
+      path.join(self.load_data_path, 'sites_empty_measurements.csv'),
+      index_col='site_id'
+    )
+
     self.actuals_islands = pd.read_csv(
       path.join(self.load_data_path, 'actuals_islands.csv')
     )
@@ -40,6 +45,10 @@ class TestRegionEdgeCases(unittest.TestCase):
 
     self.actuals_overlap = pd.read_csv(
       path.join(self.load_data_path, 'actuals_overlap.csv')
+    )
+
+    self.actuals_empty_measurements = pd.read_csv(
+      path.join(self.load_data_path, 'actuals_empty_measurements.csv')
     )
 
     self.regions_islands = pd.read_csv(
@@ -69,6 +78,15 @@ class TestRegionEdgeCases(unittest.TestCase):
       axis=1
     )
 
+    self.regions_empty_measurements = pd.read_csv(
+      path.join(self.load_data_path, 'regions_empty_measurements.csv'),
+      index_col='region_id'
+    )
+    self.regions_empty_measurements['geometry'] = self.regions_empty_measurements.apply(
+      lambda row: wkt.loads(row.geometry),
+      axis=1
+    )
+
     self.results_islands = pd.read_csv(
       path.join(self.load_data_path, 'results_islands_diffusion.csv')
     )
@@ -77,6 +95,9 @@ class TestRegionEdgeCases(unittest.TestCase):
     )
     self.results_overlap = pd.read_csv(
       path.join(self.load_data_path, 'results_overlap_diffusion.csv')
+    )
+    self.results_empty_measurements = pd.read_csv(
+      path.join(self.load_data_path, 'results_empty_measurements.csv')
     )
 
 
@@ -138,3 +159,21 @@ class TestRegionEdgeCases(unittest.TestCase):
     self.assertIsNotNone(result)
     self.assertIsInstance(result, pd.DataFrame)
     self.assertTrue(result.equals(self.results_overlap))
+
+  def test_empty_measurements(self):
+    """
+        Test that a DiffusionEstimator object can be initialized with actuals containing empty measurment values
+        and that the results are as expected
+        """
+    estimator = DiffusionEstimator(self.sites_empty_measurements, self.regions_empty_measurements,
+                                   self.actuals_empty_measurements, verbose=0)
+
+    result = estimator.get_estimations('alnus', None, '2017-06-15')
+
+    #print('Result: \n {}'.format(result))
+    #print('Target: \n {}'.format(self.results_empty_measurements))
+
+    self.assertIsNotNone(estimator)
+    self.assertIsNotNone(result)
+    self.assertIsInstance(result, pd.DataFrame)
+    self.assertTrue(result.fillna(np.NaN).equals(self.results_empty_measurements))

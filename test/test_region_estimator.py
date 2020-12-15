@@ -140,7 +140,7 @@ class TestRegionEstimator(unittest.TestCase):
     region_id = estimator.get_region_id('1023 [POLLEN]')
     self.assertEqual(region_id, 'DG')
 
-  def test_site_and_region_indexe_names(self):
+  def test_site_and_region_index_names(self):
     """
     Check that creating new RegionEstimator with incorrectly named indexes for sites and regions
     will return error  (should be site_id and region_id)
