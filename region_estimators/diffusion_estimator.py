@@ -79,7 +79,7 @@ class DiffusionEstimator(RegionEstimator):
         actuals = self.actuals.loc[(self.actuals['timestamp'] == timestamp) & (self.actuals['site_id'].isin(sites))]
 
         result = None
-        if len(actuals) > 0:
+        if len(actuals.index) > 0:
             # If readings found for the sites, take the average
             result = actuals[measurement].mean(axis=0)
             if self.verbose > 0:
