@@ -79,7 +79,7 @@ pip install region_estimators
             'region_id' (INDEX): identifier for region (must be unique to each region)
             'geometry' (shapely.wkt/geom.wkt):  Multi-polygon representing regions location and shape.
 
-    actuals: list of actual site values as pandas.DataFrame (one row per timestamp)
+    actuals: list of actual site values as pandas.DataFrame (one row per timestamp/site_id combination)
         Required columns:
             'timestamp' (string): timestamp of actual reading
             'site_id': ID of site which took actual reading (must match with a sites.site_id
