@@ -3,17 +3,17 @@ import pandas as pd
 import numpy as np
 
 
-class DiffusionEstimator(RegionEstimator):
+class ConcentricRegionsEstimator(RegionEstimator):
     MAX_RING_COUNT_DEFAULT = float("inf")
 
     def __init__(self, sites, regions, actuals, verbose=RegionEstimator.VERBOSE_DEFAULT):
-        super(DiffusionEstimator, self).__init__(sites, regions, actuals, verbose)
+        super(ConcentricRegionsEstimator, self).__init__(sites, regions, actuals, verbose)
         self.__set_region_neighbours()
-        self._max_ring_count = DiffusionEstimator.MAX_RING_COUNT_DEFAULT
+        self._max_ring_count = ConcentricRegionsEstimator.MAX_RING_COUNT_DEFAULT
 
     class Factory:
         def create(self, sites, regions, actuals, verbose=RegionEstimator.VERBOSE_DEFAULT):
-            return DiffusionEstimator(sites, regions, actuals, verbose)
+            return ConcentricRegionsEstimator(sites, regions, actuals, verbose)
 
     @property
     def max_ring_count(self):
@@ -21,23 +21,23 @@ class DiffusionEstimator(RegionEstimator):
 
     @max_ring_count.setter
     def max_ring_count(self,  new_count=MAX_RING_COUNT_DEFAULT):
-        """  Set the maximum ring count of the diffusion estimation procedure
+        """  Set the maximum ring count of the concentric_regions estimation procedure
 
                    :param new_count:
-                    the maximum number of rings to be allowed during diffusion (integer, default=MAX_RING_COUNT_DEFAULT)
+                    the maximum number of rings to be allowed during concentric_regions (integer, default=MAX_RING_COUNT_DEFAULT)
         """
 
         self._max_ring_count = new_count
 
     def get_estimate(self, measurement, timestamp, region_id, ignore_site_ids=[]):
-        """  Find estimations for a region and timestamp using the diffusion rings method
+        """  Find estimations for a region and timestamp using the concentric_regions rings method
 
             :param measurement: measurement to be estimated (string, required)
             :param region_id: region identifier (string)
             :param timestamp:  timestamp identifier (string)
             :param ignore_site_ids: site id(s) to be ignored during the estimations
 
-            :return: tuple containing result and dict: {'rings': [The number of diffusion rings required]}
+            :return: tuple containing result and dict: {'rings': [The number of concentric_regions rings required]}
         """
         if self.verbose > 0:
             print('\n### Getting estimates for region {}, measurement {} at date {} ###\n'.format(
@@ -55,19 +55,19 @@ class DiffusionEstimator(RegionEstimator):
         region_sites = set(self.regions.loc[region_id]['sites']) - set(ignore_site_ids)
         if len(region_sites) == 0 and len(self.get_adjacent_regions([region_id])) == 0:
             if self.verbose > 0:
-                print('Region {} is an island and does not have sites, so can\'t do diffusion'.format(region_id))
+                print('Region {} is an island and does not have sites, so can\'t do concentric_regions'.format(region_id))
             return None, {'rings': None}
 
         # Create an empty list for storing completed regions
         regions_completed = []
 
-        # Recursively find the sites in each diffusion ring (starting at 0)
+        # Recursively find the sites in each concentric_regions ring (starting at 0)
         if self.verbose > 0:
             print('Beginning recursive region estimation for region {}, timestamp: {}'.format(region_id, timestamp))
-        return self.__get_diffusion_estimate_recursive(measurement, [region_id], timestamp, 0, regions_completed,
+        return self.__get_concentric_regions_estimate_recursive(measurement, [region_id], timestamp, 0, regions_completed,
                                                        ignore_site_ids)
 
-    def __get_diffusion_estimate_recursive(self, measurement, region_ids, timestamp, diffuse_level, regions_completed,
+    def __get_concentric_regions_estimate_recursive(self, measurement, region_ids, timestamp, diffuse_level, regions_completed,
                                            ignore_site_ids=[]):
 
         # Find all sites in regions
@@ -87,12 +87,12 @@ class DiffusionEstimator(RegionEstimator):
 
         if result is None or pd.isna(result):
             if self.verbose > 0:
-                print('No sites found. Current ring count: {}. Max diffusion level: {}'.format(
+                print('No sites found. Current ring count: {}. Max concentric_regions level: {}'.format(
                     diffuse_level, self._max_ring_count))
-            # If no readings/sites found, go up a diffusion level (adding completed regions to ignore list)
+            # If no readings/sites found, go up a concentric_regions level (adding completed regions to ignore list)
             if diffuse_level >= self.max_ring_count:
                 if self.verbose > 0:
-                    print('Max diffusion level reached so returning null.')
+                    print('Max concentric_regions level reached so returning null.')
                 return None, {'rings': diffuse_level}
 
             regions_completed.extend(region_ids)
@@ -106,9 +106,9 @@ class DiffusionEstimator(RegionEstimator):
             # If regions are found, continue, if not exit from the process
             if len(next_regions) > 0:
                 if self.verbose > 0:
-                    print('Next set of regions non empty so recursively getting diffusion estimates for those: {}.'
+                    print('Next set of regions non empty so recursively getting concentric_regions estimates for those: {}.'
                           .format(next_regions))
-                return self.__get_diffusion_estimate_recursive(measurement,
+                return self.__get_concentric_regions_estimate_recursive(measurement,
                                                                next_regions,
                                                                timestamp,
                                                                diffuse_level,

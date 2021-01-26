@@ -4,7 +4,7 @@ from shapely import wkt
 import pandas as pd
 import numpy as np
 
-from region_estimators.diffusion_estimator import DiffusionEstimator
+from region_estimators.concentric_regions_estimator import ConcentricRegionsEstimator
 
 class TestRegionEdgeCases(unittest.TestCase):
   """
@@ -34,19 +34,19 @@ class TestRegionEdgeCases(unittest.TestCase):
     )
 
     self.results = pd.read_csv(
-      path.join(self.load_data_path, 'results_diffusion.csv')
+      path.join(self.load_data_path, 'results_concentric_regions.csv')
     )
     self.results_ignore_sites = pd.read_csv(
-      path.join(self.load_data_path, 'results_diffusion_ignore_sites.csv')
+      path.join(self.load_data_path, 'results_concentric_regions_ignore_sites.csv')
     )
 
 
   def test_ok_files(self):
     """
-    Test that a DiffusionEstimator object can be initialized with region data containing regions that are all touching
+    Test that a ConcentricRegionsEstimator object can be initialized with region data containing regions that are all touching
     and that the results are as expected
     """
-    estimator = DiffusionEstimator(self.sites, self.regions, self.actuals,
+    estimator = ConcentricRegionsEstimator(self.sites, self.regions, self.actuals,
                                             verbose=0)
 
     self.assertIsNotNone(estimator.regions['neighbours'])
@@ -63,10 +63,10 @@ class TestRegionEdgeCases(unittest.TestCase):
 
   def test_ignore_sites(self):
     """
-    Test that a DiffusionEstimator object can be initialized with region data containing regions that are all touching
+    Test that a ConcentricRegionsEstimator object can be initialized with region data containing regions that are all touching
     and that the results are as expected when ignoring sites
     """
-    estimator = DiffusionEstimator(self.sites, self.regions, self.actuals, verbose=0)
+    estimator = ConcentricRegionsEstimator(self.sites, self.regions, self.actuals, verbose=0)
     result = estimator.get_estimations('NO2_mean', None, '2019-10-15', ignore_site_ids=['Camden Kerbside [AQ]'])
 
     #print('Result: \n {}'.format(result))

@@ -4,7 +4,7 @@ from shapely import wkt
 import pandas as pd
 import numpy as np
 
-from region_estimators.diffusion_estimator import DiffusionEstimator
+from region_estimators.concentric_regions_estimator import ConcentricRegionsEstimator
 
 class TestRegionEdgeCases(unittest.TestCase):
   """
@@ -88,13 +88,13 @@ class TestRegionEdgeCases(unittest.TestCase):
     )
 
     self.results_islands = pd.read_csv(
-      path.join(self.load_data_path, 'results_islands_diffusion.csv')
+      path.join(self.load_data_path, 'results_islands_concentric_regions.csv')
     )
     self.results_non_touching = pd.read_csv(
-      path.join(self.load_data_path, 'results_non_touching_diffusion.csv')
+      path.join(self.load_data_path, 'results_non_touching_concentric_regions.csv')
     )
     self.results_overlap = pd.read_csv(
-      path.join(self.load_data_path, 'results_overlap_diffusion.csv')
+      path.join(self.load_data_path, 'results_overlap_concentric_regions.csv')
     )
     self.results_empty_measurements = pd.read_csv(
       path.join(self.load_data_path, 'results_empty_measurements.csv')
@@ -103,10 +103,10 @@ class TestRegionEdgeCases(unittest.TestCase):
 
   def test_islands(self):
     """
-    Test that a DiffusionEstimator object can be initialized with region data containing islands
+    Test that a ConcentricRegionsEstimator object can be initialized with region data containing islands
     and that the results are as expected for islands
     """
-    estimator_islands = DiffusionEstimator(self.sites_islands, self.regions_islands, self.actuals_islands,
+    estimator_islands = ConcentricRegionsEstimator(self.sites_islands, self.regions_islands, self.actuals_islands,
                                            verbose=0)
     self.assertEqual(estimator_islands.get_adjacent_regions(['IM']), [])
     self.assertEqual(estimator_islands.get_adjacent_regions(['BT']), [])
@@ -122,10 +122,10 @@ class TestRegionEdgeCases(unittest.TestCase):
 
   def test_non_touching(self):
     """
-    Test that a DiffusionEstimator object can be initialized with region data containing regions that are
+    Test that a ConcentricRegionsEstimator object can be initialized with region data containing regions that are
     not  touching and that the results are as expected
     """
-    estimator_non_touching = DiffusionEstimator(self.sites_non_touching, self.regions_non_touching,
+    estimator_non_touching = ConcentricRegionsEstimator(self.sites_non_touching, self.regions_non_touching,
                                                 self.actuals_non_touching, verbose=0)
     self.assertEqual(estimator_non_touching.get_adjacent_regions(['PE']), [])
     self.assertEqual(estimator_non_touching.get_adjacent_regions(['TD']), [])
@@ -142,10 +142,10 @@ class TestRegionEdgeCases(unittest.TestCase):
 
   def test_overlapping(self):
     """
-    Test that a DiffusionEstimator object can be initialized with region data containing regions that are overlapping
+    Test that a ConcentricRegionsEstimator object can be initialized with region data containing regions that are overlapping
     and that the results are as expected
     """
-    estimator_overlap = DiffusionEstimator(self.sites_overlap, self.regions_overlap, self.actuals_overlap,
+    estimator_overlap = ConcentricRegionsEstimator(self.sites_overlap, self.regions_overlap, self.actuals_overlap,
                                            verbose=0)
     self.assertEqual(estimator_overlap.get_adjacent_regions(['AB']), ['DD', 'IV', 'PH'])
     self.assertEqual(estimator_overlap.get_adjacent_regions(['AB2']), ['DD', 'IV', 'PH'])
@@ -162,10 +162,10 @@ class TestRegionEdgeCases(unittest.TestCase):
 
   def test_empty_measurements(self):
     """
-        Test that a DiffusionEstimator object can be initialized with actuals containing empty measurment values
+        Test that a ConcentricRegionsEstimator object can be initialized with actuals containing empty measurment values
         and that the results are as expected
         """
-    estimator = DiffusionEstimator(self.sites_empty_measurements, self.regions_empty_measurements,
+    estimator = ConcentricRegionsEstimator(self.sites_empty_measurements, self.regions_empty_measurements,
                                    self.actuals_empty_measurements, verbose=0)
 
     result = estimator.get_estimations('alnus', None, '2017-06-15')

@@ -4,7 +4,7 @@ from shapely import wkt
 import pandas as pd
 
 from region_estimators.region_estimator import RegionEstimator
-from region_estimators.diffusion_estimator import DiffusionEstimator
+from region_estimators.concentric_regions_estimator import ConcentricRegionsEstimator
 from region_estimators.distance_simple_estimator import DistanceSimpleEstimator
 
 class TestRegionEstimator(unittest.TestCase):
@@ -49,11 +49,11 @@ class TestRegionEstimator(unittest.TestCase):
 
   def test_load_bad_verbose(self):
     """
-    Test that a DiffusionEstimator and DistanceSimpleEstimator objects can
+    Test that a ConcentricRegionsEstimator and DistanceSimpleEstimator objects can
     be initialized with bad verbose.
     """
     with self.assertRaises(AssertionError):
-      DiffusionEstimator(self.sites, self.regions, self.actuals, 'bad')
+      ConcentricRegionsEstimator(self.sites, self.regions, self.actuals, 'bad')
 
     with self.assertRaises(AssertionError):
       DistanceSimpleEstimator(self.sites, self.regions, self.actuals, 2.14)
@@ -74,7 +74,7 @@ class TestRegionEstimator(unittest.TestCase):
       with self.subTest(file=file):
         with self.assertRaises(AssertionError):
           bad_actuals = pd.read_csv(path.join(self.load_data, file))
-          DiffusionEstimator(self.sites, self.regions, bad_actuals)
+          ConcentricRegionsEstimator(self.sites, self.regions, bad_actuals)
 
   def test_load_regions_with_bad_data(self):
     """
@@ -88,7 +88,7 @@ class TestRegionEstimator(unittest.TestCase):
       with self.subTest(file=file):
         with self.assertRaises(AssertionError):
           bad_regions = pd.read_csv(path.join(self.load_data, file))
-          DiffusionEstimator(self.sites, bad_regions, self.actuals)
+          ConcentricRegionsEstimator(self.sites, bad_regions, self.actuals)
 
   def test_load_sites_with_bad_data(self):
     """
@@ -150,8 +150,8 @@ class TestRegionEstimator(unittest.TestCase):
         # Test that loading incorrect sites index name raises assertion
         sites = pd.DataFrame(self.sites)
         sites.index = sites.index.rename('site_id')
-        estimator = DiffusionEstimator(sites, self.regions, self.actuals)
+        estimator = ConcentricRegionsEstimator(sites, self.regions, self.actuals)
         # Test that loading incorrect regions index name raises assertion
         regions = pd.DataFrame(self.regions)
         regions.index = regions.index.rename('postcode')
-        estimator = DiffusionEstimator(self.sites, regions, self.actuals)
+        estimator = ConcentricRegionsEstimator(self.sites, regions, self.actuals)
