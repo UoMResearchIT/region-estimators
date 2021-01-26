@@ -5,7 +5,7 @@
 region_estimators is a Python library to calculate regional estimations of scalar quantities, based on some known scalar quantities at specific locations.
 For example, estimating the NO2 (pollution) level of a postcode/zip region, based on site data nearby.
 This first version of the package is initialised with 2 estimation methods:
-1. Diffusion: look for actual data points in gradually wider rings, starting with sites within the region, and then working in rings outwards, until sites are found. If more than one site is found at the final stage, it takes the mean.
+1. ConcentricRegions: look for actual data points in gradually wider rings, starting with sites within the region, and then working in rings outwards, until sites are found. If more than one site is found at the final stage, it takes the mean.
 2. Simple Distance measure: This is a very basic implementation... Find the nearest site to the region and use that value.
 If sites exist within the region, take the mean.
 
@@ -37,7 +37,7 @@ pip install region_estimators
 >>> df_regions['geometry'] = df_regions.apply(lambda row: wkt.loads(row.geometry), axis=1)
 
 # Create estimator, the first parameter is the estimation method.
->>> estimator = RegionEstimatorFactory.region_estimator('diffusion', df_sites, df_regions, df_actuals)
+>>> estimator = RegionEstimatorFactory.region_estimator('concentric-regions', df_sites, df_regions, df_actuals)
 
 # Make estimations
 >>> estimator.get_estimations('urtica', 'AB', '2017-07-01')
@@ -60,7 +60,7 @@ pip install region_estimators
     # Reguired inputs:
 
     # 	method_name (string): 	the estimation method. For example, in the first version
-    # 				the options are 'diffusion' or 'distance-simple'
+    # 				the options are 'concentric-regions' or 'distance-simple'
 
 
     # 	3 pandas.Dataframe objects:  (For sample input files, see the 'sample_input_files' folder)
