@@ -11,8 +11,9 @@ class DistanceSimpleEstimator(RegionEstimator):
         super(DistanceSimpleEstimator, self).__init__(sites, regions, actuals, verbose, max_processors)
 
     class Factory:
-        def create(self, sites, regions, actuals, verbose=RegionEstimator.VERBOSE_DEFAULT):
-            return DistanceSimpleEstimator(sites, regions, actuals, verbose)
+        def create(self, sites, regions, actuals, verbose=RegionEstimator.VERBOSE_DEFAULT,
+                 max_processors=RegionEstimator.MAX_NUM_PROCESSORS):
+            return DistanceSimpleEstimator(sites, regions, actuals, verbose, max_processors)
 
 
     def get_estimate(self, measurement, timestamp, region_id, ignore_site_ids=[]):

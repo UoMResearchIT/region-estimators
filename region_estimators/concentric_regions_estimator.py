@@ -13,8 +13,9 @@ class ConcentricRegionsEstimator(RegionEstimator):
         self._max_ring_count = ConcentricRegionsEstimator.MAX_RING_COUNT_DEFAULT
 
     class Factory:
-        def create(self, sites, regions, actuals, verbose=RegionEstimator.VERBOSE_DEFAULT):
-            return ConcentricRegionsEstimator(sites, regions, actuals, verbose)
+        def create(self, sites, regions, actuals, verbose=RegionEstimator.VERBOSE_DEFAULT,
+                 max_processors=RegionEstimator.MAX_NUM_PROCESSORS):
+            return ConcentricRegionsEstimator(sites, regions, actuals, verbose, max_processors)
 
     @property
     def max_ring_count(self):
