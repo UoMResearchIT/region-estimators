@@ -32,5 +32,9 @@ class RegionEstimatorFactory:
             raise ValueError('Method name {} does not exist. Available methods: \n{}'.format(method_name,
                                                                                              available_methods.keys()))
 
+    @staticmethod
+    def get_available_methods():
+        return available_methods.keys()
+
 
 
