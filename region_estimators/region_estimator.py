@@ -219,7 +219,7 @@ class RegionEstimator(object):
         else:
             timestamps = sorted(self.actuals['timestamp'].unique())
             for _, timestamp in enumerate(timestamps):
-                if self.verbose > 0:
+                if self.verbose > 1:
                     print(region_id, '    Calculating for timestamp:', timestamp)
                 pool.apply_async(self._get_estimate_process,
                                      args=(region_result, measurement, region_id, timestamp, ignore_site_ids))
@@ -276,11 +276,11 @@ class RegionEstimator(object):
                     print('\n##### Calculating for region:', region_id, '#####')
                 self._get_region_estimation(pool, region_result, measurement, region_id, timestamp, ignore_site_ids)
             else:
-                if self.verbose > 1:
+                if self.verbose > 0:
                     print('No region_id submitted so calculating for all region ids...')
                 results = []
                 for index, _ in self.regions.iterrows():
-                    if self.verbose > 0:
+                    if self.verbose > 1:
                         print('Calculating for region:', index)
                     self._get_region_estimation(pool, region_result, measurement, index, timestamp, ignore_site_ids)
 
