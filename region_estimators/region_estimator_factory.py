@@ -6,9 +6,12 @@ from region_estimators.concentric_regions_estimator import ConcentricRegionsEsti
 from region_estimators.distance_simple_estimator import DistanceSimpleEstimator
 from region_estimators.region_estimator import RegionEstimator
 
+available_methods = {'concentric-regions': ConcentricRegionsEstimator,
+                    'distance-simple': DistanceSimpleEstimator}
 
 class RegionEstimatorFactory:
     factories = {}
+
 
     # A Template Method:
     @staticmethod
@@ -23,12 +26,11 @@ class RegionEstimatorFactory:
 
     @staticmethod
     def get_classname(method_name):
-        if method_name == 'concentric-regions':
-            return 'ConcentricRegionsEstimator'
-        elif method_name == 'distance-simple':
-            return 'DistanceSimpleEstimator'
-        else:
-            raise ValueError('Method name does not exist')
+        try:
+            return available_methods[method_name].__name__
+        except:
+            raise ValueError('Method name {} does not exist. Available methods: \n{}'.format(method_name,
+                                                                                             available_methods.keys()))
 
 
 
