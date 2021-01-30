@@ -50,6 +50,15 @@ class RegionEstimator(object):
             Initialised instance of subclass of RegionEstimator
 
         """
+        self.verbose = verbose
+        if self.verbose > 0:
+            try:
+                import time
+                start_time = time.perf_counter()
+            except:
+                pass
+
+
         ### Check sites:
 
         assert sites.index.name == 'site_id', "sites dataframe index name must be 'site_id'"
@@ -81,8 +90,6 @@ class RegionEstimator(object):
                 except:
                     raise AssertionError(
                         "actuals['" + column + "'] column contains non-numeric values (null values are accepted).")
-
-        self.verbose = verbose
 
         # Check that each site_id value is present in the sites dataframe index.
         # ... So site_id values must be a subset of allowed sites
@@ -122,6 +129,13 @@ class RegionEstimator(object):
 
         self.__set_site_region()
         self.__set_region_sites()
+
+        if self.verbose > 0:
+            try:
+                finish_time = time.perf_counter()
+                print("Loaded class in {} seconds".format(finish_time-start_time))
+            except:
+                pass
 
     @abstractmethod
     def get_estimate(self, measurement, timestamp, region_id, ignore_site_ids=[]):
@@ -229,6 +243,13 @@ class RegionEstimator(object):
                 'extra_data' (json string)
         """
 
+        if self.verbose > 0:
+            try:
+                import time
+                start_time = time.perf_counter()
+            except:
+                pass
+
         # Check inputs
         assert measurement is not None, "measurement parameter cannot be None"
         assert measurement in list(self.actuals.columns), "The measurement: '" + measurement \
@@ -277,6 +298,14 @@ class RegionEstimator(object):
                                                 'extra_data': json.dumps(estimate['extra_data'])
                                                 },
                                              ignore_index=True)
+
+        if self.verbose > 0:
+            try:
+                finish_time = time.perf_counter()
+                print("Estimated values in {} seconds".format(finish_time-start_time))
+            except:
+                pass
+
         return df_result
 
     def get_adjacent_regions(self, region_ids, ignore_regions=[]):
