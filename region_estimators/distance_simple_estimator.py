@@ -6,8 +6,9 @@ from region_estimators.region_estimator import RegionEstimator
 
 class DistanceSimpleEstimator(RegionEstimator):
 
-    def __init__(self, sites, regions, actuals, verbose=RegionEstimator.VERBOSE_DEFAULT):
-        super(DistanceSimpleEstimator, self).__init__(sites, regions, actuals, verbose)
+    def __init__(self, sites, regions, actuals, verbose=RegionEstimator.VERBOSE_DEFAULT,
+                 max_processors=RegionEstimator.MAX_NUM_PROCESSORS):
+        super(DistanceSimpleEstimator, self).__init__(sites, regions, actuals, verbose, max_processors)
 
     class Factory:
         def create(self, sites, regions, actuals, verbose=RegionEstimator.VERBOSE_DEFAULT):

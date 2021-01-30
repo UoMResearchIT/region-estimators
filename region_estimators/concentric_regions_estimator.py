@@ -6,8 +6,9 @@ import numpy as np
 class ConcentricRegionsEstimator(RegionEstimator):
     MAX_RING_COUNT_DEFAULT = float("inf")
 
-    def __init__(self, sites, regions, actuals, verbose=RegionEstimator.VERBOSE_DEFAULT):
-        super(ConcentricRegionsEstimator, self).__init__(sites, regions, actuals, verbose)
+    def __init__(self, sites, regions, actuals, verbose=RegionEstimator.VERBOSE_DEFAULT,
+                 max_processors=RegionEstimator.MAX_NUM_PROCESSORS):
+        super(ConcentricRegionsEstimator, self).__init__(sites, regions, actuals, verbose, max_processors)
         self.__set_region_neighbours()
         self._max_ring_count = ConcentricRegionsEstimator.MAX_RING_COUNT_DEFAULT
 

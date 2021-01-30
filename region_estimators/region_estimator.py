@@ -3,6 +3,7 @@ import geopandas as gpd
 import pandas as pd
 import json
 import numpy as np
+import multiprocessing
 
 class RegionEstimator(object):
     """
@@ -13,8 +14,9 @@ class RegionEstimator(object):
 
     VERBOSE_DEFAULT = 0
     VERBOSE_MAX = 2
+    MAX_NUM_PROCESSORS = 1
 
-    def __init__(self, sites, regions, actuals, verbose=VERBOSE_DEFAULT):
+    def __init__(self, sites, regions, actuals, verbose=VERBOSE_DEFAULT, max_processors=MAX_NUM_PROCESSORS):
         """
         Initialise instance of the RegionEstimator class.
 
@@ -41,6 +43,8 @@ class RegionEstimator(object):
                                                             e.g. 'NO2'
 
             verbose: (int) Verbosity of output level. zero or less => No debug output
+
+            max_processors: (int) The maximum number of processors to be used when calculating regions.
 
         Returns:
             Initialised instance of subclass of RegionEstimator
@@ -86,7 +90,11 @@ class RegionEstimator(object):
         assert len(error_sites) == 0, \
             "Each site ID must match a site_id in sites. Error site IDs: " + str(error_sites)
 
+        # Set max_processors
+        # On local machine, multiprocessing.cpu_count() == 4
+        self.max_processors = min(max_processors, multiprocessing.cpu_count())
 
+        # Convert to geo dataframe
         sites.index = sites.index.map(str)
         try:
             gdf_sites = gpd.GeoDataFrame(data=sites,
@@ -114,8 +122,6 @@ class RegionEstimator(object):
 
         self.__set_site_region()
         self.__set_region_sites()
-
-
 
     @abstractmethod
     def get_estimate(self, measurement, timestamp, region_id, ignore_site_ids=[]):
@@ -148,6 +154,63 @@ class RegionEstimator(object):
             verbose = RegionEstimator.VERBOSE_MAX
         self._verbose = verbose
 
+    @property
+    def max_processors(self):
+        return self.__max_processors
+
+    @max_processors.setter
+    def max_processors(self, max_processors=MAX_NUM_PROCESSORS):
+        assert isinstance(max_processors, int), "max_processors must be an integer."
+        assert max_processors > 0, "max_processors must be greater than zero"
+        self.__max_processors = max_processors
+
+    def _get_estimate_process(self, region_result, measurement, region_id, timestamp, ignore_site_ids=[]):
+        """  Find estimation for a single region and single timestamp. Worker function for multi-processing.
+
+            :region_result: estimation result. as multiprocessing is used must return result as parameter
+            :param measurement: measurement to be estimated (string, required)
+            :param region_id: region identifier (string, required)
+            :param timestamp:  timestamp identifier (string, required)
+            :param ignore_site_ids: site id(s) to be ignored during the estimations. Default=[]
+
+            :return: a dict with items 'region_id' and 'estimates (list). Estimates contains
+                        'timestamp', (estimated) 'value' and 'extra_data'
+        """
+        region_result_estimate = self.get_estimate(measurement, timestamp, region_id, ignore_site_ids)
+        region_result.append({'measurement': measurement,
+                              'region_id': region_id,
+                              'value': region_result_estimate[0],
+                              'extra_data': region_result_estimate[1],
+                              'timestamp': timestamp})
+
+    def _get_region_estimation(self, pool, region_result, measurement, region_id, timestamp=None, ignore_site_ids=[]):
+        """  Find estimations for a region and timestamp (or all timestamps (or all timestamps if timestamp==None)
+
+            :param pool: the multiprocessing pool object within which to run this task
+            :region_result: estimation result. as multiprocessing is used must return result as parameter
+            :param measurement: measurement to be estimated (string, required)
+            :param region_id: region identifier (string, required)
+            :param timestamp:  timestamp identifier (string or None)
+            :param ignore_site_ids: site id(s) to be ignored during the estimations
+
+            :return: a dict with items 'region_id' and 'estimates (list). Estimates contains
+                        'timestamp', (estimated) 'value' and 'extra_data'
+        """
+
+        if timestamp is not None:
+            if self.verbose > 0:
+                print('\n##### Calculating for region_id: {} and timestamp: {} #####'.format(region_id, timestamp))
+            pool.apply_async(self._get_estimate_process,
+                                 args=(region_result, measurement, region_id, timestamp, ignore_site_ids))
+        else:
+            timestamps = sorted(self.actuals['timestamp'].unique())
+            for _, timestamp in enumerate(timestamps):
+                if self.verbose > 0:
+                    print(region_id, '    Calculating for timestamp:', timestamp)
+                pool.apply_async(self._get_estimate_process,
+                                     args=(region_result, measurement, region_id, timestamp, ignore_site_ids))
+        return region_result
+
 
     def get_estimations(self, measurement, region_id=None, timestamp=None, ignore_site_ids=[]):
         """  Find estimations for a region (or all regions if region_id==None) and
@@ -170,7 +233,6 @@ class RegionEstimator(object):
         assert measurement is not None, "measurement parameter cannot be None"
         assert measurement in list(self.actuals.columns), "The measurement: '" + measurement \
                                                           + "' does not exist in the actuals dataframe"
-
         if region_id is not None:
             df_reset = pd.DataFrame(self.regions.reset_index())
             regions_temp = df_reset.loc[df_reset['region_id'] == region_id]
@@ -183,74 +245,39 @@ class RegionEstimator(object):
         df_result = pd.DataFrame(columns=['measurement', 'region_id', 'timestamp', 'value', 'extra_data'])
 
         # Calculate estimates
-        if region_id:
-            if self.verbose > 0:
-                print('\n##### Calculating for region:', region_id, '#####')
-            results = [self.get_region_estimation(measurement, region_id, timestamp, ignore_site_ids)]
-        else:
-            if self.verbose > 1:
-                print('No region_id submitted so calculating for all region ids...')
-            results = []
-            for index, _ in self.regions.iterrows():
-                if self.verbose > 0:
-                    print('Calculating for region:', index)
-                results.append(self.get_region_estimation(measurement, index, timestamp, ignore_site_ids))
 
-        for item in results:
-            for estimate in item['estimates']:
+        with multiprocessing.Manager() as manager, multiprocessing.Pool(self.max_processors) as pool:
+            # Set up pool and result dict
+            region_result = manager.list()
+
+            if region_id:
+                if self.verbose > 0:
+                    print('\n##### Calculating for region:', region_id, '#####')
+                self._get_region_estimation(pool, region_result, measurement, region_id, timestamp, ignore_site_ids)
+            else:
+                if self.verbose > 1:
+                    print('No region_id submitted so calculating for all region ids...')
+                results = []
+                for index, _ in self.regions.iterrows():
+                    if self.verbose > 0:
+                        print('Calculating for region:', index)
+                    self._get_region_estimation(pool, region_result, measurement, index, timestamp, ignore_site_ids)
+
+            pool.close()
+            pool.join()
+
+            # Sort result by region ID as multi-processing messes them up
+            results_sorted = sorted(region_result, key=lambda x: x['region_id'])
+
+            for estimate in results_sorted:
                 df_result = df_result.append({  'measurement': measurement,
-                                                'region_id': item['region_id'],
+                                                'region_id': estimate['region_id'],
                                                 'timestamp': estimate['timestamp'],
                                                 'value': estimate['value'],
                                                 'extra_data': json.dumps(estimate['extra_data'])
-                                                }
-                                             , ignore_index=True)
-
+                                                },
+                                             ignore_index=True)
         return df_result
-
-
-    def get_region_estimation(self, measurement, region_id, timestamp=None, ignore_site_ids=[]):
-        """  Find estimations for a region and timestamp (or all timestamps (or all timestamps if timestamp==None)
-
-            :param measurement: measurement to be estimated (string, required)
-            :param region_id: region identifier (string, required)
-            :param timestamp:  timestamp identifier (string or None)
-            :param ignore_site_ids: site id(s) to be ignored during the estimations
-
-            :return: a dict with items 'region_id' and 'estimates (list). Estimates contains
-                        'timestamp', (estimated) 'value' and 'extra_data'
-        """
-        region_result = {'region_id': region_id, 'estimates': []}
-
-        if timestamp is not None:
-            if self.verbose > 0:
-                print('\n##### Calculating for region_id: {} and timestamp: {} #####'.format(region_id, timestamp))
-
-            region_result_estimate = self.get_estimate(measurement, timestamp, region_id, ignore_site_ids)
-
-            if self.verbose > 0:
-                print(region_id, '    Calculated for timestamp:', region_result_estimate)
-
-            region_result['estimates'].append({'value': region_result_estimate[0],
-                                               'extra_data': region_result_estimate[1],
-                                               'timestamp': timestamp})
-        else:
-            timestamps = sorted(self.actuals['timestamp'].unique())
-            for _, timestamp in enumerate(timestamps):
-                if self.verbose > 0:
-                    print(region_id, '    Calculating for timestamp:', timestamp)
-
-                region_result_estimate = self.get_estimate(measurement, timestamp, region_id, ignore_site_ids)
-
-                if self.verbose > 0:
-                    print(region_id, '    Calculated for ', timestamp, ':', region_result_estimate)
-
-                region_result['estimates'].append({'value':region_result_estimate[0],
-                                                   'extra_data': region_result_estimate[1],
-                                                   'timestamp': timestamp}
-                                                  )
-        return region_result
-
 
     def get_adjacent_regions(self, region_ids, ignore_regions=[]):
         """  Find all adjacent regions for list a of region ids
