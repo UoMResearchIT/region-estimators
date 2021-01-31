@@ -158,9 +158,10 @@ class TestRegionEstimator(unittest.TestCase):
 
   def test_max_processors(self):
     """
-    Check that creating new RegionEstimator with
+    Check that creating new RegionEstimator with incorrect max_processors
     """
 
     with self.assertRaises(AssertionError):
         # Test that loading incorrect max_processors raises assertion
         estimator = ConcentricRegionsEstimator(self.sites, self.regions, self.actuals, verbose=0, max_processors=0)
+        estimator = ConcentricRegionsEstimator(self.sites, self.regions, self.actuals, verbose=0, max_processors=500)

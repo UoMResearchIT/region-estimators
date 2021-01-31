@@ -76,19 +76,3 @@ class TestRegionEdgeCases(unittest.TestCase):
     self.assertIsNotNone(result)
     self.assertIsInstance(result, pd.DataFrame)
     self.assertTrue(result.equals(self.results_ignore_sites))
-
-  def test_high_max_processors(self):
-    """
-    Test that a DistanceEstimator object can be initialized with region data containing regions that are all touching
-    and that the results are as expected
-    """
-    estimator = DistanceSimpleEstimator(self.sites, self.regions, self.actuals, verbose=0, max_processors=500)
-    result = estimator.get_estimations('NO2_mean', None, '2019-10-15')
-
-    #print('Result: \n {}'.format(result))
-    #print('Target: \n {}'.format(self.results_touching))
-
-    self.assertIsNotNone(estimator)
-    self.assertIsNotNone(result)
-    self.assertIsInstance(result, pd.DataFrame)
-    self.assertTrue(result.equals(self.results))

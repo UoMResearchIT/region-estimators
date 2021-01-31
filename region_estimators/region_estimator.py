@@ -287,10 +287,8 @@ class RegionEstimator(object):
             pool.close()
             pool.join()
 
-            # Sort result by region ID as multi-processing messes them up
-            results_sorted = sorted(region_result, key=lambda x: x['region_id'])
-
-            for estimate in results_sorted:
+            # Put results into the results dataframe
+            for estimate in region_result:
                 df_result = df_result.append({  'measurement': measurement,
                                                 'region_id': estimate['region_id'],
                                                 'timestamp': estimate['timestamp'],
@@ -298,6 +296,8 @@ class RegionEstimator(object):
                                                 'extra_data': json.dumps(estimate['extra_data'])
                                                 },
                                              ignore_index=True)
+            # Sort result by region ID as multi-processing messes them up
+            df_result.sort_values(by='region_id', inplace=True)
 
         if self.verbose > 0:
             try:
