@@ -34,10 +34,12 @@ class TestRegionEdgeCases(unittest.TestCase):
     )
 
     self.results = pd.read_csv(
-      path.join(self.load_data_path, 'results_concentric_regions.csv')
+      path.join(self.load_data_path, 'results_concentric_regions.csv'),
+      index_col=['measurement', 'region_id', 'timestamp']
     )
     self.results_ignore_sites = pd.read_csv(
-      path.join(self.load_data_path, 'results_concentric_regions_ignore_sites.csv')
+      path.join(self.load_data_path, 'results_concentric_regions_ignore_sites.csv'),
+      index_col=['measurement', 'region_id', 'timestamp']
     )
 
 
@@ -55,6 +57,7 @@ class TestRegionEdgeCases(unittest.TestCase):
 
     #print('Result: \n {}'.format(result))
     #print('Target: \n {}'.format(self.results))
+    #print('Compare: \n {}'.format(result.compare(self.results)))
 
     self.assertIsNotNone(estimator)
     self.assertIsNotNone(result)

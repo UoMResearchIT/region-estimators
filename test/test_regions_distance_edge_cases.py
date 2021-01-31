@@ -75,15 +75,16 @@ class TestRegionEdgeCases(unittest.TestCase):
     )
 
     self.results_islands = pd.read_csv(
-      path.join(self.load_data_path, 'results_islands_distance.csv')
+      path.join(self.load_data_path, 'results_islands_distance.csv'),
+      index_col=['measurement', 'region_id', 'timestamp']
     )
     self.results_non_touching = pd.read_csv(
-      path.join(self.load_data_path, 'results_non_touching_distance.csv')
+      path.join(self.load_data_path, 'results_non_touching_distance.csv'),
+      index_col=['measurement', 'region_id', 'timestamp']
     )
     self.results_overlap = pd.read_csv(
       path.join(self.load_data_path, 'results_overlap_distance.csv'),
-      doublequote=True,
-      converters={'extra_data': self.CustomJSONParser}
+      index_col=['measurement', 'region_id', 'timestamp']
     )
 
 

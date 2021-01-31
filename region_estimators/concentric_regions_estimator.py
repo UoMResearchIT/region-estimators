@@ -1,6 +1,5 @@
 from region_estimators.region_estimator import RegionEstimator
 import pandas as pd
-import numpy as np
 
 
 class ConcentricRegionsEstimator(RegionEstimator):
@@ -39,7 +38,7 @@ class ConcentricRegionsEstimator(RegionEstimator):
             :param timestamp:  timestamp identifier (string)
             :param ignore_site_ids: site id(s) to be ignored during the estimations
 
-            :return: tuple containing result and dict: {'rings': [The number of concentric_regions rings required]}
+            :return: tuple containing result and dict: {"rings": [The number of concentric_regions rings required]}
         """
         if self.verbose > 0:
             print('\n### Getting estimates for region {}, measurement {} at date {} ###\n'.format(
@@ -50,7 +49,7 @@ class ConcentricRegionsEstimator(RegionEstimator):
             if self.verbose > 0:
                 print('No sites exist for region {}, measurement {} at date {}'.format(
                     region_id, measurement, timestamp))
-            return None, {'rings': None}
+            return None, {"rings": None}
 
         # Check region is not an island (has no touching adjacent regions) which has no sites within it
         # If it is, return null
@@ -58,7 +57,7 @@ class ConcentricRegionsEstimator(RegionEstimator):
         if len(region_sites) == 0 and len(self.get_adjacent_regions([region_id])) == 0:
             if self.verbose > 0:
                 print('Region {} is an island and does not have sites, so can\'t do concentric_regions'.format(region_id))
-            return None, {'rings': None}
+            return None, {"rings": None}
 
         # Create an empty list for storing completed regions
         regions_completed = []
@@ -95,7 +94,7 @@ class ConcentricRegionsEstimator(RegionEstimator):
             if diffuse_level >= self.max_ring_count:
                 if self.verbose > 0:
                     print('Max concentric_regions level reached so returning null.')
-                return None, {'rings': diffuse_level}
+                return None, {"rings": diffuse_level}
 
             regions_completed.extend(region_ids)
             diffuse_level += 1
@@ -119,11 +118,11 @@ class ConcentricRegionsEstimator(RegionEstimator):
             else:
                 if self.verbose > 0:
                     print('No next set of regions found so returning null')
-                return None, {'rings': diffuse_level-1}
+                return None, {"rings": diffuse_level-1}
         else:
             if self.verbose > 0:
                 print('Returning the result')
-            return result, {'rings': diffuse_level}
+            return result, {"rings": diffuse_level}
 
     def __set_region_neighbours(self):
         '''

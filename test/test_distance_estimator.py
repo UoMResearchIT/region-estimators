@@ -39,10 +39,12 @@ class TestRegionEdgeCases(unittest.TestCase):
     )
 
     self.results = pd.read_csv(
-      path.join(self.load_data_path, 'results_distance.csv')
+      path.join(self.load_data_path, 'results_distance.csv'),
+      index_col=['measurement', 'region_id', 'timestamp']
     )
     self.results_ignore_sites = pd.read_csv(
-      path.join(self.load_data_path, 'results_distance_ignore_sites.csv')
+      path.join(self.load_data_path, 'results_distance_ignore_sites.csv'),
+      index_col=['measurement', 'region_id', 'timestamp']
     )
 
   def test_ok_files(self):

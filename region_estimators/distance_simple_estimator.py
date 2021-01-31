@@ -26,7 +26,7 @@ class DistanceSimpleEstimator(RegionEstimator):
 
             :return: tuple containing
                 i) estimate
-                ii) dict: {'closest_site_ids': [IDs of closest site(s)]}
+                ii) dict: {"closest_sites": [IDs of closest site(s)]}
 
         """
         result = None, {'closest_site_data': None}
@@ -71,6 +71,6 @@ class DistanceSimpleEstimator(RegionEstimator):
                 else:
                     closest_sites_result = list(closest_sites['site_id'])
 
-                result = closest_values_mean, {'closest_sites': closest_sites_result}
+                result = closest_values_mean, {"closest_sites": closest_sites_result}
 
         return result

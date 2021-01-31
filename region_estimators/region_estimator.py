@@ -1,9 +1,9 @@
 from abc import ABCMeta, abstractmethod
 import geopandas as gpd
 import pandas as pd
-import json
 import numpy as np
 import multiprocessing
+import json
 
 class RegionEstimator(object):
     """
@@ -194,7 +194,7 @@ class RegionEstimator(object):
         region_result.append({'measurement': measurement,
                               'region_id': region_id,
                               'value': region_result_estimate[0],
-                              'extra_data': region_result_estimate[1],
+                              'extra_data': json.dumps(region_result_estimate[1]),
                               'timestamp': timestamp})
 
     def _get_region_estimation(self, pool, region_result, measurement, region_id, timestamp=None, ignore_site_ids=[]):
@@ -263,8 +263,6 @@ class RegionEstimator(object):
             actuals_temp = df_actuals_reset.loc[df_actuals_reset['timestamp'] == timestamp]
             assert len(actuals_temp.index) > 0, "The timestamp does not exist in the actuals dataframe"
 
-        df_result = pd.DataFrame(columns=['measurement', 'region_id', 'timestamp', 'value', 'extra_data'])
-
         # Calculate estimates
 
         with multiprocessing.Manager() as manager, multiprocessing.Pool(self.max_processors) as pool:
@@ -288,16 +286,9 @@ class RegionEstimator(object):
             pool.join()
 
             # Put results into the results dataframe
-            for estimate in region_result:
-                df_result = df_result.append({  'measurement': measurement,
-                                                'region_id': estimate['region_id'],
-                                                'timestamp': estimate['timestamp'],
-                                                'value': estimate['value'],
-                                                'extra_data': json.dumps(estimate['extra_data'])
-                                                },
-                                             ignore_index=True)
-            # Sort result by region ID as multi-processing messes them up
-            df_result.sort_values(by='region_id', inplace=True)
+            df_result = pd.DataFrame.from_records(region_result)
+            df_result.set_index(['measurement', 'region_id', 'timestamp'], inplace=True)
+            df_result['extra_data'] = df_result['extra_data'].replace({'\'': '"'}, regex=True)
 
         if self.verbose > 0:
             try:

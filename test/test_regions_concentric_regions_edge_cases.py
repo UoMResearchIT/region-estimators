@@ -88,16 +88,20 @@ class TestRegionEdgeCases(unittest.TestCase):
     )
 
     self.results_islands = pd.read_csv(
-      path.join(self.load_data_path, 'results_islands_concentric_regions.csv')
+      path.join(self.load_data_path, 'results_islands_concentric_regions.csv'),
+      index_col=['measurement', 'region_id', 'timestamp']
     )
     self.results_non_touching = pd.read_csv(
-      path.join(self.load_data_path, 'results_non_touching_concentric_regions.csv')
+      path.join(self.load_data_path, 'results_non_touching_concentric_regions.csv'),
+      index_col=['measurement', 'region_id', 'timestamp']
     )
     self.results_overlap = pd.read_csv(
-      path.join(self.load_data_path, 'results_overlap_concentric_regions.csv')
+      path.join(self.load_data_path, 'results_overlap_concentric_regions.csv'),
+      index_col=['measurement', 'region_id', 'timestamp']
     )
     self.results_empty_measurements = pd.read_csv(
-      path.join(self.load_data_path, 'results_empty_measurements.csv')
+      path.join(self.load_data_path, 'results_empty_measurements.csv'),
+      index_col=['measurement', 'region_id', 'timestamp']
     )
 
 
