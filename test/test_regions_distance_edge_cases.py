@@ -2,9 +2,9 @@ import unittest
 from os import path
 from shapely import wkt
 import pandas as pd
-import numpy as np
 
 from region_estimators.distance_simple_estimator import DistanceSimpleEstimator
+from region_estimators.estimation_data import EstimationData
 
 class TestRegionEdgeCases(unittest.TestCase):
   """
@@ -94,8 +94,8 @@ class TestRegionEdgeCases(unittest.TestCase):
     Test that a DistanceEstimator object can be initialized with region data containing islands
     and that the results are as expected for islands
     """
-    estimator_islands = DistanceSimpleEstimator(self.sites_islands, self.regions_islands, self.actuals_islands,
-                                           verbose=0)
+    estimation_data = EstimationData(self.sites_islands, self.regions_islands, self.actuals_islands)
+    estimator_islands = DistanceSimpleEstimator(estimation_data, verbose=0)
     result = estimator_islands.get_estimations('NO2_mean', None, '2019-10-15')
     #print('Islands results: \n {}'.format(result))
     #print('Islands target: \n {}'.format(self.results_islands))
@@ -110,8 +110,8 @@ class TestRegionEdgeCases(unittest.TestCase):
     Test that a DistanceEstimator object can be initialized with region data containing regions that are
     not  touching and that the results are as expected
     """
-    estimator_non_touching = DistanceSimpleEstimator(self.sites_non_touching, self.regions_non_touching,
-                                                self.actuals_non_touching, verbose=0)
+    estimation_data = EstimationData(self.sites_non_touching, self.regions_non_touching, self.actuals_non_touching)
+    estimator_non_touching = DistanceSimpleEstimator(estimation_data, verbose=0)
     result = estimator_non_touching.get_estimations('NO2_mean', None, '2019-10-15')
 
     #print('Non Touching: \n {}'.format(result))
@@ -127,8 +127,8 @@ class TestRegionEdgeCases(unittest.TestCase):
     Test that a DistanceEstimator object can be initialized with region data containing regions that are overlapping
     and that the results are as expected
     """
-    estimator_overlap = DistanceSimpleEstimator(self.sites_overlap, self.regions_overlap, self.actuals_overlap,
-                                           verbose=0)
+    estimation_data = EstimationData(self.sites_overlap, self.regions_overlap, self.actuals_overlap)
+    estimator_overlap = DistanceSimpleEstimator(estimation_data, verbose=0)
     result = estimator_overlap.get_estimations('NO2_mean', None, '2019-10-15')
 
     #print('Overlap: \n {}'.format(result))

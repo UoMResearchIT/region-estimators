@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 
 from region_estimators.concentric_regions_estimator import ConcentricRegionsEstimator
+from region_estimators.estimation_data import EstimationData
 
 class TestRegionEdgeCases(unittest.TestCase):
   """
@@ -110,10 +111,10 @@ class TestRegionEdgeCases(unittest.TestCase):
     Test that a ConcentricRegionsEstimator object can be initialized with region data containing islands
     and that the results are as expected for islands
     """
-    estimator_islands = ConcentricRegionsEstimator(self.sites_islands, self.regions_islands, self.actuals_islands,
-                                           verbose=0)
-    self.assertEqual(estimator_islands.get_adjacent_regions(['IM']), [])
-    self.assertEqual(estimator_islands.get_adjacent_regions(['BT']), [])
+    estimation_data = EstimationData(self.sites_islands, self.regions_islands, self.actuals_islands)
+    estimator_islands = ConcentricRegionsEstimator(estimation_data, verbose=0)
+    self.assertEqual(estimator_islands.estimation_data.get_adjacent_regions(['IM']), [])
+    self.assertEqual(estimator_islands.estimation_data.get_adjacent_regions(['BT']), [])
     result = estimator_islands.get_estimations('NO2_mean', None, '2019-10-15').fillna(value=np.NaN)
 
     #print('Islands results: \n {}'.format(result))
@@ -129,10 +130,10 @@ class TestRegionEdgeCases(unittest.TestCase):
     Test that a ConcentricRegionsEstimator object can be initialized with region data containing regions that are
     not  touching and that the results are as expected
     """
-    estimator_non_touching = ConcentricRegionsEstimator(self.sites_non_touching, self.regions_non_touching,
-                                                self.actuals_non_touching, verbose=0)
-    self.assertEqual(estimator_non_touching.get_adjacent_regions(['PE']), [])
-    self.assertEqual(estimator_non_touching.get_adjacent_regions(['TD']), [])
+    estimation_data = EstimationData(self.sites_non_touching, self.regions_non_touching, self.actuals_non_touching)
+    estimator_non_touching = ConcentricRegionsEstimator(estimation_data, verbose=0)
+    self.assertEqual(estimator_non_touching.estimation_data.get_adjacent_regions(['PE']), [])
+    self.assertEqual(estimator_non_touching.estimation_data.get_adjacent_regions(['TD']), [])
     result = estimator_non_touching.get_estimations('NO2_mean', None, '2019-10-15').fillna(value=np.NaN)
 
     #print('Non Touching: \n {}'.format(result))
@@ -149,11 +150,11 @@ class TestRegionEdgeCases(unittest.TestCase):
     Test that a ConcentricRegionsEstimator object can be initialized with region data containing regions that are overlapping
     and that the results are as expected
     """
-    estimator_overlap = ConcentricRegionsEstimator(self.sites_overlap, self.regions_overlap, self.actuals_overlap,
-                                           verbose=0)
-    self.assertEqual(estimator_overlap.get_adjacent_regions(['AB']), ['DD', 'IV', 'PH'])
-    self.assertEqual(estimator_overlap.get_adjacent_regions(['AB2']), ['DD', 'IV', 'PH'])
-    self.assertEqual(estimator_overlap.get_adjacent_regions(['DD']), ['AB','AB2', 'AB3', 'PH'])
+    estimation_data = EstimationData(self.sites_overlap, self.regions_overlap, self.actuals_overlap)
+    estimator_overlap = ConcentricRegionsEstimator(estimation_data, verbose=0)
+    self.assertEqual(estimator_overlap.estimation_data.get_adjacent_regions(['AB']), ['DD', 'IV', 'PH'])
+    self.assertEqual(estimator_overlap.estimation_data.get_adjacent_regions(['AB2']), ['DD', 'IV', 'PH'])
+    self.assertEqual(estimator_overlap.estimation_data.get_adjacent_regions(['DD']), ['AB','AB2', 'AB3', 'PH'])
     result = estimator_overlap.get_estimations('NO2_mean', None, '2019-10-15')
 
     #print('Overlap: \n {}'.format(result))
@@ -169,8 +170,9 @@ class TestRegionEdgeCases(unittest.TestCase):
         Test that a ConcentricRegionsEstimator object can be initialized with actuals containing empty measurment values
         and that the results are as expected
         """
-    estimator = ConcentricRegionsEstimator(self.sites_empty_measurements, self.regions_empty_measurements,
-                                   self.actuals_empty_measurements, verbose=0)
+    estimation_data = EstimationData(self.sites_empty_measurements, self.regions_empty_measurements,
+                                     self.actuals_empty_measurements)
+    estimator = ConcentricRegionsEstimator(estimation_data, verbose=0)
 
     result = estimator.get_estimations('alnus', None, '2017-06-15')
 

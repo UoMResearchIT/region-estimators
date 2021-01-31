@@ -2,7 +2,7 @@ import unittest
 from os import path
 from shapely import wkt
 import pandas as pd
-import numpy as np
+from region_estimators.estimation_data import EstimationData
 
 from region_estimators.distance_simple_estimator import DistanceSimpleEstimator
 
@@ -52,7 +52,8 @@ class TestRegionEdgeCases(unittest.TestCase):
     Test that a DistanceEstimator object can be initialized with region data containing regions that are all touching
     and that the results are as expected
     """
-    estimator = DistanceSimpleEstimator(self.sites, self.regions, self.actuals, verbose=0)
+    estimation_data = EstimationData(self.sites, self.regions, self.actuals)
+    estimator = DistanceSimpleEstimator(estimation_data, verbose=0)
     result = estimator.get_estimations('NO2_mean', None, '2019-10-15')
 
     #print('Result: \n {}'.format(result))
@@ -68,7 +69,8 @@ class TestRegionEdgeCases(unittest.TestCase):
     Test that a DiffusionEstimator object can be initialized with region data containing regions that all touching
     and that the results are as expected when ignoring sites
     """
-    estimator = DistanceSimpleEstimator(self.sites, self.regions, self.actuals, verbose=0)
+    estimation_data = EstimationData(self.sites, self.regions, self.actuals)
+    estimator = DistanceSimpleEstimator(estimation_data, verbose=0)
     result = estimator.get_estimations('NO2_mean', None, '2019-10-15', ignore_site_ids=['Camden Kerbside [AQ]'])
 
     #print('Result: \n {}'.format(result))

@@ -5,16 +5,16 @@ import pandas as pd
 class ConcentricRegionsEstimator(RegionEstimator):
     MAX_RING_COUNT_DEFAULT = float("inf")
 
-    def __init__(self, sites, regions, actuals, verbose=RegionEstimator.VERBOSE_DEFAULT,
+    def __init__(self, estimation_data=None,  verbose=RegionEstimator.VERBOSE_DEFAULT,
                  max_processors=RegionEstimator.MAX_NUM_PROCESSORS):
-        super(ConcentricRegionsEstimator, self).__init__(sites, regions, actuals, verbose, max_processors)
+        super(ConcentricRegionsEstimator, self).__init__(estimation_data, verbose, max_processors)
         self.__set_region_neighbours()
         self._max_ring_count = ConcentricRegionsEstimator.MAX_RING_COUNT_DEFAULT
 
     class Factory:
-        def create(self, sites, regions, actuals, verbose=RegionEstimator.VERBOSE_DEFAULT,
+        def create(self, estimation_data, verbose=RegionEstimator.VERBOSE_DEFAULT,
                  max_processors=RegionEstimator.MAX_NUM_PROCESSORS):
-            return ConcentricRegionsEstimator(sites, regions, actuals, verbose, max_processors)
+            return ConcentricRegionsEstimator(estimation_data, verbose, max_processors)
 
     @property
     def max_ring_count(self):
@@ -54,7 +54,7 @@ class ConcentricRegionsEstimator(RegionEstimator):
         # Check region is not an island (has no touching adjacent regions) which has no sites within it
         # If it is, return null
         region_sites = set(self.regions.loc[region_id]['sites']) - set(ignore_site_ids)
-        if len(region_sites) == 0 and len(self.get_adjacent_regions([region_id])) == 0:
+        if len(region_sites) == 0 and len(self.estimation_data.get_adjacent_regions([region_id])) == 0:
             if self.verbose > 0:
                 print('Region {} is an island and does not have sites, so can\'t do concentric_regions'.format(region_id))
             return None, {"rings": None}
@@ -70,9 +70,8 @@ class ConcentricRegionsEstimator(RegionEstimator):
 
     def __get_concentric_regions_estimate_recursive(self, measurement, region_ids, timestamp, diffuse_level, regions_completed,
                                            ignore_site_ids=[]):
-
         # Find all sites in regions
-        sites = self.get_regions_sites(region_ids, ignore_site_ids)
+        sites = self.estimation_data.get_regions_sites(region_ids, ignore_site_ids)
 
         # Get values from sites
         if self.verbose > 0:
@@ -100,7 +99,7 @@ class ConcentricRegionsEstimator(RegionEstimator):
             diffuse_level += 1
 
             # Find the next set of regions
-            next_regions = self.get_adjacent_regions(region_ids, regions_completed)
+            next_regions = self.estimation_data.get_adjacent_regions(region_ids, regions_completed)
             if self.verbose > 0:
                 print('Found next set of regions: {}.'.format(next_regions))
 

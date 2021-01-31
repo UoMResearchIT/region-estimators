@@ -2,8 +2,8 @@ import unittest
 from os import path
 from shapely import wkt
 import pandas as pd
-import numpy as np
 
+from region_estimators.estimation_data import EstimationData
 from region_estimators.concentric_regions_estimator import ConcentricRegionsEstimator
 
 class TestRegionEdgeCases(unittest.TestCase):
@@ -48,11 +48,11 @@ class TestRegionEdgeCases(unittest.TestCase):
     Test that a ConcentricRegionsEstimator object can be initialized with region data containing regions that are all touching
     and that the results are as expected
     """
-    estimator = ConcentricRegionsEstimator(self.sites, self.regions, self.actuals,
-                                            verbose=0)
+    estimation_data = EstimationData(self.sites, self.regions, self.actuals)
+    estimator = ConcentricRegionsEstimator(estimation_data, verbose=0)
 
     self.assertIsNotNone(estimator.regions['neighbours'])
-    self.assertEqual(estimator.get_adjacent_regions(['SW']), ['CR', 'KT', 'SE', 'SM', 'TW', 'W', 'WC'])
+    self.assertEqual(estimator.estimation_data.get_adjacent_regions(['SW']), ['CR', 'KT', 'SE', 'SM', 'TW', 'W', 'WC'])
     result = estimator.get_estimations('NO2_mean', None, '2019-10-15')
 
     #print('Result: \n {}'.format(result))
@@ -69,7 +69,8 @@ class TestRegionEdgeCases(unittest.TestCase):
     Test that a ConcentricRegionsEstimator object can be initialized with region data containing regions that are all touching
     and that the results are as expected when ignoring sites
     """
-    estimator = ConcentricRegionsEstimator(self.sites, self.regions, self.actuals, verbose=0)
+    estimation_data = EstimationData(self.sites, self.regions, self.actuals)
+    estimator = ConcentricRegionsEstimator(estimation_data, verbose=0)
     result = estimator.get_estimations('NO2_mean', None, '2019-10-15', ignore_site_ids=['Camden Kerbside [AQ]'])
 
     #print('Result: \n {}'.format(result))
