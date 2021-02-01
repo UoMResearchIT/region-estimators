@@ -51,6 +51,9 @@ class ConcentricRegionsEstimator(RegionEstimator):
                     region_id, measurement, timestamp))
             return None, {"rings": None}
 
+        if self.verbose > 1:
+            print('sites exist for region {}, measurement {} at date {}'.format(region_id, measurement, timestamp))
+
         # Check region is not an island (has no touching adjacent regions) which has no sites within it
         # If it is, return null
         region_sites = set(self.regions.loc[region_id]['sites']) - set(ignore_site_ids)
@@ -59,12 +62,16 @@ class ConcentricRegionsEstimator(RegionEstimator):
                 print('Region {} is an island and does not have sites, so can\'t do concentric_regions'.format(region_id))
             return None, {"rings": None}
 
+        if self.verbose > 1:
+            print('Region {} is not an island'.format(region_id))
+
         # Create an empty list for storing completed regions
         regions_completed = []
 
         # Recursively find the sites in each concentric_regions ring (starting at 0)
         if self.verbose > 0:
             print('Beginning recursive region estimation for region {}, timestamp: {}'.format(region_id, timestamp))
+
         return self.__get_concentric_regions_estimate_recursive(measurement, [region_id], timestamp, 0, regions_completed,
                                                        ignore_site_ids)
 
