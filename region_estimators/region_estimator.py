@@ -215,27 +215,3 @@ class RegionEstimator(object):
             df_result.set_index(['measurement', 'region_id', 'timestamp'], inplace=True)
 
         return df_result
-
-    def site_datapoint_count(self, measurement, timestamp, region_ids=[], ignore_site_ids=[]):
-        '''
-        Find the number of site datapoints for this measurement, timestamp and (optional) regions combination
-
-        :param measurement: (str) the measurement being recorded in the site data-point
-        :param timestamp: (timestamp) the timestamp of the site datapoints being searched for
-        :param region_ids: (list of str) list of region IDs
-        :param ignore_site_ids list of site_ids to be ignored
-
-        :return: Number of sites
-        '''
-        sites = self.actuals.loc[(self.actuals['timestamp'] == timestamp) & (self.actuals[measurement].notna())
-                                   & (~self.actuals['site_id'].isin(ignore_site_ids))]
-        sites = sites['site_id'].tolist()
-
-        region_sites = []
-        for region_id in region_ids:
-            region_sites.extend(self.regions.loc[region_id]['sites'])
-
-        if len(region_ids) > 0:
-            return len(set(sites) & set(region_sites))
-        else:
-            return len(set(sites))

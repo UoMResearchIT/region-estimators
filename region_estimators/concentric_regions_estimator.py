@@ -45,7 +45,7 @@ class ConcentricRegionsEstimator(RegionEstimator):
                 region_id, measurement, timestamp))
 
         # Check sites exist (in any region) for this measurement/timestamp
-        if self.site_datapoint_count(measurement, timestamp, ignore_site_ids=ignore_site_ids) == 0:
+        if self.estimation_data.site_datapoint_count(measurement, timestamp, ignore_site_ids=ignore_site_ids) == 0:
             if self.verbose > 0:
                 print('No sites exist for region {}, measurement {} at date {}'.format(
                     region_id, measurement, timestamp))

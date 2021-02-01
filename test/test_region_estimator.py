@@ -31,7 +31,7 @@ class TestRegionEstimator(unittest.TestCase):
       axis=1
     )
 
-    self.actuals = pd.read_csv(path.join(self.load_data, 'actuals.csv'))
+    self.actuals = pd.read_csv(path.join(self.load_data, 'actuals_multi_measurements.csv'))
 
   def test_load_good_data(self):
     """
@@ -44,7 +44,7 @@ class TestRegionEstimator(unittest.TestCase):
     self.assertIsNotNone(estimator)
     self.assertIsNotNone(estimator.regions['sites'])
 
-    self.assertTrue(estimator.site_datapoint_count('urtica', '2018-03-15') > 0)
+    self.assertTrue(estimator.estimation_data.site_datapoint_count('urtica', '2018-03-15') > 0)
 
     with self.assertRaises(NotImplementedError):
       estimator.get_estimate('urtica', None, None)
