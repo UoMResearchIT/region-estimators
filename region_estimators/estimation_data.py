@@ -280,8 +280,14 @@ class EstimationData(object):
 
         :return: Number of sites
         '''
-        sites = self.actuals.loc[(self.actuals['timestamp'] == timestamp) & (self.actuals[measurement].notna())
-                                   & (~self.actuals['site_id'].isin(ignore_site_ids))]
+
+        sites = self.actuals.loc[(self.actuals['timestamp'] == timestamp) &
+                                 (self.actuals[measurement].notna()) &
+                                 (~self.actuals['site_id'].isin(ignore_site_ids))]
+
+        if len(sites.index) == 0:
+            return 0
+
         sites = sites['site_id'].tolist()
 
         region_sites = []
