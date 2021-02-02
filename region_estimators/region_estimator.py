@@ -212,6 +212,9 @@ class RegionEstimator(object):
 
             # Put results into the results dataframe
             df_result = pd.DataFrame.from_records(region_result)
-            df_result.set_index(['measurement', 'region_id', 'timestamp'], inplace=True)
+            if len(df_result.index) > 0:
+                df_result.set_index(['measurement', 'region_id', 'timestamp'], inplace=True)
+            else:
+                raise ValueError("Estimation process returned no results.")
 
         return df_result
