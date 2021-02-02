@@ -97,6 +97,7 @@ class EstimationData(object):
         cols = actuals.columns.tolist()
         cols.insert(0, cols.pop(cols.index('site_id')))
         cols.insert(0, cols.pop(cols.index('timestamp')))
+        actuals = actuals[cols]
         # Convert site_id to string
         actuals['site_id'] = actuals['site_id'].astype(str)
 
