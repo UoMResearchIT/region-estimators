@@ -45,8 +45,8 @@ class TestRegionEdgeCases(unittest.TestCase):
 
   def test_ok_files(self):
     """
-    Test that a ConcentricRegionsEstimator object can be initialized with region data containing regions that are all touching
-    and that the results are as expected
+    Test that a ConcentricRegionsEstimator object can be initialized with region data containing regions
+    that are all touching and that the results are as expected
     """
     estimation_data = EstimationData(self.sites, self.regions, self.actuals)
     estimator = ConcentricRegionsEstimator(estimation_data, verbose=0)

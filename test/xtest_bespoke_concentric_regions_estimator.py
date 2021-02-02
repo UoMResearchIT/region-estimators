@@ -16,7 +16,7 @@ class TestRegionEdgeCasesBespoke(unittest.TestCase):
     self.load_data_path = path.join(dir, 'data', 'BESPOKE')
 
     self.sites = pd.read_csv(
-      path.join(self.load_data_path, 'sites_minimal_Jan_2021.csv'),
+      path.join(self.load_data_path, 'sites_DEBUG.csv'),
       index_col='site_id'
     )
 
@@ -25,7 +25,7 @@ class TestRegionEdgeCasesBespoke(unittest.TestCase):
     )
 
     self.regions = pd.read_csv(
-      path.join(self.load_data_path, 'regions.csv'),
+      path.join(self.load_data_path, 'regions_DEBUG.csv'),
       index_col='region_id'
     )
     self.regions['geometry'] = self.regions.apply(
@@ -38,12 +38,15 @@ class TestRegionEdgeCasesBespoke(unittest.TestCase):
     Test a bespoke set of files
     """
     estimation_data = EstimationData(self.sites, self.regions, self.actuals)
-    estimator = ConcentricRegionsEstimator(estimation_data, verbose=0)
+    estimator = ConcentricRegionsEstimator(estimation_data, verbose=0, max_processors=4)
 
     self.assertIsNotNone(estimator.regions['neighbours'])
     self.assertEqual(estimator.estimation_data.get_adjacent_regions(['SW']), ['CR', 'KT', 'SE', 'SM', 'TW', 'W', 'WC'])
     result = estimator.get_estimations('NO2_mean', None, '2016-03-23')
 
+    print('Sites:\n{}'.format(estimator.sites))
+    print('Regions:\n{}'.format(estimator.regions))
+    print('Actuals:\n{}'.format(estimator.actuals))
     print('Result: \n {}'.format(result))
 
     self.assertIsNotNone(estimator)

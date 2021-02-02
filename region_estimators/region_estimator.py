@@ -123,12 +123,16 @@ class RegionEstimator(object):
             :return: a dict with items 'region_id' and 'estimates (list). Estimates contains
                         'timestamp', (estimated) 'value' and 'extra_data'
         """
-        region_result_estimate = self.get_estimate(measurement, timestamp, region_id, ignore_site_ids)
-        region_result.append({'measurement': measurement,
-                              'region_id': region_id,
-                              'value': region_result_estimate[0],
-                              'extra_data': json.dumps(region_result_estimate[1]),
-                              'timestamp': timestamp})
+        try:
+            region_result_estimate = self.get_estimate(measurement, timestamp, region_id, ignore_site_ids)
+            region_result.append({'measurement': measurement,
+                                  'region_id': region_id,
+                                  'value': region_result_estimate[0],
+                                  'extra_data': json.dumps(region_result_estimate[1]),
+                                  'timestamp': timestamp})
+        except Exception as err:
+            print('Error estimating for measurement: {}; region: {}; timestamp: {} and ignore_sites: {}.\nError: {}'
+                  .format(measurement, region_id, timestamp, ignore_site_ids, err))
 
     def _get_region_estimation(self, pool, region_result, measurement, region_id, timestamp=None, ignore_site_ids=[]):
         """  Find estimations for a region and timestamp (or all timestamps (or all timestamps if timestamp==None)
@@ -166,7 +170,7 @@ class RegionEstimator(object):
             :param measurement: measurement to be estimated (string - required)
             :param region_id: region identifier (string or None)
             :param timestamp:  timestamp identifier (string or None)
-            :param ignore_site_ids: site id(s) to be ignored during the estimations
+            :param ignore_site_ids: site id(s) to be ignored during the estimations (default: empty list [])
 
             :return: pandas dataframe with columns:
                 'measurement'
@@ -188,6 +192,9 @@ class RegionEstimator(object):
             df_actuals_reset = pd.DataFrame(self.actuals.reset_index())
             actuals_temp = df_actuals_reset.loc[df_actuals_reset['timestamp'] == timestamp]
             assert len(actuals_temp.index) > 0, "The timestamp does not exist in the actuals dataframe"
+
+        if ignore_site_ids is None:
+            ignore_site_ids = []
 
         # Calculate estimates
 
