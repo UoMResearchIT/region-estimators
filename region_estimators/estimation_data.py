@@ -93,17 +93,19 @@ class EstimationData(object):
         except Exception as err:
             raise ValueError('Error converting regions DataFrame to a GeoDataFrame: ' + str(err))
 
-        #   actuals: Make sure value columns at the end of column list
+        # actuals: Make sure value columns at the end of column list
         cols = actuals.columns.tolist()
         cols.insert(0, cols.pop(cols.index('site_id')))
         cols.insert(0, cols.pop(cols.index('timestamp')))
-
+        # Convert site_id to string
         actuals['site_id'] = actuals['site_id'].astype(str)
 
+        # Set data properties
         self._sites = gdf_sites
         self._regions = gdf_regions
         self._actuals = actuals
 
+        # Set extra useful data for estimation calculations
         self.__set_site_region()
         self.__set_region_sites()
 
