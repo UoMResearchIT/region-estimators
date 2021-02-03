@@ -62,9 +62,7 @@ pip install region_estimators
     # 	method_name (string): 	the estimation method. For example, in the first version
     # 				the options are 'concentric-regions' or 'distance-simple'
 
-
     # 	3 pandas.Dataframe objects:  (For sample input files, see the 'sample_input_files' folder)
-
 
     sites: list of sites as pandas.DataFrame (one row per site)
 	    Required columns:
@@ -121,4 +119,9 @@ result = estimator.get_estimations('urtica', 'AB', '2018-08-15')
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
-[MIT](https://opensource.org/licenses/MIT)
+## Copyright & Licensing
+
+This software has been developed by the [Research IT](https://research-it.manchester.ac.uk/) group at the [University of Manchester](https://www.manchester.ac.uk/) for an [Alan Turing Institute](https://www.turing.ac.uk/) project.
+
+(c) 2019-2021 University of Manchester.
+Licensed under the MIT license (https://opensource.org/licenses/MIT)
