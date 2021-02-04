@@ -54,7 +54,7 @@ class ConcentricRegionsEstimator(RegionEstimator):
         if self.verbose > 1:
             print('sites exist for region {}, measurement {} at date {}'.format(region_id, measurement, timestamp))
 
-        # Check 1 region is not an island (has no touching adjacent regions) which has no sites within it
+        # Check region is not an island (has no touching adjacent regions) which has no sites within it
         # If it is, return null
         region_sites = set(self.regions.loc[region_id]['sites']) - set(ignore_site_ids)
         if len(region_sites) == 0 and len(self.estimation_data.get_adjacent_regions([region_id])) == 0:
