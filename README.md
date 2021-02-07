@@ -50,7 +50,7 @@ pip install region_estimators
 
 ## Usage
 An example python script that uses the region_estimators package can be found in the `scripts` directory.
-The required parts are highlighted in the following shortened experpt:
+The required parts are highlighted in the following shortened excerpt:
 
 ```python
 from shapely import wkt
