@@ -36,8 +36,7 @@ python region_estimation_script.py ${ARGUMENTS_3}
 # EXAMPLE 4
 # Get estmates for all timestamps / regions (can be slow if we have a large dataset)
 METHOD='distance-simple'
-MAX_RINGS=2
 ARGUMENTS_4="-o ${OUTDIR} -u ${OUTFILE_SUFFIX}  -m ${METHOD} -e ${MEASUREMENT} -v ${VERBOSE} -p ${MAX_PROCESSORS} -x ${MAX_RINGS}"
 
 # Comment out by default, as can take a while
-python region_estimation_script.py ${ARGUMENTS_4}
+#python region_estimation_script.py ${ARGUMENTS_4}
