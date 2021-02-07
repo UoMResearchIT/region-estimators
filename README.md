@@ -8,11 +8,36 @@ This first version of the package is initialised with 2 estimation methods:
 1. ConcentricRegions: look for actual data points in gradually wider rings, starting with sites within the region, and then working in rings outwards, until sites are found. If more than one site is found at the final stage, it takes the mean.
 2. Simple Distance measure: This is a very basic implementation... Find the nearest site to the region and use that value.
 If sites exist within the region, take the mean.
+   
+The sections below are:
+- [Repository Structure](#repository-structure)
+- [Requirements](#requirements)
+- [Region Estimation](#region_estimation) 
+- [Testing Region Estimators](#testing-region-estimators)
 
-## Installation
+<!-- toc -->
+
+## Repository Structure
+Operational scripts are stored within the `scripts` directory. 
+The `region_estimators` directory contains the python modules used by the tools. 
+The `sample_input_files` directory contains examples of the input files required to test installation.
+
+```
+.
+├── environmental_data_modules
+├── scripts
+│   ├── AURN_Data_Download
+│   ├── Data_Imputation_Testing
+│   ├── Data_Processing
+│   │   └── inputs
+│   ├── EMEP_Data_Extraction
+│   └── MEDMI_Data_Download
+└── station_data
+```
+
+## Requirements
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install region_estimators.
-
 ```bash
 pip install shapely
 pip install pandas
