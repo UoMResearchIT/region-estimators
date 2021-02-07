@@ -15,4 +15,5 @@ tasks.xml
 /shelf
 csf_scripts/
 test/data/BESPOKE
+test/bespoke
 scripts/outputs/*

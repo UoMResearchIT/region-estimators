@@ -13,7 +13,7 @@ class TestRegionEdgeCasesBespoke(unittest.TestCase):
 
   def setUp(self):
     dir, _ = path.split(__file__)
-    self.load_data_path = path.join(dir, 'data', 'BESPOKE')
+    self.load_data_path = path.join(dir, '../data', 'BESPOKE')
 
     self.sites = pd.read_csv(
       path.join(self.load_data_path, 'sites_DEBUG.csv'),
