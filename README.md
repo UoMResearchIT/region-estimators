@@ -164,7 +164,8 @@ python -m unittest
 ### Improvements to code
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-### Extending the RegionEstimator class with further base classes:
+### Extending the RegionEstimator class 
+with further method classes:
 * Add the new class name (str) to the available_methods list in region_estimator_factory.py:
    ```python
    available_methods = {'concentric-regions': ConcentricRegionsEstimator,
