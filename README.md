@@ -112,6 +112,7 @@ if __name__ == '__main__':
 │   │   │   │    └── 'timestamp' (string): timestamp of actual reading
 │   │   │   │    └── 'site_id': (string) ID of site which took actua in sites (in value and type))
 │   │   │   │    └── [one or more value columns] (float):    value of actual measurement readings.
+
 ├── Returns
 │   ├── Initialised instance of EstimationData class
 ```
@@ -122,10 +123,12 @@ if __name__ == '__main__':
 │   ├── method_name (string): The estimation method to be uesed
                               In the first version the options are 'concentric-regions' or 'distance-simple'
 │   ├── estimation_data (EstimationData instance - see above): data required to make estimations
-├── Optionsl inputs
+
+├── Optional inputs
 │   ├── verbose: (int) Verbosity of output level. zero or less => No debug output. Default=0
 │   ├── max_processors (int) Maximum number of processors to use. Default=1
 │                     (Maximum: Number of processor available)
+
 ├── Returns
 │   ├── Initialised instance of subclass of RegionEstimator class
 ```
@@ -134,10 +137,12 @@ if __name__ == '__main__':
 ```
 ├── Required inputs
 │   ├── measurement: which measurement to be estimated (e.g. 'urtica')
-├── Optionsl inputs
+
+├── Optional inputs
 │   ├── region_id: region identifier (string (or None to get all regions))
 │   ├── timestamp: timestamp identifier (string (or None to get all timestamps))
 │   ├── ignore_site_ids: (list of str) Site IDs to be ignored. Default=[]
+
 ├── Returns
 │   ├── pandas dataframe, with columns:
 │   │   └── measurement
@@ -145,7 +150,6 @@ if __name__ == '__main__':
 │   │   └── timestamp
 │   │   └── value: (float or empty) The estimated value
 │   │   └── extra_data: (dict string) Extra info about the estimation calculation
-
 
 WARNING! - estimator.get_estimates('urtica', None, None) will calculate every region at every timestamp.
 ```
