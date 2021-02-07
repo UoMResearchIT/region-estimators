@@ -30,11 +30,11 @@ A set of python unittest test files can be found in the `test` directory.
 
 ```
 .
-│   ├── region_estimations
-│   ├── sample_input_files
-│   ├── scripts
-│   │   └── outputs
-│   ├── test
+├── region_estimations
+├── sample_input_files
+├── scripts
+│   └── outputs
+├── test
 
 ```
 
