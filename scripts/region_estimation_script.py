@@ -10,6 +10,7 @@ DEFAULT_ACTUALS_FILESPEC = '../sample_input_files/df_actuals.csv'
 DEFAULT_OUT_DIR = 'output'
 DEFAULT_OUT_FILE_SUFFIX = 'output'
 DEFAULT_VERBOSE = 0
+DEFAULT_MAX_RINGS = float('inf')
 DEFAULT_MAX_PROCESSORS = 1
 DEFAULT_MEASUREMENT = 'urtica'
 DEFAULT_METHOD = 'concentric-regions'
@@ -55,9 +56,14 @@ if __name__ == '__main__':
                         help="Maximum number of processors. Default: {}".format(
                             DEFAULT_MAX_PROCESSORS))
     # Log verbose-ness
-    parser.add_argument("--verbose", "-v", dest='verbose', type=int,
+    parser.add_argument("--verbose", "-v", type=int,
                         help="Level of output for debugging (Default: {} (0 = no verbose output))".format(
                             DEFAULT_VERBOSE))
+
+    # Maximum number of rings (concentric-regions method)
+    parser.add_argument("--max_rings", "-x", type=int,
+                        help="Max number of rings for concentric-regions method. Default: {}".format(
+                            DEFAULT_MAX_RINGS))
 
     # read arguments from the command line
     args = parser.parse_args()
@@ -127,19 +133,26 @@ if __name__ == '__main__':
         print('No outfile_suffix provided, so using default: {}'.format(str(DEFAULT_OUT_FILE_SUFFIX)))
         outfile_suffix = DEFAULT_OUT_FILE_SUFFIX
 
-    if args.max_processors:
+    if args.max_processors is not None:
         max_processors = max(args.max_processors, 0)
         print('max_processors: ', max_processors)
     else:
         print('No max_processors number provided, so using default: {}'.format(str(DEFAULT_MAX_PROCESSORS)))
         max_processors = DEFAULT_MAX_PROCESSORS
 
-    if args.verbose:
+    if args.verbose is not None:
         verbose = max(args.verbose, 0)
         print('verbose: ', verbose)
     else:
         print('No verbose flag provided, so using default: {}'.format(str(DEFAULT_VERBOSE)))
         verbose = DEFAULT_VERBOSE
+
+    if args.max_rings is not None:
+        max_rings = max(args.max_rings, 0)
+        print('max_rings: ', max_rings)
+    else:
+        print('No max_rings provided, so using default: {}'.format(str(DEFAULT_MAX_RINGS)))
+        max_rings = DEFAULT_MAX_RINGS
 
     # Prepare input files  (For sample input files, see the 'sample_input_files' folder)
     df_regions = pd.read_csv(regions_filespec, index_col='region_id')
@@ -156,6 +169,8 @@ if __name__ == '__main__':
     estimator = RegionEstimatorFactory.region_estimator(method, estimation_data, verbose, max_processors)
 
     # Make estimations
+    if method == 'concentric-regions':
+        estimator.max_ring_count = max_rings
     df_estimates = estimator.get_estimations(measurement, region_id, timestamp)
 
     print(df_estimates)
