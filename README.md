@@ -158,7 +158,7 @@ WARNING! - estimator.get_estimates('urtica', None, None) will calculate every re
 A set of python unittest test files can be found in the `test` directory, and can be run from the shell 
 (once the necessary requirements are installed) with the command:
 ```bash
-python -m unittests
+python -m unittest
 ```
 
 ## Contributing
