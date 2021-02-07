@@ -31,7 +31,7 @@ class RegionEstimator(object):
     VERBOSE_MAX = 2
     MAX_NUM_PROCESSORS = 1
 
-    #@log_time
+    @log_time
     def __init__(self, estimation_data=None, verbose=VERBOSE_DEFAULT, max_processors=MAX_NUM_PROCESSORS):
         """
         Initialise instance of the RegionEstimator class.
@@ -162,7 +162,7 @@ class RegionEstimator(object):
                                      args=(region_result, measurement, region_id, timestamp, ignore_site_ids))
         return region_result
 
-
+    @log_time
     def get_estimations(self, measurement, region_id=None, timestamp=None, ignore_site_ids=[]):
         """  Find estimations for a region (or all regions if region_id==None) and
                 timestamp (or all timestamps (or all timestamps if timestamp==None)
