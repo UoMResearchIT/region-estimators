@@ -6,7 +6,7 @@ import pandas as pd
 from region_estimators.estimation_data import EstimationData
 from region_estimators.concentric_regions_estimator import ConcentricRegionsEstimator
 
-class TestRegionEdgeCases(unittest.TestCase):
+class TestConcentricRegionsEstimator(unittest.TestCase):
   """
   Tests for the Regions file edge cases
   """
