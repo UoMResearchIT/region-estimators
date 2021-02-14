@@ -6,6 +6,11 @@ import pandas as pd
 from region_estimators.estimation_data import EstimationData
 from region_estimators.concentric_regions_estimator import ConcentricRegionsEstimator
 
+
+def process_progress(percent_complete, status):
+  assert percent_complete is None or isinstance(percent_complete, int), 'Error with percent_complete param'
+  assert status is None or isinstance(status, str), 'Error with status param'
+
 class TestConcentricRegionsEstimator(unittest.TestCase):
   """
   Tests for the Regions file edge cases
@@ -49,7 +54,7 @@ class TestConcentricRegionsEstimator(unittest.TestCase):
     that are all touching and that the results are as expected
     """
     estimation_data = EstimationData(self.sites, self.regions, self.actuals)
-    estimator = ConcentricRegionsEstimator(estimation_data, verbose=0)
+    estimator = ConcentricRegionsEstimator(estimation_data, verbose=0, progress_callback=process_progress)
 
     self.assertIsNotNone(estimator.regions['neighbours'])
     self.assertEqual(estimator.estimation_data.get_adjacent_regions(['SW']), ['CR', 'KT', 'SE', 'SM', 'TW', 'W', 'WC'])

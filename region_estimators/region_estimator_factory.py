@@ -15,11 +15,12 @@ class RegionEstimatorFactory:
     # A Template Method:
     @staticmethod
     def create(method_name, estimation_data, verbose=ConcentricRegionsEstimator.VERBOSE_DEFAULT,
-               max_processors=RegionEstimator.MAX_NUM_PROCESSORS):
+               max_processors=RegionEstimator.MAX_NUM_PROCESSORS, progress_callback=None):
         class_name = RegionEstimatorFactory.get_classname(method_name)
         if class_name not in RegionEstimatorFactory.factories:
             RegionEstimatorFactory.factories[class_name] = eval(class_name + '.Factory()')
-        return RegionEstimatorFactory.factories[class_name].create(estimation_data, verbose, max_processors)
+        return RegionEstimatorFactory.factories[class_name].create(estimation_data, verbose, max_processors,
+                                                                   progress_callback)
 
     region_estimator = create
 

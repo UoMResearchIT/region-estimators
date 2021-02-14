@@ -31,8 +31,9 @@ class RegionEstimator(object):
     VERBOSE_MAX = 2
     MAX_NUM_PROCESSORS = 1
 
-    @log_time
-    def __init__(self, estimation_data=None, verbose=VERBOSE_DEFAULT, max_processors=MAX_NUM_PROCESSORS):
+    #@log_time
+    def __init__(self, estimation_data=None, verbose=VERBOSE_DEFAULT, max_processors=MAX_NUM_PROCESSORS,
+                 progress_callback=None):
         """
         Initialise instance of the RegionEstimator class.
 
@@ -42,6 +43,8 @@ class RegionEstimator(object):
             verbose: (int) Verbosity of output level. zero or less => No debug output
 
             max_processors: (int) The maximum number of processors to be used when calculating regions.
+
+            progress_callback: (callable) Handler function for delegating progress updates
 
         Returns:
             Initialised instance of subclass of RegionEstimator
@@ -57,6 +60,11 @@ class RegionEstimator(object):
 
         # Set EstimationData
         self._estimation_data = estimation_data
+
+        # Set progress callback function, for publishing progress
+        assert progress_callback is None or callable(progress_callback) is True, \
+            "The progress_callback must be a callable function. {} is not callable".format(str(progress_callback))
+        self._progress_callback = progress_callback
 
     @abstractmethod
     def get_estimate(self, measurement, timestamp, region_id, ignore_site_ids=[]):
@@ -111,6 +119,7 @@ class RegionEstimator(object):
         assert max_processors > 0, "max_processors must be greater than zero"
         self.__max_processors = max_processors
 
+
     def _get_estimate_process(self, region_result, measurement, region_id, timestamp, ignore_site_ids=[]):
         """  Find estimation for a single region and single timestamp. Worker function for multi-processing.
 
@@ -149,20 +158,29 @@ class RegionEstimator(object):
         """
 
         if timestamp is not None:
+            if self._progress_callback is not None:
+                self._progress_callback(**{'status': 'Calculating estimate for region: {} and timestamp: {}'
+                                        .format(region_id, timestamp),
+                                           'percent_complete': None})
             if self.verbose > 0:
                 print('\n##### Calculating for region_id: {} and timestamp: {} #####'.format(region_id, timestamp))
+
             pool.apply_async(self._get_estimate_process,
                                  args=(region_result, measurement, region_id, timestamp, ignore_site_ids))
         else:
             timestamps = sorted(self.actuals['timestamp'].unique())
             for _, timestamp in enumerate(timestamps):
+                if self._progress_callback is not None:
+                    self._progress_callback(**{'status': 'Calculating estimate for region: {} and timestamp: {}'
+                                            .format(region_id, timestamp),
+                                            'percent_complete': None})
                 if self.verbose > 1:
                     print(region_id, '    Calculating for timestamp:', timestamp)
                 pool.apply_async(self._get_estimate_process,
                                      args=(region_result, measurement, region_id, timestamp, ignore_site_ids))
         return region_result
 
-    @log_time
+    #@log_time
     def get_estimations(self, measurement, region_id=None, timestamp=None, ignore_site_ids=[]):
         """  Find estimations for a region (or all regions if region_id==None) and
                 timestamp (or all timestamps (or all timestamps if timestamp==None)
@@ -203,6 +221,9 @@ class RegionEstimator(object):
             region_result = manager.list()
 
             if region_id:
+                if self._progress_callback is not None:
+                    self._progress_callback(**{'status': 'Calculating estimate for region: {}'.format(region_id),
+                                               'percent_complete': None})
                 if self.verbose > 0:
                     print('\n##### Calculating for region:', region_id, '#####')
                 self._get_region_estimation(pool, region_result, measurement, region_id, timestamp, ignore_site_ids)

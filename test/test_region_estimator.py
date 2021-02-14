@@ -8,6 +8,7 @@ from region_estimators.concentric_regions_estimator import ConcentricRegionsEsti
 from region_estimators.distance_simple_estimator import DistanceSimpleEstimator
 from region_estimators.estimation_data import EstimationData
 
+
 class TestRegionEstimator(unittest.TestCase):
   """
   Tests for the RegionEstimator abstract base class.
@@ -33,6 +34,7 @@ class TestRegionEstimator(unittest.TestCase):
 
     self.actuals = pd.read_csv(path.join(self.load_data, 'actuals_multi_measurements.csv'))
 
+
   def test_load_good_data(self):
     """
     Test that a RegionEstimator object can be initialized with good data.
@@ -48,6 +50,18 @@ class TestRegionEstimator(unittest.TestCase):
 
     with self.assertRaises(NotImplementedError):
       estimator.get_estimate('urtica', None, None)
+
+  def test_load_bad_callback(self):
+    """
+    Test that a ConcentricRegionsEstimator and DistanceSimpleEstimator objects can
+    be initialized with bad verbose.
+    """
+    estimation_data = EstimationData(self.sites, self.regions, self.actuals)
+    with self.assertRaises(AssertionError):
+      ConcentricRegionsEstimator(estimation_data, progress_callback='bad')
+      DistanceSimpleEstimator(estimation_data, progress_callback='bad')
+
+
 
   def test_load_bad_verbose(self):
     """
