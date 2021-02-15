@@ -13,8 +13,8 @@ class DistanceSimpleEstimator(RegionEstimator):
 
     class Factory:
         def create(self, estimation_data=None, verbose=RegionEstimator.VERBOSE_DEFAULT,
-                   max_processors=RegionEstimator.MAX_NUM_PROCESSORS):
-            return DistanceSimpleEstimator(estimation_data, verbose, max_processors)
+                   max_processors=RegionEstimator.MAX_NUM_PROCESSORS, progress_callback=None):
+            return DistanceSimpleEstimator(estimation_data, verbose, max_processors, progress_callback)
 
 
     def get_estimate(self, measurement, timestamp, region_id, ignore_site_ids=[]):
