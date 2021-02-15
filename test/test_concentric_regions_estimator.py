@@ -8,6 +8,7 @@ from region_estimators.concentric_regions_estimator import ConcentricRegionsEsti
 
 
 def process_progress(percent_complete, status):
+  #print('percent_complete: {}; status: {}'.format(percent_complete, status))
   assert percent_complete is None or isinstance(percent_complete, int), 'Error with percent_complete param'
   assert status is None or isinstance(status, str), 'Error with status param'
 

@@ -71,8 +71,6 @@ class TestRegionEstimator(unittest.TestCase):
     estimation_data = EstimationData(self.sites, self.regions, self.actuals)
     with self.assertRaises(AssertionError):
       ConcentricRegionsEstimator(estimation_data, 'bad')
-
-    with self.assertRaises(AssertionError):
       DistanceSimpleEstimator(estimation_data, 2.14)
 
 

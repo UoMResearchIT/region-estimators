@@ -132,6 +132,10 @@ class RegionEstimator(object):
             :return: a dict with items 'region_id' and 'estimates (list). Estimates contains
                         'timestamp', (estimated) 'value' and 'extra_data'
         """
+        if self._progress_callback is not None:
+            self._progress_callback(**{'status': 'Calculating estimate for region: {} and timestamp: {}'
+                                    .format(region_id, timestamp),
+                                       'percent_complete': None})
         try:
             region_result_estimate = self.get_estimate(measurement, timestamp, region_id, ignore_site_ids)
             region_result.append({'measurement': measurement,
@@ -158,10 +162,6 @@ class RegionEstimator(object):
         """
 
         if timestamp is not None:
-            if self._progress_callback is not None:
-                self._progress_callback(**{'status': 'Calculating estimate for region: {} and timestamp: {}'
-                                        .format(region_id, timestamp),
-                                           'percent_complete': None})
             if self.verbose > 0:
                 print('\n##### Calculating for region_id: {} and timestamp: {} #####'.format(region_id, timestamp))
 
@@ -170,10 +170,6 @@ class RegionEstimator(object):
         else:
             timestamps = sorted(self.actuals['timestamp'].unique())
             for _, timestamp in enumerate(timestamps):
-                if self._progress_callback is not None:
-                    self._progress_callback(**{'status': 'Calculating estimate for region: {} and timestamp: {}'
-                                            .format(region_id, timestamp),
-                                            'percent_complete': None})
                 if self.verbose > 1:
                     print(region_id, '    Calculating for timestamp:', timestamp)
                 pool.apply_async(self._get_estimate_process,
@@ -221,9 +217,6 @@ class RegionEstimator(object):
             region_result = manager.list()
 
             if region_id:
-                if self._progress_callback is not None:
-                    self._progress_callback(**{'status': 'Calculating estimate for region: {}'.format(region_id),
-                                               'percent_complete': None})
                 if self.verbose > 0:
                     print('\n##### Calculating for region:', region_id, '#####')
                 self._get_region_estimation(pool, region_result, measurement, region_id, timestamp, ignore_site_ids)
