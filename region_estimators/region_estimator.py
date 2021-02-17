@@ -120,7 +120,7 @@ class RegionEstimator(object):
         self.__max_processors = max_processors
 
 
-    def _get_estimate_process(self, region_result, measurement, region_id, timestamp, ignore_site_ids=[]):
+    def _get_estimate_process(self, region_result, progress, measurement, region_id, timestamp, ignore_site_ids=[]):
         """  Find estimation for a single region and single timestamp. Worker function for multi-processing.
 
             :region_result: estimation result. as multiprocessing is used must return result as parameter
@@ -132,10 +132,10 @@ class RegionEstimator(object):
             :return: a dict with items 'region_id' and 'estimates (list). Estimates contains
                         'timestamp', (estimated) 'value' and 'extra_data'
         """
+        progress = {'status': 'Calculating estimate for region: {} and timestamp: {}'.format(region_id, timestamp),
+                    'percent_complete': None}
         if self._progress_callback is not None:
-            self._progress_callback(**{'status': 'Calculating estimate for region: {} and timestamp: {}'
-                                    .format(region_id, timestamp),
-                                       'percent_complete': None})
+            self._progress_callback(**progress)
         try:
             region_result_estimate = self.get_estimate(measurement, timestamp, region_id, ignore_site_ids)
             region_result.append({'measurement': measurement,
@@ -147,7 +147,8 @@ class RegionEstimator(object):
             print('Error estimating for measurement: {}; region: {}; timestamp: {} and ignore_sites: {}.\nError: {}'
                   .format(measurement, region_id, timestamp, ignore_site_ids, err))
 
-    def _get_region_estimation(self, pool, region_result, measurement, region_id, timestamp=None, ignore_site_ids=[]):
+    def _get_region_estimation(self, pool, region_result, progress, measurement, region_id, timestamp=None,
+                               ignore_site_ids=[]):
         """  Find estimations for a region and timestamp (or all timestamps (or all timestamps if timestamp==None)
 
             :param pool: the multiprocessing pool object within which to run this task
@@ -164,16 +165,15 @@ class RegionEstimator(object):
         if timestamp is not None:
             if self.verbose > 0:
                 print('\n##### Calculating for region_id: {} and timestamp: {} #####'.format(region_id, timestamp))
-
             pool.apply_async(self._get_estimate_process,
-                                 args=(region_result, measurement, region_id, timestamp, ignore_site_ids))
+                                 args=(region_result, progress, measurement, region_id, timestamp, ignore_site_ids))
         else:
             timestamps = sorted(self.actuals['timestamp'].unique())
             for _, timestamp in enumerate(timestamps):
                 if self.verbose > 1:
                     print(region_id, '    Calculating for timestamp:', timestamp)
                 pool.apply_async(self._get_estimate_process,
-                                     args=(region_result, measurement, region_id, timestamp, ignore_site_ids))
+                                     args=(region_result, progress, measurement, region_id, timestamp, ignore_site_ids))
         return region_result
 
     #@log_time
@@ -215,18 +215,23 @@ class RegionEstimator(object):
         with multiprocessing.Manager() as manager, multiprocessing.Pool(self.max_processors) as pool:
             # Set up pool and result dict
             region_result = manager.list()
+            progress = manager.dict()
 
             if region_id:
                 if self.verbose > 0:
                     print('\n##### Calculating for region:', region_id, '#####')
-                self._get_region_estimation(pool, region_result, measurement, region_id, timestamp, ignore_site_ids)
+                self._get_region_estimation(pool, region_result, progress, measurement, region_id, timestamp,
+                                            ignore_site_ids)
             else:
                 if self.verbose > 0:
                     print('No region_id submitted so calculating for all region ids...')
                 for index, _ in self.regions.iterrows():
                     if self.verbose > 1:
                         print('Calculating for region:', index)
-                    self._get_region_estimation(pool, region_result, measurement, index, timestamp, ignore_site_ids)
+                    self._get_region_estimation(pool, region_result, progress, measurement, index, timestamp,
+                                                ignore_site_ids)
+
+
 
             pool.close()
             pool.join()
