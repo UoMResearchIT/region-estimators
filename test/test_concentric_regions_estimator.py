@@ -8,7 +8,7 @@ from region_estimators.concentric_regions_estimator import ConcentricRegionsEsti
 
 
 def process_progress(percent_complete, status):
-  #print('percent_complete: {}; status: {}'.format(percent_complete, status))
+  print('percent_complete: {}; status: {}'.format(percent_complete, status))
   assert percent_complete is None or isinstance(percent_complete, int), 'Error with percent_complete param'
   assert status is None or isinstance(status, str), 'Error with status param'
 
@@ -86,3 +86,8 @@ class TestConcentricRegionsEstimator(unittest.TestCase):
     self.assertIsNotNone(result)
     self.assertIsInstance(result, pd.DataFrame)
     self.assertTrue(result.equals(self.results_ignore_sites))
+
+  def test_site_datapoint_count(self):
+    estimation_data = EstimationData(self.sites, self.regions, self.actuals)
+    estimator = ConcentricRegionsEstimator(estimation_data, verbose=0)
+    self.assertTrue(estimator.estimation_data.site_datapoint_count('NO2_mean', '2019-10-15') > 0)

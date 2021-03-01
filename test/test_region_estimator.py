@@ -35,21 +35,14 @@ class TestRegionEstimator(unittest.TestCase):
     self.actuals = pd.read_csv(path.join(self.load_data, 'actuals_multi_measurements.csv'))
 
 
-  def test_load_good_data(self):
+  def test_initialise_super_class(self):
     """
-    Test that a RegionEstimator object can be initialized with good data.
-    Also check that various other initializations happen within the object.
+    Test that a RegionEstimator object cannot be initialized with good data.
     """
     estimation_data = EstimationData(self.sites, self.regions, self.actuals)
-    estimator = RegionEstimator(estimation_data, verbose=0)
 
-    self.assertIsNotNone(estimator)
-    self.assertIsNotNone(estimator.regions['sites'])
-
-    self.assertTrue(estimator.estimation_data.site_datapoint_count('urtica', '2018-03-15') > 0)
-
-    with self.assertRaises(NotImplementedError):
-      estimator.get_estimate('urtica', None, None)
+    with self.assertRaises(AssertionError):
+      estimator = RegionEstimator(estimation_data, verbose=0)
 
   def test_load_bad_callback(self):
     """
@@ -60,8 +53,6 @@ class TestRegionEstimator(unittest.TestCase):
     with self.assertRaises(AssertionError):
       ConcentricRegionsEstimator(estimation_data, progress_callback='bad')
       DistanceSimpleEstimator(estimation_data, progress_callback='bad')
-
-
 
   def test_load_bad_verbose(self):
     """
@@ -130,7 +121,7 @@ class TestRegionEstimator(unittest.TestCase):
     Check that get_region_sites works with good and bad inputs
     """
     estimation_data = EstimationData(self.sites, self.regions, self.actuals)
-    estimator = RegionEstimator(estimation_data)
+    estimator = ConcentricRegionsEstimator(estimation_data)
 
     with self.assertRaises(AssertionError):
         # Test that region_id not in regions raises assertion error
@@ -149,7 +140,7 @@ class TestRegionEstimator(unittest.TestCase):
     Check that get_region_id works with good and bad inputs
     """
     estimation_data = EstimationData(self.sites, self.regions, self.actuals)
-    estimator = RegionEstimator(estimation_data)
+    estimator = DistanceSimpleEstimator(estimation_data)
 
     with self.assertRaises(AssertionError):
         # Test that an invalid site_id raises assertion error

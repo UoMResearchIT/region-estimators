@@ -51,6 +51,8 @@ class RegionEstimator(object):
 
         """
 
+        assert type(self) != RegionEstimator, 'RegionEstimator Cannot be instantiated directly'
+
         # Check and set verbose
         self.verbose = verbose
 
