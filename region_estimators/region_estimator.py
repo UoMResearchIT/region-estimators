@@ -1,6 +1,5 @@
 from abc import ABCMeta, abstractmethod
 import pandas as pd
-import numpy as np
 import multiprocessing
 import json
 import time
@@ -57,7 +56,6 @@ class RegionEstimator(object):
         self.verbose = verbose
 
         # Check and set max_processors
-        # On local machine, multiprocessing.cpu_count() == 4
         self.max_processors = min(max_processors, multiprocessing.cpu_count())
 
         # Set EstimationData
@@ -120,7 +118,6 @@ class RegionEstimator(object):
         assert isinstance(max_processors, int), "max_processors must be an integer."
         assert max_processors > 0, "max_processors must be greater than zero"
         self.__max_processors = max_processors
-
 
     def _get_estimate_process(self, region_result, measurement, region_id, timestamp, ignore_site_ids=[]):
         """  Find estimation for a single region and single timestamp. Worker function for multi-processing.
