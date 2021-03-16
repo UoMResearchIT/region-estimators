@@ -1,4 +1,4 @@
-# region_estimators package
+# region-estimators package
 
 [![Build Status](https://travis-ci.org/UoMResearchIT/region_estimators.svg?branch=master)](https://travis-ci.org/UoMResearchIT/region_estimators)
 
@@ -30,7 +30,7 @@ A set of python unittest test files can be found in the `test` directory.
 
 ```
 .
-├── region_estimations
+├── region_estimators
 ├── sample_input_files
 ├── scripts
 │   └── outputs
@@ -40,16 +40,16 @@ A set of python unittest test files can be found in the `test` directory.
 
 ## Requirements
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install region_estimators.
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install region-estimators.
 ```bash
 pip install shapely
 pip install pandas
 pip install geopandas
-pip install region_estimators
+pip install region-estimators
 ```
 
 ## Usage
-An example python script that uses the region_estimators package can be found in the `scripts` directory.
+An example python script that uses the region-estimators package can be found in the `scripts` directory.
 The required parts are highlighted in the following shortened excerpt:
 
 ```python
