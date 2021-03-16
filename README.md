@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/UoMResearchIT/region_estimators.svg?branch=master)](https://travis-ci.org/UoMResearchIT/region_estimators)
 
-region_estimators is a Python library to calculate regional estimations of scalar quantities, based on some known scalar quantities at specific locations.
+region-estimators is a Python library to calculate regional estimations of scalar quantities, based on some known scalar quantities at specific locations.
 For example, estimating the NO2 (pollution) level of a postcode/zip region, based on site data nearby.
 This first version of the package is initialised with 2 estimation methods:
 1. ConcentricRegions: look for actual data points in gradually wider rings, starting with sites within the region, and then working in rings outwards, until sites are found. If more than one site is found at the final stage, it takes the mean.
