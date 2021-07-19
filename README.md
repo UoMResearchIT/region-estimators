@@ -1,6 +1,6 @@
 # region-estimators package
 
-[![Build Status](https://travis-ci.org/UoMResearchIT/region_estimators.svg?branch=master)](https://travis-ci.org/UoMResearchIT/region_estimators)
+[![Build Status](https://github.com/UoMResearchIT/region-estimators/actions/workflows/python-package.yml/badge.svg)](https://github.com/UoMResearchIT/region-estimators/actions/workflows/python-package.yml)
 
 region-estimators is a Python library to calculate regional estimations of scalar quantities, based on some known scalar quantities at specific locations.
 For example, estimating the NO2 (pollution) level of a postcode/zip region, based on site data nearby.
