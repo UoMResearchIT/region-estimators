@@ -16,7 +16,6 @@ class DistanceSimpleEstimator(RegionEstimator):
                    max_processors=RegionEstimator.MAX_NUM_PROCESSORS, progress_callback=None):
             return DistanceSimpleEstimator(estimation_data, verbose, max_processors, progress_callback)
 
-
     def get_estimate(self, measurement, timestamp, region_id, ignore_site_ids=[]):
         """  Find estimations for a region and timestamp using the simple distance method: value of closest actual site
 
